@@ -1,0 +1,428 @@
+{
+  "version": 1,
+  "damage_types": ["slash", "strike", "pierce", "spirit", "fire", "ice"],
+  "enemies": [
+    {
+      "id": "hollow_fairy",
+      "names": { "en": "Hollow Fairy", "ja": "虚ろな妖精" },
+      "areas": ["misty_lake", "scarlet_devil_mansion", "forest_of_magic"],
+      "model": "enemies/hollow_fairy",
+      "stats": { "hp": 40, "poise": 10, "damage": 8, "faith_drop": 25 },
+      "attacks": [
+        { "id": "flutter_slap", "name": "Flutter Slap", "type": "melee", "damage": 8, "windup_s": 0.45, "recovery_s": 0.6, "description": "A quick open-handed swipe as it darts in close." },
+        { "id": "skipping_spread", "name": "Skipping Spread", "type": "bullet", "damage": 6, "windup_s": 0.7, "recovery_s": 0.9, "description": "A five-way fan of rice bullets. The rhythm skips a beat between volleys, where a living fairy would not." },
+        { "id": "washed_out_ring", "name": "Washed-Out Ring", "type": "pattern", "damage": 6, "windup_s": 1.0, "recovery_s": 1.2, "description": "A ring of twelve pale bullets with one gap. The gap is always in the same place." }
+      ],
+      "weaknesses": ["spirit", "strike"],
+      "resistances": ["ice"],
+      "lore_en": "Fairies are nature laughing at itself. When the laughter goes, the shape stays: a small cracked face, danmaku thrown out of habit, colours gone the grey of old paper. They still play, after a fashion. The game has no rules anymore, and no end.",
+      "lore_ja": "妖精とは、自然が自らを笑う姿。笑いが消えても形は残る。ひび割れた小さな顔、癖で放たれる弾幕、古紙の灰色に褪せた色。"
+    },
+    {
+      "id": "frostbound_fairy",
+      "names": { "en": "Frostbound Fairy", "ja": "凍て付いた妖精" },
+      "areas": ["misty_lake"],
+      "model": "enemies/frostbound_fairy",
+      "stats": { "hp": 70, "poise": 25, "damage": 10, "faith_drop": 45 },
+      "attacks": [
+        { "id": "ice_crust_slam", "name": "Ice-Crust Slam", "type": "melee", "damage": 12, "windup_s": 0.9, "recovery_s": 1.0, "description": "Brings down arms sheathed in lake ice. Builds Frost." },
+        { "id": "shard_shed", "name": "Shard Shed", "type": "bullet", "damage": 7, "windup_s": 0.6, "recovery_s": 0.8, "description": "Shakes loose a spray of ice shards when struck twice in a row." }
+      ],
+      "weaknesses": ["fire", "strike"],
+      "resistances": ["ice", "pierce"],
+      "status_inflicted": { "frost": 20 },
+      "lore_en": "The lake froze because its fairies stopped moving, not the other way round. These ones stood too still for too long, and the ice took them in like a blanket. They do not feel the cold. They do not feel anything. Cirno has been trying to wake them.",
+      "lore_ja": "湖が凍ったのは妖精が動かなくなったからだ。その逆ではない。チルノは、この子らを起こそうとしていた。"
+    },
+    {
+      "id": "unlit_lantern",
+      "names": { "en": "Unlit Lantern", "ja": "消えた提灯お化け" },
+      "areas": ["misty_lake", "hakurei_shrine", "former_hell"],
+      "model": "enemies/unlit_lantern",
+      "stats": { "hp": 60, "poise": 15, "damage": 11, "faith_drop": 40 },
+      "attacks": [
+        { "id": "paper_maw", "name": "Paper Maw", "type": "melee", "damage": 11, "windup_s": 0.55, "recovery_s": 0.9, "description": "The lantern splits along its ribs and bites." },
+        { "id": "ember_hunt", "name": "Ember Hunt", "type": "melee", "damage": 14, "windup_s": 1.1, "recovery_s": 1.4, "description": "A long lunge toward the nearest warm light: Reimu's orb, a shrine flame, a thrown wick." },
+        { "id": "cold_ash", "name": "Cold Ash", "type": "bullet", "damage": 7, "windup_s": 0.8, "recovery_s": 1.0, "description": "Coughs a slow cloud of grey ash motes that drift toward the target." }
+      ],
+      "weaknesses": ["fire", "slash"],
+      "resistances": ["strike"],
+      "behavior_tags": ["seeks_warm_light", "lured_by:warm_wick"],
+      "lore_en": "A paper lantern that lived long enough to wake, and burned long enough to be loved, and then was simply not relit. Its flame is out. It hunts warm light now, even the shrine flames, even Reimu's orb. It does not want to put them out. It only wants to be close to something that still burns.",
+      "lore_ja": "長く灯され、愛され、そしてただ灯されなくなった提灯。温かな光を追う。消したいのではない。まだ燃えているものの傍にいたいだけだ。"
+    },
+    {
+      "id": "faded_attendant",
+      "names": { "en": "Faded Attendant", "ja": "褪せた随身" },
+      "areas": ["hakurei_shrine"],
+      "model": "enemies/faded_attendant",
+      "stats": { "hp": 220, "poise": 55, "damage": 18, "faith_drop": 260 },
+      "attacks": [
+        { "id": "staff_sweep", "name": "Shakujo Sweep", "type": "melee", "damage": 18, "windup_s": 0.8, "recovery_s": 1.0, "description": "A wide low sweep with a ringed staff. The rings chime before it lands." },
+        { "id": "bow_and_strike", "name": "Bow, then Strike", "type": "melee", "damage": 24, "windup_s": 1.3, "recovery_s": 1.1, "description": "It bows deeply, then drives the staff forward from the bow. Ritual first, then violence." },
+        { "id": "old_ofuda", "name": "Yellowed Ofuda", "type": "bullet", "damage": 12, "windup_s": 0.7, "recovery_s": 0.9, "description": "Three slow-homing talismans in the old Hakurei style." }
+      ],
+      "weaknesses": ["fire"],
+      "resistances": ["spirit"],
+      "behavior_tags": ["bows_to:former_maiden"],
+      "lore_en": "Youkai who once served a shrine maiden: carried her lanterns, swept her roads, stood guard while she prayed at every stone. They were not bound to her. They chose it. When she was forgotten they had nothing left to attend, so they attend the road. When she passes, they still bow.",
+      "lore_ja": "かつて一人の巫女に仕えた妖怪たち。縛られていたのではない。自ら選んだのだ。主が忘れられた今も、彼女が通れば頭を垂れる。"
+    },
+    {
+      "id": "hollowed_maid_fairy",
+      "names": { "en": "Hollowed Maid Fairy", "ja": "虚ろなメイド妖精" },
+      "areas": ["scarlet_devil_mansion"],
+      "model": "enemies/hollowed_maid_fairy",
+      "stats": { "hp": 90, "poise": 20, "damage": 12, "faith_drop": 70 },
+      "attacks": [
+        { "id": "broom_jab", "name": "Broom Jab", "type": "melee", "damage": 12, "windup_s": 0.5, "recovery_s": 0.8, "description": "A short poke with a broom handle, then a turn as if to keep sweeping." },
+        { "id": "tray_throw", "name": "Silver Tray", "type": "bullet", "damage": 14, "windup_s": 0.9, "recovery_s": 1.1, "description": "Skims a serving tray low across the floor. It rebounds once off walls." },
+        { "id": "tea_service", "name": "Tea Service", "type": "pattern", "damage": 8, "windup_s": 1.2, "recovery_s": 1.4, "description": "Formal lines of bullets laid out like a place setting, then released all at once." }
+      ],
+      "weaknesses": ["spirit", "slash"],
+      "resistances": [],
+      "behavior_tags": ["patrols_fixed_route"],
+      "lore_en": "The mansion's fairy maids were always more decoration than staff. The head maid knew it and kept them anyway, and sewed their names into their aprons so none would be lost in the wash. They still dust the same banister, in the same place, until the wood is worn through. They serve tea to empty chairs.",
+      "lore_ja": "紅魔館の妖精メイドは、働き手というより飾りだった。メイド長はそれを承知で傍に置いた。今も同じ手すりの同じ場所を、木が擦り切れるまで拭き続けている。"
+    },
+    {
+      "id": "unread_grimoire",
+      "names": { "en": "Unread Grimoire", "ja": "読まれぬ魔導書" },
+      "areas": ["scarlet_devil_mansion"],
+      "model": "enemies/unread_grimoire",
+      "stats": { "hp": 65, "poise": 5, "damage": 10, "faith_drop": 60 },
+      "attacks": [
+        { "id": "page_cut", "name": "Page Cut", "type": "melee", "damage": 9, "windup_s": 0.35, "recovery_s": 0.5, "description": "Snaps shut on whatever is close." },
+        { "id": "marginalia", "name": "Marginalia", "type": "bullet", "damage": 10, "windup_s": 0.8, "recovery_s": 1.0, "description": "Loose letters peel off the pages and fly in a slow, curving stream." },
+        { "id": "chapter_burst", "name": "Chapter Burst", "type": "pattern", "damage": 11, "windup_s": 1.4, "recovery_s": 1.6, "description": "Pages fan out into a spiral of elemental bullets. The element is whatever chapter it fell open at." }
+      ],
+      "weaknesses": ["fire", "slash"],
+      "resistances": ["spirit", "pierce"],
+      "lore_en": "A book from the Voile library, where books are read by one reader, very slowly, forever. Some were never opened. A book that is never read forgets what it says, and a spellbook that forgets what it says is only a box of loose power. These ones flap through the halls looking for someone to finish them.",
+      "lore_ja": "ヴワル魔法図書館の本。一度も開かれなかった本は、自分に何が書かれているかを忘れる。"
+    },
+    {
+      "id": "hollow_bat_swarm",
+      "names": { "en": "Hollow Bat Swarm", "ja": "虚ろな蝙蝠の群れ" },
+      "areas": ["scarlet_devil_mansion"],
+      "model": "enemies/hollow_bat_swarm",
+      "stats": { "hp": 50, "poise": 0, "damage": 5, "faith_drop": 35 },
+      "attacks": [
+        { "id": "swarm_pass", "name": "Swarm Pass", "type": "melee", "damage": 5, "windup_s": 0.3, "recovery_s": 0.7, "description": "Passes through the target, several small hits in a row." },
+        { "id": "scatter_screech", "name": "Scatter Screech", "type": "pattern", "damage": 6, "windup_s": 0.9, "recovery_s": 1.5, "description": "The swarm bursts apart into bat-shaped bullets and reforms behind the player." }
+      ],
+      "weaknesses": ["spirit", "fire"],
+      "resistances": ["slash", "pierce"],
+      "lore_en": "The mistress of the mansion is said to be able to become a cloud of bats. These are not her. They are what flakes off a vampire when her fate begins to fray: little pieces of a great presence, with nowhere to return to.",
+      "lore_ja": "館の主は蝙蝠の群れに姿を変えられるという。これは彼女ではない。運命がほつれ始めた吸血鬼から剥がれ落ちた、帰る場所のない欠片だ。"
+    },
+    {
+      "id": "hollow_doll",
+      "names": { "en": "Stringless Doll", "ja": "糸の切れた人形" },
+      "areas": ["forest_of_magic"],
+      "model": "enemies/hollow_doll",
+      "stats": { "hp": 55, "poise": 15, "damage": 11, "faith_drop": 55 },
+      "attacks": [
+        { "id": "lance_thrust", "name": "Tiny Lance", "type": "melee", "damage": 11, "windup_s": 0.4, "recovery_s": 0.7, "description": "A quick jab with a doll-sized lance." },
+        { "id": "formation_volley", "name": "Formation Volley", "type": "bullet", "damage": 9, "windup_s": 1.0, "recovery_s": 1.0, "description": "Dolls within 8 m fire together in a line. Each doll alone is weak; a formation is not." },
+        { "id": "self_detonate", "name": "Return to Inanimateness", "type": "melee", "damage": 22, "windup_s": 1.6, "recovery_s": 0.0, "description": "At low HP the doll glows and bursts. The glow is the telegraph; roll away." }
+      ],
+      "weaknesses": ["fire", "slash"],
+      "resistances": ["spirit"],
+      "behavior_tags": ["forms_squads"],
+      "lore_en": "Alice's dolls were never alive. That was the point: a puppeteer's art is to make the lifeless move with care. When the strings went slack, the dolls did not fall. Something else picked up the strings, something with no care at all, and they have been moving ever since.",
+      "lore_ja": "アリスの人形は生きてなどいなかった。糸が緩んでも、人形は倒れなかった。何か別のものが糸を拾ったのだ。"
+    },
+    {
+      "id": "mire_fungus_youkai",
+      "names": { "en": "Mire Sporeling", "ja": "沼茸の憑き物" },
+      "areas": ["forest_of_magic"],
+      "model": "enemies/mire_fungus_youkai",
+      "stats": { "hp": 130, "poise": 40, "damage": 14, "faith_drop": 90 },
+      "attacks": [
+        { "id": "cap_slam", "name": "Cap Slam", "type": "melee", "damage": 16, "windup_s": 1.0, "recovery_s": 1.2, "description": "Rears up and falls forward on its heavy cap." },
+        { "id": "spore_bloom", "name": "Spore Bloom", "type": "pattern", "damage": 5, "windup_s": 1.2, "recovery_s": 1.4, "description": "Releases a slow-expanding ring of spore bullets that build Dread on contact." },
+        { "id": "root_grab", "name": "Root Grab", "type": "melee", "damage": 12, "windup_s": 0.7, "recovery_s": 1.5, "description": "Roots burst from the mud beneath the player; the ground ripples first." }
+      ],
+      "weaknesses": ["fire"],
+      "resistances": ["strike", "pierce"],
+      "status_inflicted": { "dread": 15 },
+      "lore_en": "The Forest of Magic's mushrooms were always a little alive. Magicians gathered them for their dreams, which is what gave them power. No one gathers them now. They have grown heavy and slow and swollen with dreams no one will ever take, and the dreams have gone to rot.",
+      "lore_ja": "魔法の森の茸は、元から少しだけ生きていた。魔法使いは夢を求めて茸を摘んだ。今は誰も摘まない。"
+    },
+    {
+      "id": "discarded_tsukumogami",
+      "names": { "en": "Discarded Tsukumogami", "ja": "捨てられた付喪神" },
+      "areas": ["forest_of_magic"],
+      "model": "enemies/discarded_tsukumogami",
+      "stats": { "hp": 110, "poise": 30, "damage": 13, "faith_drop": 85 },
+      "attacks": [
+        { "id": "clatter_rush", "name": "Clatter Rush", "type": "melee", "damage": 13, "windup_s": 0.6, "recovery_s": 1.0, "description": "A tumbling charge of pots, sandals and umbrella ribs." },
+        { "id": "heirloom_toss", "name": "Heirloom Toss", "type": "bullet", "damage": 15, "windup_s": 0.9, "recovery_s": 1.1, "description": "Hurls a piece of itself: a teacup, a comb, a single geta." },
+        { "id": "hundred_years", "name": "A Hundred Years", "type": "pattern", "damage": 9, "windup_s": 1.5, "recovery_s": 1.8, "description": "Lies still, then everything it is made of flies outward and falls back in." }
+      ],
+      "weaknesses": ["fire", "strike"],
+      "resistances": ["slash"],
+      "lore_en": "An object that serves for a hundred years wakes up. That is how tsukumogami are born: out of use, and care, and time. These woke at Muenzuka among the things no one came back for. They were born already thrown away. They gather together, because a heap is the only family they know.",
+      "lore_ja": "百年使われた道具は目を覚ます。無縁塚で目覚めたこれらは、生まれた時にはもう捨てられていた。"
+    },
+    {
+      "id": "lost_rabbit",
+      "names": { "en": "Lost Earth Rabbit", "ja": "迷い兎" },
+      "areas": ["bamboo_forest"],
+      "model": "enemies/lost_rabbit",
+      "stats": { "hp": 45, "poise": 5, "damage": 9, "faith_drop": 50 },
+      "attacks": [
+        { "id": "mallet_bop", "name": "Mochi Mallet", "type": "melee", "damage": 10, "windup_s": 0.5, "recovery_s": 0.7, "description": "An overhead swing with a rice-pounding mallet." },
+        { "id": "bamboo_hop", "name": "Hop Away", "type": "melee", "damage": 0, "windup_s": 0.2, "recovery_s": 0.3, "description": "Leaps away and vanishes into the bamboo, then returns from another direction." },
+        { "id": "lucky_scatter", "name": "Unlucky Scatter", "type": "bullet", "damage": 7, "windup_s": 0.7, "recovery_s": 0.9, "description": "A random spray of carrot-shaped bullets. Once they brought luck. Now they only fall." }
+      ],
+      "weaknesses": ["slash", "fire"],
+      "resistances": [],
+      "behavior_tags": ["ambush_in_groups", "flees_when_alone"],
+      "lore_en": "The earth rabbits of the bamboo forest were never truly lost; the forest only seemed a maze to outsiders. Now they are lost like anyone else. They walk in circles in the dark, carrying their mallets, looking for the one who used to lead them home.",
+      "lore_ja": "竹林の兎は、本当に迷ったことなどなかった。迷路に見えたのは外の者だけ。今は誰とも同じように迷っている。"
+    },
+    {
+      "id": "moon_rabbit_sentry",
+      "names": { "en": "Deserter's Echo", "ja": "脱走兵の残響" },
+      "areas": ["bamboo_forest"],
+      "model": "enemies/moon_rabbit_sentry",
+      "stats": { "hp": 120, "poise": 30, "damage": 14, "faith_drop": 110 },
+      "attacks": [
+        { "id": "rifle_butt", "name": "Rifle Butt", "type": "melee", "damage": 13, "windup_s": 0.6, "recovery_s": 0.8, "description": "A drilled, efficient strike." },
+        { "id": "lunatic_volley", "name": "Lunatic Volley", "type": "bullet", "damage": 12, "windup_s": 1.0, "recovery_s": 1.0, "description": "Three aimed shots. The first is real; the next two are illusions until they are not." },
+        { "id": "wavelength_scatter", "name": "Wavelength Scatter", "type": "pattern", "damage": 9, "windup_s": 1.3, "recovery_s": 1.4, "description": "A ring of bullets that phase in and out of visibility on a fixed beat." }
+      ],
+      "weaknesses": ["strike", "spirit"],
+      "resistances": ["pierce"],
+      "lore_en": "Something shaped like a lunar rabbit soldier stands guard in the bamboo, in formation, following orders from a moon that has forgotten it deserted. It is not any rabbit who lives at Eientei. It is the fear of being found, grown a body when no one was left to be afraid.",
+      "lore_ja": "月の兎兵の形をしたものが、竹林で隊列を組み歩哨に立つ。永遠亭の誰でもない。見つかることへの怯えが、怯える者のいなくなった後に体を得たものだ。"
+    },
+    {
+      "id": "bamboo_onibi",
+      "names": { "en": "Bamboo Onibi", "ja": "竹林の鬼火" },
+      "areas": ["bamboo_forest"],
+      "model": "enemies/bamboo_onibi",
+      "stats": { "hp": 35, "poise": 0, "damage": 12, "faith_drop": 40 },
+      "attacks": [
+        { "id": "flare_touch", "name": "Flare Touch", "type": "melee", "damage": 12, "windup_s": 0.4, "recovery_s": 0.6, "description": "Drifts into contact and flares. Builds Burn." },
+        { "id": "ember_drift", "name": "Ember Drift", "type": "pattern", "damage": 8, "windup_s": 0.9, "recovery_s": 1.2, "description": "Scatters slow, rising embers in a cone that linger for 3 s." }
+      ],
+      "weaknesses": ["ice", "spirit"],
+      "resistances": ["fire", "slash", "strike"],
+      "status_inflicted": { "burn": 25 },
+      "behavior_tags": ["lured_by:warm_wick"],
+      "lore_en": "Wandering fires. Folk say they are the souls of the dead who have not found their way. In the bamboo they catch from the burned places where the immortals fight, and go on burning long after the fight has moved on. They follow travellers. They do not know why.",
+      "lore_ja": "迷う火。道を見失った死者の魂だと里の者は言う。竹林では不死者たちの焼け跡から火が移り、戦いが去った後も燃え続ける。"
+    },
+    {
+      "id": "masked_tengu_scout",
+      "names": { "en": "Masked Tengu Scout", "ja": "覆面の天狗斥候" },
+      "areas": ["youkai_mountain"],
+      "model": "enemies/masked_tengu_scout",
+      "stats": { "hp": 140, "poise": 25, "damage": 15, "faith_drop": 140 },
+      "attacks": [
+        { "id": "dive_kick", "name": "Dive Kick", "type": "melee", "damage": 16, "windup_s": 0.7, "recovery_s": 1.0, "description": "Rises into the wind, hangs for a moment, then drops feet-first." },
+        { "id": "headline_cut", "name": "Headline Cut", "type": "melee", "damage": 14, "windup_s": 0.5, "recovery_s": 0.8, "description": "A slash with a folded-paper fan edge, fast enough to whistle." },
+        { "id": "gust_scatter", "name": "Gust Scatter", "type": "bullet", "damage": 10, "windup_s": 0.8, "recovery_s": 0.9, "description": "A fan of wind blades that curve with the mountain's prevailing wind." },
+        { "id": "flash_photo", "name": "Flash", "type": "pattern", "damage": 0, "windup_s": 1.0, "recovery_s": 0.6, "description": "A camera flash that clears Reimu's ofuda from the air. It takes no picture." }
+      ],
+      "weaknesses": ["pierce", "spirit"],
+      "resistances": ["slash"],
+      "behavior_tags": ["flies", "retreats_to_high_ground"],
+      "lore_en": "Crow tengu run newspapers, and a newspaper needs readers the way a god needs worshippers. No one reads anymore. These scouts wear masks cut from their own editions, the headlines blank. They still fly the mountain looking for a story, and when they find one they attack it.",
+      "lore_ja": "烏天狗は新聞を作る。新聞には読者が要る。神に信者が要るように。今は誰も読まない。斥候たちは自分の新聞を切り抜いた面を被る。見出しは白紙だ。"
+    },
+    {
+      "id": "hakurou_tengu_guard",
+      "names": { "en": "White Wolf Sentinel", "ja": "白狼天狗の番兵" },
+      "areas": ["youkai_mountain"],
+      "model": "enemies/hakurou_tengu_guard",
+      "stats": { "hp": 300, "poise": 80, "damage": 22, "faith_drop": 280 },
+      "attacks": [
+        { "id": "shield_bash", "name": "Shield Bash", "type": "melee", "damage": 16, "windup_s": 0.5, "recovery_s": 0.8, "description": "A short, staggering bash with a maple-leaf shield." },
+        { "id": "great_cleave", "name": "Great Cleave", "type": "melee", "damage": 30, "windup_s": 1.2, "recovery_s": 1.4, "description": "A two-handed overhead cut with a broad sword. Punishable." },
+        { "id": "howl", "name": "Howl", "type": "pattern", "damage": 8, "windup_s": 1.0, "recovery_s": 1.2, "description": "A howl that sends a ring of fang-shaped bullets and alerts nearby scouts." }
+      ],
+      "weaknesses": ["spirit", "fire"],
+      "resistances": ["slash", "strike"],
+      "behavior_tags": ["guards_position", "blocks_frontal"],
+      "lore_en": "The white wolf tengu keep watch on the mountain for trespassers. They were told to watch, and they are good at being told. No one has relieved the watch in a long time. They have forgotten who gave the order. They have not forgotten the order.",
+      "lore_ja": "白狼天狗は山に侵入者がないか見張る。見張れと命じられ、命令を守るのが得意だ。誰が命じたかは忘れた。命令は忘れていない。"
+    },
+    {
+      "id": "rotting_kappa_walker",
+      "names": { "en": "Operatorless Walker", "ja": "主なき河童機" },
+      "areas": ["youkai_mountain"],
+      "model": "enemies/rotting_kappa_walker",
+      "stats": { "hp": 420, "poise": 120, "damage": 24, "faith_drop": 320 },
+      "attacks": [
+        { "id": "piston_stamp", "name": "Piston Stamp", "type": "melee", "damage": 28, "windup_s": 1.1, "recovery_s": 1.3, "description": "Rears on hind legs and stamps. The steam venting from the joints is the telegraph." },
+        { "id": "water_cannon", "name": "Water Cannon", "type": "bullet", "damage": 18, "windup_s": 1.0, "recovery_s": 1.2, "description": "A high-pressure jet sweeping left to right. Pushes the player back." },
+        { "id": "rivet_spray", "name": "Rivet Spray", "type": "pattern", "damage": 10, "windup_s": 1.4, "recovery_s": 1.6, "description": "Loosened rivets fire outward in rusted, uneven rings." },
+        { "id": "job_complete", "name": "Job Complete", "type": "melee", "damage": 20, "windup_s": 2.0, "recovery_s": 3.0, "description": "When nothing is in range it resumes its old task, digging or hauling; interrupting it triggers a wild swing." }
+      ],
+      "weaknesses": ["strike", "ice"],
+      "resistances": ["slash", "pierce", "fire"],
+      "behavior_tags": ["resumes_task_when_idle"],
+      "lore_en": "The kappa built machines to do their work, and then went to sleep in the river and did not wake. The machines go on. They dig trenches that fill with water, haul loads to warehouses no one opens, and rust where they stand. They only fight because Reimu is in the way of a job.",
+      "lore_ja": "河童は仕事をさせる機械を造り、川で眠り、目覚めなかった。機械は働き続ける。霊夢と戦うのは、仕事の邪魔だからにすぎない。"
+    },
+    {
+      "id": "kappa_sluice_turret",
+      "names": { "en": "Sluice Warden", "ja": "水門の番機" },
+      "areas": ["youkai_mountain"],
+      "model": "enemies/kappa_sluice_turret",
+      "stats": { "hp": 200, "poise": 999, "damage": 14, "faith_drop": 150 },
+      "attacks": [
+        { "id": "pressure_bolt", "name": "Pressure Bolt", "type": "bullet", "damage": 14, "windup_s": 0.9, "recovery_s": 0.6, "description": "An aimed water bolt. A gauge on its face fills before each shot." },
+        { "id": "floodgate", "name": "Floodgate", "type": "pattern", "damage": 12, "windup_s": 1.8, "recovery_s": 2.4, "description": "Opens the sluice: a wall of bullets with a single dry lane." }
+      ],
+      "weaknesses": ["strike", "ice"],
+      "resistances": ["pierce", "slash", "spirit"],
+      "behavior_tags": ["stationary", "disabled_by:kappa_waterway_pass"],
+      "lore_en": "A turret built into the ravine's sluice gates to keep out anyone without a pass. It was never meant to be cruel. The kappa built it with a little bell that rings when it lets someone through. The bell has not rung in a very long time.",
+      "lore_ja": "手形を持たぬ者を通さぬよう、水門に組み込まれた砲台。通す時に鳴る小さな鈴が付いている。鈴はもう長いこと鳴っていない。"
+    },
+    {
+      "id": "forgotten_kami",
+      "names": { "en": "Forgotten Kami", "ja": "忘れられた神" },
+      "areas": ["youkai_mountain", "great_barrier"],
+      "model": "enemies/forgotten_kami",
+      "stats": { "hp": 360, "poise": 60, "damage": 20, "faith_drop": 400 },
+      "attacks": [
+        { "id": "shimenawa_lash", "name": "Shimenawa Lash", "type": "melee", "damage": 20, "windup_s": 0.9, "recovery_s": 1.1, "description": "Lashes out with the sacred rope that once marked its dwelling." },
+        { "id": "offering_rain", "name": "Rain of Old Offerings", "type": "pattern", "damage": 11, "windup_s": 1.3, "recovery_s": 1.5, "description": "Rice, coins and pebbles fall in slow columns; each column tracks where the player stood a moment ago." },
+        { "id": "tatari", "name": "Tatari", "type": "bullet", "damage": 16, "windup_s": 1.6, "recovery_s": 1.8, "description": "A curse bolt that builds Dread. A god no longer worshipped becomes a god that is only feared." }
+      ],
+      "weaknesses": ["spirit"],
+      "resistances": ["slash", "pierce", "fire"],
+      "status_inflicted": { "dread": 30 },
+      "behavior_tags": ["stops_attacking_if:prayed_to"],
+      "lore_en": "There are eight million gods in the land, and most were always small: the god of this rock, that spring, this bend in the path. They lived on the prayers of a few people who happened to pass. The people stopped passing. A god that is not worshipped does not die. It curdles. If Reimu prays before it, it hesitates, as if trying to recall a face.",
+      "lore_ja": "八百万の神の多くは、元から小さかった。この岩、あの泉、この道の曲がり角の神。祈られぬ神は死なない。凝り固まるのだ。"
+    },
+    {
+      "id": "vengeful_spirit",
+      "names": { "en": "Vengeful Spirit", "ja": "怨霊" },
+      "areas": ["netherworld", "former_hell"],
+      "model": "enemies/vengeful_spirit",
+      "stats": { "hp": 150, "poise": 0, "damage": 18, "faith_drop": 200 },
+      "attacks": [
+        { "id": "grudge_touch", "name": "Grudge Touch", "type": "melee", "damage": 18, "windup_s": 0.6, "recovery_s": 0.9, "description": "Passes through Reimu's guard. Builds Dread." },
+        { "id": "wail", "name": "Wail", "type": "pattern", "damage": 12, "windup_s": 1.2, "recovery_s": 1.4, "description": "Expanding rings of skull-pale bullets, each ring slower than the last." },
+        { "id": "possession_lunge", "name": "Possession", "type": "melee", "damage": 26, "windup_s": 1.8, "recovery_s": 2.0, "description": "Dives at the player; if it connects, Spirit is drained. The spirit's face appears first as a telegraph." }
+      ],
+      "weaknesses": ["spirit"],
+      "resistances": ["slash", "strike", "pierce"],
+      "status_inflicted": { "dread": 25 },
+      "behavior_tags": ["phases_through_walls"],
+      "lore_en": "The spirits of the Former Hell were sealed away with the hell itself, and they hate the surface for forgetting them. They are not wrong. What surprises is that they have begun to appear in the Netherworld too, among the peaceful dead, as if the boundary between being forgotten and being hated has worn thin.",
+      "lore_ja": "旧地獄の怨霊は地獄と共に封じられ、自分たちを忘れた地上を憎む。それは正しい。驚くべきは、冥界の穏やかな死者たちの間にまで現れ始めたことだ。"
+    },
+    {
+      "id": "phantom_servant",
+      "names": { "en": "Phantom Servant", "ja": "亡霊の従者" },
+      "areas": ["netherworld"],
+      "model": "enemies/phantom_servant",
+      "stats": { "hp": 180, "poise": 35, "damage": 17, "faith_drop": 220 },
+      "attacks": [
+        { "id": "rake_sweep", "name": "Rake Sweep", "type": "melee", "damage": 16, "windup_s": 0.7, "recovery_s": 0.9, "description": "Sweeps a garden rake across the white gravel, raking Reimu along with it." },
+        { "id": "lantern_orbit", "name": "Lantern Orbit", "type": "pattern", "damage": 12, "windup_s": 1.1, "recovery_s": 1.3, "description": "Small white lanterns orbit it, then fly outward on tangents." },
+        { "id": "petal_curtain", "name": "Petal Curtain", "type": "bullet", "damage": 10, "windup_s": 0.8, "recovery_s": 1.0, "description": "A falling curtain of cherry-petal bullets that sway as they fall." }
+      ],
+      "weaknesses": ["spirit", "fire"],
+      "resistances": ["slash", "pierce"],
+      "behavior_tags": ["tends_garden_when_idle"],
+      "lore_en": "The ghosts who serve Hakugyokurou sweep the gravel into waves, tend the lanterns, and wait on their mistress. They do not remember their lives and have never minded. What they have begun to forget now is the garden, and the mistress, and the waiting. They sweep the same wave over and over and cannot finish it.",
+      "lore_ja": "白玉楼に仕える幽霊は、砂利に波を描き、灯籠を守り、主を待つ。生前を覚えていないことを気にしたことはない。今忘れ始めたのは、庭と、主と、待つことそのものだ。"
+    },
+    {
+      "id": "hell_raven",
+      "names": { "en": "Hell Raven", "ja": "地獄鴉" },
+      "areas": ["former_hell"],
+      "model": "enemies/hell_raven",
+      "stats": { "hp": 160, "poise": 20, "damage": 20, "faith_drop": 230 },
+      "attacks": [
+        { "id": "talon_dive", "name": "Talon Dive", "type": "melee", "damage": 20, "windup_s": 0.6, "recovery_s": 1.0, "description": "A steep dive from the cavern ceiling." },
+        { "id": "cinder_wing", "name": "Cinder Wing", "type": "bullet", "damage": 14, "windup_s": 0.7, "recovery_s": 0.9, "description": "A wingbeat that flings burning feathers in a flat fan. Builds Burn." },
+        { "id": "carrion_circle", "name": "Carrion Circle", "type": "pattern", "damage": 12, "windup_s": 1.4, "recovery_s": 1.4, "description": "Several ravens circle overhead and drop embers in a closing spiral." }
+      ],
+      "weaknesses": ["ice", "pierce"],
+      "resistances": ["fire"],
+      "status_inflicted": { "burn": 20 },
+      "behavior_tags": ["flies", "flock"],
+      "lore_en": "Hell ravens tend the fires of the Blazing Hell, feeding it the bodies the kasha bring. It is honest work, and they took pride in it. The fires no longer need tending; something far hotter burns below. The ravens tend them anyway, and have started to feed them whatever comes close.",
+      "lore_ja": "地獄鴉は灼熱地獄の火の番をする。誇りを持てる、正直な仕事だった。今や火に番は要らない。それでも鴉たちは火を守り、近付くものを何でもくべ始めた。"
+    },
+    {
+      "id": "zombie_fairy",
+      "names": { "en": "Cinder Fairy", "ja": "燻る妖精" },
+      "areas": ["former_hell"],
+      "model": "enemies/zombie_fairy",
+      "stats": { "hp": 95, "poise": 10, "damage": 15, "faith_drop": 130 },
+      "attacks": [
+        { "id": "ash_slap", "name": "Ash Slap", "type": "melee", "damage": 14, "windup_s": 0.4, "recovery_s": 0.6, "description": "A quick strike that leaves a smear of hot ash." },
+        { "id": "cinder_spread", "name": "Cinder Spread", "type": "bullet", "damage": 11, "windup_s": 0.6, "recovery_s": 0.8, "description": "Seven-way spread of ember bullets, repeated three times." },
+        { "id": "rekindle", "name": "Rekindle", "type": "pattern", "damage": 12, "windup_s": 2.2, "recovery_s": 0.0, "description": "When killed near fire it rises again once, burning, and bursts into a ring of cinders." }
+      ],
+      "weaknesses": ["ice", "spirit"],
+      "resistances": ["fire"],
+      "behavior_tags": ["revives_once_near:fire"],
+      "lore_en": "Fairies of the underground are the fairies of dead things and embers. They were strange even before the hollowing, laughing in the heat. They still rise when they fall. They no longer laugh when they do.",
+      "lore_ja": "地底の妖精は、死したものと燠火の妖精。熱の中で笑う、奇妙な子らだった。倒れてもまだ起き上がる。もう、笑いはしない。"
+    },
+    {
+      "id": "hollow_oni",
+      "names": { "en": "Oathbound Oni", "ja": "誓いに縛られた鬼" },
+      "areas": ["former_hell"],
+      "model": "enemies/hollow_oni",
+      "stats": { "hp": 650, "poise": 150, "damage": 34, "faith_drop": 700 },
+      "attacks": [
+        { "id": "open_palm", "name": "Open Palm", "type": "melee", "damage": 30, "windup_s": 0.9, "recovery_s": 1.1, "description": "An open-handed strike that could fell a cedar." },
+        { "id": "sake_dish_throw", "name": "Sake Dish", "type": "bullet", "damage": 22, "windup_s": 1.0, "recovery_s": 1.2, "description": "Flings a great lacquered sake dish that spins back like a boomerang." },
+        { "id": "ground_stomp", "name": "Four Heavenly Stomp", "type": "pattern", "damage": 26, "windup_s": 1.5, "recovery_s": 1.8, "description": "Stamps; shockwave rings travel along the ground. Roll through the ring, not away from it." },
+        { "id": "honest_challenge", "name": "Honest Challenge", "type": "melee", "damage": 42, "windup_s": 2.2, "recovery_s": 2.2, "description": "It plants its feet and roars a challenge before a straight punch. It will never feint. It cannot lie." }
+      ],
+      "weaknesses": ["spirit", "pierce"],
+      "resistances": ["strike", "fire"],
+      "behavior_tags": ["never_feints"],
+      "lore_en": "The oni left the surface long ago, disappointed that humans had learned to lie and to break their word. They built the Old Capital underground and drank there. An oni swears on its own name, and never breaks an oath. These swore to wait for people who never came. They are keeping the oath still. It is all they have left of themselves.",
+      "lore_ja": "鬼は嘘を覚えた人間に失望し、地上を去った。鬼は己の名に誓い、決して誓いを破らない。来ることのない者を待つと誓った鬼たちは、今もその誓いを守っている。"
+    },
+    {
+      "id": "struck_name",
+      "names": { "en": "Struck Name", "ja": "抹された名" },
+      "areas": ["great_barrier", "hakurei_shrine"],
+      "model": "enemies/struck_name",
+      "stats": { "hp": 280, "poise": 40, "damage": 26, "faith_drop": 600 },
+      "attacks": [
+        { "id": "red_line", "name": "Red Line", "type": "melee", "damage": 26, "windup_s": 0.8, "recovery_s": 1.0, "description": "A single horizontal stroke of red, drawn through the air at chest height." },
+        { "id": "ink_bleed", "name": "Ink Bleed", "type": "pattern", "damage": 14, "windup_s": 1.2, "recovery_s": 1.4, "description": "Black ink bullets spread outward in a bleed pattern, like a blot on wet paper. Builds Dread." },
+        { "id": "unwrite", "name": "Unwrite", "type": "bullet", "damage": 20, "windup_s": 1.5, "recovery_s": 1.6, "description": "A slow character-shaped bullet that, on hit, briefly blanks Reimu's HUD name." }
+      ],
+      "weaknesses": ["fire", "spirit"],
+      "resistances": ["slash", "strike", "pierce"],
+      "status_inflicted": { "dread": 35 },
+      "lore_en": "When a name is struck from the register, the forgetting has to go somewhere. It goes into the Barrier as mortar. Most of it. What cannot be absorbed seeps back out as figures of ink and paper, person-shaped, faceless, with a single red line where a name should be.",
+      "lore_ja": "名が帳から消されると、忘却はどこかへ行かねばならない。大半は結界の漆喰となる。吸収しきれなかったものが、墨と紙の人影となって滲み出る。"
+    },
+    {
+      "id": "stray_shikigami",
+      "names": { "en": "Stray Shikigami", "ja": "はぐれ式神" },
+      "areas": ["great_barrier"],
+      "model": "enemies/stray_shikigami",
+      "stats": { "hp": 240, "poise": 30, "damage": 24, "faith_drop": 520 },
+      "attacks": [
+        { "id": "formula_pounce", "name": "Formula Pounce", "type": "melee", "damage": 24, "windup_s": 0.5, "recovery_s": 0.9, "description": "A fox-shaped leap on a precisely computed arc. It always lands where you were." },
+        { "id": "talisman_lattice", "name": "Talisman Lattice", "type": "pattern", "damage": 14, "windup_s": 1.4, "recovery_s": 1.2, "description": "A grid of talisman bullets that closes square by square." },
+        { "id": "gap_blink", "name": "Blink", "type": "melee", "damage": 18, "windup_s": 0.3, "recovery_s": 0.5, "description": "Folds through a small gap and strikes from behind. An eye opens in the air a moment before." }
+      ],
+      "weaknesses": ["strike", "fire"],
+      "resistances": ["spirit"],
+      "lore_en": "A shikigami is a spell given a name and a task. These were set to watch the Barrier's cracks, one crack each, by a master who had many cracks to watch. Some lost their names to the hollowing. The formula runs on without a name. It watches its crack and attacks what comes near, because that is all its task still says.",
+      "lore_ja": "式神とは、名と務めを与えられた術。結界の綻びを一つずつ見張るよう置かれた。名を失っても術式は回り続ける。"
+    }
+  ]
+}

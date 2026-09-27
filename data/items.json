@@ -1,0 +1,631 @@
+{
+  "version": 1,
+  "currencies": [
+    {
+      "id": "faith",
+      "names": { "en": "Faith", "ja": "信仰" },
+      "hud_color": "gold",
+      "description": "Belief gathered from the Faithless and from what is restored. Spent at the Wayside God to grow stronger, or offered back to it. Dropped where Reimu falls.",
+      "lore_en": "Every mote of Faith was once someone's belief in something. It does not remember whom it belonged to. It only remembers that it was held.",
+      "lore_ja": "信仰の一粒一粒は、かつて誰かが何かを信じた証。誰の心にあったかは覚えていない。ただ、抱かれていたことだけを覚えている。"
+    },
+    {
+      "id": "faith_remnant",
+      "names": { "en": "Lingering Faith", "ja": "残り香の信仰" },
+      "hud_color": "gold_dim",
+      "description": "All carried Faith, left where Reimu fell. Recoverable once. If she dies again before reaching it, it is gone for good.",
+      "lore_en": "What you carried, left kneeling where you fell. It waits exactly once. Faith is patient, but it is not foolish.",
+      "lore_ja": "倒れた場所に跪いて残る信仰。待つのは一度きり。"
+    }
+  ],
+  "status_effects": [
+    { "id": "frost", "names": { "en": "Frost", "ja": "凍え" }, "description": "Builds up from ice. When full, stamina regeneration halts for 4 s." },
+    { "id": "burn", "names": { "en": "Burn", "ja": "延焼" }, "description": "Builds up from fire. When full, deals 3% max HP per second for 5 s." },
+    { "id": "dread", "names": { "en": "Dread", "ja": "虚ろ" }, "description": "The hollowing, felt from outside. Builds up from Faithless curses. When full, Spirit drains to zero and grazing grants nothing for 8 s." }
+  ],
+  "items": [
+    {
+      "id": "ibuki_gourd",
+      "category": "consumable",
+      "names": { "en": "Ibuki Gourd", "ja": "伊吹瓢" },
+      "stack_max": 1,
+      "effect": { "type": "heal", "amount": 45, "charges_base": 3, "charges_max": 10, "use_time_s": 1.0, "refill_at_shrine": true, "upgrades": { "charges": "oni_sake_lees", "potency": "ibuki_undiluted" } },
+      "description": "Suika Ibuki's gourd. Restores HP. Charges refill when praying at a shrine.",
+      "lore_en": "A gourd that never runs dry, left on the shrine's veranda with a note that says only 'back later.' The note is weeks old. The sake still tastes of festivals: of crowds, of shouting, of a time when people climbed the long steps just to drink with an oni. Suika always said a party needs people. Perhaps that is why she went looking for them.",
+      "lore_ja": "尽きることのない瓢箪。縁側に「またあとで」とだけ書かれた紙と共に置かれていた。紙はもう何週間も前のものだ。酒はまだ祭りの味がする。"
+    },
+    {
+      "id": "saisen_coin_small",
+      "category": "consumable",
+      "names": { "en": "Offering Coin", "ja": "賽銭の小銭" },
+      "stack_max": 99,
+      "effect": { "type": "grant_currency", "currency": "faith", "amount": 200 },
+      "description": "Grants 200 Faith.",
+      "lore_en": "A copper coin, worn thin by a thumb that turned it over and over. Someone meant to give it. They walked as far as the torii and turned back."
+    },
+    {
+      "id": "saisen_coin_bundle",
+      "category": "consumable",
+      "names": { "en": "Strung Offering Coins", "ja": "緡銭" },
+      "stack_max": 99,
+      "effect": { "type": "grant_currency", "currency": "faith", "amount": 1000 },
+      "description": "Grants 1,000 Faith.",
+      "lore_en": "Coins threaded on a cord, saved for a festival that was never held. The knot is tied the old way, the way a grandmother ties it."
+    },
+    {
+      "id": "saisen_coin_old",
+      "category": "consumable",
+      "names": { "en": "Coin of a Forgotten Age", "ja": "古銭" },
+      "stack_max": 99,
+      "effect": { "type": "grant_currency", "currency": "faith", "amount": 5000 },
+      "description": "Grants 5,000 Faith.",
+      "lore_en": "A square-holed coin from a reign no one in Gensokyo can name. It was dropped into the Hakurei offering box long ago and fell through a crack in the floor. The shrine was poor even then."
+    },
+    {
+      "id": "spirit_incense",
+      "category": "consumable",
+      "names": { "en": "Spirit Incense", "ja": "霊香" },
+      "stack_max": 20,
+      "effect": { "type": "restore_spirit", "amount": 50, "use_time_s": 0.8 },
+      "description": "Restores 50 Spirit.",
+      "lore_en": "A stick of incense that burns without smoke. The smoke rose once, carrying prayers upward. Now there is nothing left to carry, so the incense simply gives its warmth to whoever holds it."
+    },
+    {
+      "id": "purification_salt",
+      "category": "consumable",
+      "names": { "en": "Purifying Salt", "ja": "清め塩" },
+      "stack_max": 20,
+      "effect": { "type": "buff", "stat": "damage_vs_faithless", "multiplier": 1.2, "duration_s": 45 },
+      "description": "For 45 s, deal 20% more damage to the Faithless.",
+      "lore_en": "Salt heaped at a threshold to keep what is unclean outside. The Faithless are not unclean. They are only empty. But salt remembers what it was for, even when nothing else does."
+    },
+    {
+      "id": "wayside_bell",
+      "category": "consumable",
+      "names": { "en": "Wayside Bell", "ja": "道祖神の鈴" },
+      "stack_max": 10,
+      "effect": { "type": "warp", "target": "last_shrine", "use_time_s": 2.0 },
+      "description": "Return to the last shrine you prayed at.",
+      "lore_en": "A small bronze bell once tied at crossroads so the road-god could hear travellers coming home. Ring it and the Wayside God will find you, if there is still enough of it left to listen."
+    },
+    {
+      "id": "paper_substitute",
+      "category": "consumable",
+      "names": { "en": "Nameless Katashiro", "ja": "名無しの形代" },
+      "stack_max": 5,
+      "effect": { "type": "on_death", "keep_currency": true, "consumed": true },
+      "description": "While carried, the next death does not drop Faith. Consumed on death.",
+      "lore_en": "A paper figure cut in the shape of a person, left blank. Write a name on it, and it takes that one's misfortune into the river. Reimu has never written on one. She only carries them. Some habits are older than the one who keeps them.",
+      "lore_ja": "人の形に切られた白紙の形代。名を書けば、その者の災いを引き受けて川へ流れる。霊夢は一度も名を書いたことがない。"
+    },
+    {
+      "id": "frozen_frog",
+      "category": "consumable",
+      "names": { "en": "Frozen Frog", "ja": "凍った蛙" },
+      "stack_max": 10,
+      "effect": { "type": "throw", "status": "frost", "buildup": 60, "damage": 8 },
+      "description": "Thrown. Builds heavy Frost on the target.",
+      "lore_en": "A frog frozen solid in a moment of surprise, part of a collection Cirno kept at the lakeshore and forgot. It will thaw in spring, none the worse. Frogs are sturdier than they look. So are fairies."
+    },
+    {
+      "id": "kappa_cucumber",
+      "category": "consumable",
+      "names": { "en": "Riverbank Cucumber", "ja": "河童の胡瓜" },
+      "stack_max": 20,
+      "effect": { "type": "regen", "amount_per_s": 2, "duration_s": 12 },
+      "description": "Restores 24 HP over 12 s.",
+      "lore_en": "Grown in the kappa's riverside gardens and left in a trade-box that no one comes to empty. The kappa still leave cucumbers out. Their machines still tend the rows. Nobody tells them to stop."
+    },
+    {
+      "id": "moon_mochi",
+      "category": "consumable",
+      "names": { "en": "Moon-Viewing Mochi", "ja": "月見団子" },
+      "stack_max": 10,
+      "effect": { "type": "heal", "amount": 30, "use_time_s": 1.2 },
+      "description": "Restores 30 HP.",
+      "lore_en": "Pounded by earth rabbits under the full moon. The rabbits have lost their way home, but not their habits; they still pound rice at night, in circles in the bamboo, for a feast no one will call them to."
+    },
+    {
+      "id": "kochou_mugan",
+      "category": "consumable",
+      "names": { "en": "Butterfly Dream Pill", "ja": "胡蝶夢丸" },
+      "stack_max": 5,
+      "effect": { "type": "cure_and_resist", "status": "dread", "resist_multiplier": 0.5, "duration_s": 60 },
+      "description": "Cures Dread and halves Dread buildup for 60 s.",
+      "lore_en": "A pill from Eientei that brings pleasant dreams. The hollowed do not dream at all, and it is said that is where hollowing begins: not with forgetting, but with nothing left to dream about. Eirin would not say whether the pill can prevent it. She only kept making them."
+    },
+    {
+      "id": "warm_wick",
+      "category": "consumable",
+      "names": { "en": "Warm Lantern Wick", "ja": "温もりの灯芯" },
+      "stack_max": 10,
+      "effect": { "type": "lure", "attracts": ["unlit_lantern", "bamboo_onibi"], "duration_s": 15 },
+      "description": "Thrown. Unlit lanterns and onibi abandon their hunt to chase it.",
+      "lore_en": "A wick still warm from a lantern someone kept lit for a traveller who was late. The unlit ones cannot resist it. They are not hungry, exactly. They only want to remember being bright."
+    },
+    {
+      "id": "tengu_leaf_fan",
+      "category": "consumable",
+      "names": { "en": "Tengu Leaf Fan", "ja": "天狗の葉団扇" },
+      "stack_max": 5,
+      "effect": { "type": "bullet_clear", "radius_m": 6, "use_time_s": 0.4 },
+      "description": "A gust clears enemy bullets within 6 m.",
+      "lore_en": "A yatsude leaf dried and bound with thread. A crow tengu's fan can raise a storm; this one can raise only a breeze. Still, a breeze at the right moment has saved many shrine maidens."
+    },
+    {
+      "id": "sakura_charm",
+      "category": "consumable",
+      "names": { "en": "Petal Charm", "ja": "花弁の守り" },
+      "stack_max": 10,
+      "effect": { "type": "resist", "status": "dread", "resist_multiplier": 0.3, "duration_s": 90 },
+      "description": "Greatly reduces Dread buildup for 90 s.",
+      "lore_en": "A pressed petal from Hakugyokurou, sewn into a pouch. The dead of the Netherworld have forgotten their lives, yet they do not hollow. The petals seem to be the reason. Forgetting and emptiness are not the same thing, if something beautiful remains."
+    },
+    {
+      "id": "hell_cinder",
+      "category": "consumable",
+      "names": { "en": "Hell Cinder", "ja": "地獄の燠" },
+      "stack_max": 10,
+      "effect": { "type": "throw", "status": "burn", "buildup": 55, "damage": 30 },
+      "description": "Thrown. Explodes and builds Burn.",
+      "lore_en": "A coal from the Blazing Hell of the Former Hell, which was never truly put out. The hell was abandoned. Its fires simply went on, the way a duty goes on after everyone who assigned it is gone."
+    },
+    {
+      "id": "hakurei_register",
+      "category": "key",
+      "names": { "en": "Hakurei Register, Remnant", "ja": "博麗の参拝帳（残欠）" },
+      "stack_max": 1,
+      "description": "What remains of the shrine's worshipper register. Its missing pages are out in the world.",
+      "lore_en": "The shrine's register of worshippers: everyone who ever climbed the steps and put their hands together. Most of its pages are gone. The binding is torn as though something stood up out of it and walked away. The last entry, in Reimu's careless hand, reads 'nobody today either.'",
+      "lore_ja": "神社の参拝帳。石段を登り、手を合わせた者すべての名が記される。頁のほとんどが失われ、綴じ糸は何かが立ち上がって歩き去ったかのように千切れている。最後の記載は霊夢の雑な字で「今日も誰も来ない」。"
+    },
+    {
+      "id": "struck_register_page",
+      "category": "key",
+      "names": { "en": "Struck-Out Page", "ja": "抹消された頁" },
+      "stack_max": 1,
+      "description": "A page of the register with one name struck through in red. It is still legible beneath the ink.",
+      "reveals_name_flag": "read_struck_page",
+      "lore_en": "A single register page, older than any other. One line is struck through in red, with the patient strokes of someone doing a duty carefully. Beneath the ink the name is still legible. It is the kind of name a village girl would have had. Whoever struck it out pressed hard enough to tear the paper, then smoothed the tear flat again.",
+      "lore_ja": "他のどの頁よりも古い一枚。一行だけが朱で消されている。務めを丁寧に果たす者の、辛抱強い筆致で。墨の下で、名はまだ読める。消した者は紙が破れるほど強く引き、それから破れを丁寧に伸ばしていた。"
+    },
+    {
+      "id": "blurred_register_page",
+      "category": "key",
+      "names": { "en": "Blurring Page", "ja": "滲む頁" },
+      "stack_max": 1,
+      "description": "Reimu's own page in the register. The ink runs a little more each time you look.",
+      "lore_en": "The Collector tore this from her own coat and pressed it into Reimu's hand without a word. It is Reimu's page. The characters are running like ink in rain, though it has not rained. Hold it long enough and you will find you cannot quite read the first character of the name, and you will not be sure you ever could.",
+      "lore_ja": "名集めが自らの外套から千切り、黙って霊夢の手に押し付けた頁。霊夢の頁だ。雨も降らないのに、墨が滲んでいく。"
+    },
+    {
+      "id": "marisa_star_charm",
+      "category": "key",
+      "names": { "en": "Star-Shaped Charm", "ja": "星形のお守り" },
+      "stack_max": 1,
+      "effect": { "type": "enables_summon", "ally": "marisa" },
+      "description": "Lets you call Marisa at summoning marks near boss arenas.",
+      "lore_en": "A lopsided star cut from a mushroom cap and dried hard, with a string through it. Marisa insists it is not a good-luck charm, just a thing she made, and Reimu is welcome to throw it away. She has made one every year since they were children. Reimu has kept every one."
+    },
+    {
+      "id": "scarlet_clock_key",
+      "category": "key",
+      "names": { "en": "Clocktower Key", "ja": "時計塔の鍵" },
+      "stack_max": 1,
+      "description": "Opens the clock gallery doors of the Scarlet Devil Mansion.",
+      "lore_en": "A silver key, polished daily for years. The polishing has stopped. There is a single fingerprint on the bow, as if someone set it down in the middle of a task and forgot she had been doing anything."
+    },
+    {
+      "id": "kappa_waterway_pass",
+      "category": "key",
+      "names": { "en": "Waterway Pass", "ja": "河童の通行手形" },
+      "stack_max": 1,
+      "description": "The kappa sluice machines let the bearer through Genbu Ravine.",
+      "lore_en": "A wooden token stamped with a cucumber and a gear. The sluice machines still check for it, though the kappa who carved them have gone quiet. The machines never ask who you are, only whether you have the pass. In that they are more forgiving than people."
+    },
+    {
+      "id": "moriya_ema",
+      "category": "key",
+      "names": { "en": "Unanswered Ema", "ja": "叶わぬ絵馬" },
+      "stack_max": 1,
+      "description": "Hang it at the Moriya stair to open the way to the shrine above.",
+      "lore_en": "A votive tablet from the Moriya Shrine with the wish scraped off. Only the date remains. A god of faith keeps every wish she is given. The ones she cannot answer, she keeps longest."
+    },
+    {
+      "id": "phantom_lantern",
+      "category": "key",
+      "names": { "en": "Phantom Lantern", "ja": "亡霊提灯" },
+      "stack_max": 1,
+      "description": "Lights the Hakugyokurou stair so its steps stop repeating.",
+      "lore_en": "A lantern that burns with a cold white flame, lent by a phantom servant who did not remember lending it. The long stair to Hakugyokurou repeats itself for those who walk it unlit. The dead do not mind. They have nowhere else to be."
+    },
+    {
+      "id": "yakumo_invitation",
+      "category": "key",
+      "names": { "en": "Yakumo Invitation", "ja": "八雲の招待状" },
+      "stack_max": 1,
+      "description": "Opens the gap to the Great Barrier.",
+      "lore_en": "A paper crane that unfolds into a letter with nothing written in it. It is an invitation all the same. Yukari has always preferred to say things by leaving them unsaid."
+    },
+    {
+      "id": "relic_black_ribbon",
+      "category": "relic",
+      "names": { "en": "Black Ribbon", "ja": "黒いリボン" },
+      "stack_max": 1,
+      "description": "Relic of the Former Shrine Maiden. Dropped on the Old Hakurei Road.",
+      "lore_en": "A hair ribbon of the Hakurei style, dyed black. It was not always black. The red went out of it one generation at a time, as the colour goes out of anything no one remembers. It is tied in a careful double knot, the way someone ties a thing she means to wear for the rest of her life.",
+      "lore_ja": "博麗の形の髪飾り。黒く染まっている。昔からそうだったわけではない。誰にも覚えられないものから色が抜けるように、一代ごとに紅が抜けていった。"
+    },
+    {
+      "id": "relic_inverted_orb",
+      "category": "relic",
+      "names": { "en": "Inverted Orb Shard", "ja": "逆さ陰陽玉の欠片" },
+      "stack_max": 1,
+      "description": "Relic of the Former Shrine Maiden. Recovered beneath the Saigyou Ayakashi.",
+      "lore_en": "A shard of a yin-yang orb whose halves have traded places. White where black should be. The orb does what it always did, keeping balance, but it has forgotten which side it was on. It is warm, like a hand that was just holding it.",
+      "lore_ja": "白と黒が入れ替わった陰陽玉の欠片。均衡を保つという働きは変わらないが、自分がどちらの側だったかを忘れている。"
+    },
+    {
+      "id": "relic_worn_sandals",
+      "category": "relic",
+      "names": { "en": "Worn Straw Sandals", "ja": "擦り切れた草鞋" },
+      "stack_max": 1,
+      "description": "Relic of the Former Shrine Maiden. Left at a roadside stone on the Old Hakurei Road.",
+      "lore_en": "Straw sandals worn through at the heel, placed neatly side by side before a roadside stone. She walked every road in Gensokyo to pray at every small god on it. When the sandals wore out she wove new ones. These are the last pair. After them, there was nowhere left for her to walk.",
+      "lore_ja": "踵の擦り切れた草鞋。道端の石の前に、きちんと揃えて置かれていた。彼女は幻想郷のすべての道を歩き、道の小さな神すべてに祈った。"
+    },
+    {
+      "id": "relic_village_song",
+      "category": "relic",
+      "names": { "en": "Scrap of a Village Song", "ja": "里唄の切れ端" },
+      "stack_max": 1,
+      "description": "Relic of the Former Shrine Maiden. Found among the Collector's loose pages.",
+      "lore_en": "A few lines of a rice-planting song written in a child's hand, with the melody marked in dots beside it. The Human Village stopped singing it a hundred years ago. Somewhere under the shrine, someone still hums it, and does not know why.",
+      "lore_ja": "田植え唄の数行。子供の字で、節回しが点で記されている。人里では百年前に歌われなくなった唄だ。"
+    },
+    {
+      "id": "relic_list_of_small_gods",
+      "category": "relic",
+      "names": { "en": "List of Small Gods", "ja": "小さき神々の帳" },
+      "stack_max": 1,
+      "description": "Relic of the Former Shrine Maiden. A notebook naming every roadside god she prayed to.",
+      "lore_en": "A notebook filled edge to edge with the names of roadside gods, crossroads stones, well-spirits and field-kami, each with a note: 'likes rice cakes,' 'lonely in winter,' 'the left one talks more.' Near the end, one pair of names is circled. One is still readable. The other has been rubbed away by a thumb, again and again, as though she was trying to keep it warm.",
+      "lore_ja": "道祖神、辻の石、井戸の霊、田の神の名で埋め尽くされた帳面。それぞれに書き添えがある。「餅が好き」「冬は寂しがる」「左の方がよく喋る」。"
+    },
+    {
+      "id": "relic_second_broom",
+      "category": "relic",
+      "names": { "en": "The Second Broom", "ja": "二本目の箒" },
+      "stack_max": 1,
+      "description": "Relic of the Former Shrine Maiden. It has always stood in the shrine's storehouse.",
+      "lore_en": "A bamboo broom in the Hakurei storehouse, beside Reimu's own. It has always been there. Reimu has never used it and never thought to ask why a shrine with one maiden keeps two brooms. The handle is worn smooth in the shape of someone else's grip.",
+      "lore_ja": "博麗の物置、霊夢の箒の隣に立つ竹箒。ずっとそこにあった。巫女一人の神社に、なぜ箒が二本あるのか、霊夢は考えたこともなかった。柄は、別の誰かの手の形にすり減っている。"
+    },
+    {
+      "id": "name_fragment_lake",
+      "category": "name_fragment",
+      "names": { "en": "Name Frozen in the Reeds", "ja": "葦に凍る名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "misty_lake" },
+      "description": "A fairy's name, lost at Misty Lake. Return it to the lake, or trade it to the Collector.",
+      "lore_en": "A name so small it fits between two blades of reed. Fairies give each other names for a season and then forget them, laughing. This one was forgotten without the laughing.",
+      "lore_ja": "葦の二枚の葉の間に収まるほど小さな名。妖精は季節ごとに名を付け合い、笑って忘れる。この名は、笑いもなく忘れられた。"
+    },
+    {
+      "id": "name_fragment_maid",
+      "category": "name_fragment",
+      "names": { "en": "Name Stitched in an Apron", "ja": "前掛けに縫われた名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "scarlet_devil_mansion" },
+      "description": "A maid fairy's name. Return it to the mansion, or trade it to the Collector.",
+      "lore_en": "Stitched in red thread along an apron hem so it would not be lost in the laundry. The head maid insisted every fairy have her name sewn in. She said it was for tidiness. Everyone knew it was not.",
+      "lore_ja": "洗濯で紛れぬよう、前掛けの裾に紅い糸で縫われた名。メイド長は全員に名を縫わせた。整理のためだと言っていた。"
+    },
+    {
+      "id": "name_fragment_doll",
+      "category": "name_fragment",
+      "names": { "en": "A Doll's Tag", "ja": "人形の名札" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "forest_of_magic" },
+      "description": "A paper tag from one of Alice's dolls. Return it to the cottage, or trade it to the Collector.",
+      "lore_en": "A paper tag on a thread, the kind tied to a doll's wrist in a careful hand. A puppeteer who names her dolls is not only a puppeteer. The name matters even if the doll cannot say it back.",
+      "lore_ja": "人形の手首に結ばれていた紙の名札。人形に名を付ける人形遣いは、ただの人形遣いではない。"
+    },
+    {
+      "id": "name_fragment_rabbit",
+      "category": "name_fragment",
+      "names": { "en": "Name Called into the Bamboo", "ja": "竹林に呼ばれた名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "bamboo_forest" },
+      "description": "An earth rabbit's name. Return it to the bamboo, or trade it to the Collector.",
+      "lore_en": "The bamboo forest takes the lost and turns them in circles. Somebody walked it calling one name over and over until the echo was all that was left. Rabbits come when they are called. This one had stopped hearing.",
+      "lore_ja": "竹林は迷い子を捕らえ、ぐるぐると回らせる。誰かが一つの名を呼び続け、残ったのは木霊だけだった。"
+    },
+    {
+      "id": "name_fragment_byline",
+      "category": "name_fragment",
+      "names": { "en": "A Blotted Byline", "ja": "滲んだ署名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "youkai_mountain" },
+      "description": "A tengu reporter's byline. Return it to the mountain, or trade it to the Collector.",
+      "lore_en": "The byline from a tengu newspaper, the kind printed large because its writer was proud. The article beneath it has faded to nothing. A reporter without readers is still a reporter, the tengu say. They say it less often now.",
+      "lore_ja": "天狗の新聞の署名欄。誇らしげに大きく刷られている。その下の記事は消えてしまった。"
+    },
+    {
+      "id": "name_fragment_kami",
+      "category": "name_fragment",
+      "names": { "en": "Name of a Mountain Kami", "ja": "山の神の御名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "youkai_mountain" },
+      "description": "The name of a small mountain god no one prays to. Return it, or trade it to the Collector.",
+      "lore_en": "The name of a kami who lived in one particular rock beside one particular spring. There are eight million gods in the land and no one can pray to them all. One maiden tried. The kami remembers her even if it cannot remember itself.",
+      "lore_ja": "ある泉のほとりの、ある岩に宿る神の御名。八百万の神すべてに祈ることは誰にもできない。一人の巫女だけが、それを試みた。"
+    },
+    {
+      "id": "name_fragment_phantom",
+      "category": "name_fragment",
+      "names": { "en": "A Name from Before Death", "ja": "生前の名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "netherworld" },
+      "description": "A ghost's name from when it lived. Return it to the Netherworld, or trade it to the Collector.",
+      "lore_en": "The dead of the Netherworld wait peacefully for rebirth, and most do not recall who they were. That is a mercy. But this name was not let go. It was taken, and the ghost it belonged to has been searching the garden for it ever since, not knowing what it is looking for.",
+      "lore_ja": "冥界の霊の多くは生前を覚えていない。それは慈悲だ。だがこの名は手放されたのではなく、奪われたのだ。"
+    },
+    {
+      "id": "name_fragment_oni",
+      "category": "name_fragment",
+      "names": { "en": "An Oni's Pledge-Name", "ja": "鬼の誓い名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "former_hell" },
+      "description": "The name an oni swore an oath by. Return it to the Old Capital, or trade it to the Collector.",
+      "lore_en": "Oni never lie, and they swear their oaths on their own names. This oni swore to wait for a friend at the Old Capital's gate. The friend never came. The oni kept the oath and lost the name, and now waits without knowing what for.",
+      "lore_ja": "鬼は嘘をつかず、己の名に誓いを立てる。この鬼は旧都の門で友を待つと誓った。友は来なかった。"
+    },
+    {
+      "id": "name_fragment_shikigami",
+      "category": "name_fragment",
+      "names": { "en": "A Shikigami's Binding-Name", "ja": "式の縛り名" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "great_barrier" },
+      "description": "The name that bound a stray shikigami to its task. Return it, or trade it to the Collector.",
+      "lore_en": "A shikigami is a formula given a name. Take away the name and the formula keeps running with no one to answer to. It was set to watch one crack in the Barrier. It is still watching.",
+      "lore_ja": "式神とは、名を与えられた術式だ。名を奪えば、術式は誰にも仕えずに動き続ける。"
+    },
+    {
+      "id": "name_fragment_wayside_other_half",
+      "category": "name_fragment",
+      "names": { "en": "The Other Half", "ja": "片割れの名" },
+      "stack_max": 1,
+      "return_target": { "kind": "npc", "id": "wayside_god" },
+      "sets_flag_on_return": "wayside_other_half_returned",
+      "description": "The name of the Wayside God's worn-away half. Return it at any shrine, or trade it to the Collector.",
+      "lore_en": "A roadside god is carved as a pair, two figures in one stone, because a crossroads is a meeting and a meeting needs two. This is the name of the one who wore smooth. The Former Shrine Maiden wrote it down once and rubbed it with her thumb until the ink went. She was trying to keep it warm. She did not know it would be the last place it was written.",
+      "lore_ja": "道祖神は二柱で一つの石に刻まれる。辻とは出会いであり、出会いには二人が要るから。これは摩り減った方の名。先代の巫女が一度書き留め、指でなぞり続けた。温めようとしていたのだ。"
+    },
+    {
+      "id": "name_fragment_last_worshippers",
+      "category": "name_fragment",
+      "names": { "en": "The Last Worshippers", "ja": "最後の参拝者たち" },
+      "stack_max": 1,
+      "return_target": { "kind": "area", "id": "hakurei_shrine" },
+      "description": "A handful of names from the register's final pages. Return them to the shrine, or keep them.",
+      "lore_en": "A farmer and his daughter. A woodcutter. A boy who came every morning for a year and then stopped. The last people who climbed the Hakurei steps to pray. They were not remarkable. That is exactly why they were enough.",
+      "lore_ja": "農夫とその娘。木こり。一年間毎朝通い、やがて来なくなった少年。博麗の石段を登った最後の人々。"
+    },
+    {
+      "id": "washi_scrap",
+      "category": "upgrade_material",
+      "names": { "en": "Washi Scrap", "ja": "和紙の切れ端" },
+      "stack_max": 99,
+      "tier": 1,
+      "description": "Reinforces gohei to +1 to +3.",
+      "lore_en": "Paper torn from a shrine's shide streamers. Paper is the oldest boundary: it divides the sacred from everything else with nothing but a fold."
+    },
+    {
+      "id": "blessed_shide",
+      "category": "upgrade_material",
+      "names": { "en": "Blessed Shide", "ja": "清められた紙垂" },
+      "stack_max": 99,
+      "tier": 2,
+      "description": "Reinforces gohei to +4 to +6.",
+      "lore_en": "A zigzag paper streamer that has hung at a sacred boundary through a hundred storms. It is soft as cloth now, and harder to tear than iron."
+    },
+    {
+      "id": "sacred_sakaki",
+      "category": "upgrade_material",
+      "names": { "en": "Sakaki Branch", "ja": "榊の枝" },
+      "stack_max": 99,
+      "tier": 3,
+      "description": "Reinforces gohei to +7 to +9.",
+      "lore_en": "An evergreen branch for offering to the gods. It does not wilt. It waits on the altar for a god to notice it, and it can wait a very long time."
+    },
+    {
+      "id": "iron_sand",
+      "category": "upgrade_material",
+      "names": { "en": "Iron Sand", "ja": "砂鉄" },
+      "stack_max": 99,
+      "tier": 1,
+      "description": "Reinforces swords to +1 to +3.",
+      "lore_en": "Black sand panned from mountain streams. The kappa used to collect it. Their machines still do, and heap it up for no one."
+    },
+    {
+      "id": "tamahagane_shard",
+      "category": "upgrade_material",
+      "names": { "en": "Tamahagane Shard", "ja": "玉鋼の欠片" },
+      "stack_max": 99,
+      "tier": 2,
+      "description": "Reinforces swords to +4 to +6.",
+      "lore_en": "Jewel steel, smelted over three days and three nights in a clay furnace. A smith named every blade she made from it. The blades have outlived the names."
+    },
+    {
+      "id": "star_iron",
+      "category": "upgrade_material",
+      "names": { "en": "Star Iron", "ja": "隕鉄" },
+      "stack_max": 99,
+      "tier": 3,
+      "description": "Reinforces swords to +7 to +9.",
+      "lore_en": "Iron that fell from the sky. Some say it fell from the moon. Rinnosuke says the moon would want it back, and so should not be told."
+    },
+    {
+      "id": "cinnabar_dust",
+      "category": "upgrade_material",
+      "names": { "en": "Cinnabar Dust", "ja": "辰砂の粉" },
+      "stack_max": 99,
+      "tier": 1,
+      "description": "Reinforces amulets to +1 to +3.",
+      "lore_en": "Ground red stone for mixing talisman ink. Red has always been the colour of protection, which is why it is the first thing the hollowing takes."
+    },
+    {
+      "id": "vermilion_ink",
+      "category": "upgrade_material",
+      "names": { "en": "Vermilion Ink", "ja": "朱墨" },
+      "stack_max": 99,
+      "tier": 2,
+      "description": "Reinforces amulets to +4 to +6.",
+      "lore_en": "The ink of seals and corrections. The same ink writes a protective charm and strikes a name from a register. The ink does not know the difference."
+    },
+    {
+      "id": "torii_vermilion",
+      "category": "upgrade_material",
+      "names": { "en": "Torii Vermilion", "ja": "鳥居の丹" },
+      "stack_max": 99,
+      "tier": 3,
+      "description": "Reinforces amulets to +7 to +9.",
+      "lore_en": "Vermilion lacquer scraped from a fallen torii. A gate that no longer stands is still a gate, in the only way that matters: something passed through it once."
+    },
+    {
+      "id": "remembered_prayer",
+      "category": "upgrade_material",
+      "names": { "en": "Remembered Prayer", "ja": "思い出された祈り" },
+      "stack_max": 99,
+      "tier": 4,
+      "description": "Reinforces any weapon to +10.",
+      "lore_en": "A prayer someone had forgotten they made, returned to them. It is weightless, and it glows faintly, and it is the strongest thing in Gensokyo."
+    },
+    {
+      "id": "oni_sake_lees",
+      "category": "upgrade_material",
+      "names": { "en": "Oni Sake Lees", "ja": "鬼の酒粕" },
+      "stack_max": 99,
+      "tier": 0,
+      "effect": { "type": "gourd_upgrade", "stat": "charges", "amount": 1 },
+      "description": "Give to the gourd at a shrine to add one charge.",
+      "lore_en": "The dregs of an oni's drinking, pressed into a cake. Oni drink to forget their troubles, it is said, but that is a human saying. Oni drink to remember them together."
+    },
+    {
+      "id": "ibuki_undiluted",
+      "category": "upgrade_material",
+      "names": { "en": "Undiluted Oni Sake", "ja": "生一本の鬼酒" },
+      "stack_max": 99,
+      "tier": 0,
+      "effect": { "type": "gourd_upgrade", "stat": "potency", "amount": 8 },
+      "description": "Pour into the gourd at a shrine to heal 8 more HP per sip.",
+      "lore_en": "Sake strong enough to make a tengu cry. Suika's gourd drinks it gratefully, and the sake that comes back out is a little warmer, like a party heard from down the road."
+    },
+    {
+      "id": "memento_cirno",
+      "category": "memento",
+      "names": { "en": "Unmelting Ice", "ja": "溶けない氷" },
+      "stack_max": 1,
+      "description": "Memento of Cirno. Rinnosuke can forge it, or the Collector will trade for it.",
+      "lore_en": "A shard of the ice that held Misty Lake. It does not melt in the hand. It is very proud of that. The strongest ice in Gensokyo, it would tell you, if ice could talk, and Cirno is not certain it can't."
+    },
+    {
+      "id": "memento_meiling",
+      "category": "memento",
+      "names": { "en": "Star of the Gate", "ja": "門番の星" },
+      "stack_max": 1,
+      "description": "Memento of Hong Meiling. Can be traded to the Collector.",
+      "lore_en": "The star from a gatekeeper's cap, stamped with the character for dragon. She wore it through every shift, asleep or awake. A gate is only closed if someone stands at it."
+    },
+    {
+      "id": "memento_sakuya",
+      "category": "memento",
+      "names": { "en": "Stopped Pocket Watch", "ja": "止まった懐中時計" },
+      "stack_max": 1,
+      "description": "Memento of Sakuya Izayoi. Rinnosuke can forge it.",
+      "lore_en": "A silver pocket watch stopped at a quarter past a moment no one remembers. Sakuya could stop time for everyone but herself. When the hollowing came it stopped her instead, and kept the rest of the world running."
+    },
+    {
+      "id": "memento_remilia",
+      "category": "memento",
+      "names": { "en": "Thread of Scarlet Fate", "ja": "紅い運命の糸" },
+      "stack_max": 1,
+      "description": "Memento of Remilia Scarlet. Can be traded to the Collector.",
+      "lore_en": "One red thread from the tangle of fates Remilia claims to see. It runs from your hand to somewhere below the Hakurei Shrine. She would not tell you where. She said you would not thank her."
+    },
+    {
+      "id": "memento_alice",
+      "category": "memento",
+      "names": { "en": "Cut Doll String", "ja": "切れた人形の糸" },
+      "stack_max": 1,
+      "description": "Memento of Alice Margatroid. Rinnosuke can forge it.",
+      "lore_en": "A thread of Alice's, fine as spider silk, cleanly cut. A doll on a string is a puppet. A doll whose string is cut is a doll again: free, and unable to move."
+    },
+    {
+      "id": "memento_mokou",
+      "category": "memento",
+      "names": { "en": "Unburning Ash", "ja": "燃え尽きぬ灰" },
+      "stack_max": 1,
+      "description": "Memento of Fujiwara no Mokou. Rinnosuke can forge it.",
+      "lore_en": "Ash that is still warm, from a fire that has died and risen more times than anyone has counted. Mokou cannot be forgotten to death. She has tried other ways. This is simply one more."
+    },
+    {
+      "id": "memento_eirin",
+      "category": "memento",
+      "names": { "en": "Empty Vial", "ja": "空の薬瓶" },
+      "stack_max": 1,
+      "effect": { "type": "gourd_upgrade", "stat": "potency", "amount": 15 },
+      "description": "Memento of Eirin Yagokoro. Pour its last drop into the gourd to heal 15 more HP per sip.",
+      "lore_en": "A glass vial with one drop left at the bottom. Eirin was the only one in Gensokyo who knew exactly what was wrong, and the only one who knew that no medicine would help. She left the vial for you anyway."
+    },
+    {
+      "id": "memento_aya",
+      "category": "memento",
+      "names": { "en": "Blank Extra Edition", "ja": "白紙の号外" },
+      "stack_max": 1,
+      "description": "Memento of Aya Shameimaru. Can be traded to the Collector.",
+      "lore_en": "An extra edition of the Bunbunmaru, rushed to print with a headline in enormous type. The headline is blank. Aya swears this is the biggest story of the century. She just cannot remember what it was."
+    },
+    {
+      "id": "memento_kanako",
+      "category": "memento",
+      "names": { "en": "Onbashira Splinter", "ja": "御柱の欠片" },
+      "stack_max": 1,
+      "description": "Memento of Kanako Yasaka. Rinnosuke can forge it.",
+      "lore_en": "A splinter from a sacred pillar. Kanako came to Gensokyo because faith was dying outside. She came to the one place where it could not die. She was wrong only about that."
+    },
+    {
+      "id": "memento_youmu",
+      "category": "memento",
+      "names": { "en": "Sakura Whetstone", "ja": "桜色の砥石" },
+      "stack_max": 1,
+      "description": "Memento of Youmu Konpaku. Rinnosuke can forge it.",
+      "lore_en": "A whetstone stained pink by years of blossoms falling on it while the gardener sharpened her blades. What cannot be cut, Youmu's teacher said, cannot be understood. She has cut so much, and understood so little of this."
+    },
+    {
+      "id": "memento_yuyuko",
+      "category": "memento",
+      "names": { "en": "Sumizome Petal", "ja": "墨染の花弁" },
+      "stack_max": 1,
+      "description": "Memento of Yuyuko Saigyouji. Rinnosuke can forge it.",
+      "lore_en": "A petal the colour of ink, from the one tree in Hakugyokurou that never blooms. Beneath it lies a body that seals it. Yuyuko does not know whose. She has never cared to ask. She is beginning to."
+    },
+    {
+      "id": "memento_utsuho",
+      "category": "memento",
+      "names": { "en": "Yatagarasu Eye", "ja": "八咫烏の眼" },
+      "stack_max": 1,
+      "description": "Memento of Utsuho Reiuji. Rinnosuke can forge it.",
+      "lore_en": "A red eye of glass, hot to the touch. A god's power was given to a hell raven so the mountain would have a sun of its own. Power given is still power. Faith given is still faith. Neither can be given back."
+    },
+    {
+      "id": "memento_yukari",
+      "category": "memento",
+      "names": { "en": "Boundary Ribbon", "ja": "境界のリボン" },
+      "stack_max": 1,
+      "description": "Memento of Yukari Yakumo. Rinnosuke can forge it.",
+      "lore_en": "A ribbon from Yukari's cap, tied in a bow that has no front and no back. She remembered. For every generation, she remembered, and said nothing, because the kindest lie is the one that lets a girl sweep a shrine in peace."
+    }
+  ]
+}

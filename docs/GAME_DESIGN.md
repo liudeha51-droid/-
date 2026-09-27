@@ -108,8 +108,11 @@ Proposals that follow the rule:
 | **The Faithless** | This story's premise. | Youkai and fairies who lost faith: the common enemy roster (hollowed fairies, masked tengu scouts, rotting kappa machines). |
 | **The Collector of Names** | Gensokyo is where forgotten things go. | Merchant who trades in names and memories, and speaks for what the world forgot. |
 
-Every OC gets a one-page brief (origin in lore, silhouette, colour, voice, fate) before
-any modelling starts.
+All four are kept (decision 2026-09-27). Their full briefs, the hidden premise behind
+the Hakurei system, Reimu's arc and the draft endings are in
+[STORY_AND_CHARACTERS.md](STORY_AND_CHARACTERS.md). The Former Shrine Maiden is central
+to the main story: she is a tragic predecessor whose fate foreshadows Reimu's, not an
+evil rival.
 
 Progression: Faith (currency) levels HP / Stamina / Spirit / Power; new **gohei, sword
 and amulet** weapon types; spell cards collected from defeated bosses become equippable
@@ -131,9 +134,9 @@ player spell cards.
   screen (unshaded + glow). The dark world makes them pop.
 - **Colour script.** Misty Lake is a violet-grey dusk with a dying red sun, black water,
   cold ice, and warm lantern islands.
-- **Placeholder policy:** every model in the prototype is built from primitives in code
-  (`_build_model()` in each script). Replacing one means swapping that function for an
-  imported scene; gameplay code doesn't reference meshes.
+- **Placeholder policy:** Reimu and the Misty Lake kit are now in-house Blender assets
+  (§8). Cirno is still built from primitives in code. Gameplay code doesn't reference
+  meshes, so swapping an asset never touches combat.
 
 ## 8. In-house 3D model pipeline
 
@@ -158,6 +161,32 @@ so every asset's copyright is clear and Steam-safe.
   set (idle, run, roll, 3 attacks, hit, death).
 - **Roles to fill:** character artist, environment artist, animator. One person can
   start with blockouts that replace the greybox directly.
+
+### Status (2026-09-27): first in-house pass
+
+The first assets are built by Python scripts that run inside Blender, so they are
+reproducible and reviewable as code. Artists replace or refine them by hand from here.
+
+| Asset | Script | What exists |
+|---|---|---|
+| **Reimu** `assets/models/characters/reimu/reimu.glb` | `tools/blender/build_reimu.py` | ~15.6k tris. Stylised body, head and hair; the bow, sidelocks with hair tubes, detached bell sleeves, pleated skirt and gohei. 20-bone rig. 11 animations: idle, run, roll, attack1–3, hurt, death, heal, cast, spell. The attack contact frames match the gameplay hit timings. |
+| **Misty Lake kit** `assets/models/environment/misty_lake/*.glb` | `tools/blender/build_misty_lake_kit.py` | Great torii, broken torii, stone lantern, hokora checkpoint shrine, the Wayside God stone, 3 dead trees, 2 ink pines, 3 rocks, reeds. |
+
+In-game, Reimu uses toon diffuse/specular, a rim light and an inverted-hull ink outline
+(`scripts/toon.gd`). The level falls back to primitives if an asset is missing.
+
+**Next for Reimu (hand work in Blender):**
+- a sculpt/retopo pass on the face and hands;
+- painted textures instead of flat colours;
+- secondary-motion bones for the hair, sleeves and skirt;
+- animation polish: anticipation and follow-through, plus hit-stop on contact.
+
+Rebuild an asset with:
+
+```sh
+blender --background --python tools/blender/build_reimu.py
+blender --background --python tools/blender/build_misty_lake_kit.py
+```
 
 ## 9. Audio direction
 
@@ -205,7 +234,7 @@ system with Steam Cloud, achievements, a 60 fps target on Steam Deck, store asse
 
 1. **M0 (this PR):** design doc + playable greybox slice with Cirno, dark look,
    placeholder music.
-2. **M1:** in-house Reimu and Cirno models and animations; toon/ink shaders; hit-stop,
+2. **M1:** in-house Reimu (first pass done) and Cirno models and animations; toon/ink shaders; hit-stop,
    camera polish, rumble; Faith drop on death; first hollowed-fairy enemy.
 3. **M2:** Misty Lake as a full area with the Wayside God NPC; save system and menus;
    **demo build for the Steam permission application.**

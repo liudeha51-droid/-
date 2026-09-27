@@ -20,7 +20,7 @@ var _rng := RandomNumberGenerator.new()
 func _ready() -> void:
 	top_level = true
 	spring = SpringArm3D.new()
-	spring.spring_length = 5.2
+	spring.spring_length = 4.4
 	spring.margin = 0.25
 	spring.collision_mask = 1
 	var probe := SphereShape3D.new()
@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 		yaw -= look.x * STICK_SENS * delta
 		pitch = clampf(pitch - look.y * STICK_SENS * delta, PITCH_MIN, PITCH_MAX)
 	rotation = Vector3(pitch, yaw, 0.0)
-	var goal := follow.global_position + Vector3(0, 1.8, 0)
+	var goal := follow.global_position + Vector3(0, 1.6, 0)
 	global_position = global_position.lerp(goal, 1.0 - exp(-14.0 * delta))
 
 	_shake = maxf(0.0, _shake - delta * 2.5)

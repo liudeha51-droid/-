@@ -8,6 +8,7 @@ const SHRINE_POS := Vector3(0, 0, 44)
 const ARENA_CENTER := Vector3(0, 0, -10)
 const ARENA_RADIUS := 21.0
 const RESPAWN_DELAY := 4.0
+const BROKEN_TORII_POS := Vector3(0, 0, -41)
 
 var player: Player
 var boss: BossCirno
@@ -151,6 +152,49 @@ func _on_boss_defeated() -> void:
 	camera_rig.lock_target = null
 	_end_fight()
 	hud.big_message("異変解決", "Incident resolved: Cirno defeated", Color(1.0, 0.85, 0.3), 4.0)
+	get_tree().create_timer(5.5).timeout.connect(_show_predecessor)
+
+
+## Story beat 1 (docs/STORY_AND_CHARACTERS.md): a faded red-and-white figure watches
+## from the broken torii across the lake, then dissolves. It uses Reimu's own rig,
+## bleached to grey rose, because she is what Reimu could become.
+func _show_predecessor() -> void:
+	if not ResourceLoader.exists(Player.RIG_PATH) or player.is_dead():
+		return
+	var ghost: Node3D = (load(Player.RIG_PATH) as PackedScene).instantiate()
+	ghost.name = "FormerShrineMaiden"
+	add_child(ghost)
+	ghost.global_position = BROKEN_TORII_POS + Vector3(0, 0, 3.0)
+	var to := player.global_position - ghost.global_position
+	ghost.rotation.y = atan2(to.x, to.z)  # glTF forward is +Z
+	var mats: Array[StandardMaterial3D] = []
+	for mi: MeshInstance3D in ghost.find_children("*", "MeshInstance3D", true, false):
+		for i in mi.mesh.get_surface_count():
+			var src := mi.get_active_material(i) as StandardMaterial3D
+			var m := StandardMaterial3D.new()
+			var c := src.albedo_color if src else Color.WHITE
+			var grey := c.r * 0.3 + c.g * 0.59 + c.b * 0.11
+			m.albedo_color = Color(grey, grey, grey).lerp(c, 0.25) * Color(0.95, 0.82, 0.86)
+			m.albedo_color.a = 0.0
+			m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			m.diffuse_mode = BaseMaterial3D.DIFFUSE_TOON
+			mi.set_surface_override_material(i, m)
+			mats.append(m)
+	var ap := ghost.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if ap:
+		ap.play("idle")
+	var tw := create_tween()
+	tw.tween_method(func(a: float):
+		for m in mats:
+			m.albedo_color.a = a
+	, 0.0, 0.85, 2.0)
+	tw.tween_interval(3.5)
+	tw.tween_method(func(a: float):
+		for m in mats:
+			m.albedo_color.a = a
+	, 0.85, 0.0, 2.5)
+	tw.tween_callback(ghost.queue_free)
+	hud.banner("……", "Someone in faded red and white watches from the broken torii", Color(0.75, 0.62, 0.66))
 
 
 func _end_fight() -> void:
@@ -274,22 +318,30 @@ func _build_world() -> void:
 		MeshKit.add(self, MeshKit.box(Vector3(rng.randf_range(1.6, 2.2), 0.08, 1.1)), stone, Vector3(rng.randf_range(-0.2, 0.2), 0.04, z), Vector3(0, rng.randf_range(-6, 6), 0))
 		z -= 1.35
 
-	# Great torii at the lake's edge.
+	# Great torii at the lake's edge, and a broken one on the far shore where the
+	# Former Shrine Maiden is glimpsed (docs/STORY_AND_CHARACTERS.md).
 	var tz := ARENA_CENTER.z + ARENA_RADIUS + 5.0
-	for side in [-1.0, 1.0]:
-		MeshKit.solid_cylinder(self, 0.28, 6.0, Vector3(2.6 * side, 3.0, tz), red)
-		MeshKit.add(self, MeshKit.cylinder(0.36, 0.36, 0.5), black, Vector3(2.6 * side, 0.25, tz))
-	MeshKit.add(self, MeshKit.box(Vector3(7.6, 0.4, 0.5)), black, Vector3(0, 6.1, tz))
-	MeshKit.add(self, MeshKit.box(Vector3(6.6, 0.3, 0.35)), red, Vector3(0, 5.3, tz))
-	MeshKit.add(self, MeshKit.box(Vector3(0.9, 0.9, 0.12)), black, Vector3(0, 5.75, tz - 0.05))
+	if Kit.has("torii"):
+		Kit.place(self, "torii", Vector3(0, 0, tz))
+		for side in [-1.0, 1.0]:
+			MeshKit.solid_cylinder(self, 0.3, 6.0, Vector3(2.6 * side, 3.0, tz))
+	else:
+		for side in [-1.0, 1.0]:
+			MeshKit.solid_cylinder(self, 0.28, 6.0, Vector3(2.6 * side, 3.0, tz), red)
+			MeshKit.add(self, MeshKit.cylinder(0.36, 0.36, 0.5), black, Vector3(2.6 * side, 0.25, tz))
+		MeshKit.add(self, MeshKit.box(Vector3(7.6, 0.4, 0.5)), black, Vector3(0, 6.1, tz))
+		MeshKit.add(self, MeshKit.box(Vector3(6.6, 0.3, 0.35)), red, Vector3(0, 5.3, tz))
+		MeshKit.add(self, MeshKit.box(Vector3(0.9, 0.9, 0.12)), black, Vector3(0, 5.75, tz - 0.05))
+	Kit.place(self, "torii_broken", BROKEN_TORII_POS, PI)
 
 	# Stone lanterns (tōrō) along the path, lit.
 	for i in 4:
 		for side in [-1.0, 1.0]:
 			var p := Vector3(2.4 * side, 0, SHRINE_POS.z - 6.0 - i * 6.0)
-			MeshKit.solid_cylinder(self, 0.18, 1.0, p + Vector3(0, 0.5, 0), stone)
-			MeshKit.add(self, MeshKit.box(Vector3(0.5, 0.35, 0.5)), MeshKit.mat(Color(1.0, 0.75, 0.4), 2.5), p + Vector3(0, 1.17, 0))
-			MeshKit.add(self, MeshKit.prism(Vector3(0.8, 0.3, 0.8)), stone, p + Vector3(0, 1.5, 0))
+			MeshKit.solid_cylinder(self, 0.18, 1.0, p + Vector3(0, 0.5, 0), null if Kit.has("stone_lantern") else stone)
+			if Kit.place(self, "stone_lantern", p, rng.randf_range(-0.2, 0.2)) == null:
+				MeshKit.add(self, MeshKit.box(Vector3(0.5, 0.35, 0.5)), MeshKit.mat(Color(1.0, 0.75, 0.4), 2.5), p + Vector3(0, 1.17, 0))
+				MeshKit.add(self, MeshKit.prism(Vector3(0.8, 0.3, 0.8)), stone, p + Vector3(0, 1.5, 0))
 			var l := OmniLight3D.new()
 			l.light_color = Color(1.0, 0.7, 0.4)
 			l.light_energy = 1.4
@@ -297,26 +349,40 @@ func _build_world() -> void:
 			l.position = p + Vector3(0, 1.2, 0)
 			add_child(l)
 
-	# Forest ring (placeholder trees), kept off the path and the lake.
+	# Forest ring: dead trees and ink pines, kept off the path and the lake.
 	var bark := MeshKit.mat(Color(0.1, 0.08, 0.07), 0.0, 1.0)
 	var leaves := [MeshKit.mat(Color(0.07, 0.09, 0.08), 0.0, 1.0), MeshKit.mat(Color(0.1, 0.11, 0.1), 0.0, 1.0), MeshKit.mat(Color(0.2, 0.19, 0.18), 0.0, 1.0)]
+	var tree_kinds := ["tree_dead_1", "tree_dead_2", "tree_dead_3", "tree_pine_1", "tree_pine_2", "tree_pine_1"]
 	var placed := 0
 	while placed < 140:
 		var p := Vector3(rng.randf_range(-56, 56), 0, rng.randf_range(-56, 66))
 		if p.distance_to(ARENA_CENTER) < 37.0 or (absf(p.x) < 6.0 and p.z > ARENA_CENTER.z) or p.distance_to(SHRINE_POS) < 7.0:
 			continue
 		placed += 1
+		var kind: String = tree_kinds[rng.randi() % tree_kinds.size()]
+		var tree := Kit.place(self, kind, p, rng.randf() * TAU, rng.randf_range(0.8, 1.3))
+		if tree:
+			MeshKit.solid_cylinder(self, 0.35, 4.0, p + Vector3(0, 2.0, 0))
+			continue
 		var h := rng.randf_range(5.0, 11.0)
 		MeshKit.solid_cylinder(self, 0.3, h, p + Vector3(0, h * 0.5, 0), bark)
 		var leaf: StandardMaterial3D = leaves[rng.randi() % leaves.size()]
 		MeshKit.add(self, MeshKit.cylinder(0.0, h * 0.35, h * 0.7, 10), leaf, p + Vector3(0, h * 0.75, 0))
 
-	# Rocks around the shore.
+	# Rocks and reeds around the shore.
 	for i in 24:
 		var a := rng.randf() * TAU
 		var r := rng.randf_range(34.5, 36.5)
 		var s := rng.randf_range(0.6, 1.8)
-		MeshKit.add(self, MeshKit.sphere(s, s * 1.2, 10), stone, ARENA_CENTER + Vector3(cos(a) * r, s * 0.3, sin(a) * r))
+		var at := ARENA_CENTER + Vector3(cos(a) * r, 0, sin(a) * r)
+		if Kit.place(self, "rock_%d" % (i % 3 + 1), at, rng.randf() * TAU, s) == null:
+			MeshKit.add(self, MeshKit.sphere(s, s * 1.2, 10), stone, at + Vector3(0, s * 0.3, 0))
+	for i in 40:
+		var a := rng.randf() * TAU
+		var at := ARENA_CENTER + Vector3(cos(a), 0, sin(a)) * rng.randf_range(ARENA_RADIUS + 2.5, 33.0)
+		if absf(at.x) < 4.0 and at.z > ARENA_CENTER.z:
+			continue  # keep the causeway clear
+		Kit.place(self, "reeds", at, rng.randf() * TAU, rng.randf_range(0.8, 1.5))
 
 	# Fireflies / frost motes drifting over the lake.
 	var motes := CPUParticles3D.new()

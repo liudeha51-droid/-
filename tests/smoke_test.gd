@@ -21,6 +21,8 @@ func _run() -> void:
 	var boss: BossCirno = main.boss
 	var bullets: BulletManager = main.bullets
 	_check(player != null and boss != null, "scene built")
+	_check(player.anim != null and player.anim.has_animation("attack3"), "Reimu's rig and animations load")
+	_check(main.shrine.find_child("*Dosojin*", true, false) != null or Kit.has("dosojin"), "Misty Lake kit loads")
 	_check(Music.instance != null and Music.instance.tracks.size() == 2, "placeholder music loops generated")
 	_check(Music.instance.current == "explore", "exploration music plays at start")
 

@@ -22,6 +22,7 @@ const OFUDA_COST := 10.0
 const SPELL_COST := 100.0
 const HEAL_TIME := 1.0
 const HEAL_AMOUNT := 45.0
+const RIG_PATH := "res://assets/models/characters/reimu/reimu.glb"
 
 enum State { FREE, DODGE, ATTACK, SHOOT, HEAL, HURT, SPELL, DEAD }
 
@@ -54,6 +55,12 @@ var input_enabled := true
 var model: Node3D
 var body_pivot: Node3D
 var gohei_pivot: Node3D
+var rig: Node3D
+var anim: AnimationPlayer
+var _orb: Node3D
+var _anim_serial := 0
+var _played_serial := -1
+var _played_anim := ""
 var _flash_mats: Array[StandardMaterial3D] = []
 
 
@@ -76,6 +83,45 @@ func _build_model() -> void:
 	body_pivot = Node3D.new()
 	body_pivot.position.y = 0.8
 	model.add_child(body_pivot)
+	if ResourceLoader.exists(RIG_PATH):
+		_build_rig()
+	else:
+		_build_greybox()
+	_add_orb()
+
+
+## In-house Blender model (tools/blender/build_reimu.py) with toon shading and ink outline.
+func _build_rig() -> void:
+	rig = (load(RIG_PATH) as PackedScene).instantiate()
+	rig.rotation.y = PI  # glTF faces +Z; gameplay forward is -Z
+	model.add_child(rig)
+	anim = rig.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if anim:
+		for loop_name in ["idle", "run"]:
+			if anim.has_animation(loop_name):
+				anim.get_animation(loop_name).loop_mode = Animation.LOOP_LINEAR
+		anim.play("idle")
+	var outline := Toon.outline_material(0.006)
+	for mi in rig.find_children("*", "MeshInstance3D", true, false):
+		for m in Toon.apply(mi as MeshInstance3D, outline):
+			if not m.emission_enabled:  # leave the eye highlights glowing
+				_flash_mats.append(m)
+
+
+func _add_orb() -> void:
+	# Yin-yang orb orbiting her, source of ofuda. Its small warm light keeps Reimu
+	# readable in the dark palette.
+	_orb = MeshKit.add(model, MeshKit.sphere(0.12), MeshKit.mat(Color(1.0, 0.8, 0.2), 0.6, 0.3, 0.6), Vector3(-0.5, 1.4, 0.3))
+	_orb.name = "Orb"
+	var glow := OmniLight3D.new()
+	glow.light_color = Color(1.0, 0.8, 0.55)
+	glow.light_energy = 0.9
+	glow.omni_range = 4.5
+	_orb.add_child(glow)
+
+
+## Primitive fallback used when the Blender asset is missing.
+func _build_greybox() -> void:
 	var red := MeshKit.mat(Color(0.78, 0.08, 0.12), 0.0, 0.6)
 	var white := MeshKit.mat(Color(0.95, 0.94, 0.9), 0.0, 0.7)
 	var skin := MeshKit.mat(Color(1.0, 0.86, 0.76), 0.0, 0.6)
@@ -108,15 +154,6 @@ func _build_model() -> void:
 	for i in 3:
 		var paper := MeshKit.add(gohei_pivot, MeshKit.box(Vector3(0.02, 0.2, 0.12)), MeshKit.mat(Color(1, 1, 1), 0.4), Vector3(0.03, 0.85 - i * 0.13, -0.15 - i * 0.04), Vector3(0, 0, 0))
 		paper.rotation_degrees.z = 12.0 * (i % 2 * 2 - 1)
-	# Yin-yang orb orbiting behind her, source of ofuda.
-	var orb := MeshKit.add(b, MeshKit.sphere(0.12), gold, Vector3(-0.5, 0.6, 0.3))
-	orb.name = "Orb"
-	# The yin-yang orb is a small warm light: it keeps Reimu readable in the dark.
-	var glow := OmniLight3D.new()
-	glow.light_color = Color(1.0, 0.8, 0.55)
-	glow.light_energy = 0.9
-	glow.omni_range = 4.5
-	orb.add_child(glow)
 	_set_gohei_pose(0.0)
 
 
@@ -368,6 +405,7 @@ func _die() -> void:
 func _enter(s: State) -> void:
 	state = s
 	state_time = 0.0
+	_anim_serial += 1
 
 
 func _spend(cost: float) -> void:
@@ -408,10 +446,46 @@ func _update_facing(delta: float) -> void:
 
 
 func _animate_idle(_delta: float) -> void:
-	var orb := body_pivot.get_node_or_null("Orb") as Node3D
-	if orb:
+	if _orb:
 		var t := Time.get_ticks_msec() / 1000.0
-		orb.position = Vector3(cos(t * 2.0) * 0.55, 0.6 + sin(t * 3.0) * 0.08, sin(t * 2.0) * 0.55)
+		_orb.position = Vector3(cos(t * 2.0) * 0.55, 1.4 + sin(t * 3.0) * 0.08, sin(t * 2.0) * 0.55)
+	_update_anim()
+
+
+## Maps gameplay state to the rig's animations. Action states restart on every entry.
+func _update_anim() -> void:
+	if anim == null:
+		return
+	var want := "idle"
+	var speed := 1.0
+	match state:
+		State.FREE:
+			var hs := Vector2(velocity.x, velocity.z).length()
+			if hs > 0.3:
+				want = "run"
+				speed = clampf(hs / 6.0, 0.55, 1.35)
+		State.DODGE:
+			want = "roll"
+		State.ATTACK:
+			want = "attack%d" % (combo + 1)
+		State.SHOOT:
+			want = "cast"
+		State.HEAL:
+			want = "heal"
+		State.HURT:
+			want = "hurt"
+		State.SPELL:
+			want = "spell"
+		State.DEAD:
+			want = "death"
+	anim.speed_scale = speed
+	var action := state != State.FREE
+	if want != _played_anim or (action and _anim_serial != _played_serial):
+		anim.play(want, 0.06 if action else 0.15)
+		if action:
+			anim.seek(0.0, true)
+		_played_anim = want
+		_played_serial = _anim_serial
 
 
 ## 0 = rest pose, 0..1 = sweep of the swing arc.

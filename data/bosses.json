@@ -1,0 +1,1157 @@
+{
+  "version": 1,
+  "bosses": [
+    {
+      "id": "cirno",
+      "kind": "main",
+      "names": { "en": "Cirno", "ja": "チルノ", "title_en": "the Ice Fairy, Half-Frozen", "title_ja": "半ば凍てた氷の妖精" },
+      "area": "misty_lake",
+      "sub_zone": "frozen_lake",
+      "model": "characters/cirno",
+      "music_cue": "mus_boss_cirno",
+      "required": true,
+      "marisa_summonable": false,
+      "hp_total": 700,
+      "hp_per_phase": [350, 350],
+      "poise": 70,
+      "stagger_s": 1.3,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Cirno fights like a child playing at being a knight: big, honest swings and danmaku thrown in wide, bright shapes.",
+          "attacks": [
+            { "id": "swing", "name": "Ice Sword Swing", "type": "melee", "damage": 24, "windup_s": 0.75, "recovery_s": 0.9, "description": "A long, glowing wind-up, then a lunging horizontal cut with a sword of ice. The blade brightens as it charges." },
+            { "id": "dash", "name": "Charging Dash", "type": "melee", "damage": 26, "windup_s": 0.65, "recovery_s": 1.1, "description": "Leans back, then charges in a straight line across the ice." },
+            { "id": "ring", "name": "Ring Waves", "type": "pattern", "damage": 12, "windup_s": 0.45, "recovery_s": 0.8, "description": "Three rings of 22 bullets, each offset by half a gap. Standing still gets you hit." },
+            { "id": "spiral", "name": "Spiral", "type": "pattern", "damage": 12, "windup_s": 0.4, "recovery_s": 0.9, "description": "A three-armed spiral that turns for two seconds." },
+            { "id": "aimed", "name": "Aimed Icicle Fans", "type": "bullet", "damage": 14, "windup_s": 0.5, "recovery_s": 0.7, "description": "Four volleys of five icicles fanned at the player." }
+          ],
+          "spell_cards": []
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 50,
+          "transition": { "id": "shockwave", "name": "Frost Shockwave", "type": "pattern", "damage": 12, "windup_s": 0.6, "recovery_s": 1.6, "description": "She rises and shatters the air. Clears all bullets; hurts anyone within 6 m." },
+          "description": "The frost in her cracks flares. Faster, double swings, and the two spell cards she is proudest of.",
+          "attacks": [
+            { "id": "swing", "name": "Double Swing", "type": "melee", "damage": 24, "windup_s": 0.55, "recovery_s": 0.9, "description": "Shorter wind-up; 60% chance of a follow-up swing with a 0.25 s wind-up." },
+            { "id": "dash", "name": "Frost-Trail Dash", "type": "melee", "damage": 26, "windup_s": 0.65, "recovery_s": 1.1, "description": "The dash leaves short-lived icicles firing sideways from her path (12 damage each)." },
+            { "id": "ring", "name": "Ring Waves", "type": "pattern", "damage": 12, "windup_s": 0.45, "recovery_s": 0.8, "description": "Four rings of 28 bullets." },
+            { "id": "spiral", "name": "Spiral", "type": "pattern", "damage": 12, "windup_s": 0.4, "recovery_s": 0.9, "description": "A four-armed spiral." },
+            { "id": "aimed", "name": "Aimed Icicle Fans", "type": "bullet", "damage": 14, "windup_s": 0.5, "recovery_s": 0.7, "description": "Six volleys." }
+          ],
+          "spell_cards": [
+            { "id": "icicle_fall", "name_ja": "氷符「アイシクルフォール」", "name_en": "Ice Sign \"Icicle Fall\"", "variant": "canon", "damage": 18, "windup_s": 0.8, "duration_s": 5.0, "recovery_s": 1.2, "description": "Icicles drop from the mist around the player, one leading their movement; their shadows are the telegraph. Sideways fans keep her flanks dangerous." },
+            { "id": "perfect_freeze", "name_ja": "凍符「パーフェクトフリーズ」", "name_en": "Freeze Sign \"Perfect Freeze\"", "variant": "canon", "damage": 12, "windup_s": 0.6, "duration_s": 4.0, "recovery_s": 1.3, "description": "Three bursts of every colour she can still remember, frozen white mid-air, then released to drift loose. A direct icicle volley forces movement while the field is frozen." }
+          ]
+        }
+      ],
+      "arena": "Misty Lake, frozen from shore to shore. The ice is black and clear, and the drowned reeds stand beneath it like brush strokes. A wall of ice rises around the arena behind Reimu. Frozen fairies stand at the edges, faces tilted up, as if they had been watching a game when the cold came.",
+      "intro_lines": [
+        { "speaker": "cirno", "text_en": "Nobody comes to play anymore. So I froze it. The whole lake. Now it can't go anywhere either.", "text_ja": "もう誰も遊びに来ない。だから凍らせた。湖ごと。これでどこにも行けないでしょ。" },
+        { "speaker": "cirno", "text_en": "...You're here to play, right? Good. I'm the strongest, so you'll lose, but that's fine!", "text_ja": "……あんた、遊びに来たんでしょ？ いいよ。あたいが最強だから負けるけど、それでいいよね！" }
+      ],
+      "defeat_lines": [
+        { "speaker": "cirno", "text_en": "...Huh? Why's it warm? Why's everything... blue again?", "text_ja": "……あれ？ なんで暖かいの？ なんで……また青いの？" },
+        { "speaker": "cirno", "text_en": "That didn't count! I was just warming up! Come back tomorrow! ...You'll come back tomorrow, right?", "text_ja": "今のなし！ 準備運動だったの！ 明日また来なさいよ！ ……明日も来るよね？" }
+      ],
+      "earned_spell_card": "sc_perfect_freeze",
+      "faith_reward": 1500,
+      "drops": ["memento_cirno", "oni_sake_lees"],
+      "dialogue_tree": "boss_cirno",
+      "sets_flags": ["defeated_cirno"],
+      "lore_en": "Cirno did not cause the lake to freeze. She noticed it happening, the way the other fairies grew slow and quiet and grey, and she did what any strongest fairy would: she made it colder, so that at least it would hold still and not get worse. It is the cleverest thing she has ever done, and she does not know it.",
+      "lore_ja": "湖を凍らせたのはチルノではない。仲間の妖精が遅く、静かに、灰色になっていくのに気付き、最強の妖精らしいことをした。もっと冷やして、せめて止めておこうとしたのだ。"
+    },
+    {
+      "id": "hong_meiling",
+      "kind": "main",
+      "names": { "en": "Hong Meiling", "ja": "紅 美鈴", "title_en": "Gatekeeper of a Gate No One Knocks At", "title_ja": "誰も叩かぬ門の門番" },
+      "area": "scarlet_devil_mansion",
+      "sub_zone": "sdm_front_gate",
+      "model": "characters/hong_meiling",
+      "music_cue": "mus_boss_meiling",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 1100,
+      "hp_per_phase": [600, 500],
+      "poise": 110,
+      "stagger_s": 1.2,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "A gatekeeper's duel. Meiling fights almost entirely hand to hand, reads rolls, and punishes greed. Her qi-flow is visible as faint colour at her fists.",
+          "attacks": [
+            { "id": "palm_strike", "name": "Rising Palm", "type": "melee", "damage": 22, "windup_s": 0.45, "recovery_s": 0.7, "description": "A fast palm strike that launches upward. Her quickest move." },
+            { "id": "sweep_kick", "name": "Sweeping Kick", "type": "melee", "damage": 18, "windup_s": 0.6, "recovery_s": 0.8, "description": "A low 360-degree sweep. Roll through it, not back." },
+            { "id": "stance_counter", "name": "Gatekeeper's Stance", "type": "melee", "damage": 30, "windup_s": 0.3, "recovery_s": 1.4, "description": "She settles into a guard. Strike her and she counters. Wait, and she drops the stance with a long recovery." },
+            { "id": "qi_shot", "name": "Qi Bullet", "type": "bullet", "damage": 14, "windup_s": 0.7, "recovery_s": 0.9, "description": "A single large orb of qi fired from both palms." }
+          ],
+          "spell_cards": [
+            { "id": "colorless_rainbow", "name_ja": "褪符「色無き虹」", "name_en": "Fading Sign \"Colourless Rainbow\"", "variant": "hollowed", "damage": 12, "windup_s": 1.0, "duration_s": 6.0, "recovery_s": 1.4, "description": "Her rainbow pattern, drawn only in greys. The seven bands still move at seven speeds; read them by speed, not colour." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 45,
+          "description": "She stops holding back and remembers, briefly, what the colours were.",
+          "attacks": [
+            { "id": "palm_strike", "name": "Rising Palm", "type": "melee", "damage": 24, "windup_s": 0.4, "recovery_s": 0.7, "description": "As before, now chained into a follow-up kick." },
+            { "id": "dragon_kick", "name": "Earth Dragon Kick", "type": "melee", "damage": 32, "windup_s": 0.9, "recovery_s": 1.2, "description": "A leaping flying kick that covers half the arena." },
+            { "id": "rainbow_burst", "name": "Rainbow Burst", "type": "pattern", "damage": 12, "windup_s": 0.8, "recovery_s": 1.0, "description": "A close-range burst of coloured orbs after any combo she lands." }
+          ],
+          "spell_cards": [
+            { "id": "gorgeous_sweet_flower", "name_ja": "華符「芳華絢爛」", "name_en": "Flower Sign \"Gorgeous Sweet Flower\"", "variant": "canon", "damage": 12, "windup_s": 0.9, "duration_s": 6.0, "recovery_s": 1.3, "description": "Petal-shaped bursts bloom outward in rotating waves. The colours start grey and warm as the card goes on." },
+            { "id": "extreme_color_typhoon", "name_ja": "彩符「極彩颱風」", "name_en": "Colorful Sign \"Extreme Color Typhoon\"", "variant": "canon", "damage": 14, "windup_s": 1.2, "duration_s": 7.0, "recovery_s": 1.6, "description": "A spinning typhoon of all seven colours with Meiling pressing in behind it for melee punishes." }
+          ]
+        }
+      ],
+      "arena": "The courtyard inside the mansion's front gate. The flowerbeds she kept are dead, but perfectly weeded. A single chair stands by the gatepost, worn to the shape of someone who sat there through a thousand dozing afternoons.",
+      "intro_lines": [
+        { "speaker": "hong_meiling", "text_en": "Halt. No one passes. I'm not asleep. I haven't been asleep for... a while.", "text_ja": "止まってください。誰も通しません。寝てませんよ。もう……ずっと、寝てないんです。" },
+        { "speaker": "hong_meiling", "text_en": "I can't remember what I'm guarding. But a gatekeeper who forgets that still has to guard it. Doesn't she?", "text_ja": "何を守っているのか思い出せません。でも、それを忘れた門番でも、守らなきゃいけない。そうでしょう？" }
+      ],
+      "defeat_lines": [
+        { "speaker": "hong_meiling", "text_en": "Ah... Reimu-san. Did I doze off on duty again? Sakuya-san will be furious.", "text_ja": "あ……霊夢さん。また居眠りしちゃいました？ 咲夜さんに叱られちゃう。" },
+        { "speaker": "hong_meiling", "text_en": "...Sakuya-san hasn't scolded me in a long time. Would you go and check on her? Please.", "text_ja": "……咲夜さん、もうずっと叱ってくれないんです。様子を見てきてもらえませんか。お願いします。" }
+      ],
+      "earned_spell_card": "sc_colorful_light_dance",
+      "faith_reward": 2500,
+      "drops": ["memento_meiling", "iron_sand"],
+      "dialogue_tree": "boss_hong_meiling",
+      "sets_flags": ["defeated_hong_meiling"],
+      "lore_en": "Meiling has always been mocked for sleeping at her post, and has always taken it with a smile. The mansion needed a gatekeeper less than it needed someone who would stay. She stayed. When the hollowing came she stopped sleeping altogether, and that is how the others knew something was very wrong.",
+      "lore_ja": "居眠りを笑われても、美鈴はいつも笑って受け流した。館に要ったのは門番というより、そこに居てくれる者だった。虚ろが来て、彼女は眠らなくなった。"
+    },
+    {
+      "id": "sakuya_izayoi",
+      "kind": "main",
+      "names": { "en": "Sakuya Izayoi", "ja": "十六夜 咲夜", "title_en": "Maid of the Stopped Moment", "title_ja": "止まった刻のメイド" },
+      "area": "scarlet_devil_mansion",
+      "sub_zone": "sdm_clock_gallery",
+      "model": "characters/sakuya_izayoi",
+      "music_cue": "mus_boss_sakuya",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 1300,
+      "hp_per_phase": [700, 600],
+      "poise": 90,
+      "stagger_s": 1.0,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Precise and cold. Knife lines, short teleports, and a time-stop that freezes her knives in place around Reimu before they fall.",
+          "attacks": [
+            { "id": "knife_lines", "name": "Knife Lines", "type": "bullet", "damage": 14, "windup_s": 0.5, "recovery_s": 0.7, "description": "Three parallel lines of silver knives, aimed." },
+            { "id": "close_cut", "name": "Close Cut", "type": "melee", "damage": 20, "windup_s": 0.35, "recovery_s": 0.8, "description": "Blinks behind Reimu and cuts. A tick of a clock sounds a beat before she vanishes." },
+            { "id": "ricochet", "name": "Ricochet", "type": "bullet", "damage": 13, "windup_s": 0.8, "recovery_s": 0.9, "description": "Knives thrown at the walls that rebound once at fixed angles." },
+            { "id": "time_stop_minor", "name": "A Moment", "type": "pattern", "damage": 14, "windup_s": 1.2, "recovery_s": 1.5, "description": "The screen greys for one second. When colour returns, a ring of knives hangs around Reimu, pointed inward." }
+          ],
+          "spell_cards": [
+            { "id": "misdirection", "name_ja": "奇術「ミスディレクション」", "name_en": "Illusion \"Misdirection\"", "variant": "canon", "damage": 13, "windup_s": 0.9, "duration_s": 6.0, "recovery_s": 1.2, "description": "Knife streams that change direction every beat; the turn is telegraphed by a glint." },
+            { "id": "cold_tea", "name_ja": "止符「冷めゆく紅茶」", "name_en": "Stop Sign \"Tea Going Cold\"", "variant": "hollowed", "damage": 12, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.5, "description": "A formal table-setting of bullets laid out around the arena and frozen. They release one place-setting at a time, very slowly, as if serving guests who will never arrive." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 46,
+          "description": "Every clock in the gallery starts ticking again, out of time with each other. Sakuya's time-stops lengthen.",
+          "attacks": [
+            { "id": "knife_lines", "name": "Knife Lines", "type": "bullet", "damage": 15, "windup_s": 0.45, "recovery_s": 0.7, "description": "Five lines, alternating speeds." },
+            { "id": "close_cut", "name": "Close Cut", "type": "melee", "damage": 22, "windup_s": 0.3, "recovery_s": 0.8, "description": "Now chained twice." },
+            { "id": "silver_orbit", "name": "Silver Orbit", "type": "pattern", "damage": 12, "windup_s": 1.0, "recovery_s": 1.1, "description": "Knives circle her and fly outward on tangents in waves." }
+          ],
+          "spell_cards": [
+            { "id": "luna_clock", "name_ja": "幻象「ルナクロック」", "name_en": "Illusion Image \"Luna Clock\"", "variant": "canon", "damage": 14, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.3, "description": "Knife clock-hands sweep the arena at two speeds; step into the gap between hands." },
+            { "id": "the_world", "name_ja": "幻世「ザ・ワールド」", "name_en": "Illusion World \"The World\"", "variant": "canon", "damage": 16, "windup_s": 1.5, "duration_s": 8.0, "recovery_s": 2.0, "description": "Time stops for three seconds. Reimu can still move, slowly, and must weave through the placed knives before time resumes." }
+          ]
+        }
+      ],
+      "arena": "The Clock Gallery: a long hall hung with hundreds of clocks, every one stopped at a different time. A tea trolley stands in the centre with a pot still faintly steaming. It has been faintly steaming for a very long time.",
+      "intro_lines": [
+        { "speaker": "sakuya_izayoi", "text_en": "You are late. Or early. I have stopped being able to tell. The tea is getting cold.", "text_ja": "遅いですわ。それとも早いのかしら。もう分からなくなりました。紅茶が冷めてしまいます。" },
+        { "speaker": "sakuya_izayoi", "text_en": "It has been getting cold for a very long time. Let us settle this before it finishes.", "text_ja": "ずっと、冷め続けているの。冷めきる前に、片付けてしまいましょう。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "sakuya_izayoi", "text_en": "...What time is it? No. It does not matter. My lady. I must see to my lady.", "text_ja": "……今、何時？ いいえ、どうでもいいわ。お嬢様。お嬢様のところへ行かなくては。" }
+      ],
+      "earned_spell_card": "sc_private_square",
+      "faith_reward": 3500,
+      "drops": ["memento_sakuya", "cinnabar_dust"],
+      "dialogue_tree": "boss_sakuya_izayoi",
+      "sets_flags": ["defeated_sakuya_izayoi"],
+      "lore_en": "Sakuya can stop time for everyone but herself. When she felt the mansion begin to be forgotten she did the only thing she could: she stopped the moment, to keep her lady exactly as she was. The mansion held still. So did she. A human who stops the clock does not age, and does not live either.",
+      "lore_ja": "咲夜は自分以外のすべての時を止められる。館が忘れられ始めた時、彼女はその瞬間を止め、主を今のままに留めた。時を止めた人間は老いない。そして、生きもしない。"
+    },
+    {
+      "id": "remilia_scarlet",
+      "kind": "main",
+      "names": { "en": "Remilia Scarlet", "ja": "レミリア・スカーレット", "title_en": "Mistress of a Fraying Fate", "title_ja": "ほつれる運命の主" },
+      "area": "scarlet_devil_mansion",
+      "sub_zone": "sdm_scarlet_balcony",
+      "model": "characters/remilia_scarlet",
+      "music_cue": "mus_boss_remilia",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 1800,
+      "hp_per_phase": [700, 600, 500],
+      "poise": 140,
+      "stagger_s": 1.1,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Aristocratic and overwhelming. Remilia fights with claws and blinding speed and speaks throughout. Her scarlet has gone the colour of old wine.",
+          "attacks": [
+            { "id": "claw_rend", "name": "Demon Claw", "type": "melee", "damage": 26, "windup_s": 0.5, "recovery_s": 0.8, "description": "Two fast claw swipes, the second delayed." },
+            { "id": "bat_scatter", "name": "Bat Scatter", "type": "melee", "damage": 20, "windup_s": 0.4, "recovery_s": 1.0, "description": "Bursts into bats, crosses the arena, and reforms mid-strike." },
+            { "id": "scarlet_shot", "name": "Scarlet Shot", "type": "bullet", "damage": 16, "windup_s": 0.6, "recovery_s": 0.8, "description": "Large red orbs trailed by smaller ones, aimed." }
+          ],
+          "spell_cards": [
+            { "id": "scarlet_shoot", "name_ja": "紅符「スカーレットシュート」", "name_en": "Scarlet Sign \"Scarlet Shoot\"", "variant": "canon", "damage": 16, "windup_s": 0.8, "duration_s": 6.0, "recovery_s": 1.2, "description": "Heavy streams of large scarlet bullets, each shedding smaller ones as it flies." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 61,
+          "description": "She stops talking. The red moon behind her dims.",
+          "attacks": [
+            { "id": "claw_rend", "name": "Demon Claw", "type": "melee", "damage": 28, "windup_s": 0.45, "recovery_s": 0.8, "description": "A three-hit chain." },
+            { "id": "night_dive", "name": "Midnight Dive", "type": "melee", "damage": 32, "windup_s": 1.0, "recovery_s": 1.3, "description": "Rises out of sight and dives on Reimu's shadow." },
+            { "id": "chain_of_fate", "name": "Chains of Fate", "type": "pattern", "damage": 14, "windup_s": 1.1, "recovery_s": 1.2, "description": "Red threads stretch across the arena; bullets travel along them." }
+          ],
+          "spell_cards": [
+            { "id": "miserable_fate", "name_ja": "運命「ミゼラブルフェイト」", "name_en": "Destiny \"Miserable Fate\"", "variant": "canon", "damage": 15, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.4, "description": "Chains lash from every direction and tighten toward Reimu's position." },
+            { "id": "nameless_fate", "name_ja": "虚運「名も無き運命」", "name_en": "Hollow Destiny \"A Fate With No Name\"", "variant": "hollowed", "damage": 14, "windup_s": 1.2, "duration_s": 8.0, "recovery_s": 1.6, "description": "She lays out every thread she can see in a web of pale bullets. One thread runs out of the arena and down toward the east. It is the only safe lane." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 28,
+          "description": "Last word. She draws a spear of light and, for a moment, the red returns to her eyes.",
+          "attacks": [
+            { "id": "spear_thrust", "name": "Spear Thrust", "type": "melee", "damage": 34, "windup_s": 0.7, "recovery_s": 1.1, "description": "A lunging thrust with a spear of scarlet light." }
+          ],
+          "spell_cards": [
+            { "id": "spear_the_gungnir", "name_ja": "神槍「スピア・ザ・グングニル」", "name_en": "Divine Spear \"Spear the Gungnir\"", "variant": "canon", "damage": 40, "windup_s": 1.8, "duration_s": 3.0, "recovery_s": 2.4, "description": "She hurls a vast spear of light along a line that locks one second before the throw. The longest punish window of the fight follows." },
+            { "id": "scarlet_gensokyo", "name_ja": "「紅色の幻想郷」", "name_en": "\"Scarlet Gensokyo\"", "variant": "canon", "damage": 16, "windup_s": 1.5, "duration_s": 12.0, "recovery_s": 2.0, "description": "Endurance card. The whole arena floods with red. Survive until the colour drains away." }
+          ]
+        }
+      ],
+      "arena": "The Scarlet Balcony on the mansion's highest floor, under a full moon that has not set in weeks. The moon is red, and fading at the edges like a stain being washed out.",
+      "intro_lines": [
+        { "speaker": "remilia_scarlet", "text_en": "I saw this, you know. Long ago. The mansion forgotten, my maid frozen in place, the gate standing open with no one at it. I saw it, and I chose not to look.", "text_ja": "見えていたのよ。ずっと前から。忘れられた館、止まったメイド、誰もいない開いた門。見えていて、見ないことにしたの。" },
+        { "speaker": "remilia_scarlet", "text_en": "And here you are, right on time. Fate is so tedious. Come. Let us at least make it beautiful.", "text_ja": "そして貴女は時間通りに来た。運命って本当に退屈。いらっしゃい。せめて美しくしましょう。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "remilia_scarlet", "text_en": "Hmph. So the thread goes on after all.", "text_ja": "ふん。糸はまだ続くのね。" },
+        { "speaker": "remilia_scarlet", "text_en": "Shrine maiden. Beneath your shrine, a thread ends. I would not follow it, if I were you. ...But you never listen to me.", "text_ja": "巫女。貴女の神社の下で、一本の糸が途切れている。私なら辿らないわ。……でも、貴女は私の言うことなんて聞かないものね。" }
+      ],
+      "earned_spell_card": "sc_spear_the_gungnir",
+      "faith_reward": 6000,
+      "drops": ["memento_remilia", "saisen_coin_old"],
+      "dialogue_tree": "boss_remilia_scarlet",
+      "sets_flags": ["defeated_remilia_scarlet"],
+      "lore_en": "Remilia claims to manipulate fate, and whether she truly can no one is sure, least of all her. What is certain is that she sees it. She has seen a thread running from the Hakurei Shrine down into the dark for as long as she has lived in Gensokyo, and every few generations it has been cut and tied again. She thought it vulgar to mention.",
+      "lore_ja": "レミリアは運命を操ると言う。真偽は誰にも分からない。確かなのは、見えていることだ。博麗神社から闇へと下る一本の糸。数代ごとに切られ、また結ばれる糸。口にするのは品がないと思っていた。"
+    },
+    {
+      "id": "alice_margatroid",
+      "kind": "main",
+      "names": { "en": "Alice Margatroid", "ja": "アリス・マーガトロイド", "title_en": "Puppeteer of Cut Strings", "title_ja": "糸の切れた人形遣い" },
+      "area": "forest_of_magic",
+      "sub_zone": "alice_cottage",
+      "model": "characters/alice_margatroid",
+      "music_cue": "mus_boss_alice",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 1600,
+      "hp_per_phase": [900, 700],
+      "poise": 100,
+      "stagger_s": 1.2,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "A doll army. Alice stays back while squads of dolls advance in formation. Killing dolls matters less than breaking formations: a doll alone is weak.",
+          "attacks": [
+            { "id": "doll_squad", "name": "Doll Squad", "type": "pattern", "damage": 10, "windup_s": 1.0, "recovery_s": 0.8, "description": "Summons four lance dolls that advance in a line and thrust in unison." },
+            { "id": "lance_volley", "name": "Lance Volley", "type": "bullet", "damage": 12, "windup_s": 0.7, "recovery_s": 0.9, "description": "Dolls fire lances in converging lines toward Reimu." },
+            { "id": "string_pull", "name": "String Pull", "type": "melee", "damage": 16, "windup_s": 0.6, "recovery_s": 1.0, "description": "Alice yanks a thread; a doll behind Reimu lunges." },
+            { "id": "grimoire_shield", "name": "Grimoire Guard", "type": "pattern", "damage": 0, "windup_s": 0.4, "recovery_s": 1.2, "description": "Shield dolls form a wall in front of her. Go around." }
+          ],
+          "spell_cards": [
+            { "id": "dolls_war", "name_ja": "戦操「ドールズウォー」", "name_en": "War Sign \"Doll's War\"", "variant": "canon", "damage": 12, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.3, "description": "Waves of dolls charge in from the arena's edges, each firing a short spread as it passes." },
+            { "id": "shanghai_doll", "name_ja": "咒符「上海人形」", "name_en": "Curse Sign \"Shanghai Doll\"", "variant": "canon", "damage": 14, "windup_s": 0.8, "duration_s": 6.0, "recovery_s": 1.2, "description": "A single lead doll fires sweeping lasers while others fill the gaps with slow orbs." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 44,
+          "description": "Alice's threads snap one by one. The dolls stop obeying and start moving on their own, badly. Alice fights desperately to hold them.",
+          "attacks": [
+            { "id": "rogue_dolls", "name": "Rogue Dolls", "type": "pattern", "damage": 12, "windup_s": 0.8, "recovery_s": 0.6, "description": "Dolls attack without formation, from random directions, and sometimes attack Alice." },
+            { "id": "thread_whip", "name": "Thread Whip", "type": "melee", "damage": 22, "windup_s": 0.7, "recovery_s": 1.1, "description": "Alice lashes out with a bundle of loose threads." },
+            { "id": "detonate", "name": "Return to Inanimateness", "type": "pattern", "damage": 24, "windup_s": 1.6, "recovery_s": 1.4, "description": "Every doll on the field glows and bursts. Stand where there are none." }
+          ],
+          "spell_cards": [
+            { "id": "return_inanimateness", "name_ja": "魔操「リターンイナニメトネス」", "name_en": "Magic Sign \"Return Inanimateness\"", "variant": "canon", "damage": 20, "windup_s": 1.4, "duration_s": 6.0, "recovery_s": 1.6, "description": "Dolls are flung across the arena in arcs and explode where they land." },
+            { "id": "cut_strings", "name_ja": "虚操「糸の切れた人形劇」", "name_en": "Hollow Puppetry \"A Play with Cut Strings\"", "variant": "hollowed", "damage": 13, "windup_s": 1.2, "duration_s": 8.0, "recovery_s": 1.8, "description": "Alice lets go. The dolls dance a stage play of their own with no one directing: patterns begin, stall, and restart out of order. Beautiful and wrong." }
+          ]
+        }
+      ],
+      "arena": "The clearing around Alice's cottage, deep in the fungal swamp. Dolls hang from the branches on threads, turning slowly. The windows of the cottage are lit. Nobody has lit them.",
+      "intro_lines": [
+        { "speaker": "alice_margatroid", "text_en": "My dolls started moving on their own. I have wanted that my whole life. A doll that moves by its own will.", "text_ja": "人形が勝手に動き出したの。ずっと望んでいたことよ。自分の意志で動く人形。" },
+        { "speaker": "alice_margatroid", "text_en": "...It is not what I wanted. They are not moving by their own will. They are moving by no one's.", "text_ja": "……望んでいたのとは違う。自分の意志で動いているんじゃない。誰の意志でもなく動いているの。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "alice_margatroid", "text_en": "They've stopped. Thank you. I think.", "text_ja": "止まったわ。ありがとう。……たぶん。" },
+        { "speaker": "alice_margatroid", "text_en": "Tell Marisa to return my books. She will know which ones. She has not come by in weeks. That is not like her.", "text_ja": "魔理沙に本を返すよう言っておいて。どの本かは分かるはずよ。もう何週間も来ていない。あの子らしくないわ。" }
+      ],
+      "earned_spell_card": "sc_shanghai_doll",
+      "faith_reward": 5500,
+      "drops": ["memento_alice", "name_fragment_doll"],
+      "dialogue_tree": "boss_alice_margatroid",
+      "sets_flags": ["defeated_alice_margatroid"],
+      "lore_en": "Alice's life's work is a doll that thinks for itself. Every doll she has made is a step toward it, and every one is still a puppet, moved by her care. The hollowing gave her dolls a kind of freedom, which is to say it took her out of them. She has learned what she half-knew already: the care was the life.",
+      "lore_ja": "アリスの生涯の研究は、自ら考える人形。虚ろは人形たちにある種の自由を与えた。つまり、彼女を人形から奪ったのだ。命とは、手をかけることだった。"
+    },
+    {
+      "id": "fujiwara_no_mokou",
+      "kind": "main",
+      "names": { "en": "Fujiwara no Mokou", "ja": "藤原 妹紅", "title_en": "The Unforgettable Flame", "title_ja": "忘れ得ぬ焔" },
+      "area": "bamboo_forest",
+      "sub_zone": "bamboo_ashen_clearing",
+      "model": "characters/fujiwara_no_mokou",
+      "music_cue": "mus_boss_mokou",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 2700,
+      "hp_per_phase": [900, 900, 900],
+      "poise": 120,
+      "stagger_s": 1.0,
+      "revives": { "count": 2, "revive_action": "resurrection", "full_hp_each_life": true },
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Brawling and fire. Mokou fights like someone who has never had to fear death: reckless, aggressive, trading hits.",
+          "attacks": [
+            { "id": "flame_kick", "name": "Flame Kick", "type": "melee", "damage": 24, "windup_s": 0.5, "recovery_s": 0.8, "description": "A spinning kick trailing fire. Builds Burn." },
+            { "id": "phoenix_wing", "name": "Phoenix Wing", "type": "bullet", "damage": 16, "windup_s": 0.7, "recovery_s": 0.9, "description": "Wings of fire flare from her back and shed a wide fan of flame bullets." },
+            { "id": "reckless_charge", "name": "Reckless Charge", "type": "melee", "damage": 30, "windup_s": 0.9, "recovery_s": 1.4, "description": "Charges through anything, including Reimu's bullets, taking the damage." },
+            { "id": "burning_ground", "name": "Burning Ground", "type": "pattern", "damage": 10, "windup_s": 1.0, "recovery_s": 1.0, "description": "Sets a ring of the clearing ablaze for 6 s." }
+          ],
+          "spell_cards": [
+            { "id": "fire_bird", "name_ja": "不死「火の鳥 ―鳳翼天翔―」", "name_en": "Undying \"Fire Bird -Flying Phoenix-\"", "variant": "canon", "damage": 18, "windup_s": 1.0, "duration_s": 6.0, "recovery_s": 1.2, "description": "Firebirds launch in pairs and curve across the arena, shedding embers." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 100,
+          "trigger": "revive",
+          "transition": { "id": "resurrection", "name": "Resurrection", "type": "pattern", "damage": 20, "windup_s": 1.5, "recovery_s": 0.5, "description": "Her body burns to ash; the ash erupts into a pillar of fire and she steps out of it. Stand clear." },
+          "description": "She rises from her own ashes, annoyed. Hollowing shows as grey ash in her fire.",
+          "attacks": [
+            { "id": "flame_kick", "name": "Flame Kick", "type": "melee", "damage": 26, "windup_s": 0.45, "recovery_s": 0.8, "description": "Now into a three-kick chain." },
+            { "id": "ash_cloud", "name": "Ash Cloud", "type": "pattern", "damage": 12, "windup_s": 0.8, "recovery_s": 1.1, "description": "Grey ash bullets that hide red ones inside them." }
+          ],
+          "spell_cards": [
+            { "id": "hollow_being_wu", "name_ja": "虚人「ウー」", "name_en": "Hollow Being \"Wu\"", "variant": "canon", "damage": 20, "windup_s": 0.8, "duration_s": 6.0, "recovery_s": 1.4, "description": "She becomes a burning hollow shape and rushes Reimu again and again. A card she made long ago about being empty. It fits her too well now." },
+            { "id": "possessed_by_phoenix", "name_ja": "「パゼストバイフェニックス」", "name_en": "\"Possessed by Phoenix\"", "variant": "canon", "damage": 16, "windup_s": 1.2, "duration_s": 8.0, "recovery_s": 1.4, "description": "A phoenix of flame shadows Reimu's every move and fires where she will be." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 100,
+          "trigger": "revive",
+          "transition": { "id": "resurrection", "name": "Resurrection", "type": "pattern", "damage": 20, "windup_s": 1.5, "recovery_s": 0.5, "description": "Rises again." },
+          "description": "Her last life for the night. She is almost laughing.",
+          "attacks": [
+            { "id": "phoenix_dive", "name": "Phoenix Dive", "type": "melee", "damage": 34, "windup_s": 1.1, "recovery_s": 1.5, "description": "Soars up and dives as a burning bird." }
+          ],
+          "spell_cards": [
+            { "id": "fujiyama_volcano", "name_ja": "蓬莱「凱風快晴 ―フジヤマヴォルケイノ―」", "name_en": "Hourai \"South Wind, Clear Sky -Fujiyama Volcano-\"", "variant": "canon", "damage": 18, "windup_s": 1.4, "duration_s": 8.0, "recovery_s": 1.8, "description": "Eruptions of fire burst upward and rain down as slow, heavy bullets." },
+            { "id": "cannot_be_forgotten", "name_ja": "焔符「忘れられぬ者の焔」", "name_en": "Flame Sign \"Fire of One Who Cannot Be Forgotten\"", "variant": "hollowed", "damage": 16, "windup_s": 1.5, "duration_s": 10.0, "recovery_s": 2.0, "description": "A spiral of grey fire that turns red as the card goes on. Endurance card." }
+          ]
+        }
+      ],
+      "arena": "A clearing burned black in the bamboo, where the stalks have been burned and regrown and burned again so often they grow crooked. Ash drifts upward instead of down.",
+      "intro_lines": [
+        { "speaker": "fujiwara_no_mokou", "text_en": "Forgotten? I've been forgotten a hundred times. You can't forget someone to death. Believe me. I've checked.", "text_ja": "忘れられる？ 百回は忘れられたよ。忘れられて死ぬなんてことはない。本当さ。確かめたからね。" },
+        { "speaker": "fujiwara_no_mokou", "text_en": "But nobody's come to fight me in a while. Not even her. So I'm bored, shrine maiden. Let's burn.", "text_ja": "でも、しばらく誰も喧嘩しに来ない。あいつさえも。退屈なんだよ、巫女。燃えようか。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "fujiwara_no_mokou", "text_en": "Heh. First time in a while I've felt anything.", "text_ja": "へっ。何か感じたのは久しぶりだ。" },
+        { "speaker": "fujiwara_no_mokou", "text_en": "Go see the doctor. She's been waiting for somebody to ask the right question.", "text_ja": "医者のところへ行きな。誰かが正しい問いを持ってくるのを、待ってたみたいだから。" }
+      ],
+      "earned_spell_card": "sc_phoenix_tail",
+      "faith_reward": 7000,
+      "drops": ["memento_mokou", "tamahagane_shard"],
+      "dialogue_tree": "boss_fujiwara_no_mokou",
+      "sets_flags": ["defeated_fujiwara_no_mokou"],
+      "lore_en": "Mokou drank the Hourai Elixir and cannot die. She has outlived everyone who knew her name more times than she can count, and she has learned that the forgetting does not kill her either. It only makes her lonely, and then angry, and then bored. Of all the hollowed, she hollows the slowest. She is not sure whether that is a gift.",
+      "lore_ja": "蓬莱の薬を飲んだ妹紅は死ねない。自分の名を知る者すべてに、数え切れぬほど先立たれた。忘却も彼女を殺しはしない。虚ろの中で、最も遅く虚ろになる者。それが恵みかどうか、彼女には分からない。"
+    },
+    {
+      "id": "eirin_yagokoro",
+      "kind": "main",
+      "names": { "en": "Eirin Yagokoro", "ja": "八意 永琳", "title_en": "The Physician Who Knows", "title_ja": "知る医師" },
+      "area": "bamboo_forest",
+      "sub_zone": "eientei_moon_hall",
+      "model": "characters/eirin_yagokoro",
+      "music_cue": "mus_boss_eirin",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 2200,
+      "hp_per_phase": [800, 800, 600],
+      "poise": 130,
+      "stagger_s": 1.0,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Calm, precise, and testing. Eirin fights with a bow and arrows of light, and never wastes a move.",
+          "attacks": [
+            { "id": "arrow_volley", "name": "Arrow Volley", "type": "bullet", "damage": 18, "windup_s": 0.8, "recovery_s": 0.9, "description": "Three arrows, the third aimed at where Reimu will roll." },
+            { "id": "bow_strike", "name": "Bow Strike", "type": "melee", "damage": 20, "windup_s": 0.5, "recovery_s": 0.8, "description": "A short swing with the bow's limb if Reimu gets close." },
+            { "id": "medicine_mist", "name": "Medicine Mist", "type": "pattern", "damage": 6, "windup_s": 1.0, "recovery_s": 1.2, "description": "A cloud of bullets that do little damage but build Dread. Dread is her diagnosis." }
+          ],
+          "spell_cards": [
+            { "id": "astronomical_entombing", "name_ja": "秘術「天文密葬法」", "name_en": "Secret Art \"Astronomical Entombing\"", "variant": "canon", "damage": 15, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.3, "description": "Orbs arranged in constellations around the arena release in sequence." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 64,
+          "description": "She sets the bow aside and fights with knowledge instead.",
+          "attacks": [
+            { "id": "arrow_volley", "name": "Arrow Volley", "type": "bullet", "damage": 18, "windup_s": 0.7, "recovery_s": 0.9, "description": "Five arrows." },
+            { "id": "life_game", "name": "Life Game", "type": "pattern", "damage": 14, "windup_s": 1.2, "recovery_s": 1.2, "description": "A grid of cells that live and die by simple rules. Read the rule and the safe cells appear." }
+          ],
+          "spell_cards": [
+            { "id": "memories_age_of_gods", "name_ja": "覚神「神代の記憶」", "name_en": "Awakened God \"Memories of the Age of the Gods\"", "variant": "canon", "damage": 16, "windup_s": 1.1, "duration_s": 7.0, "recovery_s": 1.4, "description": "Lasers that sweep the hall in the order of the old gods' names. She remembers them all." },
+            { "id": "prescription_forgetting", "name_ja": "虚薬「忘却の処方箋」", "name_en": "Hollow Medicine \"Prescription for Forgetting\"", "variant": "hollowed", "damage": 14, "windup_s": 1.3, "duration_s": 8.0, "recovery_s": 1.6, "description": "Capsule-shaped bullets split into two colours when they pass Reimu. One colour heals; the other builds Dread. Grazing the right one is the lesson." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 27,
+          "description": "Her last test. She uses the secret of Eientei itself.",
+          "attacks": [],
+          "spell_cards": [
+            { "id": "hourai_elixir", "name_ja": "禁薬「蓬莱の薬」", "name_en": "Forbidden Elixir \"Hourai Elixir\"", "variant": "canon", "damage": 16, "windup_s": 1.5, "duration_s": 10.0, "recovery_s": 2.0, "description": "Dense coloured waves that revive and repeat each time they are cleared. Endurance card." }
+          ]
+        }
+      ],
+      "arena": "The Moon Hall of Eientei, a room of polished wood that is always the same night. A single window shows a moon that is too close. The medicine shelves are perfectly ordered, and one drawer, labelled in a tidy hand, is empty.",
+      "intro_lines": [
+        { "speaker": "eirin_yagokoro", "text_en": "I have diagnosed it. It is not a disease. There is no cure I am permitted to give.", "text_ja": "診断は済んでいます。病ではありません。私が与えてよい薬は、ありません。" },
+        { "speaker": "eirin_yagokoro", "text_en": "So instead I will examine you, shrine maiden. Let us see how far along you are.", "text_ja": "代わりに、貴女を診ましょう、巫女。どこまで進んでいるのか。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "eirin_yagokoro", "text_en": "Further than I hoped. Less far than I feared.", "text_ja": "思ったより進んでいる。恐れていたほどではない。" },
+        { "speaker": "eirin_yagokoro", "text_en": "It is not a disease. It is a debt. Ask the one who keeps the ledger what is owed, and by whom.", "text_ja": "病ではなく、負債です。帳簿を持つ者に訊きなさい。何が、誰によって、借りられているのか。" }
+      ],
+      "earned_spell_card": "sc_galaxy_in_a_pot",
+      "faith_reward": 8000,
+      "drops": ["memento_eirin", "kochou_mugan"],
+      "dialogue_tree": "boss_eirin_yagokoro",
+      "sets_flags": ["defeated_eirin_yagokoro", "eirin_named_the_debt"],
+      "lore_en": "Eirin is older than Gensokyo and cleverer than anyone in it, and she understood what was happening before the first fairy went grey. She also understood that telling would change nothing but who was frightened. She fights Reimu the way a physician examines a patient: carefully, and with the answer already known.",
+      "lore_ja": "永琳は幻想郷より古く、誰よりも賢い。最初の妖精が灰色になる前に、何が起きているかを理解していた。告げても、怯える者が変わるだけだということも。"
+    },
+    {
+      "id": "former_maiden_road",
+      "kind": "former_maiden",
+      "encounter": 1,
+      "names": { "en": "The Former Shrine Maiden", "ja": "先代の巫女", "title_en": "Keeper of the Old Road", "title_ja": "旧き参道の守り手" },
+      "area": "hakurei_shrine",
+      "sub_zone": "old_road_branch_shrine",
+      "model": "characters/former_maiden",
+      "music_cue": "mus_boss_former_maiden_1",
+      "required": true,
+      "marisa_summonable": false,
+      "hp_total": 1900,
+      "hp_per_phase": [1100, 800],
+      "poise": 100,
+      "stagger_s": 0.9,
+      "mirror_rules": { "uses_player_stamina": true, "stamina_max": 100, "grazes": true, "dodge_iframes_s": 0.33, "heals": 2 },
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "A mirror of Reimu, played perfectly. The same three-hit gohei combo, the same dodge, the same stamina. She grazes Reimu's ofuda to build Spirit. She does not waste a movement. She does not hurry.",
+          "attacks": [
+            { "id": "gohei_combo", "name": "Gohei Combo", "type": "melee", "damage": 20, "windup_s": 0.3, "recovery_s": 0.5, "description": "Reimu's own three-hit combo; the last hit is heavier. She dodge-cancels it exactly as Reimu can." },
+            { "id": "ofuda_chain", "name": "Ofuda Chain", "type": "bullet", "damage": 14, "windup_s": 0.5, "recovery_s": 0.7, "description": "Not homing ofuda but a chain of them, fired in a line that curves to cut off escape." },
+            { "id": "mirror_roll", "name": "Punishing Roll", "type": "melee", "damage": 18, "windup_s": 0.2, "recovery_s": 0.6, "description": "Rolls through Reimu's attack and strikes on the way out." },
+            { "id": "barrier_wall", "name": "Barrier Wall", "type": "pattern", "damage": 16, "windup_s": 0.9, "recovery_s": 1.1, "description": "A wall of light rises across the arena and advances. There is always one gap, low." }
+          ],
+          "spell_cards": [
+            { "id": "evil_sealing_chains", "name_ja": "鎖符「封魔の鎖」", "name_en": "Chain Sign \"Evil-Sealing Chains\"", "variant": "original", "damage": 16, "windup_s": 1.0, "duration_s": 6.0, "recovery_s": 1.4, "description": "Ofuda chains lance out from the four corners of the arena and pin the space shut, square by square. The old way: not to drive away, but to bind." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 42,
+          "description": "She takes a sip from nothing, a gesture of drinking from a gourd she no longer has, and heals. Then she stops holding back.",
+          "attacks": [
+            { "id": "gohei_combo", "name": "Gohei Combo", "type": "melee", "damage": 22, "windup_s": 0.28, "recovery_s": 0.5, "description": "Chains into ofuda without pause." },
+            { "id": "inverted_orbs", "name": "Inverted Orbs", "type": "pattern", "damage": 14, "windup_s": 0.8, "recovery_s": 1.0, "description": "Two cracked yin-yang orbs orbit her, white where they should be black, firing in opposite rhythms." }
+          ],
+          "spell_cards": [
+            { "id": "elder_fantasy_seal", "name_ja": "古霊「先代夢想封印」", "name_en": "Elder Spirit \"Fantasy Seal of the Former Age\"", "variant": "original", "damage": 22, "windup_s": 1.2, "duration_s": 4.0, "recovery_s": 2.0, "description": "Reimu's Fantasy Seal, older and harsher: fewer orbs, heavier, homing without mercy. Clears Reimu's bullets as it goes. She is invulnerable for 2 s after casting, exactly as Reimu is." }
+          ]
+        }
+      ],
+      "arena": "A small branch shrine on the Old Hakurei Road, the path the villagers used before the new road was cut. Moss has swallowed the steps. A roadside stone stands beside the offering box, freshly set upright. Faded Attendants kneel in two rows along the approach and do not rise.",
+      "intro_lines": [
+        { "speaker": "former_maiden", "text_en": "The youkai on this road are unexterminated.", "text_ja": "この道の妖怪は、退治されていない。" },
+        { "speaker": "former_maiden", "text_en": "You let them live. You drink with them. I do not understand. Stand aside, or I will correct it.", "text_ja": "生かしている。酒を酌み交わしている。理解できない。退きなさい。さもなくば、正す。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "former_maiden", "text_en": "...", "text_ja": "……" },
+        { "speaker": "former_maiden", "text_en": "It will be your turn soon.", "text_ja": "もうすぐ、あなたの番。" }
+      ],
+      "earned_spell_card": "sc_evil_sealing_chains",
+      "faith_reward": 6000,
+      "drops": ["relic_black_ribbon", "relic_worn_sandals", "name_fragment_wayside_other_half"],
+      "dialogue_tree": "former_maiden",
+      "sets_flags": ["defeated_former_maiden_road", "maiden_said_your_turn"],
+      "on_defeat": "vanishes_into_barrier",
+      "lore_en": "The first time Reimu fights her predecessor, neither of them knows who the other is. The Former Shrine Maiden sees a shrine maiden neglecting her duty. Reimu sees something wearing her face, badly. Only the Faded Attendants, kneeling along the road, seem to understand what they are watching.",
+      "lore_ja": "最初の戦いでは、どちらも相手が誰なのかを知らない。先代は務めを怠る巫女を見る。霊夢は、自分の顔を歪に纏った何かを見る。道に跪く随身たちだけが、何を見ているのか分かっているようだった。"
+    },
+    {
+      "id": "aya_shameimaru",
+      "kind": "main",
+      "names": { "en": "Aya Shameimaru", "ja": "射命丸 文", "title_en": "Reporter of a Blank Headline", "title_ja": "白紙の見出しの記者" },
+      "area": "youkai_mountain",
+      "sub_zone": "tengu_cliffs",
+      "model": "characters/aya_shameimaru",
+      "music_cue": "mus_boss_aya",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 2000,
+      "hp_per_phase": [1100, 900],
+      "poise": 80,
+      "stagger_s": 0.9,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Speed. Aya is the fastest thing in Gensokyo and fights like it: hit-and-run, gone before Reimu can turn. Lock-on struggles to keep up; listen for the camera shutter.",
+          "attacks": [
+            { "id": "wind_slash", "name": "Wind Slash", "type": "melee", "damage": 20, "windup_s": 0.3, "recovery_s": 0.6, "description": "A pass at full speed with a fan edge. The shutter click comes first." },
+            { "id": "leaf_storm", "name": "Leaf Storm", "type": "bullet", "damage": 12, "windup_s": 0.6, "recovery_s": 0.8, "description": "Maple-leaf bullets carried on a gust, curving with the wind." },
+            { "id": "photo_flash", "name": "Photo Flash", "type": "pattern", "damage": 0, "windup_s": 0.8, "recovery_s": 0.7, "description": "A camera flash that erases all of Reimu's bullets in a cone." },
+            { "id": "downdraft", "name": "Downdraft", "type": "melee", "damage": 26, "windup_s": 0.9, "recovery_s": 1.2, "description": "Vanishes upward, then drops with a gust that knocks Reimu off her feet." }
+          ],
+          "spell_cards": [
+            { "id": "crossroads_of_heaven", "name_ja": "岐符「天の八衢」", "name_en": "Crossroad Sign \"Crossroads of Heaven\"", "variant": "canon", "damage": 14, "windup_s": 0.9, "duration_s": 6.0, "recovery_s": 1.2, "description": "Bullet roads split and cross like the eight-way crossroads of heaven. The Wayside God would know them." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 45,
+          "description": "She stops taking photographs. There is nothing to develop them for.",
+          "attacks": [
+            { "id": "wind_slash", "name": "Wind Slash", "type": "melee", "damage": 22, "windup_s": 0.25, "recovery_s": 0.6, "description": "Three passes in a row." },
+            { "id": "tornado", "name": "Tornado", "type": "pattern", "damage": 14, "windup_s": 1.0, "recovery_s": 1.0, "description": "A column of wind that wanders the arena, flinging bullets outward." }
+          ],
+          "spell_cards": [
+            { "id": "sarutahiko_guidance", "name_ja": "突風「猿田彦の先導」", "name_en": "Gale \"Sarutahiko's Guidance\"", "variant": "canon", "damage": 22, "windup_s": 1.1, "duration_s": 6.0, "recovery_s": 1.4, "description": "Aya leads the way: she dashes in straight lines and the bullets follow the road she made. Stay off the road." },
+            { "id": "blank_extra", "name_ja": "虚報「白紙の号外」", "name_en": "Hollow Report \"Blank Extra Edition\"", "variant": "hollowed", "damage": 14, "windup_s": 1.3, "duration_s": 8.0, "recovery_s": 1.6, "description": "Newspaper pages rain down, each a sheet of bullets with a blank space where the headline should be. The blank space is safe." }
+          ]
+        }
+      ],
+      "arena": "Wind-torn cliffs above the tengu village, where printing presses stand abandoned in the open, pages blowing off them into the gorge. The pages are blank.",
+      "intro_lines": [
+        { "speaker": "aya_shameimaru", "text_en": "An exclusive! The shrine maiden, here! This is the story of the century!", "text_ja": "スクープです！ 巫女さんがこんなところに！ 世紀の大ニュースですよ！" },
+        { "speaker": "aya_shameimaru", "text_en": "...The headline's blank. Why is it blank? Miss Shrine Maiden, what was your name? For the article.", "text_ja": "……見出しが白紙。どうして白紙なの？ 巫女さん、お名前は？ 記事に要るんです。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "aya_shameimaru", "text_en": "Ayayaya... Reimu. Reimu Hakurei. There. I wrote it down. I'll write it bigger next time.", "text_ja": "あやややや……霊夢。博麗霊夢。はい、書きました。次はもっと大きく書きますね。" },
+        { "speaker": "aya_shameimaru", "text_en": "Someone will read it. Someone has to.", "text_ja": "誰かが読みます。誰かが読まなきゃ。" }
+      ],
+      "earned_spell_card": "sc_sarutahiko_guidance",
+      "faith_reward": 9000,
+      "drops": ["memento_aya", "name_fragment_byline", "tengu_leaf_fan"],
+      "dialogue_tree": "boss_aya_shameimaru",
+      "sets_flags": ["defeated_aya_shameimaru", "reimu_name_fade_1"],
+      "lore_en": "Aya has written about every incident Reimu ever settled, usually wrongly, always loudly. The Bunbunmaru was never much read. That was never the point; the point was that it could be. Aya is the first to forget Reimu's name, and the first to write it down again. She is a better reporter than anyone gives her credit for.",
+      "lore_ja": "文は霊夢が解決したすべての異変を、たいてい間違って、いつも騒々しく記事にした。霊夢の名を最初に忘れたのは文で、最初に書き直したのも文だった。"
+    },
+    {
+      "id": "kanako_yasaka",
+      "kind": "main",
+      "names": { "en": "Kanako Yasaka", "ja": "八坂 神奈子", "title_en": "Goddess of a Faith Run Dry", "title_ja": "涸れた信仰の神" },
+      "area": "youkai_mountain",
+      "sub_zone": "moriya_lake",
+      "model": "characters/kanako_yasaka",
+      "music_cue": "mus_boss_kanako",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 3000,
+      "hp_per_phase": [1100, 1000, 900],
+      "poise": 200,
+      "stagger_s": 1.4,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "A goddess of wind, rain and pillars. Kanako fights from the lake's surface with onbashira that fall from the sky, and is slow, heavy and immensely strong.",
+          "attacks": [
+            { "id": "onbashira_drop", "name": "Onbashira Drop", "type": "melee", "damage": 34, "windup_s": 1.2, "recovery_s": 1.4, "description": "A sacred pillar falls from above onto a marked circle." },
+            { "id": "pillar_sweep", "name": "Pillar Sweep", "type": "melee", "damage": 30, "windup_s": 1.0, "recovery_s": 1.3, "description": "Swings a pillar through a wide arc. Roll through, toward her." },
+            { "id": "rain_shot", "name": "Rain Shot", "type": "bullet", "damage": 14, "windup_s": 0.7, "recovery_s": 0.8, "description": "Drops of rain gathered into aimed streams." }
+          ],
+          "spell_cards": [
+            { "id": "expanded_onbashira", "name_ja": "神祭「エクスパンデッド・オンバシラ」", "name_en": "Divine Festival \"Expanded Onbashira\"", "variant": "canon", "damage": 16, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.4, "description": "Pillars ring the arena and fire lines of bullets inward along the lake's surface." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 63,
+          "description": "Her wind picks up. The shimenawa rope on her back begins to fray.",
+          "attacks": [
+            { "id": "onbashira_drop", "name": "Onbashira Barrage", "type": "melee", "damage": 32, "windup_s": 1.0, "recovery_s": 1.4, "description": "Three pillars in sequence, the last on Reimu." },
+            { "id": "divine_wind", "name": "Divine Wind", "type": "pattern", "damage": 12, "windup_s": 0.9, "recovery_s": 1.0, "description": "Gusts push Reimu toward the lake's edge, carrying bullets with them." }
+          ],
+          "spell_cards": [
+            { "id": "misayama_hunt", "name_ja": "贄符「御射山御狩神事」", "name_en": "Sacrifice Sign \"Misayama Hunting Shrine Ritual\"", "variant": "canon", "damage": 16, "windup_s": 1.1, "duration_s": 7.0, "recovery_s": 1.5, "description": "Arrow-shaped bullets hunt in packs. A sacrifice sign, from a goddess who has begun to understand what the word costs." },
+            { "id": "empty_festival", "name_ja": "虚祭「誰も来ない例大祭」", "name_en": "Hollow Festival \"The Grand Festival No One Attends\"", "variant": "hollowed", "damage": 14, "windup_s": 1.4, "duration_s": 9.0, "recovery_s": 1.8, "description": "Festival lanterns light across the lake one by one, each firing a burst when lit. The crowds that should fill the gaps are not there, so the gaps are wide, and lonely." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 30,
+          "description": "Last word. She calls on everything the mountain still believes.",
+          "attacks": [
+            { "id": "onbashira_drop", "name": "Onbashira Rain", "type": "melee", "damage": 30, "windup_s": 0.9, "recovery_s": 1.2, "description": "Constant pillars across the arena." }
+          ],
+          "spell_cards": [
+            { "id": "mountain_of_faith", "name_ja": "「マウンテン・オブ・フェイス」", "name_en": "\"Mountain of Faith\"", "variant": "canon", "damage": 18, "windup_s": 1.5, "duration_s": 12.0, "recovery_s": 2.2, "description": "Endurance card. Waves of pillars and rain. It grows thinner as it goes, because there is not enough faith left to finish it." }
+          ]
+        }
+      ],
+      "arena": "The Lake of the Moriya Shrine, its surface still as glass. Kanako stands on the water. Behind her the shrine is swept and lit and utterly empty; offerings on the altar have gone to dust.",
+      "intro_lines": [
+        { "speaker": "kanako_yasaka", "text_en": "I brought my shrine to Gensokyo because faith was dying outside. This was the one place it could not die.", "text_ja": "外で信仰が死にかけていたから、神社ごとこの地へ来た。ここだけは、信仰が死なない場所のはずだった。" },
+        { "speaker": "kanako_yasaka", "text_en": "Give me your faith, shrine maiden. Not for me. For the mountain. ...No? Then I will take it the old way.", "text_ja": "信仰を寄越しなさい、巫女。私のためではない。山のために。……嫌か。ならば、古いやり方で頂こう。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "kanako_yasaka", "text_en": "So even here, belief runs dry. And yet you still believe in something. I can feel it. Small. Stubborn.", "text_ja": "ここでも信仰は涸れるか。それでもお前は、何かを信じている。分かるよ。小さく、頑固に。" },
+        { "speaker": "kanako_yasaka", "text_en": "Hakurei. Your shrine's god has no name. Did you ever wonder why?", "text_ja": "博麗。お前の神社の神には名が無い。なぜか考えたことはあるか。" }
+      ],
+      "earned_spell_card": "sc_meteoric_onbashira",
+      "faith_reward": 12000,
+      "drops": ["memento_kanako", "sacred_sakaki", "name_fragment_kami"],
+      "dialogue_tree": "boss_kanako_yasaka",
+      "sets_flags": ["defeated_kanako_yasaka"],
+      "lore_en": "Kanako is a god of faith in the most literal sense: she is made of it. She came to Gensokyo to survive, and prospered, and gave some of her power away to make the mountain a sun. Now faith drains here too. Her shrine maiden is down in the village preaching to empty streets, and her fellow goddess sleeps in the lake. Kanako does not hollow quickly. She is too proud. But she understands better than anyone what it will mean when she does.",
+      "lore_ja": "神奈子は文字通り、信仰そのものでできた神。生き延びるために幻想郷へ来て、栄え、山に太陽を与えるため力の一部を分け与えた。今、ここでも信仰が涸れていく。"
+    },
+    {
+      "id": "youmu_konpaku",
+      "kind": "main",
+      "names": { "en": "Youmu Konpaku", "ja": "魂魄 妖夢", "title_en": "The Gardener Who Cannot Cut This", "title_ja": "これを斬れぬ庭師" },
+      "area": "netherworld",
+      "sub_zone": "hakugyokurou_gardens",
+      "model": "characters/youmu_konpaku",
+      "music_cue": "mus_boss_youmu",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 2400,
+      "hp_per_phase": [1300, 1100],
+      "poise": 110,
+      "stagger_s": 0.9,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Pure swordplay. Almost no bullets. Youmu's two blades and her phantom half attack from two angles; the phantom mirrors her strikes a half-beat late.",
+          "attacks": [
+            { "id": "draw_cut", "name": "Draw Cut", "type": "melee", "damage": 26, "windup_s": 0.35, "recovery_s": 0.7, "description": "Iaijutsu: a single draw-and-cut from the sheath, very fast. Watch her hand go to the hilt." },
+            { "id": "twin_flurry", "name": "Twin Flurry", "type": "melee", "damage": 16, "windup_s": 0.4, "recovery_s": 0.9, "description": "Four alternating cuts with long and short blades." },
+            { "id": "phantom_echo", "name": "Phantom Echo", "type": "melee", "damage": 14, "windup_s": 0.9, "recovery_s": 0.5, "description": "Her phantom half repeats her last cut from another direction." },
+            { "id": "parry", "name": "Parry", "type": "melee", "damage": 20, "windup_s": 0.15, "recovery_s": 1.0, "description": "Deflects a melee hit and ripostes. Ofuda cannot be parried." }
+          ],
+          "spell_cards": [
+            { "id": "present_world_slash", "name_ja": "人符「現世斬」", "name_en": "Human Sign \"Present World Slash\"", "variant": "canon", "damage": 30, "windup_s": 0.9, "duration_s": 2.0, "recovery_s": 1.6, "description": "A dash-cut across the whole arena in a single line; the cut opens a crescent of bullets in its wake." },
+            { "id": "meditation_slash", "name_ja": "断命剣「冥想斬」", "name_en": "Life-Cutting Sword \"Meditation Slash\"", "variant": "canon", "damage": 34, "windup_s": 1.3, "duration_s": 2.0, "recovery_s": 1.8, "description": "Her blade lengthens with spirit and comes down in a vast overhead cut." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 46,
+          "description": "She cuts at things that are not there: the air, the petals, her own phantom. She is trying to find what to cut.",
+          "attacks": [
+            { "id": "draw_cut", "name": "Draw Cut", "type": "melee", "damage": 28, "windup_s": 0.3, "recovery_s": 0.7, "description": "Chained twice." },
+            { "id": "petal_cut", "name": "Petal Cut", "type": "pattern", "damage": 12, "windup_s": 0.6, "recovery_s": 0.8, "description": "Cuts the falling petals; each cut petal becomes a bullet." }
+          ],
+          "spell_cards": [
+            { "id": "future_eternity_slash", "name_ja": "人鬼「未来永劫斬」", "name_en": "Human-Oni \"Future Eternity Slash\"", "variant": "canon", "damage": 12, "windup_s": 1.2, "duration_s": 3.0, "recovery_s": 2.2, "description": "Youmu vanishes and a flurry of cuts fills the space around Reimu. Roll at the first flash, then keep rolling on the rhythm." },
+            { "id": "no_name_to_cut", "name_ja": "虚剣「斬るべき名も無く」", "name_en": "Hollow Sword \"With No Name Left to Cut\"", "variant": "hollowed", "damage": 20, "windup_s": 1.4, "duration_s": 7.0, "recovery_s": 2.0, "description": "She cuts the air into a lattice of slashes that hang and fade. Each hanging slash is a line Reimu cannot cross until it fades." }
+          ]
+        }
+      ],
+      "arena": "The white gravel garden of Hakugyokurou, raked into waves around stones that stand like islands. Cherry blossoms fall without end. Half the waves have been raked out of true, as if the gardener's hand began to shake.",
+      "intro_lines": [
+        { "speaker": "youmu_konpaku", "text_en": "What cannot be cut cannot be understood. I have tried to cut this. The fading. I cannot find it.", "text_ja": "斬れぬものは理解できない。これを斬ろうとしました。この褪せていくものを。見つけられないんです。" },
+        { "speaker": "youmu_konpaku", "text_en": "So I will cut you instead, and see if that helps. Forgive me.", "text_ja": "だから代わりに貴女を斬って、何か分かるか試します。許してください。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "youmu_konpaku", "text_en": "...It did not help. I am sorry.", "text_ja": "……分かりませんでした。すみません。" },
+        { "speaker": "youmu_konpaku", "text_en": "Lady Yuyuko is under the great tree. She has been asking who is buried there. She has never asked that before.", "text_ja": "幽々子様は大樹の下におられます。そこに誰が眠っているのか、と。今まで一度も訊いたことがなかったのに。" }
+      ],
+      "earned_spell_card": "sc_present_world_slash",
+      "faith_reward": 11000,
+      "drops": ["memento_youmu", "star_iron"],
+      "dialogue_tree": "boss_youmu_konpaku",
+      "sets_flags": ["defeated_youmu_konpaku"],
+      "lore_en": "Youmu is half human and half phantom, gardener and guardian and swordswoman, and she believes the truth of a thing is found by cutting it. It has always been a young person's philosophy. The hollowing is the first thing she cannot cut, and she is learning, far too early and in the worst way, that there are things one can only carry.",
+      "lore_ja": "妖夢は半人半霊の庭師にして剣士。物事の真実は斬ることで分かると信じている。虚ろは初めての、斬れぬもの。世には、ただ背負うしかないものがあると、早すぎる形で学んでいる。"
+    },
+    {
+      "id": "yuyuko_saigyouji",
+      "kind": "main",
+      "names": { "en": "Yuyuko Saigyouji", "ja": "西行寺 幽々子", "title_en": "The Ghost Who Began to Wonder", "title_ja": "問い始めた亡霊" },
+      "area": "netherworld",
+      "sub_zone": "saigyou_ayakashi",
+      "model": "characters/yuyuko_saigyouji",
+      "music_cue": "mus_boss_yuyuko",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 3200,
+      "hp_per_phase": [1100, 1100, 1000],
+      "poise": 160,
+      "stagger_s": 1.2,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Graceful and lethal. Yuyuko drifts, fans, and fills the air with butterflies that are beautiful and deadly. She hardly seems to try.",
+          "attacks": [
+            { "id": "fan_sweep", "name": "Fan Sweep", "type": "melee", "damage": 22, "windup_s": 0.7, "recovery_s": 1.0, "description": "A languid sweep of her fan that releases a wave of petals." },
+            { "id": "butterfly_stream", "name": "Butterfly Stream", "type": "bullet", "damage": 14, "windup_s": 0.6, "recovery_s": 0.8, "description": "Butterfly bullets flutter toward Reimu on wavering paths." },
+            { "id": "deathly_touch", "name": "Deathly Touch", "type": "melee", "damage": 20, "windup_s": 1.0, "recovery_s": 1.2, "description": "A reaching hand. Builds heavy Dread." }
+          ],
+          "spell_cards": [
+            { "id": "ghost_butterfly", "name_ja": "華霊「ゴーストバタフライ」", "name_en": "Flower Spirit \"Ghost Butterfly\"", "variant": "canon", "damage": 14, "windup_s": 0.9, "duration_s": 7.0, "recovery_s": 1.3, "description": "Great fans of butterflies open and close around her." },
+            { "id": "village_of_lost_self", "name_ja": "亡郷「亡我郷 -さまよえる魂-」", "name_en": "Deadly Village \"Village of Lost Self -Wandering Soul-\"", "variant": "canon", "damage": 14, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.4, "description": "Spirit-lights drift in slow spirals that wander off course. A village of those who have lost themselves: she named it long ago, without knowing why." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 66,
+          "description": "She stops smiling and looks up at the tree.",
+          "attacks": [
+            { "id": "butterfly_stream", "name": "Butterfly Storm", "type": "bullet", "damage": 15, "windup_s": 0.5, "recovery_s": 0.8, "description": "Three streams at once." },
+            { "id": "petal_veil", "name": "Petal Veil", "type": "pattern", "damage": 12, "windup_s": 0.8, "recovery_s": 1.0, "description": "A curtain of petals hides her; she reappears elsewhere." }
+          ],
+          "spell_cards": [
+            { "id": "sumizome_blossoming", "name_ja": "桜符「完全なる墨染の桜 -開花-」", "name_en": "Cherry Blossom Sign \"Perfect Sumizome Cherry Blossom -Blossoming-\"", "variant": "canon", "damage": 16, "windup_s": 1.2, "duration_s": 8.0, "recovery_s": 1.6, "description": "Ink-coloured blossoms open across the arena in branching patterns, each bloom a burst." },
+            { "id": "beneath_the_tree", "name_ja": "忘我「名を忘れた桜の下で」", "name_en": "Self-Forgetting \"Beneath the Cherry That Forgot Her Name\"", "variant": "hollowed", "damage": 15, "windup_s": 1.4, "duration_s": 9.0, "recovery_s": 1.8, "description": "Roots of light rise from the ground in the shape of a body lying down, and petals fall only outside that shape. Standing in the shape is safe. Yuyuko watches it very closely." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 31,
+          "description": "Last word. The Saigyou Ayakashi strains to bloom.",
+          "attacks": [],
+          "spell_cards": [
+            { "id": "resurrection_butterfly", "name_ja": "「反魂蝶 -八分咲-」", "name_en": "\"Resurrection Butterfly -80% Reflowering-\"", "variant": "canon", "damage": 16, "windup_s": 1.6, "duration_s": 14.0, "recovery_s": 2.4, "description": "Endurance card. The great tree's power pours through her in huge rotating butterfly wings. It never reaches full bloom. It cannot." }
+          ]
+        }
+      ],
+      "arena": "Beneath the Saigyou Ayakashi, the great cherry of Hakugyokurou that never blooms. Its roots break the ground in shapes that almost look like a figure lying on its side. Butterflies settle on the bark and do not move.",
+      "intro_lines": [
+        { "speaker": "yuyuko_saigyouji", "text_en": "Did you know? Someone sleeps under this tree. Someone who gave herself so it would never bloom.", "text_ja": "知っていた？ この木の下には誰かが眠っているの。二度と咲かないよう、自分を差し出した誰か。" },
+        { "speaker": "yuyuko_saigyouji", "text_en": "How lovely. How dreadful. I have never once wondered who she was. Isn't that strange? I'm wondering now.", "text_ja": "素敵ね。恐ろしいわね。それが誰なのか、一度も考えたことがなかった。不思議でしょう？ 今、考えているの。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "yuyuko_saigyouji", "text_en": "Oh. I'm hungry. That's a good sign, isn't it?", "text_ja": "あら。お腹が空いたわ。いい兆しよね？" },
+        { "speaker": "yuyuko_saigyouji", "text_en": "Reimu. The one beneath your shrine is not so different from the one beneath my tree. Be careful what you give away. You may not get to wonder about it afterward.", "text_ja": "霊夢。貴女の神社の下にいる人は、私の木の下の人とそう違わない。差し出すものには気を付けて。後から、考えることもできなくなるかもしれないから。" }
+      ],
+      "earned_spell_card": "sc_ghost_butterfly",
+      "faith_reward": 15000,
+      "drops": ["memento_yuyuko", "name_fragment_phantom", "sakura_charm"],
+      "dialogue_tree": "boss_yuyuko_saigyouji",
+      "sets_flags": ["defeated_yuyuko_saigyouji"],
+      "lore_en": "Yuyuko is the princess of the Netherworld, a ghost who has forgotten her life and never minded. What she does not know is that her own body lies beneath the Saigyou Ayakashi, and seals it. She gave herself so that the tree would never bloom again. She is, in the truest sense, the only other person in Gensokyo who has done what the Hakurei maidens do. She is beginning, very faintly, to suspect it.",
+      "lore_ja": "幽々子は冥界の姫。生前を忘れ、それを気にしたこともない亡霊。西行妖の下に眠り、それを封じているのが自分の亡骸だとは知らない。博麗の巫女と同じことをした者は、幻想郷で彼女だけだ。"
+    },
+    {
+      "id": "former_maiden_saigyou",
+      "kind": "former_maiden",
+      "encounter": 2,
+      "names": { "en": "The Former Shrine Maiden", "ja": "先代の巫女", "title_en": "The Pillar Walking", "title_ja": "歩む人柱" },
+      "area": "netherworld",
+      "sub_zone": "saigyou_roots",
+      "model": "characters/former_maiden",
+      "music_cue": "mus_boss_former_maiden_2",
+      "required": true,
+      "marisa_summonable": false,
+      "hp_total": 2800,
+      "hp_per_phase": [1500, 1300],
+      "poise": 120,
+      "stagger_s": 0.8,
+      "mirror_rules": { "uses_player_stamina": true, "stamina_max": 140, "grazes": true, "dodge_iframes_s": 0.33, "heals": 2 },
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "She has learned from the first fight. She now mirrors every weapon type Reimu has used, switching between gohei, sword and ofuda chains.",
+          "attacks": [
+            { "id": "gohei_combo", "name": "Gohei Combo", "type": "melee", "damage": 24, "windup_s": 0.28, "recovery_s": 0.5, "description": "As before, faster." },
+            { "id": "register_blade", "name": "Register Blade", "type": "melee", "damage": 28, "windup_s": 0.5, "recovery_s": 0.8, "description": "Her gohei's paper wrappings stiffen into a blade. A struck-out name is written along its edge." },
+            { "id": "ofuda_chain", "name": "Ofuda Chain", "type": "bullet", "damage": 16, "windup_s": 0.45, "recovery_s": 0.7, "description": "Two chains now, crossing." },
+            { "id": "barrier_wall", "name": "Barrier Wall", "type": "pattern", "damage": 18, "windup_s": 0.8, "recovery_s": 1.0, "description": "Two walls, advancing from opposite sides." }
+          ],
+          "spell_cards": [
+            { "id": "inverted_yinyang", "name_ja": "陰陽「逆さ陰陽玉」", "name_en": "Yin-Yang \"Inverted Yin-Yang Orbs\"", "variant": "original", "damage": 18, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.4, "description": "Her cracked orbs grow huge and roll across the roots, shedding bullets of the wrong colour: black where Reimu's would be white." },
+            { "id": "wall_of_the_pillar", "name_ja": "結界「人柱の壁」", "name_en": "Barrier \"Wall of the Human Pillar\"", "variant": "original", "damage": 16, "windup_s": 1.2, "duration_s": 8.0, "recovery_s": 1.6, "description": "She stands perfectly still and becomes the centre of a barrier that grows outward in rings. She does not attack. She only holds. It is terribly hard to reach her." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 46,
+          "description": "Beneath the other seal, she remembers something. Her attacks falter for a beat whenever Yuyuko's name is spoken nearby.",
+          "attacks": [
+            { "id": "register_blade", "name": "Register Blade", "type": "melee", "damage": 30, "windup_s": 0.45, "recovery_s": 0.8, "description": "Chained into ofuda." },
+            { "id": "red_line_sweep", "name": "Red Line", "type": "pattern", "damage": 20, "windup_s": 0.9, "recovery_s": 1.1, "description": "A single vermilion line sweeps horizontally across the arena at chest height. Roll under it." }
+          ],
+          "spell_cards": [
+            { "id": "red_line_through_a_name", "name_ja": "抹符「朱線」", "name_en": "Erasure Sign \"A Red Line Through a Name\"", "variant": "original", "damage": 22, "windup_s": 1.4, "duration_s": 8.0, "recovery_s": 2.0, "description": "Lines of vermilion are drawn across the arena one after another, like names being struck from a page. Each line leaves a trail of ink bullets that bleed outward." }
+          ]
+        }
+      ],
+      "arena": "Among the roots of the Saigyou Ayakashi, below the garden. The roots have been disturbed; someone has knelt here and put her hand to the ground, as if listening for another sleeper.",
+      "intro_lines": [
+        { "speaker": "former_maiden", "text_en": "There is one here, too. Under the tree. She did her duty.", "text_ja": "ここにも一人。木の下に。務めを果たした人。" },
+        { "speaker": "former_maiden", "text_en": "You have not. Why have you not?", "text_ja": "あなたは果たしていない。なぜ？" }
+      ],
+      "defeat_lines": [
+        { "speaker": "former_maiden", "text_en": "I knelt here. I wanted to ask her if it was heavy. She could not answer. She does not remember either.", "text_ja": "ここに跪いた。重いかと、訊きたかった。答えはなかった。彼女も、覚えていない。" },
+        { "speaker": "former_maiden", "text_en": "Neither do I.", "text_ja": "私も。" }
+      ],
+      "earned_spell_card": "sc_inverted_orbs",
+      "faith_reward": 14000,
+      "drops": ["relic_inverted_orb"],
+      "dialogue_tree": "former_maiden",
+      "sets_flags": ["defeated_former_maiden_saigyou"],
+      "on_defeat": "vanishes_into_barrier",
+      "lore_en": "The second meeting is not a guard stopping a deserter. It is two pillars recognising each other. Something drew the Former Shrine Maiden to the one other sacrifice in Gensokyo, and she knelt among its roots and tried to ask it a question. Reimu interrupts, and for a moment the predecessor seems almost grateful for someone to fight.",
+      "lore_ja": "二度目の邂逅は、脱走兵を止める番兵ではない。二本の人柱が互いに気付いたのだ。先代は幻想郷のもう一つの犠牲に引き寄せられ、その根元に跪き、問いかけようとした。"
+    },
+    {
+      "id": "utsuho_reiuji",
+      "kind": "main",
+      "names": { "en": "Utsuho Reiuji", "ja": "霊烏路 空", "title_en": "A Sun No One Looks Up To", "title_ja": "誰も仰がぬ太陽" },
+      "area": "former_hell",
+      "sub_zone": "nuclear_core",
+      "model": "characters/utsuho_reiuji",
+      "music_cue": "mus_boss_utsuho",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 3600,
+      "hp_per_phase": [1300, 1200, 1100],
+      "poise": 180,
+      "stagger_s": 1.3,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Overwhelming power, poorly aimed. Utsuho's attacks are enormous and slow, and the arena itself becomes the danger as the heat rises.",
+          "attacks": [
+            { "id": "control_rod_slam", "name": "Control Rod Slam", "type": "melee", "damage": 36, "windup_s": 1.1, "recovery_s": 1.5, "description": "Brings her arm cannon down like a club." },
+            { "id": "fusion_orb", "name": "Fusion Orb", "type": "bullet", "damage": 30, "windup_s": 1.0, "recovery_s": 1.2, "description": "A single huge slow orb that pulls smaller bullets toward it as it travels." },
+            { "id": "heat_haze", "name": "Heat Haze", "type": "pattern", "damage": 10, "windup_s": 1.2, "recovery_s": 1.0, "description": "The floor glows; standing still builds Burn." }
+          ],
+          "spell_cards": [
+            { "id": "nuclear_fusion", "name_ja": "核熱「ニュークリアフュージョン」", "name_en": "Atomic Fire \"Nuclear Fusion\"", "variant": "canon", "damage": 24, "windup_s": 1.2, "duration_s": 7.0, "recovery_s": 1.6, "description": "Huge orbs expand outward in slow rings with small fast bullets threading between them." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 64,
+          "description": "She gets excited. The sun at the core swells.",
+          "attacks": [
+            { "id": "fusion_orb", "name": "Fusion Barrage", "type": "bullet", "damage": 28, "windup_s": 0.9, "recovery_s": 1.2, "description": "Three orbs in a spread." },
+            { "id": "wing_rush", "name": "Wing Rush", "type": "melee", "damage": 30, "windup_s": 0.8, "recovery_s": 1.3, "description": "A charging flight with wings spread wide." }
+          ],
+          "spell_cards": [
+            { "id": "mega_flare", "name_ja": "爆符「メガフレア」", "name_en": "Explosion Sign \"Mega Flare\"", "variant": "canon", "damage": 34, "windup_s": 1.6, "duration_s": 5.0, "recovery_s": 2.0, "description": "Giant flares burst in sequence across the arena; the glow on the floor marks each one." },
+            { "id": "sun_no_one_looks_up_to", "name_ja": "虚陽「誰も仰がぬ太陽」", "name_en": "Hollow Sun \"A Sun No One Looks Up To\"", "variant": "hollowed", "damage": 20, "windup_s": 1.4, "duration_s": 9.0, "recovery_s": 1.8, "description": "The core sun grows, dims, grows, dims, with every pulse shedding rings. It is burning harder to be noticed. Every ring leaves a gap on the side facing up, toward the surface." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 31,
+          "description": "Last word.",
+          "attacks": [],
+          "spell_cards": [
+            { "id": "subterranean_sun", "name_ja": "「サブタレイニアンサン」", "name_en": "\"Subterranean Sun\"", "variant": "canon", "damage": 20, "windup_s": 2.0, "duration_s": 14.0, "recovery_s": 2.4, "description": "Endurance card. The sun pulls everything toward it, bullets and Reimu alike. Run outward and graze." }
+          ]
+        }
+      ],
+      "arena": "The Nuclear Furnace at the bottom of the Former Hell, a sphere of heat around a small, artificial sun. The walkways are glowing. There is no one to see the light.",
+      "intro_lines": [
+        { "speaker": "utsuho_reiuji", "text_en": "Lady Kanako gave me the sun so the mountain would have faith! But nobody believes anymore.", "text_ja": "神奈子様が太陽をくれたの！ 山に信仰が集まるように！ でも、もう誰も信じてない。" },
+        { "speaker": "utsuho_reiuji", "text_en": "So the sun has to burn harder! Right? That's how it works! That has to be how it works!", "text_ja": "だから、太陽はもっと燃えなきゃ！ そうでしょ？ そういうことでしょ！ そうじゃなきゃ、おかしいもん！" }
+      ],
+      "defeat_lines": [
+        { "speaker": "utsuho_reiuji", "text_en": "Unyu...? Did I do a good job? Is Lady Satori mad at me?", "text_ja": "うにゅ……？ ちゃんとできた？ さとり様、怒ってる？" },
+        { "speaker": "utsuho_reiuji", "text_en": "Hey, you. Shrine maiden. What was your name again? I'm bad with names. ...Sorry. I think you told me.", "text_ja": "ねえ、巫女。名前なんだっけ。わたし名前覚えるの苦手で。……ごめん。前に聞いた気がする。" }
+      ],
+      "earned_spell_card": "sc_nuclear_fusion",
+      "faith_reward": 20000,
+      "drops": ["memento_utsuho", "name_fragment_oni", "hell_cinder"],
+      "dialogue_tree": "boss_utsuho_reiuji",
+      "sets_flags": ["defeated_utsuho_reiuji", "reimu_name_fade_2"],
+      "lore_en": "A hell raven given the power of the sun-god Yatagarasu by a goddess who wanted the mountain to prosper. Utsuho was never meant to understand what she held, only to hold it. When the faith that the sun was meant to gather stopped coming, she concluded, reasonably, that she was not burning hard enough. It is a very human mistake. The Hakurei maidens have made it too.",
+      "lore_ja": "山の繁栄を願う神によって八咫烏の力を与えられた地獄鴉。空は手にしたものを理解する必要はなかった。ただ持っていればよかった。信仰が来なくなった時、彼女はもっと燃えればいいと考えた。人間らしい過ちだ。博麗の巫女たちも、同じ過ちを犯してきた。"
+    },
+    {
+      "id": "yukari_yakumo",
+      "kind": "main",
+      "names": { "en": "Yukari Yakumo", "ja": "八雲 紫", "title_en": "Keeper of the Kinder Lie", "title_ja": "優しい嘘の守り手" },
+      "area": "great_barrier",
+      "sub_zone": "boundary_edge",
+      "model": "characters/yukari_yakumo",
+      "music_cue": "mus_boss_yukari",
+      "required": true,
+      "marisa_summonable": true,
+      "hp_total": 4200,
+      "hp_per_phase": [1400, 1400, 1400],
+      "poise": 170,
+      "stagger_s": 1.0,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Yukari is not hollowed. She is tired. She fights with gaps, parasol and boundary, and does not seem to want to win so much as to see whether Reimu will stop.",
+          "attacks": [
+            { "id": "parasol_strike", "name": "Parasol Strike", "type": "melee", "damage": 26, "windup_s": 0.6, "recovery_s": 0.9, "description": "An elegant swing of her parasol." },
+            { "id": "gap_hand", "name": "Gap Hand", "type": "melee", "damage": 22, "windup_s": 0.5, "recovery_s": 0.8, "description": "A gap opens beside Reimu and a gloved hand strikes out of it. The eyes in the gap open first." },
+            { "id": "gap_lasers", "name": "Boundary Lines", "type": "bullet", "damage": 18, "windup_s": 0.9, "recovery_s": 1.0, "description": "Lasers drawn along straight boundaries across the arena." },
+            { "id": "road_sign", "name": "Road Sign", "type": "melee", "damage": 30, "windup_s": 1.0, "recovery_s": 1.4, "description": "A road sign from the outside world swung like a club. She has always found it funny." }
+          ],
+          "spell_cards": [
+            { "id": "curse_dreams_reality", "name_ja": "結界「夢と現の呪」", "name_en": "Barrier \"Curse of Dreams and Reality\"", "variant": "canon", "damage": 16, "windup_s": 1.0, "duration_s": 7.0, "recovery_s": 1.4, "description": "Paired bullet streams, one real and one dreamt, trade places at the boundary line." },
+            { "id": "quadruple_barrier", "name_ja": "境符「四重結界」", "name_en": "Boundary Sign \"Quadruple Barrier\"", "variant": "canon", "damage": 16, "windup_s": 1.1, "duration_s": 7.0, "recovery_s": 1.4, "description": "Four barriers nest around Reimu and fold inward; bullets crossing a barrier line change direction." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 66,
+          "description": "She stops smiling.",
+          "attacks": [
+            { "id": "gap_hand", "name": "Gap Hand", "type": "melee", "damage": 24, "windup_s": 0.45, "recovery_s": 0.8, "description": "Three gaps at once." },
+            { "id": "abandoned_line", "name": "Abandoned Line", "type": "melee", "damage": 40, "windup_s": 2.0, "recovery_s": 1.5, "description": "A train from the outside world thunders out of a gap along a marked line. Its headlamp is the telegraph." }
+          ],
+          "spell_cards": [
+            { "id": "boundary_life_death", "name_ja": "結界「生と死の境界」", "name_en": "Barrier \"Boundary of Life and Death\"", "variant": "canon", "damage": 18, "windup_s": 1.2, "duration_s": 8.0, "recovery_s": 1.6, "description": "Bullets on one side of a turning line move, and on the other side are still. The line turns." },
+            { "id": "boundary_forgetting", "name_ja": "結界「忘却と記憶の境界」", "name_en": "Barrier \"Boundary of Forgetting and Remembrance\"", "variant": "hollowed", "damage": 18, "windup_s": 1.4, "duration_s": 9.0, "recovery_s": 1.8, "description": "Ghost images of past shrine maidens stand around the arena, each firing Reimu's own ofuda. As the card goes on, the images fade, one by one, from the outside in, until only one is left. It is not the Former Shrine Maiden. It is Reimu." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 33,
+          "description": "Last word.",
+          "attacks": [],
+          "spell_cards": [
+            { "id": "danmaku_bounded_field", "name_ja": "紫奥義「弾幕結界」", "name_en": "Yukari's Arcanum \"Danmaku Bounded Field\"", "variant": "canon", "damage": 18, "windup_s": 2.0, "duration_s": 16.0, "recovery_s": 2.5, "description": "Endurance card. Waves of barrier that close, freeze and release. Yukari stands at the centre and does not attack at all." }
+          ]
+        }
+      ],
+      "arena": "The Edge of the Barrier, where Gensokyo meets whatever is outside it. The ground ends in a white nothing that has visible cracks in it, like a teacup. Through the cracks, something grey seeps in. Yukari has set out two cushions and a small table with tea.",
+      "intro_lines": [
+        { "speaker": "yukari_yakumo", "text_en": "Welcome, Reimu. I had hoped you would come here later. Much later. Perhaps never.", "text_ja": "いらっしゃい、霊夢。もっと後に来てくれればと思っていたわ。ずっと後に。いっそ来なければ。" },
+        { "speaker": "yukari_yakumo", "text_en": "Every one of them came to this place, you know. Every one asked me if there was another way.", "text_ja": "皆、ここへ来たのよ。一人残らず。他に道はないのかと、皆が訊いた。" },
+        { "speaker": "yukari_yakumo", "text_en": "Sit down, please. No? No. You were always the one who wouldn't sit.", "text_ja": "座って頂戴。……座らない？ そう。貴女はいつも、座らない子だったわね。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "yukari_yakumo", "text_en": "I told each of them there was no other way. I believed it every time.", "text_ja": "皆に、他に道はないと言った。毎回、本当にそう信じていた。" },
+        { "speaker": "yukari_yakumo", "text_en": "I remember her, you know. I remember all of them. That is my part of the price. Go on, Reimu. I would like, very much, to be wrong.", "text_ja": "覚えているのよ、あの子のことも。全員のことを。それが私の払う分。行きなさい、霊夢。今度こそ、間違っていたいの。" }
+      ],
+      "earned_spell_card": "sc_quadruple_barrier",
+      "faith_reward": 30000,
+      "drops": ["memento_yukari", "remembered_prayer"],
+      "dialogue_tree": "boss_yukari_yakumo",
+      "sets_flags": ["defeated_yukari_yakumo", "yukari_confessed"],
+      "lore_en": "Yukari made the Barrier with the first Hakurei, and she has kept its one secret for every generation since: that when faith fails, the shrine maiden gives her name, and Gensokyo forgets her, and no one notices because the title goes on. Yukari remembers every one. She kept the secret because she believed it was the kinder lie. She has never been sure. She fights Reimu not to stop her, but to find out, at last, whether a shrine maiden who will not sit down can find the way that she could not.",
+      "lore_ja": "紫は初代の博麗と共に結界を張り、以来その秘密を代々守ってきた。信仰が尽きれば巫女は名を差し出し、幻想郷は彼女を忘れ、肩書だけが続く。紫は全員を覚えている。優しい嘘だと信じて、秘密を守った。確信したことは一度もない。"
+    },
+    {
+      "id": "former_maiden_pillar",
+      "kind": "former_maiden",
+      "encounter": 3,
+      "names": { "en": "The Former Shrine Maiden", "ja": "先代の巫女", "title_en": "The Pillar Beneath the Shrine", "title_ja": "神社の下の人柱" },
+      "area": "great_barrier",
+      "sub_zone": "pillar_beneath",
+      "model": "characters/former_maiden",
+      "music_cue": "mus_boss_former_maiden_3",
+      "required": true,
+      "marisa_summonable": false,
+      "hp_total": 3800,
+      "hp_per_phase": [2000, 1800],
+      "poise": 150,
+      "stagger_s": 0.8,
+      "mirror_rules": { "uses_player_stamina": true, "stamina_max": 180, "grazes": true, "dodge_iframes_s": 0.33, "heals": 3 },
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "Inside the pillar, she is at her full strength. Every technique from the first two encounters, and Reimu's own spell cards, turned back on her.",
+          "attacks": [
+            { "id": "gohei_combo", "name": "Gohei Combo", "type": "melee", "damage": 28, "windup_s": 0.25, "recovery_s": 0.5, "description": "Perfect." },
+            { "id": "register_blade", "name": "Register Blade", "type": "melee", "damage": 32, "windup_s": 0.45, "recovery_s": 0.8, "description": "As before." },
+            { "id": "ofuda_chain", "name": "Ofuda Chain", "type": "bullet", "damage": 18, "windup_s": 0.4, "recovery_s": 0.7, "description": "Three chains." },
+            { "id": "mirror_spell", "name": "Mirror Spell", "type": "pattern", "damage": 20, "windup_s": 1.0, "recovery_s": 1.4, "description": "Casts, in an older style, whichever spell card Reimu last used." }
+          ],
+          "spell_cards": [
+            { "id": "great_purification", "name_ja": "祓符「名無しの大祓」", "name_en": "Purge Sign \"Great Purification of the Nameless\"", "variant": "original", "damage": 20, "windup_s": 1.2, "duration_s": 8.0, "recovery_s": 1.6, "description": "Paper figures pour down from above, each with a blank face, and burst into purifying bullets as they touch the ground. A ritual to wash away sin, performed on the unnamed." },
+            { "id": "elder_fantasy_seal_p3", "name_ja": "古霊「先代夢想封印」", "name_en": "Elder Spirit \"Fantasy Seal of the Former Age\"", "variant": "original", "damage": 24, "windup_s": 1.1, "duration_s": 4.0, "recovery_s": 2.0, "description": "As in the first encounter, doubled." }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 47,
+          "description": "Her last word. If Reimu holds the struck-out page and has read the name, a prompt appears during this phase: Speak her name.",
+          "name_prompt": { "requires_flags": ["read_struck_page"], "requires_item": "struck_register_page", "sets_flag": "returned_maiden_name", "opens_phase": 3 },
+          "attacks": [
+            { "id": "gohei_combo", "name": "Gohei Combo", "type": "melee", "damage": 30, "windup_s": 0.25, "recovery_s": 0.5, "description": "Relentless." },
+            { "id": "red_line_sweep", "name": "Red Line", "type": "pattern", "damage": 24, "windup_s": 0.8, "recovery_s": 1.1, "description": "Two lines, crossing." }
+          ],
+          "spell_cards": [
+            { "id": "hakurei_duty", "name_ja": "「博麗の務め」", "name_en": "\"The Hakurei Duty\"", "variant": "original", "damage": 22, "windup_s": 2.0, "duration_s": 18.0, "recovery_s": 2.5, "description": "Endurance card, and her true last word. Every technique she knows, one after another, in the order she learned them as a girl, the old way. It ends in a single ofuda drifting slowly toward Reimu, harmless, as if she forgot what it was for." }
+          ]
+        },
+        {
+          "phase": 3,
+          "starts_at_hp_pct": 100,
+          "trigger": "flag:returned_maiden_name",
+          "ally_phase": true,
+          "opponent": { "names": { "en": "The Collapsing Seal", "ja": "崩れゆく封印" }, "hp": 3000, "poise": 999 },
+          "description": "She hears her name. The pillar shudders. She turns, and stands beside Reimu, and the thing that has been held shut by her forgetting for generations begins to come apart. Together they hold it while the Barrier is rebuilt from what has been restored.",
+          "attacks": [
+            { "id": "seal_collapse", "name": "Falling Mortar", "type": "pattern", "damage": 18, "windup_s": 1.0, "recovery_s": 0.8, "description": "Chunks of the pillar's inner wall, made of pressed ink, fall and burst." },
+            { "id": "forgotten_tide", "name": "Tide of the Forgotten", "type": "pattern", "damage": 16, "windup_s": 1.2, "recovery_s": 1.0, "description": "Grey ink figures surge from the walls toward both maidens." }
+          ],
+          "spell_cards": [
+            { "id": "nameless_foundation", "name_ja": "大結界「無名の礎」", "name_en": "Great Barrier \"The Nameless Foundation\"", "variant": "original", "damage": 18, "windup_s": 1.4, "duration_s": 12.0, "recovery_s": 2.0, "description": "The Seal's own card: every name that was ever struck to build it, written in bullets across the walls. They are released one at a time. The Former Shrine Maiden calls out a name for each one she recognises, and those fade harmlessly." },
+            { "id": "two_maidens_fantasy_seal", "name_ja": "霊符「二人の夢想封印」", "name_en": "Spirit Sign \"Fantasy Seal of Two Maidens\"", "variant": "original", "damage": 0, "windup_s": 1.0, "duration_s": 3.0, "recovery_s": 0.0, "ally_cast": true, "description": "Cast by the ally when Reimu uses Fantasy Seal: both seals fire together, old and new, red and faded rose." }
+          ]
+        }
+      ],
+      "arena": "Inside the pillar beneath the Hakurei Shrine, a vertical shaft of pressed paper and ink where every wall is a page of struck-out names. At its centre, a stone. On the stone, a hollow the size of a kneeling girl. The Wayside God's flame can be seen, very faintly, far above.",
+      "intro_lines": [
+        { "speaker": "former_maiden", "text_en": "You came.", "text_ja": "来たのね。" },
+        { "speaker": "former_maiden", "text_en": "Good. It is heavy. I have held it a long time. You will hold it now. That is the duty.", "text_ja": "良かった。重いの。ずっと支えてきた。今度はあなたが支える。それが務め。" }
+      ],
+      "defeat_lines": [
+        { "speaker": "former_maiden", "text_en": "...Then do it your way. I could never find one. Maybe there was never one to find. Maybe you'll make one.", "text_ja": "……なら、あなたのやり方で。私には見つけられなかった。最初から無かったのかもしれない。あなたが作るのかもしれない。", "condition": "!flag:returned_maiden_name" },
+        { "speaker": "former_maiden", "text_en": "Tomoe. ...Yes. That was me. Thank you for saying it. Nobody has said it in so long. I thought it would hurt.", "text_ja": "巴。……うん。私の名前。呼んでくれてありがとう。ずっと誰にも呼ばれなかった。痛いと思っていた。", "condition": "flag:returned_maiden_name" }
+      ],
+      "earned_spell_card": "sc_elder_fantasy_seal",
+      "earned_condition": "flag:returned_maiden_name",
+      "faith_reward": 0,
+      "drops": [],
+      "dialogue_tree": "former_maiden",
+      "sets_flags": ["defeated_former_maiden_pillar"],
+      "leads_to": "ending_choice",
+      "lore_en": "This is where every Hakurei shrine maiden who paid the price has ended up: inside the stone, holding the Barrier shut with the weight of being forgotten. The Former Shrine Maiden was the last. She is not guarding the pillar. She is the pillar, and she has come up out of it to hand it on. She does not want to hurt Reimu. She only wants to put it down.",
+      "lore_ja": "代価を払った博麗の巫女は皆ここに辿り着いた。石の中で、忘れられることの重みで結界を閉ざし続ける。先代は最後の一人。柱を守っているのではない。彼女が柱なのだ。霊夢を傷つけたいのではない。ただ、下ろしたいだけ。"
+    }
+  ],
+  "former_maiden_appearances": [
+    {
+      "id": "maiden_glimpse_misty_lake",
+      "order": 1,
+      "combat": false,
+      "area": "misty_lake",
+      "sub_zone": "far_torii",
+      "trigger": "flag:defeated_cirno",
+      "description": "After Cirno's colour returns, a figure in faded red and white stands at the far torii across the ice. A black ribbon. She is looking at the Wayside God's flame, not at Reimu. When Reimu steps toward her, the mist closes and she is gone.",
+      "sets_flags": ["saw_maiden_glimpse"]
+    },
+    {
+      "id": "maiden_road_straightening_stone",
+      "order": 2,
+      "combat": false,
+      "area": "hakurei_shrine",
+      "sub_zone": "old_road_lower",
+      "trigger": "flag:defeated_eirin_yagokoro",
+      "description": "On the Old Hakurei Road, the figure kneels beside a toppled roadside stone and sets it upright, and brushes the moss from its face with her sleeve. Faded Attendants on either side of the road bow as she rises. She walks on toward the branch shrine without looking back.",
+      "sets_flags": ["old_road_open"]
+    },
+    {
+      "id": "maiden_fight_road",
+      "order": 3,
+      "combat": true,
+      "boss": "former_maiden_road",
+      "area": "hakurei_shrine",
+      "sub_zone": "old_road_branch_shrine",
+      "trigger": "flag:old_road_open",
+      "description": "The first real fight. Afterward: 'It will be your turn soon.' She vanishes into the Barrier.",
+      "sets_flags": []
+    },
+    {
+      "id": "maiden_humming_moriya",
+      "order": 4,
+      "combat": false,
+      "area": "youkai_mountain",
+      "sub_zone": "moriya_stair",
+      "trigger": "flag:defeated_former_maiden_road",
+      "description": "Heard, not seen: somewhere on the Moriya stair, someone hums a rice-planting song, out of tune. It stops when Reimu reaches the landing. On the step, a single sandal-print in the frost.",
+      "sets_flags": ["heard_maiden_song"]
+    },
+    {
+      "id": "maiden_fight_saigyou",
+      "order": 5,
+      "combat": true,
+      "boss": "former_maiden_saigyou",
+      "area": "netherworld",
+      "sub_zone": "saigyou_roots",
+      "trigger": "flag:defeated_yuyuko_saigyouji",
+      "description": "The second fight, beneath the Saigyou Ayakashi.",
+      "sets_flags": []
+    },
+    {
+      "id": "maiden_ledger_scene",
+      "order": 6,
+      "combat": false,
+      "area": "forest_of_magic",
+      "sub_zone": "muenzuka",
+      "trigger": "flag:defeated_former_maiden_saigyou",
+      "description": "Not an appearance but its shadow: the Collector of Names brings out the struck-out page. The player learns the name here. The game does not display it unless it is returned.",
+      "sets_flags": ["collector_offered_page"]
+    },
+    {
+      "id": "maiden_fight_pillar",
+      "order": 7,
+      "combat": true,
+      "boss": "former_maiden_pillar",
+      "area": "great_barrier",
+      "sub_zone": "pillar_beneath",
+      "trigger": "flag:defeated_yukari_yakumo",
+      "description": "The last duel, inside the pillar.",
+      "sets_flags": []
+    }
+  ],
+  "former_maiden_name": {
+    "en": "Tomoe",
+    "ja": "巴",
+    "full_en": "Tomoe Hakurei",
+    "full_ja": "博麗 巴",
+    "display_rule": "Never shown in UI, subtitles or item text unless flag returned_maiden_name is set. Before that, the struck page renders the name as a red line.",
+    "note": "巴 (tomoe) is the comma-shaped whorl of the yin-yang orb's ancestor symbol. Placeholder for the script; change here only."
+  }
+}

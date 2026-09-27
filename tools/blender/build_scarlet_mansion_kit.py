@@ -28,7 +28,7 @@ import common as C  # noqa: E402
 
 OUT = "assets/models/environment/scarlet_mansion"
 STATS = []
-FROZEN_TIME = (11, 59)  # every clock in the mansion stopped at the same moment
+FROZEN_TIME = (11, 55)  # every clock in the mansion stopped at the same moment
 
 
 def mats():
@@ -37,7 +37,7 @@ def mats():
         "brick_dark": C.material("SDM_BrickDark", (0.11, 0.035, 0.035), 0.95),
         "stone": C.material("SDM_Stone", (0.3, 0.28, 0.29), 0.95),
         "stone_dark": C.material("SDM_StoneDark", (0.13, 0.12, 0.13), 0.95),
-        "plaster": C.material("Plaster", (0.26, 0.23, 0.22), 0.95),
+        "plaster": C.material("Plaster", (0.19, 0.17, 0.16), 0.95),
         "iron": C.material("WroughtIron", (0.035, 0.033, 0.037), 0.55, 0.7),
         "brass": C.material("TarnishedBrass", (0.42, 0.32, 0.16), 0.45, 0.85),
         "wood": C.material("Ebony", (0.06, 0.035, 0.03), 0.6),
@@ -50,13 +50,13 @@ def mats():
         "velvet_lt": C.material("VelvetFaded", (0.3, 0.1, 0.11), 1.0),
         "thread": C.material("GoldThread", (0.36, 0.27, 0.12), 0.8),
         "bone": C.material("ClockFace", (0.6, 0.56, 0.48), 0.6),
-        "glow": C.material("WindowGlow", (0.75, 0.05, 0.05), 0.5, emission=2.5),
+        "glow": C.material("WindowGlow", (0.7, 0.012, 0.018), 0.5, emission=1.6),
         "void": C.material("Void", (0.01, 0.008, 0.01), 0.3),
         "glass": C.material("DeadGlass", (0.05, 0.05, 0.06), 0.1),
         "crystal": C.material("Crystal", (0.55, 0.52, 0.56), 0.1, 0.3),
         "wax": C.material("Wax", (0.72, 0.68, 0.6), 0.7),
-        "flame": C.material("Flame", (1.0, 0.62, 0.3), 0.5, emission=4.0),
-        "eye": C.material("EyeGlow", (0.8, 0.06, 0.05), 0.5, emission=3.0),
+        "flame": C.material("Flame", (1.0, 0.45, 0.15), 0.5, emission=2.0),
+        "eye": C.material("EyeGlow", (0.7, 0.012, 0.018), 0.5, emission=2.0),
         "dead": C.material("DeadBranch", (0.07, 0.055, 0.05), 0.9),
         "rose": C.material("DeadRose", (0.16, 0.015, 0.03), 0.8),
         "leaf": C.material("DeadLeaf", (0.16, 0.11, 0.07), 1.0),
@@ -83,6 +83,13 @@ def finish(name, parts, ground=False):
         lo = Vector((min(v.x for v in bb), min(v.y for v in bb), min(v.z for v in bb)))
         hi = Vector((max(v.x for v in bb), max(v.y for v in bb), max(v.z for v in bb)))
         C.transform(obj, Matrix.Translation((-(lo.x + hi.x) / 2, -(lo.y + hi.y) / 2, -lo.z)))
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    bmesh.ops.dissolve_degenerate(bm, dist=1e-5, edges=bm.edges)
+    # Beauty triangulation avoids slivers where ngons have collinear points.
+    bmesh.ops.triangulate(bm, faces=bm.faces, quad_method="BEAUTY", ngon_method="BEAUTY")
+    bm.to_mesh(obj.data)
+    bm.free()
     C.activate(obj)
     try:
         bpy.ops.object.shade_smooth_by_angle(angle=math.radians(35))
@@ -694,7 +701,7 @@ def build_staircase():
     corners = [(y0, 0.0)]
     for i in range(n):
         corners += [(y0 + i * run, (i + 1) * rise), (y0 + (i + 1) * run, (i + 1) * rise)]
-    body = corners + [(3.0, n * rise), (3.0, 0.0)]
+    body = corners[:-1] + [(3.0, n * rise), (3.0, 0.0)]
     P = [extrude("Steps", body, -width / 2, width / 2, M["stone"], "yz")]
     top_y = y0 + n * run
     for sx in (-1, 1):
@@ -709,7 +716,7 @@ def build_staircase():
         P.append(C.box("NewelTop", (0.46, 0.46, 0.6), (sx * (width / 2 + 0.15), 2.8, n * rise + 1.3), M["stone"]))
     d = 0.02  # the runner is a thin stepped shell laid over the treads
     run_end = 3.0 - 0.3
-    inner = corners[1:] + [(run_end, n * rise)]
+    inner = corners[1:-1] + [(run_end, n * rise)]
     outer = [(y - d, z + d) for y, z in inner]
     outer[-1] = (run_end, n * rise + d)
     poly = [(y0 - d, 0.0)] + outer + inner[::-1] + [(y0, 0.0)]
@@ -742,7 +749,8 @@ def build_grand_clock():
     h, m = FROZEN_TIME
     P.append(clock_hand("Hour", 0.13, 0.012, (h + m / 60) * 30, 0, cz, -0.262, -0.256, M["iron"]))
     P.append(clock_hand("Minute", 0.19, 0.009, m * 6, 0, cz, -0.268, -0.262, M["iron"]))
-    P.append(C.box("Crack", (0.006, 0.004, 0.22), (0.07, -0.2535, cz - 0.06), M["void"], (0, 28, 0)))
+    for (x, z, ln, a) in ((-0.2, cz - 0.08, 0.08, 70), (-0.15, cz - 0.1, 0.07, 120), (-0.1, cz - 0.1, 0.06, 60)):  # hairline crack
+        P.append(C.box("Crack", (0.005, 0.004, ln), (x, -0.2535, z), M["void"], (0, a, 0)))
     for sx in (-1, 1):
         P.append(cyl("Column", 0.025, 1.84, 2.43, M["brass"], 8, sx * 0.31, -0.2))
     P.append(extrude("Pediment", arch(0.72, 0.02, 6, 0, 2.51, 0.5), -0.2, 0.2, M["wood"], "xz"))
@@ -861,7 +869,8 @@ def build_bookshelf():
     P = [C.box("Plinth", (2.3, 0.55, 0.15), (0, 0, 0.075), M["wood"]),
          C.box("Back", (2.2, 0.03, 3.2), (0, 0.235, 1.6), M["wood_red"]),
          C.box("Cornice", (2.38, 0.6, 0.14), (0, 0, 3.27), M["wood"]),
-         extrude("Crest", arch(1.0, 0.02, 6, 0, 3.34, 0.56), -0.02, 0.02, M["wood"], "xz")]
+         arch_frame("Crest", 0.9, 0.05, 0.1, -0.04, 0.04, M["wood"], 0, 3.34),
+         extrude("CrestMoon", circle(0.16, 16, 0, 3.62), -0.03, 0.03, M["brass"], "xz")]
     for sx in (-1, 1):
         P.append(C.box("Side", (0.08, 0.5, 3.2), (sx * 1.06, 0, 1.6), M["wood"]))
         P.append(lathe("Finial", [(0, 3.34), (0.06, 3.34), (0.07, 3.42), (0.02, 3.58), (0, 3.62)], 8, M["wood"], (sx * 1.08, -0.2, 0)))

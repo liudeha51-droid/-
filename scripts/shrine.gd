@@ -22,6 +22,8 @@ func _ready() -> void:
 		# In-house hokora; its front (glTF +Z) turned to face the path (-Z).
 		Kit.place(self, "hokora", Vector3.ZERO, PI)
 		MeshKit.solid_box(self, Vector3(1.1, 1.0, 0.85), Vector3(0, 0.8, 0.1))
+		# Roof volume, so the camera's spring arm pulls in instead of clipping into it.
+		MeshKit.solid_box(self, Vector3(2.1, 0.8, 1.9), Vector3(0, 1.65, 0.1))
 	else:
 		MeshKit.add(self, MeshKit.box(Vector3(1.2, 1.0, 0.9)), wood, Vector3(0, 0.8, 0.1))
 		MeshKit.add(self, MeshKit.prism(Vector3(1.8, 0.6, 1.4)), roof, Vector3(0, 1.6, 0.1))

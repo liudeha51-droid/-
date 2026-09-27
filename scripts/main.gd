@@ -8,6 +8,8 @@ const SHRINE_POS := Vector3(0, 0, 44)
 const ARENA_CENTER := Vector3(0, 0, -10)
 const ARENA_RADIUS := 21.0
 const RESPAWN_DELAY := 4.0
+# Far enough in front of the shrine that the camera behind Reimu clears its roof.
+const SPAWN_OFFSET := Vector3(0, 0.1, -6.5)
 const BROKEN_TORII_POS := Vector3(0, 0, -41)
 
 var player: Player
@@ -40,7 +42,7 @@ func _ready() -> void:
 	player = Player.new()
 	player.name = "Player"
 	add_child(player)
-	player.global_position = SHRINE_POS + Vector3(0, 0.1, -3.0)
+	player.global_position = SHRINE_POS + SPAWN_OFFSET
 
 	camera_rig = CameraRig.new()
 	add_child(camera_rig)
@@ -138,7 +140,7 @@ func _respawn() -> void:
 	_end_fight()
 	if not boss_beaten:
 		boss.reset()
-	player.respawn(SHRINE_POS + Vector3(0, 0.1, -3.0))
+	player.respawn(SHRINE_POS + SPAWN_OFFSET)
 
 
 func _on_prayed() -> void:

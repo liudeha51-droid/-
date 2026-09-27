@@ -21,12 +21,15 @@ func _run() -> void:
 	var boss: BossCirno = main.boss
 	var bullets: BulletManager = main.bullets
 	_check(player != null and boss != null, "scene built")
+	_check(Music.instance != null and Music.instance.tracks.size() == 2, "placeholder music loops generated")
+	_check(Music.instance.current == "explore", "exploration music plays at start")
 
 	player.global_position = main.ARENA_CENTER + Vector3(0, 0.1, 8)
 	await _wait(0.3)
 	_check(main.boss_fight, "boss fight starts when entering the arena")
 	main.toggle_lock_on()
 	_check(player.lock_target == boss, "lock-on targets the boss")
+	_check(Music.instance.current == "boss", "boss music plays during the fight")
 
 	var max_bullets := 0
 	for action in ["swing", "dash", "ring", "spiral", "aimed"]:

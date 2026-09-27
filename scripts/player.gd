@@ -111,6 +111,12 @@ func _build_model() -> void:
 	# Yin-yang orb orbiting behind her, source of ofuda.
 	var orb := MeshKit.add(b, MeshKit.sphere(0.12), gold, Vector3(-0.5, 0.6, 0.3))
 	orb.name = "Orb"
+	# The yin-yang orb is a small warm light: it keeps Reimu readable in the dark.
+	var glow := OmniLight3D.new()
+	glow.light_color = Color(1.0, 0.8, 0.55)
+	glow.light_energy = 0.9
+	glow.omni_range = 4.5
+	orb.add_child(glow)
 	_set_gohei_pose(0.0)
 
 

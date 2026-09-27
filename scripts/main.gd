@@ -25,6 +25,7 @@ var _help_hidden := false
 func _ready() -> void:
 	InputSetup.ensure_actions()
 	add_child(Sfx.new())
+	add_child(Music.new())
 	_build_environment()
 	_build_world()
 
@@ -69,6 +70,8 @@ func _ready() -> void:
 
 	if not _is_headless():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	add_child(_make_grade_overlay())
+	Music.play("explore")
 	hud.big_message("東方虚信録", "Touhou: Hollow Faith  ·  Misty Lake (prototype)", Color(0.9, 0.2, 0.25), 2.5)
 
 
@@ -119,6 +122,7 @@ func start_boss() -> void:
 	boss.activate()
 	hud.show_boss(true)
 	_arena_wall.visible = true
+	Music.play("boss")
 	hud.banner("霧の湖", "Misty Lake: the ice is thick enough to fight on", Color(0.45, 0.75, 1.0))
 
 
@@ -151,8 +155,35 @@ func _on_boss_defeated() -> void:
 
 func _end_fight() -> void:
 	boss_fight = false
+	Music.play("explore")
 	hud.show_boss(false)
 	_arena_wall.visible = false
+
+
+## Full-screen vignette and film grain: the Souls-style frame on the dark palette.
+func _make_grade_overlay() -> CanvasLayer:
+	var layer := CanvasLayer.new()
+	layer.layer = 0
+	var rect := ColorRect.new()
+	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var shader := Shader.new()
+	shader.code = """
+shader_type canvas_item;
+uniform float strength = 0.6;
+uniform float grain = 0.045;
+void fragment() {
+	vec2 uv = UV - 0.5;
+	float v = smoothstep(0.35, 0.85, length(uv * vec2(1.25, 1.0)));
+	float n = fract(sin(dot(UV * 1000.0 + TIME, vec2(12.9898, 78.233))) * 43758.5453) - 0.5;
+	COLOR = vec4(vec3(n * grain), v * strength + abs(n) * grain);
+}
+"""
+	var sm := ShaderMaterial.new()
+	sm.shader = shader
+	rect.material = sm
+	layer.add_child(rect)
+	return layer
 
 
 # --------------------------------------------------------------------------
@@ -164,49 +195,51 @@ func _build_environment() -> void:
 	env.background_mode = Environment.BG_SKY
 	var sky := Sky.new()
 	var sky_mat := ProceduralSkyMaterial.new()
-	sky_mat.sky_top_color = Color(0.13, 0.14, 0.32)
-	sky_mat.sky_horizon_color = Color(0.9, 0.52, 0.42)
-	sky_mat.ground_horizon_color = Color(0.55, 0.4, 0.45)
-	sky_mat.ground_bottom_color = Color(0.08, 0.08, 0.12)
+	sky_mat.sky_top_color = Color(0.07, 0.07, 0.12)
+	sky_mat.sky_horizon_color = Color(0.36, 0.26, 0.34)
+	sky_mat.ground_horizon_color = Color(0.2, 0.16, 0.2)
+	sky_mat.ground_bottom_color = Color(0.02, 0.02, 0.03)
 	sky_mat.sun_angle_max = 20.0
 	sky.sky_material = sky_mat
 	env.sky = sky
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	env.ambient_light_energy = 0.45
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color(0.3, 0.3, 0.4)
+	env.ambient_light_energy = 1.0
 	env.tonemap_mode = Environment.TONE_MAPPER_ACES
-	env.tonemap_exposure = 1.05
+	env.tonemap_exposure = 1.0
 	env.glow_enabled = true
 	env.glow_intensity = 0.9
 	env.glow_bloom = 0.08
 	env.glow_hdr_threshold = 1.1
 	env.fog_enabled = true
-	env.fog_light_color = Color(0.5, 0.48, 0.62)
-	env.fog_density = 0.0065
+	env.fog_light_color = Color(0.26, 0.24, 0.32)
+	env.fog_density = 0.012
 	env.fog_sky_affect = 0.25
 	env.volumetric_fog_enabled = true
 	env.volumetric_fog_density = 0.018
-	env.volumetric_fog_albedo = Color(0.8, 0.82, 0.95)
+	env.volumetric_fog_albedo = Color(0.55, 0.55, 0.65)
 	env.ssao_enabled = true
 	env.adjustment_enabled = true
-	env.adjustment_saturation = 1.1
+	env.adjustment_saturation = 0.72
+	env.adjustment_contrast = 1.12
 	var we := WorldEnvironment.new()
 	we.environment = env
 	add_child(we)
 
 	var sun := DirectionalLight3D.new()
-	sun.light_color = Color(1.0, 0.72, 0.55)
-	sun.light_energy = 1.15
+	sun.light_color = Color(1.0, 0.58, 0.46)
+	sun.light_energy = 0.9
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 90.0
-	sun.rotation_degrees = Vector3(-18, 150, 0)
+	sun.rotation_degrees = Vector3(-10, 150, 0)
 	add_child(sun)
 
 
 func _build_world() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 1996  # Touhou's first year
-	var grass := MeshKit.mat(Color(0.16, 0.22, 0.13), 0.0, 1.0)
-	var stone := MeshKit.mat(Color(0.45, 0.45, 0.47), 0.0, 0.95)
+	var grass := MeshKit.mat(Color(0.12, 0.13, 0.11), 0.0, 1.0)
+	var stone := MeshKit.mat(Color(0.3, 0.3, 0.32), 0.0, 0.95)
 	var red := MeshKit.mat(Color(0.78, 0.1, 0.08), 0.0, 0.55)
 	var black := MeshKit.mat(Color(0.08, 0.07, 0.07), 0.0, 0.6)
 
@@ -216,8 +249,8 @@ func _build_world() -> void:
 		MeshKit.solid_box(self, w[0], w[1])
 
 	# Lake: dark water ring and the frozen arena disc.
-	MeshKit.add(self, MeshKit.cylinder(34, 34, 0.04, 64), MeshKit.mat(Color(0.05, 0.12, 0.2), 0.0, 0.05, 0.3), ARENA_CENTER + Vector3(0, 0.01, 0))
-	var ice := MeshKit.mat(Color(0.34, 0.52, 0.66), 0.0, 0.6, 0.0)
+	MeshKit.add(self, MeshKit.cylinder(34, 34, 0.04, 64), MeshKit.mat(Color(0.01, 0.015, 0.025), 0.0, 0.05, 0.3), ARENA_CENTER + Vector3(0, 0.01, 0))
+	var ice := MeshKit.mat(Color(0.28, 0.34, 0.42), 0.0, 0.5, 0.0)
 	ice.metallic_specular = 0.25  # low sun: keep the ice from flaring
 	MeshKit.add(self, MeshKit.cylinder(ARENA_RADIUS + 1.5, ARENA_RADIUS + 1.5, 0.06, 64), ice, ARENA_CENTER + Vector3(0, 0.03, 0))
 	# Frost cracks for readability of scale.
@@ -265,8 +298,8 @@ func _build_world() -> void:
 			add_child(l)
 
 	# Forest ring (placeholder trees), kept off the path and the lake.
-	var bark := MeshKit.mat(Color(0.22, 0.15, 0.1), 0.0, 1.0)
-	var leaves := [MeshKit.mat(Color(0.12, 0.25, 0.14), 0.0, 1.0), MeshKit.mat(Color(0.18, 0.3, 0.16), 0.0, 1.0), MeshKit.mat(Color(0.5, 0.18, 0.22), 0.0, 1.0)]
+	var bark := MeshKit.mat(Color(0.1, 0.08, 0.07), 0.0, 1.0)
+	var leaves := [MeshKit.mat(Color(0.07, 0.09, 0.08), 0.0, 1.0), MeshKit.mat(Color(0.1, 0.11, 0.1), 0.0, 1.0), MeshKit.mat(Color(0.2, 0.19, 0.18), 0.0, 1.0)]
 	var placed := 0
 	while placed < 140:
 		var p := Vector3(rng.randf_range(-56, 56), 0, rng.randf_range(-56, 66))

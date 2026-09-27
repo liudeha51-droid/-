@@ -1,9 +1,10 @@
 # 東方虚信録 ~ Touhou: Hollow Faith
 
-A non-commercial **Touhou Project fan-made Soulslike** (東方Project二次創作), built in Godot 4.
+A **Touhou Project fan-made Soulslike** (東方Project二次創作), built in Godot 4.
 
 > Touhou Project and all of its characters are the property of ZUN / Team Shanghai Alice
 > (上海アリス幻樂団). This is an unofficial fan work.
+> It is intended for release on Steam, subject to permission from the rights holder.
 
 ![Cirno, phase 1](docs/screenshots/cirno_phase1.png)
 
@@ -12,7 +13,7 @@ A non-commercial **Touhou Project fan-made Soulslike** (東方Project二次創�
 Prototype vertical slice: **Misty Lake at dusk**. Walk from a wayside shrine through a
 torii to the frozen lake and fight **Cirno**, a two-phase boss mixing Souls melee with
 danmaku and two spell cards. All models are greybox placeholders built from primitives;
-sound effects are synthesised at runtime.
+sound effects and placeholder music are synthesised at runtime.
 
 The design is in [docs/GAME_DESIGN.md](docs/GAME_DESIGN.md).
 
@@ -63,5 +64,6 @@ scripts/camera_rig.gd     orbit camera, lock-on, shake
 scripts/hud.gd            bars, boss bar, spell card banner, messages
 scripts/shrine.gd         checkpoint
 scripts/sfx.gd            runtime-synthesised placeholder SFX
+scripts/music.gd          runtime-synthesised placeholder music (explore / boss loops)
 assets/                   final models, audio and textures go here
 ```

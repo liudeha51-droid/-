@@ -1,7 +1,18 @@
-# 東方虚信録 ~ Touhou: Hollow Faith — Game Design Document (v0.1)
+# 東方虚信録 ~ Touhou: Hollow Faith — Game Design Document (v0.2)
 
-> Working title. A non-commercial Touhou Project fan work (東方Project二次創作).
+> Working title. A Touhou Project fan work (東方Project二次創作) intended for release on
+> Steam, subject to permission from the rights holder (see §11).
 > Touhou Project and all its characters belong to ZUN / Team Shanghai Alice (上海アリス幻樂団).
+
+## 0. Direction decisions (2026-09-27)
+
+| Topic | Decision |
+|---|---|
+| Protagonist | **Reimu Hakurei** is the primary protagonist. Original characters are welcome when they grow naturally out of Gensokyo's setting, lore and atmosphere (§6). |
+| Tone | A **darker, distinctive, stylised Gensokyo** with a strong Soulslike atmosphere (§7). |
+| 3D models | Made **in-house**. No commissioned or pre-made VRoid/MMD assets (§8). |
+| Music | **Undecided.** Placeholder music is used during development (§9). |
+| Release | **Steam** (§11). |
 
 ## 1. Pitch
 
@@ -20,8 +31,9 @@ with Touhou danmaku (bullet patterns, grazing, spell cards)**. Bosses fight you 
    deterministic in structure with small randomness. Fair, not cheap.
 2. **Graze is the heartbeat.** Near-misses restore stamina and fill Spirit. Brave play
    (rolling *through* bullets) is rewarded rather than just survived.
-3. **Gensokyo is beautiful and melancholy.** Dusk light, mist, shrines, lanterns. The
-   world should feel like the games' music sounds.
+3. **Gensokyo is beautiful and dying.** The paradise is still there under the mist:
+   shrines, lanterns, cherry trees. But faith is draining out of it, and every area shows
+   what is lost when people stop believing. Melancholy first, horror second.
 4. **Respect the source.** Characters act like themselves; spell cards use their canonical
    names; nothing that would embarrass the Touhou community.
 
@@ -80,34 +92,84 @@ bullets. Each has a recovery window after every action, which is the punish open
 Optional bosses and NPC allies (Marisa as a summonable ally, Suika's gourd as the
 Estus equivalent, Rinnosuke as the shopkeeper).
 
+### Original characters
+
+**Rule:** an original character (OC) must be something Gensokyo's own lore implies but
+never shows. Examples are a role the setting has, a kind of being it describes, or a
+consequence of this story's premise. OCs never replace or overshadow a canon character's
+defining role, and canon characters keep their personalities, even hollowed.
+
+Proposals that follow the rule:
+
+| OC | Where it comes from | Role |
+|---|---|---|
+| **The Former Shrine Maiden** (先代の巫女) | Canon implies earlier Hakurei shrine maidens but never shows them. | A hollowed predecessor who kept guarding the Barrier after faith left her. Recurring rival, late boss, and the dark mirror of what Reimu could become. |
+| **The Wayside God** (道祖神) | Small roadside gods are part of Gensokyo's folk religion. | Tends the shrine checkpoints and grows fainter as faith fails. The "firekeeper" NPC who levels you up with Faith. |
+| **The Faithless** | This story's premise. | Youkai and fairies who lost faith: the common enemy roster (hollowed fairies, masked tengu scouts, rotting kappa machines). |
+| **The Collector of Names** | Gensokyo is where forgotten things go. | Merchant who trades in names and memories, and speaks for what the world forgot. |
+
+Every OC gets a one-page brief (origin in lore, silhouette, colour, voice, fate) before
+any modelling starts.
+
 Progression: Faith (currency) levels HP / Stamina / Spirit / Power; new **gohei, sword
 and amulet** weapon types; spell cards collected from defeated bosses become equippable
 player spell cards.
 
-## 7. Art direction
+## 7. Art direction: dark, stylised Gensokyo
 
-- Stylised anime realism: cel-leaning shading on characters with soft PBR environments
-  (think Genshin-level character fidelity in a Souls-lit world).
-- Colour script per area; Misty Lake is dusk-pink sky, cold blue ice, warm lantern light.
-- Bullets are always the brightest thing on screen (unshaded + glow) for readability.
+- **Ink and ember.** Desaturated, cold world colours (slate, ash, bruised violet, bone),
+  heavy mist and deep shadow. Warm light is scarce and means safety: shrine flames and
+  lanterns. **Red is reserved** for Reimu, torii and blood-red spell cards, so the
+  protagonist always reads against the world.
+- **Stylised, not realistic.** Characters use cel-leaning shading with ink outlines.
+  Environments use painterly PBR with sumi-e (ink wash) accents: brush-stroke silhouettes
+  on distant trees and hills, and paper-grain in the fog.
+- **Hollowing is visible.** Faithless characters are drained of colour, crack like
+  porcelain, and have hollow eyes. Their spell cards glow a sickly, corrupted version of
+  their canon colours. A boss's colour returns when you defeat them.
+- **Danmaku stays readable.** Bullets are always the brightest, most saturated thing on
+  screen (unshaded + glow). The dark world makes them pop.
+- **Colour script.** Misty Lake is a violet-grey dusk with a dying red sun, black water,
+  cold ice, and warm lantern islands.
 - **Placeholder policy:** every model in the prototype is built from primitives in code
-  (`scripts/*_build_model`). Replacing one means swapping that function for an imported
-  scene; gameplay code doesn't reference meshes.
+  (`_build_model()` in each script). Replacing one means swapping that function for an
+  imported scene; gameplay code doesn't reference meshes.
 
-**3D model pipeline (planned):** Blender → glTF 2.0 (`.glb`) → `assets/models/`.
-Characters: ~40–60k tris, humanoid rig compatible with Godot's retargeting, separate
-cloth/hair bones for secondary motion, toon + outline material.
+## 8. In-house 3D model pipeline
 
-## 8. Audio direction
+All models are made by the team. There are no commissioned or pre-made VRoid/MMD bases,
+so every asset's copyright is clear and Steam-safe.
 
-- Boss themes: arrangements of the character's canonical theme (e.g. Cirno's
-  「おてんば恋娘」) are the most Touhou move, and fan arrangements are allowed under the
-  guidelines with credit. They need a composer/arranger.
-- Area music: original ambient pieces in a Touhou idiom (piano, strings, trumpet leads).
-- SFX: the prototype synthesises placeholder SFX at runtime (`scripts/sfx.gd`); no audio
-  files are shipped yet.
+- **Tools:** Blender (modelling, rigging, animation), Krita or Substance Painter
+  (textures). Export glTF 2.0 (`.glb`) to `assets/models/<category>/<name>/`.
+- **Characters:** ~40–60k triangles, 1–2 texture sets (2K), hand-painted base colour plus
+  a light ramp for toon shading. Use a humanoid skeleton that Godot's retargeting maps.
+  Extra bones for hair, sleeves, ribbons and skirt drive physics-based secondary motion.
+- **Enemies:** 15–30k tris, and share a rig with the player where possible so animations
+  can be reused.
+- **Environment kit:** modular pieces on a 1 m grid (shrine, torii, lanterns, stone
+  paths, trees, rocks, fences), 1–10k tris each, with trim sheets and vertex-colour
+  weathering. Use LODs for anything placed more than 20 times.
+- **Shaders:** one character toon shader with an inverted-hull outline, and one
+  environment shader with an ink-edge and fog-paper overlay. Both are shared across all
+  assets.
+- **Order of production:** (1) Reimu, (2) Cirno, (3) hollowed fairy, (4) Misty Lake kit.
+  Each one gets a turnaround sheet → blockout in-engine → sculpt/retopo → rig → animation
+  set (idle, run, roll, 3 attacks, hit, death).
+- **Roles to fill:** character artist, environment artist, animator. One person can
+  start with blockouts that replace the greybox directly.
 
-## 9. Technology
+## 9. Audio direction
+
+- **Music: undecided.** Options for later are arrangements of canon themes (e.g. Cirno's
+  「おてんば恋娘」), original compositions in a Touhou idiom, or a mix of both. Check any
+  arrangement against the Steam permission terms.
+- **Placeholder music (in the build now):** `scripts/music.gd` synthesises a slow minor
+  ambient loop for exploration and a driving loop for boss fights, and crossfades between
+  them. To replace a track, assign an audio stream to it; nothing else changes.
+- **SFX:** synthesised placeholders at runtime (`scripts/sfx.gd`).
+
+## 10. Technology
 
 - **Godot 4.3**, GDScript, Forward+ renderer (volumetric fog, glow, SSAO). The
   Compatibility renderer also runs (used for the screenshots), minus volumetric fog.
@@ -115,33 +177,44 @@ cloth/hair bones for secondary motion, toon + outline material.
 - Bullets are managed centrally (`scripts/bullet_manager.gd`) with distance checks, not
   physics bodies, so hundreds can be on screen.
 - Headless smoke test: `godot --headless --path . -s tests/smoke_test.gd`.
+- Steam integration (later): the GodotSteam extension for achievements, cloud saves and
+  Steam Input. Export targets are Windows and Linux (Steam Deck).
 
-## 10. Fan-work guidelines
+## 11. Release: Steam
 
-The project should follow ZUN's published *東方Projectの二次創作ガイドライン*:
+Target: **Steam**, Windows first, with Steam Deck support.
 
-- Non-commercial (or doujin-scale) and clearly labelled as fan work, with the credit line
-  above. Commercial release on platforms such as Steam goes through the separate
-  permission process described in the guidelines.
-- No official assets ripped from the games (sprites, music files, art). Everything is
-  made for this project.
-- No content that damages the image of Touhou or its characters.
-- Check the current guidelines before any public release; they are updated occasionally.
+**Permission comes first.** Releasing a Touhou fan game on a platform like Steam needs
+permission from the rights holder, beyond the general fan-work guidelines. Before we
+make a Steam store page, check the current official process on the Touhou Project
+official site and apply with a playable demo. The design must also:
 
-## 11. Roadmap
+- follow ZUN's *東方Projectの二次創作ガイドライン* and label the game as a fan work with the
+  credit line above;
+- use no official assets ripped from the games (sprites, music files, art). Everything is
+  original or made in-house;
+- include no content that damages the image of Touhou or its characters. The dark tone
+  is about atmosphere and loss, not degrading the cast.
 
-1. **M0 (this PR):** design doc + playable greybox slice with Cirno.
-2. **M1:** real Reimu and Cirno models and animations; Cirno theme arrangement; hit-stop,
-   camera polish, controller rumble; Faith drop on death.
-3. **M2:** first full area (Scarlet Devil Mansion gate + Meiling, Sakuya), enemy roster of
-   hollowed fairies, save system, menus.
-4. **M3:** progression (levelling, weapons, player spell cards), second area.
+**Steam readiness checklist (later milestones):** full controller support (done in
+prototype), rebindable input, settings menu (graphics, audio, accessibility), save
+system with Steam Cloud, achievements, a 60 fps target on Steam Deck, store assets
+(capsule art, trailer, screenshots), and the content-rating questionnaire.
 
-## 12. Open decisions
+## 12. Roadmap
 
-- Protagonist: Reimu only, Reimu + Marisa, or a custom shrine maiden with Reimu as NPC.
-- Tone: faithful-bright Touhou vs. darker "hollow Gensokyo" (current default).
-- Art style target and budget: commissioned models, VRoid/MMD-based models (check each
-  model's licence), or in-house.
-- Music: who arranges, and which themes.
-- Distribution: free download (itch.io) vs. applying for commercial permission.
+1. **M0 (this PR):** design doc + playable greybox slice with Cirno, dark look,
+   placeholder music.
+2. **M1:** in-house Reimu and Cirno models and animations; toon/ink shaders; hit-stop,
+   camera polish, rumble; Faith drop on death; first hollowed-fairy enemy.
+3. **M2:** Misty Lake as a full area with the Wayside God NPC; save system and menus;
+   **demo build for the Steam permission application.**
+4. **M3:** Scarlet Devil Mansion (Meiling, Sakuya), progression (levelling, weapons,
+   player spell cards).
+5. **M4:** Steam page, achievements, Steam Deck verification.
+
+## 13. Open decisions
+
+- Music direction (deferred).
+- Price on Steam: free or paid. This depends on what the permission allows.
+- Which OC proposals in §6 to keep.

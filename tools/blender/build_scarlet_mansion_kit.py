@@ -33,7 +33,7 @@ FROZEN_TIME = (11, 55)  # every clock in the mansion stopped at the same moment
 
 def mats():
     return {
-        "brick": C.material("SDM_Brick", (0.2, 0.055, 0.05), 0.9),
+        "brick": C.material("SDM_Brick", (0.17, 0.06, 0.055), 0.9),
         "brick_dark": C.material("SDM_BrickDark", (0.11, 0.035, 0.035), 0.95),
         "stone": C.material("SDM_Stone", (0.3, 0.28, 0.29), 0.95),
         "stone_dark": C.material("SDM_StoneDark", (0.13, 0.12, 0.13), 0.95),
@@ -42,15 +42,15 @@ def mats():
         "brass": C.material("TarnishedBrass", (0.42, 0.32, 0.16), 0.45, 0.85),
         "wood": C.material("Ebony", (0.06, 0.035, 0.03), 0.6),
         "wood_red": C.material("Mahogany", (0.15, 0.055, 0.04), 0.7),
-        "paper": C.material("Wallpaper", (0.2, 0.04, 0.05), 0.9),
-        "stripe": C.material("WallpaperStripe", (0.12, 0.025, 0.035), 0.9),
+        "paper": C.material("Wallpaper", (0.16, 0.045, 0.055), 0.9),
+        "stripe": C.material("WallpaperStripe", (0.1, 0.03, 0.04), 0.9),
         "marble_l": C.material("MarbleLight", (0.4, 0.38, 0.38), 0.3),
         "marble_d": C.material("MarbleDark", (0.06, 0.04, 0.05), 0.3),
-        "velvet": C.material("Velvet", (0.17, 0.02, 0.035), 1.0),
+        "velvet": C.material("Velvet", (0.14, 0.025, 0.035), 1.0),
         "velvet_lt": C.material("VelvetFaded", (0.3, 0.1, 0.11), 1.0),
         "thread": C.material("GoldThread", (0.36, 0.27, 0.12), 0.8),
         "bone": C.material("ClockFace", (0.6, 0.56, 0.48), 0.6),
-        "glow": C.material("WindowGlow", (0.7, 0.012, 0.018), 0.5, emission=1.6),
+        "glow": C.material("WindowGlow", (0.7, 0.012, 0.018), 0.5, emission=1.1),
         "void": C.material("Void", (0.01, 0.008, 0.01), 0.3),
         "glass": C.material("DeadGlass", (0.05, 0.05, 0.06), 0.1),
         "crystal": C.material("Crystal", (0.55, 0.52, 0.56), 0.1, 0.3),
@@ -58,7 +58,7 @@ def mats():
         "flame": C.material("Flame", (1.0, 0.45, 0.15), 0.5, emission=2.0),
         "eye": C.material("EyeGlow", (0.7, 0.012, 0.018), 0.5, emission=2.0),
         "dead": C.material("DeadBranch", (0.07, 0.055, 0.05), 0.9),
-        "rose": C.material("DeadRose", (0.16, 0.015, 0.03), 0.8),
+        "rose": C.material("DeadRose", (0.08, 0.01, 0.02), 0.8),
         "leaf": C.material("DeadLeaf", (0.16, 0.11, 0.07), 1.0),
         "soil": C.material("Soil", (0.06, 0.05, 0.045), 1.0),
         "moss": C.material("Moss", (0.12, 0.15, 0.1), 1.0),
@@ -380,9 +380,9 @@ def garden_wall_parts(M, rng, broken):
         P.append(C.box("Rail", (0.03, 0.03, 0.62), (x, 0, 2.95), M["iron"]))
         P.append(spear("Spear", x, 0, 3.26, 0.16, 0.03, M["iron"]))
     # Stucco clinging to the brick, and a band of moss at the foot.
-    for _ in range(9):
+    for _ in range(5):
         sy = rng.choice((-1, 1))
-        w, h = rng.uniform(0.4, 1.2), rng.uniform(0.3, 0.9)
+        w, h = rng.uniform(0.3, 0.8), rng.uniform(0.25, 0.6)
         x, z = rng.uniform(-1.6 + w / 2, 1.6 - w / 2), rng.uniform(0.5 + h / 2, 2.4 - h / 2)
         P.append(C.box("Stucco", (w, 0.02, h), (x, sy * 0.255, z), M["plaster"]))
     P.append(C.box("Moss", (4.0, 0.66, 0.06), (0, 0, 0.47), M["moss"]))
@@ -500,7 +500,7 @@ def build_rose_bush():
     obj.data.skin_vertices[0].data[0].use_root = True
     C.apply_modifiers(obj)
     obj.data.materials.append(M["dead"])
-    P = [obj, lathe("Mound", [(0, 0), (0.75, 0), (0.5, 0.12), (0, 0.18)], 10, M["soil"])]
+    P = [obj, lathe("Mound", [(0, 0), (0.55, 0), (0.38, 0.1), (0, 0.16)], 10, M["soil"])]
     for t in rng.sample(tips, min(8, len(tips))):  # a few withered blooms still cling on
         rs = rng.uniform(0.06, 0.09)
         bm = bmesh.new()

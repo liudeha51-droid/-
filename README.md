@@ -48,30 +48,22 @@ characters are in [docs/STORY_AND_CHARACTERS.md](docs/STORY_AND_CHARACTERS.md).
 
 Grazing bullets (letting them pass close) restores stamina and fills Spirit.
 
-## Tests
+## Core gameplay code (private)
+
+The core gameplay logic (scenes, gameplay scripts and tests) is not kept in this repository.
+It lives in a private `core/` folder at the project root, which `.gitignore` excludes.
+Drop the private `core/` folder into a clone of this repo to run the game:
 
 ```sh
-godot --headless --path . -s tests/smoke_test.gd
+godot --headless --path . --import
+godot --headless --path . -s core/tests/smoke_test.gd
 ```
-
-Walks into the arena, forces every boss action in both phases, casts a spell card, dies
-and respawns, prays, and defeats the boss. Prints `SMOKE TEST PASSED` on success.
 
 ## Layout
 
 ```
-scenes/main.tscn          entry scene (everything else is built in code)
-scripts/main.gd           level layout, environment, fight flow, respawn
-scripts/player.gd         Reimu: movement, stamina, combo, dodge, ofuda, spell card
-scripts/boss_cirno.gd     Cirno AI, attack patterns, spell cards
-scripts/bullet_manager.gd danmaku update, hit and graze detection
-scripts/camera_rig.gd     orbit camera, lock-on, shake
-scripts/hud.gd            bars, boss bar, spell card banner, messages
-scripts/shrine.gd         checkpoint
-scripts/sfx.gd            runtime-synthesised placeholder SFX
-scripts/music.gd          runtime-synthesised placeholder music (explore / boss loops)
-scripts/toon.gd           toon shading + ink outline for imported characters
-scripts/kit.gd            loads the Misty Lake environment kit
+core/                     private gameplay code (not in Git): scenes, scripts, tests
+data/                     game content data: areas, enemies, items, dialogue, lore
 tools/blender/            Blender scripts that build the in-house models and animations
 assets/                   final models, audio and textures go here
 ```

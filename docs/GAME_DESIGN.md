@@ -173,7 +173,7 @@ reproducible and reviewable as code. Artists replace or refine them by hand from
 | **Misty Lake kit** `assets/models/environment/misty_lake/*.glb` | `tools/blender/build_misty_lake_kit.py` | Great torii, broken torii, stone lantern, hokora checkpoint shrine, the Wayside God stone, 3 dead trees, 2 ink pines, 3 rocks, reeds. |
 
 In-game, Reimu uses toon diffuse/specular, a rim light and an inverted-hull ink outline
-(`scripts/toon.gd`). The level falls back to primitives if an asset is missing.
+(the private toon shader). The level falls back to primitives if an asset is missing.
 
 **Next for Reimu (hand work in Blender):**
 - a sculpt/retopo pass on the face and hands;
@@ -193,19 +193,19 @@ blender --background --python tools/blender/build_misty_lake_kit.py
 - **Music: undecided.** Options for later are arrangements of canon themes (e.g. Cirno's
   「おてんば恋娘」), original compositions in a Touhou idiom, or a mix of both. Check any
   arrangement against the Steam permission terms.
-- **Placeholder music (in the build now):** `scripts/music.gd` synthesises a slow minor
+- **Placeholder music (in the build now):** the private music script synthesises a slow minor
   ambient loop for exploration and a driving loop for boss fights, and crossfades between
   them. To replace a track, assign an audio stream to it; nothing else changes.
-- **SFX:** synthesised placeholders at runtime (`scripts/sfx.gd`).
+- **SFX:** synthesised placeholders at runtime (private SFX script).
 
 ## 10. Technology
 
 - **Godot 4.3**, GDScript, Forward+ renderer (volumetric fog, glow, SSAO). The
   Compatibility renderer also runs (used for the screenshots), minus volumetric fog.
-- Input: keyboard/mouse and gamepad, registered in `scripts/input_setup.gd`.
-- Bullets are managed centrally (`scripts/bullet_manager.gd`) with distance checks, not
+- Input: keyboard/mouse and gamepad.
+- Bullets are managed centrally  with distance checks, not
   physics bodies, so hundreds can be on screen.
-- Headless smoke test: `godot --headless --path . -s tests/smoke_test.gd`.
+- Headless smoke test: `godot --headless --path . -s core/tests/smoke_test.gd` (private core).
 - Steam integration (later): the GodotSteam extension for achievements, cloud saves and
   Steam Input. Export targets are Windows and Linux (Steam Deck).
 

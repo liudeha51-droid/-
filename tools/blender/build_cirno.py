@@ -39,7 +39,7 @@ M = {
     "shine": C.material("CirnoEyeShine", (1.0, 1.0, 1.0), 0.1, emission=1.0),
     "line": C.material("CirnoLine", (0.10, 0.08, 0.16), 0.6),
     "fang": C.material("Fang", (0.97, 0.97, 1.0), 0.3),
-    "ice": C.material("Ice", (0.62, 0.92, 1.0), 0.08, emission=0.45),
+    "ice": C.material("Ice", (0.45, 0.88, 1.0), 0.08, emission=0.6),
 }
 ice = M["ice"]
 bsdf = ice.node_tree.nodes.get("Principled BSDF")
@@ -119,8 +119,8 @@ def build_body():
         hd = v((sx * 0.195, -0.028, 0.49), (0.024, 0.017))
         hip = v((sx * 0.062, 0, 0.575), (0.05, 0.05))
         kn = v((sx * 0.066, 0, 0.33), (0.034, 0.034))
-        an = v((sx * 0.066, 0.01, 0.07), (0.024, 0.024))
-        toe = v((sx * 0.066, -0.065, 0.028), (0.028, 0.024))
+        an = v((sx * 0.066, 0.01, 0.07), (0.027, 0.027))
+        toe = v((sx * 0.066, -0.07, 0.03), (0.032, 0.027))
         edges += [(upper, sh), (sh, el), (el, wr), (wr, hd), (pelvis, hip), (hip, kn), (kn, an), (an, toe)]
 
     mesh = bpy.data.meshes.new("Body")
@@ -148,12 +148,11 @@ def build_body():
             key = "frost" if c.z < 0.53 else "skin"
         elif c.z > 0.875:
             key = "skin"
-        elif c.z < 0.05:
+        elif c.z < 0.085:
             key = "shoe"
         elif c.z < 0.55:
-            knee = abs(c.z - 0.335) < 0.03 and c.y < -0.012
-            shin = abs(c.z - 0.2) < 0.035 and c.y < -0.015 and c.x < 0  # a patch on the right shin
-            key = "frost" if (knee or shin) else "skin"
+            knee = abs(c.z - 0.335) < 0.022 and c.y < -0.02 and abs(abs(c.x) - 0.066) < 0.016
+            key = "frost" if knee else "skin"
         elif c.z < 0.63:
             key = "bloomers"
         elif c.z > 0.825:
@@ -214,7 +213,7 @@ def build_head():
             bm.transform(m)
             parts.append(C.new_object("Eye", bm, mat, smooth=False))
         # Angry upper lid line and brow, low on the inner side.
-        parts.append(C.box("Lid", (0.036, 0.006, 0.006), (sx * 0.044, -0.109, 1.067), M["line"], (0, -12 * sx, -20 * sx)))
+        parts.append(C.box("Lid", (0.038, 0.006, 0.008), (sx * 0.044, -0.11, 1.066), M["line"], (0, -14 * sx, -20 * sx)))
         parts.append(C.box("Brow", (0.03, 0.006, 0.005), (sx * 0.046, -0.106, 1.088), M["line"], (0, -22 * sx, -20 * sx)))
     parts.append(C.box("Mouth", (0.022, 0.004, 0.003), (0, -0.098, 0.985), M["line"]))
     fang = crystal("Fang", (0.008, -0.1, 0.985), (0, -0.2, -1), 0.011, 0.004, 0.002, Vector((0, -1, 0)), M["fang"], mid=0.1, sides=4)
@@ -224,7 +223,7 @@ def build_head():
     cap = C.uv_sphere("HairCap", 0.131, (0, 0.008, 1.062), (1.04, 1.0, 1.03), 32, 16, M["hair"])
     bm = bmesh.new()
     bm.from_mesh(cap.data)
-    kill = [v for v in bm.verts if v.co.y < -0.03 and v.co.z < 1.105]
+    kill = [v for v in bm.verts if v.co.y < -0.065 and v.co.z < 1.105]
     bmesh.ops.delete(bm, geom=kill, context="VERTS")
     bm.to_mesh(cap.data)
     bm.free()
@@ -268,9 +267,9 @@ def build_head():
 
 WING_ROOT = Vector((0.035, 0.085, 0.805))
 WINGS = [  # (direction, length, width) for the left side; mirrored for the right
-    ((1.0, 0.35, 0.72), 0.2, 0.034),
-    ((1.0, 0.45, 0.12), 0.25, 0.04),
-    ((1.0, 0.35, -0.42), 0.19, 0.032),
+    ((1.0, 0.35, 0.75), 0.26, 0.04),
+    ((1.0, 0.45, 0.12), 0.31, 0.046),
+    ((1.0, 0.35, -0.45), 0.24, 0.038),
 ]
 
 
@@ -448,7 +447,7 @@ action("float_move", 20, {0: glide(0.0, 1), 5: glide(0.025, 0), 10: glide(0.0, -
 
 # Swing: 24 frames. Right ice-claw sweeps right-to-left; contact at frame 10.
 SW_WIND = {"hips@loc": up(0.03, -0.04), "chest": (-5, -45, 0), "spine": (0, -18, 0), "head": (5, 30, 0),
-           "upper_arm.R": (40, 0, -95), "forearm.R": (35, 0, 0), "hand.R": (-35, 0, 0),
+           "upper_arm.R": (-35, 0, -85), "forearm.R": (45, 0, 0), "hand.R": (-35, 0, 0),
            "upper_arm.L": (40, 0, 30), "forearm.L": (60, 0, 0),
            "thigh.L": (35, 0, 6), "shin.L": (-70, 0, 0), "thigh.R": (0, 0, -8), "shin.R": (-30, 0, 0), "foot.L": (-35, 0, 0), "foot.R": (-35, 0, 0)}
 SW_HIT = {"hips@loc": up(0.0, 0.14), "hips": (10, 0, 0), "chest": (8, 40, 0), "spine": (5, 16, 0), "head": (0, -20, 0),
@@ -469,7 +468,7 @@ action("dash", 15, {0: with_rest({}), 4: DASH_COIL, 6: DASH_LUNGE, 10: {**DASH_L
 # Cast: 12 frames. Right hand winds back and flings a bullet; release at frame 6.
 action("cast", 12, {
     0: with_rest({}),
-    4: with_rest({"chest": (-4, -30, 0), "spine": (0, -10, 0), "upper_arm.R": (-20, 0, -60), "forearm.R": (80, 0, 0), "hand.R": (30, 0, 0), "upper_arm.L": (30, 0, 25)}),
+    4: with_rest({"chest": (-4, -30, 0), "spine": (0, -10, 0), "upper_arm.R": (-50, 0, -45), "forearm.R": (90, 0, 0), "hand.R": (30, 0, 0), "upper_arm.L": (30, 0, 25)}),
     6: with_rest({"chest": (6, 22, 0), "spine": (2, 8, 0), "upper_arm.R": (95, 0, -10), "forearm.R": (5, 0, 0), "hand.R": (-20, 0, 0), "upper_arm.L": (-10, 0, 25), "hips@loc": up(0.0, 0.04)}),
     12: with_rest({}),
 })
@@ -503,7 +502,7 @@ action("hurt", 10, {
 KNEEL = {"hips@loc": (0, -0.3, -0.02), "hips": (-5, 0, 0), "spine": (30, 0, 0), "chest": (15, 0, 0), "head": (30, 0, 0),
          "thigh.L": (18, 0, 6), "thigh.R": (12, 0, -6), "shin.L": (-110, 0, 0), "shin.R": (-105, 0, 0), "foot.L": (-60, 0, 0), "foot.R": (-60, 0, 0),
          "upper_arm.L": (30, 0, 14), "upper_arm.R": (30, 0, -14), "forearm.L": (30, 0, 0), "forearm.R": (30, 0, 0)}
-HEAP = {"hips@loc": (0.03, -0.43, 0.02), "hips": (-5, 0, -12), "spine": (40, 0, 10), "chest": (35, 10, 8), "neck": (15, 0, 0), "head": (30, 25, 15),
+HEAP = {"hips@loc": (0.03, -0.36, 0.02), "hips": (-5, 0, -12), "spine": (40, 0, 10), "chest": (35, 10, 8), "neck": (15, 0, 0), "head": (30, 25, 15),
         "thigh.L": (70, 0, 20), "thigh.R": (80, 0, -10), "shin.L": (-155, 0, 0), "shin.R": (-150, 0, 0), "foot.L": (-65, 0, 0), "foot.R": (-65, 0, 0),
         "upper_arm.L": (25, 0, 10), "upper_arm.R": (45, 0, -25), "forearm.L": (40, 0, 0), "forearm.R": (60, 0, 0), "hand.L": (10, 0, 0), "hand.R": (20, 0, 0)}
 action("death", 40, {
@@ -513,13 +512,13 @@ action("death", 40, {
     14: with_rest({"hips@loc": up(-0.12), "spine": (10, 0, 0), "head": (15, 0, 0), "upper_arm.L": (-20, 0, 40), "upper_arm.R": (-20, 0, -40),
                    "thigh.L": (10, 0, 4), "thigh.R": (5, 0, -4), "shin.L": (-40, 0, 0), "shin.R": (-35, 0, 0)}),
     22: KNEEL,
-    32: {**HEAP, "head": (25, 20, 12), "hips@loc": (0.03, -0.42, 0.02)},
+    32: {**HEAP, "head": (25, 20, 12), "hips@loc": (0.03, -0.35, 0.02)},
     40: HEAP,
 })
 
 # Phase 2: 30 frames. Curl up, then a rage roar with arms and wings flung
 # back at frame 14, hold with a tremble, settle by 30.
-ROAR = {"hips@loc": up(0.12), "hips": (-6, 0, 0), "spine": (-12, 0, 0), "chest": (-22, 0, 0), "neck": (-10, 0, 0), "head": (-22, 0, 0),
+ROAR = {"hips@loc": up(0.12), "hips": (0, 0, 0), "spine": (-6, 0, 0), "chest": (-14, 0, 0), "neck": (0, 0, 0), "head": (2, 0, 0),
         "upper_arm.L": (-25, 0, 65), "upper_arm.R": (-25, 0, -65), "forearm.L": (35, 0, 0), "forearm.R": (35, 0, 0), "hand.L": (-30, 0, 0), "hand.R": (-30, 0, 0),
         "thigh.L": (-10, 0, 14), "thigh.R": (-10, 0, -14), "shin.L": (-30, 0, 0), "shin.R": (-30, 0, 0), "foot.L": (-50, 0, 0), "foot.R": (-50, 0, 0)}
 action("phase2", 30, {

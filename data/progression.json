@@ -4,12 +4,7 @@
   "level_formula": {
     "description": "Faith needed to go from level L to L+1.",
     "expression": "round(200 + 40*L + 3.5*L^2 + 0.08*L^3)",
-    "coefficients": {
-      "a": 200,
-      "b": 40,
-      "c": 3.5,
-      "d": 0.08
-    },
+    "coefficients": {"a": 200, "b": 40, "c": 3.5, "d": 0.08},
     "notes": "Tuned so the critical path (about 260k Faith gathered, spending all of it) finishes near level 45. Offering Faith to the Wayside God instead of levelling is the intended cost of the true ending."
   },
   "level_rules": {
@@ -36,584 +31,134 @@
   "stats": [
     {
       "id": "hp",
-      "names": {
-        "en": "HP",
-        "ja": "体力"
-      },
+      "names": {"en": "HP", "ja": "体力"},
       "description": "Maximum health.",
-      "soft_caps": [
-        15,
-        30
-      ],
+      "soft_caps": [15, 30],
       "table_key": "hp"
     },
     {
       "id": "stamina",
-      "names": {
-        "en": "Stamina",
-        "ja": "気力"
-      },
+      "names": {"en": "Stamina", "ja": "気力"},
       "description": "Maximum stamina for attacks, rolls and sprinting.",
-      "soft_caps": [
-        15,
-        30
-      ],
+      "soft_caps": [15, 30],
       "table_key": "stamina"
     },
     {
       "id": "spirit",
-      "names": {
-        "en": "Spirit",
-        "ja": "霊力"
-      },
+      "names": {"en": "Spirit", "ja": "霊力"},
       "description": "Maximum Spirit for ofuda and spell cards, and the Spirit scaling bonus for amulets and spell damage.",
-      "soft_caps": [
-        15,
-        30
-      ],
+      "soft_caps": [15, 30],
       "table_key": "spirit",
       "also": "spirit_bonus"
     },
     {
       "id": "power",
-      "names": {
-        "en": "Power",
-        "ja": "火力"
-      },
+      "names": {"en": "Power", "ja": "火力"},
       "description": "Physical damage bonus through weapon Power scaling.",
-      "soft_caps": [
-        15,
-        30
-      ],
+      "soft_caps": [15, 30],
       "table_key": "power_bonus"
     }
   ],
   "stat_tables": {
     "note": "Index 0 is rank 1. Values are absolute (hp/stamina/spirit) or additive multipliers (power_bonus/spirit_bonus).",
     "hp": [
-      100,
-      110,
-      120,
-      130,
-      140,
-      150,
-      160,
-      170,
-      180,
-      190,
-      200,
-      210,
-      220,
-      230,
-      240,
-      246,
-      252,
-      258,
-      264,
-      270,
-      276,
-      282,
-      288,
-      294,
-      300,
-      306,
-      312,
-      318,
-      324,
-      330,
-      332,
-      334,
-      336,
-      338,
-      340,
-      342,
-      344,
-      346,
-      348,
-      350
+      100, 110, 120, 130, 140, 150, 160, 170, 180, 190,
+      200, 210, 220, 230, 240, 246, 252, 258, 264, 270,
+      276, 282, 288, 294, 300, 306, 312, 318, 324, 330,
+      332, 334, 336, 338, 340, 342, 344, 346, 348, 350
     ],
     "stamina": [
-      100,
-      104,
-      108,
-      112,
-      116,
-      120,
-      124,
-      128,
-      132,
-      136,
-      140,
-      144,
-      148,
-      152,
-      156,
-      158,
-      160,
-      162,
-      164,
-      166,
-      168,
-      170,
-      172,
-      174,
-      176,
-      178,
-      180,
-      182,
-      184,
-      186,
-      187,
-      188,
-      189,
-      190,
-      191,
-      192,
-      193,
-      194,
-      195,
-      196
+      100, 104, 108, 112, 116, 120, 124, 128, 132, 136,
+      140, 144, 148, 152, 156, 158, 160, 162, 164, 166,
+      168, 170, 172, 174, 176, 178, 180, 182, 184, 186,
+      187, 188, 189, 190, 191, 192, 193, 194, 195, 196
     ],
     "spirit": [
-      100,
-      108,
-      116,
-      124,
-      132,
-      140,
-      148,
-      156,
-      164,
-      172,
-      180,
-      188,
-      196,
-      204,
-      212,
-      216,
-      220,
-      224,
-      228,
-      232,
-      236,
-      240,
-      244,
-      248,
-      252,
-      256,
-      260,
-      264,
-      268,
-      272,
-      274,
-      276,
-      278,
-      280,
-      282,
-      284,
-      286,
-      288,
-      290,
-      292
+      100, 108, 116, 124, 132, 140, 148, 156, 164, 172,
+      180, 188, 196, 204, 212, 216, 220, 224, 228, 232,
+      236, 240, 244, 248, 252, 256, 260, 264, 268, 272,
+      274, 276, 278, 280, 282, 284, 286, 288, 290, 292
     ],
     "power_bonus": [
-      0.0,
-      0.03,
-      0.06,
-      0.09,
-      0.12,
-      0.15,
-      0.18,
-      0.21,
-      0.24,
-      0.27,
-      0.3,
-      0.33,
-      0.36,
-      0.39,
-      0.42,
-      0.435,
-      0.45,
-      0.465,
-      0.48,
-      0.495,
-      0.51,
-      0.525,
-      0.54,
-      0.555,
-      0.57,
-      0.585,
-      0.6,
-      0.615,
-      0.63,
-      0.645,
-      0.65,
-      0.655,
-      0.66,
-      0.665,
-      0.67,
-      0.675,
-      0.68,
-      0.685,
-      0.69,
-      0.695
+      0.0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27,
+      0.3, 0.33, 0.36, 0.39, 0.42, 0.435, 0.45, 0.465, 0.48, 0.495,
+      0.51, 0.525, 0.54, 0.555, 0.57, 0.585, 0.6, 0.615, 0.63, 0.645,
+      0.65, 0.655, 0.66, 0.665, 0.67, 0.675, 0.68, 0.685, 0.69, 0.695
     ],
     "spirit_bonus": [
-      0.0,
-      0.025,
-      0.05,
-      0.075,
-      0.1,
-      0.125,
-      0.15,
-      0.175,
-      0.2,
-      0.225,
-      0.25,
-      0.275,
-      0.3,
-      0.325,
-      0.35,
-      0.3625,
-      0.375,
-      0.3875,
-      0.4,
-      0.4125,
-      0.425,
-      0.4375,
-      0.45,
-      0.4625,
-      0.475,
-      0.4875,
-      0.5,
-      0.5125,
-      0.525,
-      0.5375,
-      0.5415,
-      0.5455,
-      0.5495,
-      0.5535,
-      0.5575,
-      0.5615,
-      0.5655,
-      0.5695,
-      0.5735,
-      0.5775
+      0.0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225,
+      0.25, 0.275, 0.3, 0.325, 0.35, 0.3625, 0.375, 0.3875, 0.4, 0.4125,
+      0.425, 0.4375, 0.45, 0.4625, 0.475, 0.4875, 0.5, 0.5125, 0.525, 0.5375,
+      0.5415, 0.5455, 0.5495, 0.5535, 0.5575, 0.5615, 0.5655, 0.5695, 0.5735, 0.5775
     ]
   },
   "wayside_offering": {
     "description": "At any shrine Reimu may offer Faith to the Wayside God instead of levelling. Offerings slow its fading and count toward the true ending.",
     "min_offering": 100,
-    "fade_slow_thresholds": [
-      2000,
-      6000,
-      12000,
-      20000,
-      30000
-    ],
+    "fade_slow_thresholds": [2000, 6000, 12000, 20000, 30000],
     "true_ending_ratio": "stat:faith_offered_ratio>=0.2",
     "ratio_definition": "faith_offered_total / (faith_offered_total + faith_spent_on_levels)"
   },
   "level_table": [
-    {
-      "level": 1,
-      "cost_to_next": 244,
-      "cumulative_to_reach": 0
-    },
-    {
-      "level": 2,
-      "cost_to_next": 295,
-      "cumulative_to_reach": 244
-    },
-    {
-      "level": 3,
-      "cost_to_next": 354,
-      "cumulative_to_reach": 539
-    },
-    {
-      "level": 4,
-      "cost_to_next": 421,
-      "cumulative_to_reach": 893
-    },
-    {
-      "level": 5,
-      "cost_to_next": 498,
-      "cumulative_to_reach": 1314
-    },
-    {
-      "level": 6,
-      "cost_to_next": 583,
-      "cumulative_to_reach": 1812
-    },
-    {
-      "level": 7,
-      "cost_to_next": 679,
-      "cumulative_to_reach": 2395
-    },
-    {
-      "level": 8,
-      "cost_to_next": 785,
-      "cumulative_to_reach": 3074
-    },
-    {
-      "level": 9,
-      "cost_to_next": 902,
-      "cumulative_to_reach": 3859
-    },
-    {
-      "level": 10,
-      "cost_to_next": 1030,
-      "cumulative_to_reach": 4761
-    },
-    {
-      "level": 11,
-      "cost_to_next": 1170,
-      "cumulative_to_reach": 5791
-    },
-    {
-      "level": 12,
-      "cost_to_next": 1322,
-      "cumulative_to_reach": 6961
-    },
-    {
-      "level": 13,
-      "cost_to_next": 1487,
-      "cumulative_to_reach": 8283
-    },
-    {
-      "level": 14,
-      "cost_to_next": 1666,
-      "cumulative_to_reach": 9770
-    },
-    {
-      "level": 15,
-      "cost_to_next": 1858,
-      "cumulative_to_reach": 11436
-    },
-    {
-      "level": 16,
-      "cost_to_next": 2064,
-      "cumulative_to_reach": 13294
-    },
-    {
-      "level": 17,
-      "cost_to_next": 2285,
-      "cumulative_to_reach": 15358
-    },
-    {
-      "level": 18,
-      "cost_to_next": 2521,
-      "cumulative_to_reach": 17643
-    },
-    {
-      "level": 19,
-      "cost_to_next": 2772,
-      "cumulative_to_reach": 20164
-    },
-    {
-      "level": 20,
-      "cost_to_next": 3040,
-      "cumulative_to_reach": 22936
-    },
-    {
-      "level": 21,
-      "cost_to_next": 3324,
-      "cumulative_to_reach": 25976
-    },
-    {
-      "level": 22,
-      "cost_to_next": 3626,
-      "cumulative_to_reach": 29300
-    },
-    {
-      "level": 23,
-      "cost_to_next": 3945,
-      "cumulative_to_reach": 32926
-    },
-    {
-      "level": 24,
-      "cost_to_next": 4282,
-      "cumulative_to_reach": 36871
-    },
-    {
-      "level": 25,
-      "cost_to_next": 4638,
-      "cumulative_to_reach": 41153
-    },
-    {
-      "level": 26,
-      "cost_to_next": 5012,
-      "cumulative_to_reach": 45791
-    },
-    {
-      "level": 27,
-      "cost_to_next": 5406,
-      "cumulative_to_reach": 50803
-    },
-    {
-      "level": 28,
-      "cost_to_next": 5820,
-      "cumulative_to_reach": 56209
-    },
-    {
-      "level": 29,
-      "cost_to_next": 6255,
-      "cumulative_to_reach": 62029
-    },
-    {
-      "level": 30,
-      "cost_to_next": 6710,
-      "cumulative_to_reach": 68284
-    },
-    {
-      "level": 31,
-      "cost_to_next": 7187,
-      "cumulative_to_reach": 74994
-    },
-    {
-      "level": 32,
-      "cost_to_next": 7685,
-      "cumulative_to_reach": 82181
-    },
-    {
-      "level": 33,
-      "cost_to_next": 8206,
-      "cumulative_to_reach": 89866
-    },
-    {
-      "level": 34,
-      "cost_to_next": 8750,
-      "cumulative_to_reach": 98072
-    },
-    {
-      "level": 35,
-      "cost_to_next": 9318,
-      "cumulative_to_reach": 106822
-    },
-    {
-      "level": 36,
-      "cost_to_next": 9908,
-      "cumulative_to_reach": 116140
-    },
-    {
-      "level": 37,
-      "cost_to_next": 10524,
-      "cumulative_to_reach": 126048
-    },
-    {
-      "level": 38,
-      "cost_to_next": 11164,
-      "cumulative_to_reach": 136572
-    },
-    {
-      "level": 39,
-      "cost_to_next": 11829,
-      "cumulative_to_reach": 147736
-    },
-    {
-      "level": 40,
-      "cost_to_next": 12520,
-      "cumulative_to_reach": 159565
-    },
-    {
-      "level": 41,
-      "cost_to_next": 13237,
-      "cumulative_to_reach": 172085
-    },
-    {
-      "level": 42,
-      "cost_to_next": 13981,
-      "cumulative_to_reach": 185322
-    },
-    {
-      "level": 43,
-      "cost_to_next": 14752,
-      "cumulative_to_reach": 199303
-    },
-    {
-      "level": 44,
-      "cost_to_next": 15551,
-      "cumulative_to_reach": 214055
-    },
-    {
-      "level": 45,
-      "cost_to_next": 16378,
-      "cumulative_to_reach": 229606
-    },
-    {
-      "level": 46,
-      "cost_to_next": 17233,
-      "cumulative_to_reach": 245984
-    },
-    {
-      "level": 47,
-      "cost_to_next": 18117,
-      "cumulative_to_reach": 263217
-    },
-    {
-      "level": 48,
-      "cost_to_next": 19031,
-      "cumulative_to_reach": 281334
-    },
-    {
-      "level": 49,
-      "cost_to_next": 19975,
-      "cumulative_to_reach": 300365
-    },
-    {
-      "level": 50,
-      "cost_to_next": 20950,
-      "cumulative_to_reach": 320340
-    },
-    {
-      "level": 51,
-      "cost_to_next": 21956,
-      "cumulative_to_reach": 341290
-    },
-    {
-      "level": 52,
-      "cost_to_next": 22993,
-      "cumulative_to_reach": 363246
-    },
-    {
-      "level": 53,
-      "cost_to_next": 24062,
-      "cumulative_to_reach": 386239
-    },
-    {
-      "level": 54,
-      "cost_to_next": 25163,
-      "cumulative_to_reach": 410301
-    },
-    {
-      "level": 55,
-      "cost_to_next": 26298,
-      "cumulative_to_reach": 435464
-    },
-    {
-      "level": 56,
-      "cost_to_next": 27465,
-      "cumulative_to_reach": 461762
-    },
-    {
-      "level": 57,
-      "cost_to_next": 28667,
-      "cumulative_to_reach": 489227
-    },
-    {
-      "level": 58,
-      "cost_to_next": 29903,
-      "cumulative_to_reach": 517894
-    },
-    {
-      "level": 59,
-      "cost_to_next": 31174,
-      "cumulative_to_reach": 547797
-    },
-    {
-      "level": 60,
-      "cost_to_next": null,
-      "cumulative_to_reach": 578971
-    }
+    {"level": 1, "cost_to_next": 244, "cumulative_to_reach": 0},
+    {"level": 2, "cost_to_next": 295, "cumulative_to_reach": 244},
+    {"level": 3, "cost_to_next": 354, "cumulative_to_reach": 539},
+    {"level": 4, "cost_to_next": 421, "cumulative_to_reach": 893},
+    {"level": 5, "cost_to_next": 498, "cumulative_to_reach": 1314},
+    {"level": 6, "cost_to_next": 583, "cumulative_to_reach": 1812},
+    {"level": 7, "cost_to_next": 679, "cumulative_to_reach": 2395},
+    {"level": 8, "cost_to_next": 785, "cumulative_to_reach": 3074},
+    {"level": 9, "cost_to_next": 902, "cumulative_to_reach": 3859},
+    {"level": 10, "cost_to_next": 1030, "cumulative_to_reach": 4761},
+    {"level": 11, "cost_to_next": 1170, "cumulative_to_reach": 5791},
+    {"level": 12, "cost_to_next": 1322, "cumulative_to_reach": 6961},
+    {"level": 13, "cost_to_next": 1487, "cumulative_to_reach": 8283},
+    {"level": 14, "cost_to_next": 1666, "cumulative_to_reach": 9770},
+    {"level": 15, "cost_to_next": 1858, "cumulative_to_reach": 11436},
+    {"level": 16, "cost_to_next": 2064, "cumulative_to_reach": 13294},
+    {"level": 17, "cost_to_next": 2285, "cumulative_to_reach": 15358},
+    {"level": 18, "cost_to_next": 2521, "cumulative_to_reach": 17643},
+    {"level": 19, "cost_to_next": 2772, "cumulative_to_reach": 20164},
+    {"level": 20, "cost_to_next": 3040, "cumulative_to_reach": 22936},
+    {"level": 21, "cost_to_next": 3324, "cumulative_to_reach": 25976},
+    {"level": 22, "cost_to_next": 3626, "cumulative_to_reach": 29300},
+    {"level": 23, "cost_to_next": 3945, "cumulative_to_reach": 32926},
+    {"level": 24, "cost_to_next": 4282, "cumulative_to_reach": 36871},
+    {"level": 25, "cost_to_next": 4638, "cumulative_to_reach": 41153},
+    {"level": 26, "cost_to_next": 5012, "cumulative_to_reach": 45791},
+    {"level": 27, "cost_to_next": 5406, "cumulative_to_reach": 50803},
+    {"level": 28, "cost_to_next": 5820, "cumulative_to_reach": 56209},
+    {"level": 29, "cost_to_next": 6255, "cumulative_to_reach": 62029},
+    {"level": 30, "cost_to_next": 6710, "cumulative_to_reach": 68284},
+    {"level": 31, "cost_to_next": 7187, "cumulative_to_reach": 74994},
+    {"level": 32, "cost_to_next": 7685, "cumulative_to_reach": 82181},
+    {"level": 33, "cost_to_next": 8206, "cumulative_to_reach": 89866},
+    {"level": 34, "cost_to_next": 8750, "cumulative_to_reach": 98072},
+    {"level": 35, "cost_to_next": 9318, "cumulative_to_reach": 106822},
+    {"level": 36, "cost_to_next": 9908, "cumulative_to_reach": 116140},
+    {"level": 37, "cost_to_next": 10524, "cumulative_to_reach": 126048},
+    {"level": 38, "cost_to_next": 11164, "cumulative_to_reach": 136572},
+    {"level": 39, "cost_to_next": 11829, "cumulative_to_reach": 147736},
+    {"level": 40, "cost_to_next": 12520, "cumulative_to_reach": 159565},
+    {"level": 41, "cost_to_next": 13237, "cumulative_to_reach": 172085},
+    {"level": 42, "cost_to_next": 13981, "cumulative_to_reach": 185322},
+    {"level": 43, "cost_to_next": 14752, "cumulative_to_reach": 199303},
+    {"level": 44, "cost_to_next": 15551, "cumulative_to_reach": 214055},
+    {"level": 45, "cost_to_next": 16378, "cumulative_to_reach": 229606},
+    {"level": 46, "cost_to_next": 17233, "cumulative_to_reach": 245984},
+    {"level": 47, "cost_to_next": 18117, "cumulative_to_reach": 263217},
+    {"level": 48, "cost_to_next": 19031, "cumulative_to_reach": 281334},
+    {"level": 49, "cost_to_next": 19975, "cumulative_to_reach": 300365},
+    {"level": 50, "cost_to_next": 20950, "cumulative_to_reach": 320340},
+    {"level": 51, "cost_to_next": 21956, "cumulative_to_reach": 341290},
+    {"level": 52, "cost_to_next": 22993, "cumulative_to_reach": 363246},
+    {"level": 53, "cost_to_next": 24062, "cumulative_to_reach": 386239},
+    {"level": 54, "cost_to_next": 25163, "cumulative_to_reach": 410301},
+    {"level": 55, "cost_to_next": 26298, "cumulative_to_reach": 435464},
+    {"level": 56, "cost_to_next": 27465, "cumulative_to_reach": 461762},
+    {"level": 57, "cost_to_next": 28667, "cumulative_to_reach": 489227},
+    {"level": 58, "cost_to_next": 29903, "cumulative_to_reach": 517894},
+    {"level": 59, "cost_to_next": 31174, "cumulative_to_reach": 547797},
+    {"level": 60, "cost_to_next": null, "cumulative_to_reach": 578971}
   ]
 }

@@ -1,0 +1,2027 @@
+{
+  "version": 1,
+  "speakers": {
+    "reimu": {"en": "Reimu", "ja": "霊夢", "name_fades": true},
+    "narration": {"en": "", "ja": ""},
+    "wayside_god": {"en": "Wayside God", "ja": "道祖神"},
+    "collector": {"en": "Collector of Names", "ja": "名集め"},
+    "former_maiden": {"en": "Former Shrine Maiden", "ja": "先代の巫女"},
+    "marisa": {"en": "Marisa", "ja": "魔理沙"},
+    "rinnosuke": {"en": "Rinnosuke", "ja": "霖之助"},
+    "cirno": {"en": "Cirno", "ja": "チルノ"},
+    "hong_meiling": {"en": "Meiling", "ja": "美鈴"},
+    "sakuya_izayoi": {"en": "Sakuya", "ja": "咲夜"},
+    "remilia_scarlet": {"en": "Remilia", "ja": "レミリア"},
+    "alice_margatroid": {"en": "Alice", "ja": "アリス"},
+    "fujiwara_no_mokou": {"en": "Mokou", "ja": "妹紅"},
+    "eirin_yagokoro": {"en": "Eirin", "ja": "永琳"},
+    "aya_shameimaru": {"en": "Aya", "ja": "文"},
+    "kanako_yasaka": {"en": "Kanako", "ja": "神奈子"},
+    "youmu_konpaku": {"en": "Youmu", "ja": "妖夢"},
+    "yuyuko_saigyouji": {"en": "Yuyuko", "ja": "幽々子"},
+    "utsuho_reiuji": {"en": "Utsuho", "ja": "空"},
+    "yukari_yakumo": {"en": "Yukari", "ja": "紫"}
+  },
+  "trees": [
+    {
+      "id": "wayside_god",
+      "npc": "wayside_god",
+      "first_meeting_entry": "wg_first",
+      "entry": "wg_menu",
+      "entry_by_shrine": {
+        "shrine_hakurei_precinct": "wg_at_hakurei_precinct",
+        "shrine_old_road_crossroads": "wg_at_old_road_crossroads",
+        "shrine_old_road_branch": "wg_at_old_road_branch",
+        "shrine_misty_lake_wayside": "wg_at_misty_lake_wayside",
+        "shrine_misty_lake_causeway": "wg_at_misty_lake_causeway",
+        "shrine_misty_lake_far_torii": "wg_at_misty_lake_far_torii",
+        "shrine_sdm_outer_gate": "wg_at_sdm_outer_gate",
+        "shrine_sdm_grand_hall": "wg_at_sdm_grand_hall",
+        "shrine_sdm_library_stair": "wg_at_sdm_library_stair",
+        "shrine_sdm_balcony_stair": "wg_at_sdm_balcony_stair",
+        "shrine_fom_kourindou": "wg_at_fom_kourindou",
+        "shrine_fom_mushroom_hollow": "wg_at_fom_mushroom_hollow",
+        "shrine_fom_cottage_path": "wg_at_fom_cottage_path",
+        "shrine_fom_muenzuka": "wg_at_fom_muenzuka",
+        "shrine_bamboo_edge": "wg_at_bamboo_edge",
+        "shrine_bamboo_ashen_clearing": "wg_at_bamboo_ashen_clearing",
+        "shrine_bamboo_eientei_gate": "wg_at_bamboo_eientei_gate",
+        "shrine_mountain_foot": "wg_at_mountain_foot",
+        "shrine_genbu_ravine": "wg_at_genbu_ravine",
+        "shrine_tengu_watchpost": "wg_at_tengu_watchpost",
+        "shrine_moriya_stair": "wg_at_moriya_stair",
+        "shrine_netherworld_stair": "wg_at_netherworld_stair",
+        "shrine_hakugyokurou_gate": "wg_at_hakugyokurou_gate",
+        "shrine_saigyou_ayakashi": "wg_at_saigyou_ayakashi",
+        "shrine_former_hell_bridge": "wg_at_former_hell_bridge",
+        "shrine_old_capital": "wg_at_old_capital",
+        "shrine_earth_spirits_palace": "wg_at_earth_spirits_palace",
+        "shrine_nuclear_rim": "wg_at_nuclear_rim",
+        "shrine_barrier_seam": "wg_at_barrier_seam",
+        "shrine_mayohiga": "wg_at_mayohiga",
+        "shrine_last_stone": "wg_at_last_stone"
+      },
+      "nodes": [
+        {
+          "id": "wg_first",
+          "speaker": "narration",
+          "text_en": "Beside the shrine sits a weathered stone, waist-high, carved as two figures side by side. One has worn completely smooth. In a niche at its base a small flame is burning. As you kneel, hands of moss and lantern-light unfold from the stone.",
+          "text_ja": "祠の傍らに、腰ほどの高さの風化した石。二つの姿が並んで刻まれているが、片方はすっかり摩り減っている。根元の窪みで小さな火が燃えている。膝をつくと、苔と灯りの手が石からほどけ出た。",
+          "next": "wg_first_2"
+        },
+        {
+          "id": "wg_first_2",
+          "speaker": "wayside_god",
+          "text_en": "A traveller. It has been a long time since anyone knelt here. Warm yourself. The fire is small, but it is honest.",
+          "text_ja": "旅の者か。ここに膝をつく者は久しい。温まっていきなさい。小さな火だが、嘘はつかない。",
+          "next": "wg_first_3"
+        },
+        {
+          "id": "wg_first_3",
+          "speaker": "reimu",
+          "text_en": "A dōsojin? I thought you lot had all gone quiet.",
+          "text_ja": "道祖神？ あんたたち、とっくに黙っちゃったと思ってた。",
+          "next": "wg_first_4"
+        },
+        {
+          "id": "wg_first_4",
+          "speaker": "wayside_god",
+          "text_en": "Most have. I am only half of what I was. But the road still needs a keeper, and the Faith you carry needs somewhere to go. Bring it to me. I will make it into strength. Or, if you wish, you may give some of it back.",
+          "text_ja": "大方はな。私も昔の半分しかない。だが道には番人が要り、お前の抱える信仰には行き先が要る。持ってきなさい。力に変えよう。望むなら、いくらか返してくれてもいい。",
+          "set_flags": ["met_wayside_god"],
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_menu",
+          "branches": [
+            {"condition": "stat:wayside_fade>=5", "next": "wg_menu_silent"},
+            {"condition": "stat:wayside_fade>=4", "next": "wg_menu_s4"},
+            {"condition": "stat:wayside_fade>=2", "next": "wg_menu_s2"},
+            {"condition": "", "next": "wg_menu_s0"}
+          ]
+        },
+        {
+          "id": "wg_menu_s0",
+          "speaker": "wayside_god",
+          "text_en": "Rest, child. The flame is yours. What would you have of an old stone?",
+          "text_ja": "休みなさい。火はお前のものだ。古い石に何を望む？",
+          "choices": [
+            {"text_en": "Grow stronger", "text_ja": "力を得る", "next": "wg_level"},
+            {"text_en": "Offer Faith", "text_ja": "信仰を捧げる", "next": "wg_offer"},
+            {
+              "text_en": "Return a name",
+              "text_ja": "名を返す",
+              "next": "wg_return_half",
+              "conditions": ["item:name_fragment_wayside_other_half"]
+            },
+            {"text_en": "Talk", "text_ja": "話す", "next": "wg_talk"},
+            {"text_en": "Leave", "text_ja": "去る", "next": "wg_leave"}
+          ]
+        },
+        {
+          "id": "wg_menu_s2",
+          "speaker": "wayside_god",
+          "text_en": "Rest. ...The flame is yours.",
+          "text_ja": "休みなさい。……火は、お前のものだ。",
+          "choices": [
+            {"text_en": "Grow stronger", "text_ja": "力を得る", "next": "wg_level"},
+            {"text_en": "Offer Faith", "text_ja": "信仰を捧げる", "next": "wg_offer"},
+            {
+              "text_en": "Return a name",
+              "text_ja": "名を返す",
+              "next": "wg_return_half",
+              "conditions": ["item:name_fragment_wayside_other_half"]
+            },
+            {"text_en": "Talk", "text_ja": "話す", "next": "wg_talk"},
+            {"text_en": "Leave", "text_ja": "去る", "next": "wg_leave"}
+          ]
+        },
+        {
+          "id": "wg_menu_s4",
+          "speaker": "wayside_god",
+          "text_en": "...rest...",
+          "text_ja": "……やすめ……",
+          "choices": [
+            {"text_en": "Grow stronger", "text_ja": "力を得る", "next": "wg_level"},
+            {"text_en": "Offer Faith", "text_ja": "信仰を捧げる", "next": "wg_offer"},
+            {
+              "text_en": "Return a name",
+              "text_ja": "名を返す",
+              "next": "wg_return_half",
+              "conditions": ["item:name_fragment_wayside_other_half"]
+            },
+            {"text_en": "Leave", "text_ja": "去る", "next": "wg_leave"}
+          ]
+        },
+        {
+          "id": "wg_menu_silent",
+          "speaker": "narration",
+          "text_en": "The flame burns. The stone says nothing. Both faces have worn smooth.",
+          "text_ja": "火は燃えている。石は何も言わない。二つの顔は、どちらも摩り減っていた。",
+          "choices": [
+            {"text_en": "Grow stronger", "text_ja": "力を得る", "next": "wg_level_silent"},
+            {"text_en": "Offer Faith", "text_ja": "信仰を捧げる", "next": "wg_offer_silent"},
+            {
+              "text_en": "Return a name",
+              "text_ja": "名を返す",
+              "next": "wg_return_half",
+              "conditions": ["item:name_fragment_wayside_other_half"]
+            },
+            {"text_en": "Leave", "text_ja": "去る", "next": null}
+          ]
+        },
+        {
+          "id": "wg_level",
+          "speaker": "wayside_god",
+          "text_en": "Take it, then. It was given to you, and it is yours to spend.",
+          "text_ja": "受け取りなさい。お前に与えられたものだ。使うのはお前の自由。",
+          "actions": ["open_level_up"],
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_level_silent",
+          "speaker": "narration",
+          "text_en": "The flame takes what you offer and gives back strength, without a word.",
+          "text_ja": "火は差し出したものを受け取り、黙って力を返す。",
+          "actions": ["open_level_up"],
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_offer",
+          "speaker": "wayside_god",
+          "text_en": "You would give it back? ...Then I will hold it. Not for me. For the road, and whoever walks it after you.",
+          "text_ja": "返してくれるのか。……ならば預かろう。私のためではない。道と、お前の後にそれを歩く者のために。",
+          "actions": ["open_offering"],
+          "next": "wg_offer_thanks"
+        },
+        {
+          "id": "wg_offer_thanks",
+          "speaker": "wayside_god",
+          "text_en": "Warm. I had forgotten. Thank you.",
+          "text_ja": "温かい。忘れていた。ありがとう。",
+          "conditions": ["stat:wayside_fade<=3"],
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_offer_silent",
+          "speaker": "narration",
+          "text_en": "You set the Faith before the stone. The flame steadies. Nothing else happens. You offer it anyway.",
+          "text_ja": "石の前に信仰を置く。火が落ち着く。それだけだ。それでも、捧げる。",
+          "actions": ["open_offering"],
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_leave",
+          "speaker": "wayside_god",
+          "text_en": "Mind the road.",
+          "text_ja": "道に気を付けて。",
+          "conditions": ["stat:wayside_fade<=3"],
+          "next": null
+        },
+        {
+          "id": "wg_return_half",
+          "speaker": "wayside_god",
+          "text_en": "That name. Where did you— ...Oh. Oh, there you are.",
+          "text_ja": "その名は。どこで——……ああ。そこにいたのか。",
+          "actions": ["take_item:name_fragment_wayside_other_half", "modify_stat:wayside_fade:-2"],
+          "set_flags": ["wayside_other_half_returned"],
+          "next": "wg_return_half_2"
+        },
+        {
+          "id": "wg_return_half_2",
+          "speaker": "narration",
+          "text_en": "The smooth half of the stone does not change. But the flame in the niche doubles, and for a moment there are two shadows on the ground.",
+          "text_ja": "摩り減った半身は変わらない。だが窪みの火が二つに増え、ほんの一瞬、地面に二つの影が落ちた。",
+          "next": "wg_return_half_3"
+        },
+        {
+          "id": "wg_return_half_3",
+          "speaker": "wayside_god",
+          "text_en": "She wrote it down, didn't she. The girl who prayed at every stone. I thought no one ever had.",
+          "text_ja": "あの子が書き留めていたのだな。すべての石に祈った娘が。誰も書いてなどいないと思っていた。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_talk",
+          "speaker": "wayside_god",
+          "text_en": "Ask, then. While I can still answer.",
+          "text_ja": "訊きなさい。まだ答えられるうちに。",
+          "choices": [
+            {"text_en": "Who are you?", "text_ja": "あんたは何者？", "next": "wg_who"},
+            {
+              "text_en": "Who did I pray like?",
+              "text_ja": "誰に似てるって？",
+              "next": "wg_knew_her",
+              "conditions": ["flag:saw_maiden_glimpse"]
+            },
+            {
+              "text_en": "You're fading.",
+              "text_ja": "消えかけてる。",
+              "next": "wg_fading",
+              "conditions": ["stat:wayside_fade>=2"]
+            },
+            {
+              "text_en": "What happens to a shrine maiden who pays?",
+              "text_ja": "代価を払った巫女は、どうなるの？",
+              "next": "wg_pillar_talk",
+              "conditions": ["flag:yukari_confessed"]
+            },
+            {
+              "text_en": "Someone said it would be my turn soon.",
+              "text_ja": "「もうすぐあなたの番」って言われた。",
+              "next": "wg_your_turn",
+              "conditions": ["flag:maiden_said_your_turn"]
+            },
+            {
+              "text_en": "Someone was humming a planting song.",
+              "text_ja": "誰かが田植え唄を口ずさんでた。",
+              "next": "wg_song",
+              "conditions": ["flag:heard_maiden_song"]
+            },
+            {
+              "text_en": "I gave your other half's name away.",
+              "text_ja": "あんたの片割れの名、渡しちゃった。",
+              "next": "wg_gave_half",
+              "conditions": ["flag:gave_other_half_to_collector"]
+            },
+            {"text_en": "Back", "text_ja": "戻る", "next": "wg_menu"}
+          ]
+        },
+        {
+          "id": "wg_who",
+          "speaker": "wayside_god",
+          "text_en": "A god of roads, of crossroads, of the edges of villages. Two of us in one stone, because a crossroads is a meeting, and a meeting needs two. There were thousands of us once. The Barrier is only the biggest boundary. We were all the little ones.",
+          "text_ja": "道の神、辻の神、村境の神。一つの石に二柱。辻とは出会いで、出会いには二人が要るから。昔は何千といた。大結界は一番大きな境にすぎない。小さな境は、皆われらだった。",
+          "next": "wg_talk"
+        },
+        {
+          "id": "wg_knew_her",
+          "speaker": "wayside_god",
+          "text_en": "A shrine maiden. Long before you. She walked every road in Gensokyo, and knelt at every stone, and knew us all by name. One rice cake each. She always apologised that it was only one. ...I cannot recall her face. I can recall her sandals.",
+          "text_ja": "巫女だ。お前よりずっと前の。幻想郷のすべての道を歩き、すべての石に膝をつき、われらを皆、名で呼んだ。餅を一つずつ。一つしかなくてごめんなさい、といつも謝っていた。……顔は思い出せない。草鞋は思い出せるのに。",
+          "next": "wg_talk"
+        },
+        {
+          "id": "wg_fading",
+          "speaker": "wayside_god",
+          "text_en": "Yes. It does not hurt. It is like a word on the tip of the tongue, that you stop reaching for. Do not grieve. Only... if you have Faith to spare, now and then. It helps. A little.",
+          "text_ja": "ああ。痛くはない。舌の先まで出かかった言葉を、探すのをやめるようなものだ。悲しむな。ただ……余る信仰があれば、時々。少しは、助かる。",
+          "next": "wg_talk"
+        },
+        {
+          "id": "wg_pillar_talk",
+          "speaker": "wayside_god",
+          "text_en": "I did not know. I only knew that one day she stopped coming, and the roads she walked grew over, and no one remembered there had been anyone to stop coming. That is how it feels from the roadside. Someone was here. Now there is a shape.",
+          "text_ja": "知らなかった。ただ、ある日あの子が来なくなり、歩いた道が草に埋もれ、来なくなった誰かがいたことさえ誰も覚えていなかった。道端からはそう見える。誰かがいた。今は、形だけがある。",
+          "next": "wg_talk"
+        },
+        {
+          "id": "wg_your_turn",
+          "speaker": "wayside_god",
+          "text_en": "Your turn. For what, I wonder. ...No. I think I know. I think I have always known, the way a road knows where it ends. I will not tell you it is not so. I will tell you that roads fork.",
+          "text_ja": "お前の番、か。何の番だろうな。……いや、分かる気がする。道が自分の終わりを知っているように、ずっと知っていたのだろう。そうではない、とは言わない。ただ、道は分かれるものだ、とは言っておく。",
+          "next": "wg_talk"
+        },
+        {
+          "id": "wg_song",
+          "speaker": "wayside_god",
+          "text_en": "The planting song. She sang it at every field-god's stone, badly, and apologised to each of us for her voice. We did not mind. No one had sung to us in years.",
+          "text_ja": "田植え唄か。あの子は田の神の石の前で必ず歌った。下手でな、声のことを一柱ずつに謝っていた。気にしなかったよ。何年も、誰も歌ってくれなかったのだから。",
+          "next": "wg_talk"
+        },
+        {
+          "id": "wg_gave_half",
+          "speaker": "wayside_god",
+          "text_en": "To the one who keeps names. ...Then she is written down somewhere, and kept, and no one will strike her through. That is more than I could do for her. Do not apologise.",
+          "text_ja": "名を守る者に、か。……ならば、あれはどこかに書き留められ、守られ、誰にも消されない。私にできた以上のことだ。謝るな。",
+          "next": "wg_talk"
+        },
+        {
+          "id": "wg_at_hakurei_precinct",
+          "speaker": "wayside_god",
+          "text_en": "Home, then. Sit a while. These steps have held a great many maidens. They can hold one more.",
+          "text_ja": "おかえり。少し座るといい。この石段は多くの巫女を支えてきた。もう一人くらい、支えられる。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_old_road_crossroads",
+          "speaker": "wayside_god",
+          "text_en": "This crossroads. I stood here with my other half and watched the villagers climb at festival. Hundreds of them. You would not believe it, to look at it now.",
+          "text_ja": "この辻。私はここで片割れと並び、祭りに登る村人を見ていた。何百人も。今の様子からは信じられまい。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_old_road_branch",
+          "speaker": "wayside_god",
+          "text_en": "She used to stop here. Leave one rice cake. Apologise that it was only one.",
+          "text_ja": "あの子はここで足を止めた。餅を一つ置いて。一つしかなくてごめんなさい、と。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_misty_lake_wayside",
+          "speaker": "wayside_god",
+          "text_en": "Warm yourself. The lake is cold tonight, and the fairies do not laugh any more.",
+          "text_ja": "温まりなさい。今宵の湖は冷たい。妖精たちも、もう笑わない。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_misty_lake_causeway",
+          "speaker": "wayside_god",
+          "text_en": "These lanterns were lit every evening, once. Now only mine. Mind the little ones; they do not know what they do.",
+          "text_ja": "この灯籠は、昔は毎晩灯されていた。今は私の火だけ。小さい子らに気を付けなさい。自分が何をしているか分かっていない。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_misty_lake_far_torii",
+          "speaker": "wayside_god",
+          "text_en": "You pray like someone I used to know.",
+          "text_ja": "お前の祈り方は、昔知っていた誰かに似ている。",
+          "next": "wg_at_misty_lake_far_torii_2"
+        },
+        {
+          "id": "wg_at_misty_lake_far_torii_2",
+          "speaker": "reimu",
+          "text_en": "Who?",
+          "text_ja": "誰に？",
+          "next": "wg_at_misty_lake_far_torii_3"
+        },
+        {
+          "id": "wg_at_misty_lake_far_torii_3",
+          "speaker": "wayside_god",
+          "text_en": "...It has gone. I had it a moment ago.",
+          "text_ja": "……消えてしまった。今しがたまで、覚えていたのに。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_sdm_outer_gate",
+          "speaker": "wayside_god",
+          "text_en": "A devil's gate, and a roadside stone beside it. Even a vampire's house needs a road to reach it.",
+          "text_ja": "悪魔の門の傍らにも道端の石。吸血鬼の館とて、道がなければ辿り着けない。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_sdm_grand_hall",
+          "speaker": "wayside_god",
+          "text_en": "Strange, to burn in a hall like this. No one here ever prayed to me. They were kind enough to leave me be.",
+          "text_ja": "こんな広間で燃えるとは妙なものだ。ここで私に祈った者はいない。放っておいてくれた。それも優しさだ。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_sdm_library_stair",
+          "speaker": "wayside_god",
+          "text_en": "So many words, and none of them read. I know how the books feel.",
+          "text_ja": "これほどの言葉が、誰にも読まれずに。本の気持ちは、よく分かる。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_sdm_balcony_stair",
+          "speaker": "wayside_god",
+          "text_en": "The moon is fading at the edges. That is how it goes. From the edges in.",
+          "text_ja": "月の縁が褪せている。そういうものだ。縁から、内へ。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_fom_kourindou",
+          "speaker": "wayside_god",
+          "text_en": "The half-youkai keeps a lamp lit for customers who do not come. I like him. We are in the same trade.",
+          "text_ja": "あの半妖は、来ない客のために灯りを点けている。気に入っているよ。同業だからな。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_fom_mushroom_hollow",
+          "speaker": "wayside_god",
+          "text_en": "Damp. The flame gutters here. ...Forgive me. So do I, a little.",
+          "text_ja": "湿っているな。火が揺らぐ。……すまない。私も、少し。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_fom_cottage_path",
+          "speaker": "wayside_god",
+          "text_en": "Dolls on strings. I had hands once, to carve with. Now only moss.",
+          "text_ja": "糸の人形。昔は彫るための手があった。今は苔だけだ。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_fom_muenzuka",
+          "speaker": "wayside_god",
+          "text_en": "Everything here was someone's. Be gentle with the one who counts them. Hers is the hardest work.",
+          "text_ja": "ここにあるものは皆、誰かのものだった。数える者には優しくしてやれ。一番辛い仕事だ。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_bamboo_edge",
+          "speaker": "wayside_god",
+          "text_en": "The bamboo turns travellers around. I was a god of roads. I should know the way. ...I don't.",
+          "text_ja": "竹は旅人を惑わす。私は道の神だった。道を知っているはずだ。……分からない。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_bamboo_ashen_clearing",
+          "speaker": "wayside_god",
+          "text_en": "Fire that won't die. Stay by mine. It's kinder.",
+          "text_ja": "死なぬ火。私の火の傍にいなさい。こちらの方が優しい。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_bamboo_eientei_gate",
+          "speaker": "wayside_god",
+          "text_en": "The doctor knows. She looks at my flame too long.",
+          "text_ja": "医者は知っている。私の火を、見つめすぎる。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_mountain_foot",
+          "speaker": "wayside_god",
+          "text_en": "Many gods above. Few roads up. Go carefully.",
+          "text_ja": "上には多くの神。登る道は少ない。気を付けて。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_genbu_ravine",
+          "speaker": "wayside_god",
+          "text_en": "Machines, still working. Duty outlasts... the one who gave it.",
+          "text_ja": "まだ働く機械。務めは……命じた者より、長く残る。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_tengu_watchpost",
+          "speaker": "wayside_god",
+          "text_en": "Wind. Takes the words. ...Takes a lot.",
+          "text_ja": "風が。言葉を攫う。……多くを。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_moriya_stair",
+          "speaker": "wayside_god",
+          "text_en": "Their goddess is made of faith. I was only... a road.",
+          "text_ja": "あの神は、信仰でできている。私は……ただの、道だった。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_netherworld_stair",
+          "speaker": "wayside_god",
+          "text_en": "The dead climb this. They don't mind. ...Rest.",
+          "text_ja": "死者が登る段。気にしない。……休め。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_hakugyokurou_gate",
+          "speaker": "wayside_god",
+          "text_en": "Petals. She liked... cherry trees.",
+          "text_ja": "花びら。あの子は……桜が、好きだった。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_saigyou_ayakashi",
+          "speaker": "wayside_god",
+          "text_en": "Someone under. Like... Never mind.",
+          "text_ja": "下に、誰か。まるで……いや。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_former_hell_bridge",
+          "speaker": "wayside_god",
+          "text_en": "Deep. ...Warm, at least.",
+          "text_ja": "深い。……暖かいが。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_old_capital",
+          "speaker": "wayside_god",
+          "text_en": "Oni keep promises. Good.",
+          "text_ja": "鬼は約束を守る。良い。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_earth_spirits_palace",
+          "speaker": "wayside_god",
+          "text_en": "...rest...",
+          "text_ja": "……やすめ……",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_nuclear_rim",
+          "speaker": "wayside_god",
+          "text_en": "...too bright...",
+          "text_ja": "……まぶしい……",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_barrier_seam",
+          "speaker": "wayside_god",
+          "text_en": "...child... ...far...",
+          "text_ja": "……子よ…… ……遠くまで……",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_mayohiga",
+          "speaker": "wayside_god",
+          "text_en": "...three cups... ...who...",
+          "text_ja": "……三つの湯呑…… ……誰の……",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_at_last_stone",
+          "branches": [
+            {"condition": "flag:wayside_god_endured", "next": "wg_last_endured"},
+            {"condition": "", "next": "wg_last_faded"}
+          ]
+        },
+        {
+          "id": "wg_last_endured",
+          "speaker": "wayside_god",
+          "text_en": "I'm here. Still here. You kept me. Go on down. Whatever you choose, I'll keep the flame lit for you to come home to.",
+          "text_ja": "ここにいる。まだ、ここに。お前が繋ぎ止めてくれた。降りなさい。何を選んでも、帰る場所の火は私が灯しておく。",
+          "next": "wg_menu"
+        },
+        {
+          "id": "wg_last_faded",
+          "speaker": "wayside_god",
+          "text_en": "...pray like... ...her...",
+          "text_ja": "……あの子に…… ……似て……",
+          "next": "wg_last_faded_2"
+        },
+        {
+          "id": "wg_last_faded_2",
+          "speaker": "narration",
+          "text_en": "The moss hands fold back into the stone. The flame burns on. It will burn after there is no one to tend it; that is the only thing it knows how to do.",
+          "text_ja": "苔の手が石へと戻っていく。火は燃え続ける。番をする者がいなくなっても燃えるだろう。それしか知らないのだから。",
+          "next": "wg_menu"
+        }
+      ],
+      "first_meeting_flag": "met_wayside_god"
+    },
+    {
+      "id": "collector",
+      "npc": "collector",
+      "first_meeting_entry": "col_first",
+      "entry": "col_menu",
+      "nodes": [
+        {
+          "id": "col_first",
+          "speaker": "narration",
+          "text_en": "A figure in a coat of stitched paper pages sits among the heaps of Muenzuka, turning a page in her hands. Ink runs down the coat in slow lines. Where her face should be, a blank sheet shows a name in faint ink. The name changes as you approach. It becomes yours.",
+          "text_ja": "無縁塚の堆積の中に、縫い合わせた紙の外套を纏った姿が座り、一枚の頁を裏返している。外套には墨がゆっくりと流れ落ちる。顔のあるべき場所の白紙に、薄墨で名が浮かぶ。近付くにつれ名は変わり、やがてお前の名になった。",
+          "next": "col_first_2"
+        },
+        {
+          "id": "col_first_2",
+          "speaker": "collector",
+          "text_en": "Reimu Hakurei. Oh, I know you. Page one thousand and forty. ...Or you were. Sit, shrine maiden. I deal in names, and you have been carrying a few.",
+          "text_ja": "博麗霊夢。ええ、知っていますとも。千四十頁目。……だった、かしら。お座りなさい、巫女さん。私は名を商う者。あなた、いくつか持ち歩いているでしょう。",
+          "next": "col_first_3"
+        },
+        {
+          "id": "col_first_3",
+          "speaker": "reimu",
+          "text_en": "You're a tsukumogami. What were you, before?",
+          "text_ja": "付喪神ね。元は何だったの？",
+          "next": "col_first_4"
+        },
+        {
+          "id": "col_first_4",
+          "speaker": "collector",
+          "text_en": "Your shrine's register. Every hand that clapped before your offering box, I wrote down. Then people stopped coming, and my pages began to forget. I woke here, with the other things no one came back for.",
+          "text_ja": "あなたの神社の参拝帳。賽銭箱の前で手を打った者は皆、書き留めてきました。やがて誰も来なくなり、頁が忘れ始めた。目覚めたのはここ。誰も取りに戻らなかった物たちの中で。",
+          "next": "col_first_5"
+        },
+        {
+          "id": "col_first_5",
+          "speaker": "collector",
+          "text_en": "I will trade with you. Fairly. A register that cheats is only a rumour.",
+          "text_ja": "取引しましょう。公正に。嘘をつく帳面など、ただの噂にすぎませんから。",
+          "set_flags": ["met_collector"],
+          "next": "col_menu"
+        },
+        {
+          "id": "col_menu",
+          "speaker": "collector",
+          "text_en": "Names, memories, the odd trinket. What have you brought me?",
+          "text_ja": "名、記憶、ちょっとした品。何を持ってきました？",
+          "choices": [
+            {"text_en": "Trade", "text_ja": "取引する", "next": "col_trade"},
+            {"text_en": "About names", "text_ja": "名について", "next": "col_about_names"},
+            {
+              "text_en": "The struck-out page",
+              "text_ja": "消された頁",
+              "next": "col_page_offer",
+              "conditions": ["flag:collector_offered_page", "!flag:obtained_struck_page"]
+            },
+            {
+              "text_en": "You wanted to show me something.",
+              "text_ja": "見せたいものがあるって？",
+              "next": "col_reimu_page",
+              "conditions": ["flag:reimu_name_fade_2", "!flag:collector_showed_reimu_page"]
+            },
+            {
+              "text_en": "Eirin said it was a debt.",
+              "text_ja": "永琳が、負債だって。",
+              "next": "col_debt",
+              "conditions": ["flag:eirin_named_the_debt"]
+            },
+            {
+              "text_en": "The line you took from my page.",
+              "text_ja": "私の頁から取った一行。",
+              "next": "col_torn_line",
+              "conditions": ["flag:tore_own_page"]
+            },
+            {"text_en": "Leave", "text_ja": "去る", "next": "col_bye"}
+          ]
+        },
+        {
+          "id": "col_trade",
+          "branches": [
+            {"condition": "item:name_fragment_wayside_other_half", "next": "col_frag_other_half"},
+            {"condition": "item:name_fragment_last_worshippers", "next": "col_frag_worshippers"},
+            {"condition": "", "next": "col_trade_open"}
+          ]
+        },
+        {
+          "id": "col_trade_open",
+          "speaker": "collector",
+          "text_en": "Let me see. Every name has a price and every price has a name. I will tell you both.",
+          "text_ja": "拝見しましょう。どの名にも値があり、どの値にも名がある。両方お教えします。",
+          "actions": ["open_shop:collector_trades"],
+          "next": "col_trade_after"
+        },
+        {
+          "id": "col_trade_after",
+          "speaker": "collector",
+          "text_en": "A fair trade. You could also have taken it home, you know. Names like to go home. I only mention it.",
+          "text_ja": "公正な取引でした。持ち主に返すこともできたんですよ。名は帰りたがるもの。一応、申し添えておきます。",
+          "next": "col_menu"
+        },
+        {
+          "id": "col_frag_other_half",
+          "speaker": "collector",
+          "text_en": "Ah. The other half of a pair. I'd pay very well for that one. ...But you know whose it is, don't you. Old stones get lonely.",
+          "text_ja": "おや。対の片割れ。それには良い値を付けますよ。……でも、誰のものか分かっているでしょう。古い石は寂しがるものです。",
+          "next": "col_trade_open"
+        },
+        {
+          "id": "col_frag_worshippers",
+          "speaker": "collector",
+          "text_en": "Those are mine. My last pages. The farmer, the girl, the boy who came every morning. ...No. Keep them. Put them back where they prayed. I would rather they were there than here.",
+          "text_ja": "それは私の頁。最後の数枚。農夫、娘、毎朝来た少年。……いいえ。持っていて。祈った場所に戻してあげて。ここより、あそこにいてほしい。",
+          "next": "col_trade_open"
+        },
+        {
+          "id": "col_about_names",
+          "speaker": "collector",
+          "text_en": "A name is what holds a self together. Take it away and the rest keeps going: the habits, the duties, the shape. That is all the Faithless are. Shapes that forgot what they were holding.",
+          "text_ja": "名は自己を束ねるもの。奪えば残りは動き続ける。習慣、務め、形。信無き者とはそれだけのもの。何を抱えていたかを忘れた、形。",
+          "next": "col_menu"
+        },
+        {
+          "id": "col_debt",
+          "speaker": "collector",
+          "text_en": "The physician is right. Every generation that stops believing borrows against the Barrier. Someone always pays it back. The ledger is very old, and it has only ever had one name in the column marked 'paid by'. The title. Never the person.",
+          "text_ja": "あの医者の言う通り。信じるのをやめた世代は皆、結界から借りる。そして必ず誰かが返す。帳簿はとても古くて、「返済者」の欄には一つの名しか書かれたことがない。肩書。人ではなく。",
+          "next": "col_menu"
+        },
+        {
+          "id": "col_torn_line",
+          "speaker": "collector",
+          "text_en": "It is safe. I have it pressed flat between two blank pages, where nothing can write over it. When you are ready to be whole, ask. I will be fair about it. I always am.",
+          "text_ja": "大切にしまってあります。白紙二枚の間に挟んで、何も上書きされないように。全部に戻りたくなったら言って。公正にお返しします。いつだって、そうだから。",
+          "next": "col_menu"
+        },
+        {
+          "id": "col_ledger_scene",
+          "speaker": "collector",
+          "conditions": ["flag:defeated_former_maiden_saigyou"],
+          "text_en": "You have met her twice now. I can see it on your page: two small blots, where she looked at you. ...Sit. There is something I have been keeping for a very long time.",
+          "text_ja": "もう二度、あの子に会ったのね。あなたの頁に見える。あの子に見られた所に、小さな染みが二つ。……座って。ずっと、ずっと預かっているものがあるの。",
+          "next": "col_page_offer"
+        },
+        {
+          "id": "col_page_offer",
+          "speaker": "collector",
+          "text_en": "Yes. I have it. The oldest page I hold. The one name I was told to forget, and could not.",
+          "text_ja": "ええ。持っています。私の持つ最も古い頁。忘れろと言われて、忘れられなかった唯一の名。",
+          "next": "col_page_offer_2"
+        },
+        {
+          "id": "col_page_offer_2",
+          "speaker": "collector",
+          "text_en": "I will not sell it for Faith. Faith is only belief with no owner. This page wants a price that belongs to someone.",
+          "text_ja": "信仰では売りません。信仰は持ち主のない信心にすぎない。この頁は、誰かのものである代価を求めています。",
+          "choices": [
+            {
+              "text_en": "Take the other half's name.",
+              "text_ja": "片割れの名を渡す",
+              "next": "col_pay_half",
+              "conditions": ["item:name_fragment_wayside_other_half"]
+            },
+            {"text_en": "Take a line of my own page.", "text_ja": "私の頁を一行、持っていって", "next": "col_pay_self"},
+            {"text_en": "Not yet.", "text_ja": "まだ", "next": "col_menu"}
+          ]
+        },
+        {
+          "id": "col_pay_half",
+          "speaker": "collector",
+          "text_en": "Done. It will be safe with me. I will not let anyone strike it through. That is the most I can promise.",
+          "text_ja": "承りました。私のもとで大切にします。誰にも消させはしない。約束できるのは、それだけ。",
+          "actions": ["take_item:name_fragment_wayside_other_half"],
+          "set_flags": ["gave_other_half_to_collector"],
+          "next": "col_give_page"
+        },
+        {
+          "id": "col_pay_self",
+          "speaker": "narration",
+          "text_en": "She draws Reimu's page from her coat and tears away the first line. It does not hurt. It is only, afterwards, a little harder to remember what the first line said.",
+          "text_ja": "彼女は外套から霊夢の頁を抜き出し、最初の一行を破り取った。痛みはない。ただ、その一行に何が書いてあったのか、少し思い出しにくくなった。",
+          "actions": ["modify_stat:spirit_max:-50", "modify_stat:reimu_name_fade:1"],
+          "set_flags": ["tore_own_page"],
+          "next": "col_give_page"
+        },
+        {
+          "id": "col_give_page",
+          "speaker": "collector",
+          "text_en": "Here. Read it if you want to. You will know her name. The world will not, unless you say it where it counts.",
+          "text_ja": "どうぞ。読みたければ読んで。あなたは彼女の名を知る。世界は知らないまま。然るべき場所で、あなたが口にしない限り。",
+          "actions": ["give_item:struck_register_page"],
+          "set_flags": ["obtained_struck_page"],
+          "choices": [
+            {"text_en": "Read the name.", "text_ja": "名を読む", "next": "col_read_name"},
+            {"text_en": "Not yet.", "text_ja": "まだ読まない", "next": "col_menu"}
+          ]
+        },
+        {
+          "id": "col_read_name",
+          "speaker": "narration",
+          "text_en": "Beneath the red line, in a village girl's careful hand: a name. You know it now. You do not say it here.",
+          "text_ja": "朱線の下に、村娘の丁寧な字で、一つの名。今はもう、知っている。ここでは口にしない。",
+          "set_flags": ["read_struck_page"],
+          "next": "col_read_name_2"
+        },
+        {
+          "id": "col_read_name_2",
+          "speaker": "collector",
+          "text_en": "Lovely handwriting. She wrote it herself, the day she became the shrine maiden. So proud. She pressed too hard. It went through to the next page.",
+          "text_ja": "綺麗な字でしょう。巫女になった日に自分で書いたの。誇らしげに。強く書きすぎて、次の頁まで写ってしまった。",
+          "next": "col_menu"
+        },
+        {
+          "id": "col_reimu_page",
+          "speaker": "collector",
+          "text_en": "I have something to show you. I have been putting it off. I am told that is a very human thing to do.",
+          "text_ja": "見せたいものがあるの。ずっと先延ばしにしてきた。とても人間らしいことだと聞いています。",
+          "next": "col_reimu_page_2"
+        },
+        {
+          "id": "col_reimu_page_2",
+          "speaker": "narration",
+          "text_en": "She draws a page from her coat. It is Reimu's. The ink is running, though it has not rained.",
+          "text_ja": "外套から一枚の頁。霊夢の頁だ。雨も降っていないのに、墨が滲んでいる。",
+          "next": "col_reimu_page_3"
+        },
+        {
+          "id": "col_reimu_page_3",
+          "speaker": "reimu",
+          "text_en": "...That's my page.",
+          "text_ja": "……私の頁。",
+          "next": "col_reimu_page_4"
+        },
+        {
+          "id": "col_reimu_page_4",
+          "speaker": "collector",
+          "text_en": "It began to blur when you met the girl on the old road. It is not your fault. The Barrier is cracking, and it is looking for mortar. It has always had good taste. It goes to the shrine maiden.",
+          "text_ja": "旧道のあの子に会った頃から滲み始めた。あなたのせいじゃない。結界が割れて、漆喰を探しているの。昔から趣味がいいのよ。いつも巫女を選ぶ。",
+          "next": "col_reimu_page_5"
+        },
+        {
+          "id": "col_reimu_page_5",
+          "speaker": "collector",
+          "text_en": "Take it. Hold on to it. I remember everyone, shrine maiden. It is the loneliest thing in Gensokyo. I would rather not be the only one who remembers you.",
+          "text_ja": "持っていって。離さないで。私は皆を覚えている。それが幻想郷で一番寂しいこと。あなたを覚えているのが、私だけになるのは嫌。",
+          "actions": ["give_item:blurred_register_page"],
+          "set_flags": ["collector_showed_reimu_page"],
+          "next": "col_menu"
+        },
+        {
+          "id": "col_bye",
+          "speaker": "collector",
+          "text_en": "Go carefully. And come back. I would like to keep writing you down.",
+          "text_ja": "お気を付けて。また来てね。あなたのことを、書き続けていたいから。",
+          "next": null
+        }
+      ],
+      "first_meeting_flag": "met_collector",
+      "event_entries": {"maiden_ledger_scene": "col_ledger_scene"}
+    },
+    {
+      "id": "former_maiden",
+      "npc": "former_maiden",
+      "entry": "fm_glimpse",
+      "nodes": [
+        {
+          "id": "fm_glimpse",
+          "speaker": "narration",
+          "conditions": ["flag:defeated_cirno"],
+          "text_en": "A figure in faded red and white stands at the far torii. A black ribbon. She is not looking at you. She is looking at the Wayside God's small flame across the ice. When you step toward her, the mist closes, and she is gone.",
+          "text_ja": "向こう岸の鳥居に、褪せた紅白の人影。黒いリボン。こちらを見てはいない。氷の向こうの道祖神の小さな火を見ている。一歩踏み出すと霧が閉じ、姿は消えた。",
+          "set_flags": ["saw_maiden_glimpse"],
+          "next": null
+        },
+        {
+          "id": "fm_stone",
+          "speaker": "narration",
+          "conditions": ["flag:defeated_eirin_yagokoro"],
+          "text_en": "Up the old road, the figure kneels beside a toppled roadside stone and sets it upright. She brushes the moss from its face with her sleeve. On either side of the road, the Faded Attendants bow as she rises.",
+          "text_ja": "旧道の先で、その人影は倒れた道端の石の傍らに膝をつき、起こして立てた。袖で顔の苔を払う。立ち上がると、道の両側で褪せた随身たちが頭を垂れた。",
+          "set_flags": ["old_road_open"],
+          "next": null
+        },
+        {
+          "id": "fm_road_pre",
+          "speaker": "former_maiden",
+          "text_en": "You are the shrine maiden.",
+          "text_ja": "あなたが、巫女。",
+          "choices": [
+            {"text_en": "Who are you?", "text_ja": "あんた、誰？", "next": "fm_road_who"},
+            {"text_en": "Get out of my way.", "text_ja": "どいて。", "next": "fm_road_fight"}
+          ]
+        },
+        {
+          "id": "fm_road_who",
+          "speaker": "former_maiden",
+          "text_en": "...The shrine maiden.",
+          "text_ja": "……巫女。",
+          "next": "fm_road_fight"
+        },
+        {
+          "id": "fm_road_fight",
+          "speaker": "narration",
+          "text_en": "She raises a gohei wrapped in struck-out pages.",
+          "text_ja": "消された頁を巻いた御幣が、掲げられる。",
+          "actions": ["start_boss:former_maiden_road"],
+          "next": null
+        },
+        {
+          "id": "fm_road_post",
+          "speaker": "former_maiden",
+          "conditions": ["flag:defeated_former_maiden_road"],
+          "text_en": "It will be your turn soon.",
+          "text_ja": "もうすぐ、あなたの番。",
+          "set_flags": ["maiden_said_your_turn"],
+          "next": "fm_road_post_2"
+        },
+        {
+          "id": "fm_road_post_2",
+          "speaker": "narration",
+          "text_en": "She steps backward into the air, and the air folds around her like paper, and she is gone.",
+          "text_ja": "彼女が後ろへ一歩下がると、空気が紙のように折れて彼女を包み、消えた。",
+          "next": null
+        },
+        {
+          "id": "fm_song",
+          "speaker": "narration",
+          "conditions": ["flag:defeated_former_maiden_road"],
+          "text_en": "Somewhere above on the stair, someone is humming a rice-planting song, slightly out of tune. It stops when you reach the landing.",
+          "text_ja": "石段の上のどこかで、誰かが田植え唄を口ずさんでいる。少し音が外れている。踊り場に着くと、歌は止んだ。",
+          "set_flags": ["heard_maiden_song"],
+          "next": null
+        },
+        {
+          "id": "fm_saigyou_pre",
+          "speaker": "former_maiden",
+          "text_en": "You follow me.",
+          "text_ja": "ついてくるのね。",
+          "next": "fm_saigyou_pre_2"
+        },
+        {
+          "id": "fm_saigyou_pre_2",
+          "speaker": "reimu",
+          "text_en": "You keep turning up wherever I'm going.",
+          "text_ja": "私の行く先々に、あんたがいるのよ。",
+          "next": "fm_saigyou_pre_3"
+        },
+        {
+          "id": "fm_saigyou_pre_3",
+          "speaker": "former_maiden",
+          "text_en": "We go to the same places. The ones who held things shut. Do you not feel it pulling?",
+          "text_ja": "同じ場所へ行くの。何かを閉ざし続けた者のところへ。引かれるのを感じない？",
+          "actions": ["start_boss:former_maiden_saigyou"],
+          "next": null
+        },
+        {
+          "id": "fm_saigyou_post",
+          "speaker": "former_maiden",
+          "conditions": ["flag:defeated_former_maiden_saigyou"],
+          "text_en": "The one under the tree does not remember either. I asked.",
+          "text_ja": "木の下の人も、覚えていなかった。訊いたの。",
+          "next": "fm_saigyou_post_2"
+        },
+        {
+          "id": "fm_saigyou_post_2",
+          "speaker": "reimu",
+          "text_en": "What's your name?",
+          "text_ja": "あんたの名前は？",
+          "next": "fm_saigyou_post_3"
+        },
+        {
+          "id": "fm_saigyou_post_3",
+          "speaker": "narration",
+          "text_en": "At the word, she flinches, as if struck.",
+          "text_ja": "その言葉に、彼女は打たれたように身を竦めた。",
+          "next": "fm_saigyou_post_4"
+        },
+        {
+          "id": "fm_saigyou_post_4",
+          "speaker": "former_maiden",
+          "text_en": "I do not have one. That was the price. It is a fair price. You will see.",
+          "text_ja": "無いわ。それが代価。公正な代価よ。あなたにも分かる。",
+          "next": null
+        },
+        {
+          "id": "fm_pillar_pre",
+          "speaker": "narration",
+          "text_en": "At the bottom of the shaft she kneels in the hollow of the stone. She stands as you come, the way a guard stands at the change of the watch.",
+          "text_ja": "縦穴の底、石の窪みに彼女は跪いていた。お前が来ると立ち上がる。見張りの交代に立つ番兵のように。",
+          "next": "fm_pillar_pre_2"
+        },
+        {
+          "id": "fm_pillar_pre_2",
+          "speaker": "former_maiden",
+          "text_en": "You came.",
+          "text_ja": "来たのね。",
+          "choices": [
+            {"text_en": "I'm not taking your place.", "text_ja": "あんたの代わりにはならない。", "next": "fm_pillar_refuse"},
+            {"text_en": "Tell me what it's like.", "text_ja": "どんな感じか、教えて。", "next": "fm_pillar_ask"}
+          ]
+        },
+        {
+          "id": "fm_pillar_refuse",
+          "speaker": "former_maiden",
+          "text_en": "Everyone says that. I said that. Then the Barrier cracked, and someone had to.",
+          "text_ja": "皆そう言う。私もそう言った。そして結界が割れて、誰かがやらなければならなかった。",
+          "next": "fm_pillar_fight"
+        },
+        {
+          "id": "fm_pillar_ask",
+          "speaker": "former_maiden",
+          "text_en": "Quiet. Heavy. You forget the heavy part after a while. You forget everything after a while. That is how it holds.",
+          "text_ja": "静か。重い。しばらくすると重さを忘れる。しばらくすると、全部忘れる。そうやって保つの。",
+          "next": "fm_pillar_fight"
+        },
+        {
+          "id": "fm_pillar_fight",
+          "speaker": "narration",
+          "text_en": "The walls of struck names lean in to watch.",
+          "text_ja": "消された名の壁が、見守るように身を寄せる。",
+          "actions": ["start_boss:former_maiden_pillar"],
+          "next": null
+        },
+        {
+          "id": "fm_name_prompt",
+          "speaker": "narration",
+          "conditions": ["flag:read_struck_page", "item:struck_register_page"],
+          "text_en": "The struck-out page is warm in your sleeve.",
+          "text_ja": "袖の中で、消された頁が温かい。",
+          "choices": [
+            {"text_en": "Speak her name.", "text_ja": "彼女の名を呼ぶ", "next": "fm_name_spoken"},
+            {"text_en": "Keep fighting.", "text_ja": "戦い続ける", "next": null}
+          ]
+        },
+        {
+          "id": "fm_name_spoken",
+          "speaker": "reimu",
+          "text_en": "Tomoe.",
+          "text_ja": "巴。",
+          "set_flags": ["returned_maiden_name"],
+          "next": "fm_name_spoken_2"
+        },
+        {
+          "id": "fm_name_spoken_2",
+          "speaker": "narration",
+          "text_en": "The shaft goes silent. Every struck line on every page along the walls trembles, like breath on paper.",
+          "text_ja": "縦穴が静まり返る。壁を埋める頁の、消された線の一本一本が、紙に吹きかけた息のように震えた。",
+          "next": "fm_name_spoken_3"
+        },
+        {
+          "id": "fm_name_spoken_3",
+          "speaker": "former_maiden",
+          "text_en": "...Say it again.",
+          "text_ja": "……もう一度。",
+          "next": "fm_name_spoken_4"
+        },
+        {
+          "id": "fm_name_spoken_4",
+          "speaker": "reimu",
+          "text_en": "Tomoe. Tomoe Hakurei. It's on the page. You pressed too hard. It went through.",
+          "text_ja": "巴。博麗巴。頁に書いてある。強く書きすぎて、次の頁まで写ってた。",
+          "next": "fm_name_spoken_5"
+        },
+        {
+          "id": "fm_name_spoken_5",
+          "speaker": "former_maiden",
+          "text_en": "...I did, didn't I.",
+          "text_ja": "……そうだった。",
+          "next": "fm_name_spoken_6"
+        },
+        {
+          "id": "fm_name_spoken_6",
+          "speaker": "narration",
+          "text_en": "Her colour comes back: not all of it, only a little red at the ribbon's edge. She turns, and stands beside you, facing the walls. The walls begin to come apart.",
+          "text_ja": "色が戻る。全部ではない。リボンの縁に、ほんの少しの紅。彼女は振り返り、お前の隣に立って壁と向き合う。壁が崩れ始めた。",
+          "actions": ["open_phase:3"],
+          "next": null
+        },
+        {
+          "id": "fm_ally_1",
+          "speaker": "former_maiden",
+          "text_en": "The mortar is coming loose. Everything I held. Don't let it fall on the shrine.",
+          "text_ja": "漆喰が剥がれていく。私が支えてきたもの全部。神社の上に落とさないで。",
+          "next": null
+        },
+        {
+          "id": "fm_ally_2",
+          "speaker": "former_maiden",
+          "text_en": "I know that one. The miller's girl. Let her go gently.",
+          "text_ja": "その名は知ってる。粉屋の娘。優しく、送ってあげて。",
+          "next": null
+        },
+        {
+          "id": "fm_ally_3",
+          "speaker": "former_maiden",
+          "text_en": "Your Fantasy Seal is too kind. ...Good. Keep it that way.",
+          "text_ja": "あなたの夢想封印は優しすぎる。……いいの。そのままでいて。",
+          "next": null
+        },
+        {
+          "id": "fm_ending_choice",
+          "speaker": "narration",
+          "conditions": ["flag:defeated_former_maiden_pillar"],
+          "text_en": "The pillar is quiet. Far above, the Barrier waits for an answer.",
+          "text_ja": "柱は静まった。遥か上で、結界が答えを待っている。",
+          "choices": [
+            {"text_en": "Take her place.", "text_ja": "彼女の代わりになる", "next": "fm_choice_pillar"},
+            {"text_en": "Break the pillar.", "text_ja": "柱を壊す", "next": "fm_choice_break"},
+            {
+              "text_en": "Hold it up together, with everyone.",
+              "text_ja": "皆で、支える",
+              "next": "fm_choice_returned",
+              "conditions": ["flag:returned_maiden_name", "flag:wayside_god_endured", "flag:faith_shared"]
+            }
+          ]
+        },
+        {
+          "id": "fm_choice_pillar",
+          "speaker": "former_maiden",
+          "text_en": "Thank you. I'm sorry. It is heavy. You'll forget that part.",
+          "text_ja": "ありがとう。ごめんなさい。重いの。その部分は、忘れるから。",
+          "set_flags": ["chose_seal_old_way"],
+          "actions": ["play_ending:ending_pillar"],
+          "next": null
+        },
+        {
+          "id": "fm_choice_break",
+          "speaker": "former_maiden",
+          "text_en": "...Then we will both be very tired, and Gensokyo will have to learn to stand on its own. Maybe it can.",
+          "text_ja": "……なら、二人ともとても疲れるわね。幻想郷は自分の足で立つことを覚えなきゃいけない。できるかもしれない。",
+          "set_flags": ["chose_destroy_pillar"],
+          "actions": ["play_ending:ending_broken_seal"],
+          "next": null
+        },
+        {
+          "id": "fm_choice_returned",
+          "speaker": "former_maiden",
+          "text_en": "Everyone? ...Yes. That's how it should have been. That's what I was trying to do, at every stone.",
+          "text_ja": "皆で？ ……うん。そうあるべきだった。すべての石の前で、私がしようとしていたのは、それだった。",
+          "set_flags": ["chose_many_beliefs"],
+          "actions": ["play_ending:ending_returned_name"],
+          "next": null
+        }
+      ],
+      "event_entries": {
+        "maiden_glimpse_misty_lake": "fm_glimpse",
+        "maiden_road_straightening_stone": "fm_stone",
+        "maiden_fight_road": "fm_road_pre",
+        "maiden_fight_road_defeated": "fm_road_post",
+        "maiden_humming_moriya": "fm_song",
+        "maiden_fight_saigyou": "fm_saigyou_pre",
+        "maiden_fight_saigyou_defeated": "fm_saigyou_post",
+        "maiden_fight_pillar": "fm_pillar_pre",
+        "pillar_name_prompt": "fm_name_prompt",
+        "pillar_ally_bark_1": "fm_ally_1",
+        "pillar_ally_bark_2": "fm_ally_2",
+        "pillar_ally_bark_3": "fm_ally_3",
+        "pillar_ending_choice": "fm_ending_choice"
+      }
+    },
+    {
+      "id": "marisa",
+      "npc": "marisa",
+      "entry": "mar_entry",
+      "nodes": [
+        {
+          "id": "mar_entry",
+          "branches": [
+            {"condition": "!flag:met_marisa", "next": "mar_first"},
+            {"condition": "flag:marisa_remembered", "next": "mar_idle_hat"},
+            {"condition": "flag:reimu_name_fade_2", "next": "mar_slip"},
+            {"condition": "", "next": "mar_idle"}
+          ]
+        },
+        {
+          "id": "mar_first",
+          "speaker": "marisa",
+          "text_en": "Reimu! Took you long enough. Everything's gone weird, you noticed? 'Course you noticed. That's why you're out here.",
+          "text_ja": "霊夢！ 遅かったじゃないか。何もかも変になってるの、気付いたか？ そりゃ気付くよな。だから出てきたんだろ。",
+          "next": "mar_first_2"
+        },
+        {
+          "id": "mar_first_2",
+          "speaker": "reimu",
+          "text_en": "You've been hiding in your house?",
+          "text_ja": "家に籠もってたの？",
+          "next": "mar_first_3"
+        },
+        {
+          "id": "mar_first_3",
+          "speaker": "marisa",
+          "text_en": "Researching. There's a difference. ...Okay, a bit of hiding. The mushrooms stopped giving me dreams. That's never happened, ze.",
+          "text_ja": "研究だ。全然違う。……まあ、ちょっと籠もってた。茸が夢を見せてくれなくなったんだぜ。こんなの初めてだ。",
+          "next": "mar_first_4"
+        },
+        {
+          "id": "mar_first_4",
+          "speaker": "marisa",
+          "text_en": "Here. Don't make it a thing.",
+          "text_ja": "ほら。変に騒ぐなよ。",
+          "actions": ["give_item:marisa_star_charm"],
+          "set_flags": ["met_marisa", "marisa_ally_available"],
+          "next": "mar_first_5"
+        },
+        {
+          "id": "mar_first_5",
+          "speaker": "narration",
+          "text_en": "A lopsided star cut from a dried mushroom cap, on a string. There has been one every year since you were children.",
+          "text_ja": "乾かした茸の傘を切り抜いた、いびつな星に紐を通したもの。子供の頃から、毎年一つずつ。",
+          "next": "mar_first_6"
+        },
+        {
+          "id": "mar_first_6",
+          "speaker": "marisa",
+          "text_en": "Find somewhere nasty and hold that up. I'll come running. Well. Flying.",
+          "text_ja": "やばそうな所でそれを掲げろ。すぐ駆けつける。いや、飛んでくる。",
+          "next": null
+        },
+        {
+          "id": "mar_idle",
+          "speaker": "marisa",
+          "text_en": "Still alive? Good. Don't die, Reimu. Whose tea would I drink?",
+          "text_ja": "まだ生きてるな？ よし。死ぬなよ、霊夢。誰のお茶を飲めばいいんだ。",
+          "next": null
+        },
+        {
+          "id": "mar_idle_hat",
+          "speaker": "marisa",
+          "text_en": "See? Still on the hat. REIMU. I check it every morning, ze. ...Don't look at me like that.",
+          "text_ja": "ほら、まだ帽子に書いてある。霊夢。毎朝確かめてるんだぜ。……そんな顔で見るなよ。",
+          "next": null
+        },
+        {
+          "id": "mar_slip",
+          "speaker": "marisa",
+          "text_en": "Oh, hey! It's, uh— the shrine maiden. You.",
+          "text_ja": "お、よう！ えっと——巫女。お前。",
+          "next": "mar_slip_2"
+        },
+        {
+          "id": "mar_slip_2",
+          "speaker": "reimu",
+          "text_en": "Marisa.",
+          "text_ja": "魔理沙。",
+          "next": "mar_slip_3"
+        },
+        {
+          "id": "mar_slip_3",
+          "speaker": "marisa",
+          "text_en": "No, I know, I know, I just— hold on.",
+          "text_ja": "いや、分かってる、分かってるって、ただ——待ってろ。",
+          "next": "mar_slip_4"
+        },
+        {
+          "id": "mar_slip_4",
+          "speaker": "narration",
+          "text_en": "She pulls off her hat, finds a pen somewhere inside it, and writes REIMU on the brim in large, uneven letters.",
+          "text_ja": "帽子を脱ぎ、中のどこかからペンを取り出して、つばに大きく、不揃いな字で「霊夢」と書いた。",
+          "next": "mar_slip_5"
+        },
+        {
+          "id": "mar_slip_5",
+          "speaker": "marisa",
+          "text_en": "There. Now I can't forget, ze. It's on my hat. I never lose my hat.",
+          "text_ja": "これでよし。もう忘れないぜ。帽子に書いたからな。帽子だけは絶対なくさない。",
+          "set_flags": ["marisa_remembered"],
+          "next": null
+        },
+        {
+          "id": "mar_summon_entry",
+          "branches": [
+            {"condition": "flag:reimu_name_fade_1", "next": "mar_summon_late"},
+            {"condition": "", "next": "mar_summon"}
+          ]
+        },
+        {
+          "id": "mar_summon",
+          "speaker": "marisa",
+          "text_en": "Heard you call! Let's blast it, ze!",
+          "text_ja": "呼んだな！ ぶっ飛ばすぜ！",
+          "conditions": ["flag:marisa_ally_available"],
+          "next": null
+        },
+        {
+          "id": "mar_summon_late",
+          "speaker": "marisa",
+          "text_en": "I'm here, I'm here! ...Hey, shrine— Reimu. Reimu. Let's go.",
+          "text_ja": "来た来た！ ……おい、巫——霊夢。霊夢だ。行くぜ。",
+          "conditions": ["flag:marisa_ally_available", "flag:reimu_name_fade_1"],
+          "next": null
+        },
+        {
+          "id": "mar_summon_dismissed",
+          "speaker": "marisa",
+          "text_en": "Nice! Tea's on you. You never have any, but it's on you.",
+          "text_ja": "やったな！ お茶はお前の奢りだ。いつも無いけどな。",
+          "next": null
+        }
+      ],
+      "event_entries": {"summon": "mar_summon_entry", "summon_dismissed": "mar_summon_dismissed"}
+    },
+    {
+      "id": "rinnosuke",
+      "npc": "rinnosuke",
+      "first_meeting_entry": "rin_first",
+      "entry": "rin_menu",
+      "nodes": [
+        {
+          "id": "rin_first",
+          "speaker": "rinnosuke",
+          "text_en": "Ah. Reimu. Come in. Don't touch that. Or that. You're the first customer in some time, though I suspect you're not here to pay.",
+          "text_ja": "ああ、霊夢か。入ってくれ。それには触るな。それもだ。久しぶりの客だが、払う気はないんだろうね。",
+          "next": "rin_first_2"
+        },
+        {
+          "id": "rin_first_2",
+          "speaker": "rinnosuke",
+          "text_en": "As you know, I can see the name and use of any object. Lately I have been finding things whose names I can read, but whose owners I cannot recall. It is unsettling. Please buy something. It would make me feel useful.",
+          "text_ja": "知っての通り、僕には道具の名前と用途が分かる。最近、名前は読めるのに、持ち主が思い出せない品が増えてね。落ち着かない。何か買ってくれ。役に立っている気がするから。",
+          "set_flags": ["met_rinnosuke"],
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_menu",
+          "speaker": "rinnosuke",
+          "text_en": "What can I do for you?",
+          "text_ja": "何の用だい？",
+          "choices": [
+            {"text_en": "Buy", "text_ja": "買う", "next": "rin_buy"},
+            {"text_en": "Forge a memento", "text_ja": "形見を鍛える", "next": "rin_forge"},
+            {"text_en": "Appraise", "text_ja": "鑑定してもらう", "next": "rin_appraise"},
+            {"text_en": "Talk", "text_ja": "話す", "next": "rin_talk"},
+            {"text_en": "Leave", "text_ja": "去る", "next": "rin_bye"}
+          ]
+        },
+        {
+          "id": "rin_buy",
+          "speaker": "rinnosuke",
+          "text_en": "Prices are fair. Well. Prices are prices.",
+          "text_ja": "値段は良心的だよ。……まあ、値段は値段だ。",
+          "actions": ["open_shop:rinnosuke_shop"],
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_forge",
+          "speaker": "rinnosuke",
+          "text_en": "A memento remembers its owner. Shaping it into a tool doesn't erase that. It just gives the memory something to do.",
+          "text_ja": "形見は持ち主を覚えている。道具に打ち直しても消えはしない。記憶に仕事を与えるだけさ。",
+          "actions": ["open_forge:rinnosuke_forge"],
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_appraise",
+          "branches": [
+            {"condition": "item:blurred_register_page", "next": "rin_appraise_blurred"},
+            {"condition": "item:struck_register_page", "next": "rin_appraise_struck"},
+            {"condition": "item:relic_second_broom", "next": "rin_appraise_broom"},
+            {"condition": "item:hakurei_register", "next": "rin_appraise_register"},
+            {"condition": "", "next": "rin_appraise_none"}
+          ]
+        },
+        {
+          "id": "rin_appraise_register",
+          "speaker": "rinnosuke",
+          "text_en": "Name: the Hakurei worshipper register. Use: to remember. ...That's all. The simplest use I have ever read, and I don't like how much weight it's carrying.",
+          "text_ja": "名前、博麗の参拝帳。用途、覚えておくこと。……それだけだ。今まで読んだ中で一番単純な用途だが、背負っている重さが気に入らないね。",
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_appraise_struck",
+          "speaker": "rinnosuke",
+          "text_en": "Name: a struck register page. Use: to hold something shut. ...Reimu, the name on this page reads to me as its use. It isn't a person's name any more. It's a lock.",
+          "text_ja": "名前、消された参拝帳の頁。用途、何かを閉ざしておくこと。……霊夢、この頁の名は、僕には用途として読める。もう人の名前じゃない。錠前だ。",
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_appraise_broom",
+          "speaker": "rinnosuke",
+          "text_en": "Name: a bamboo broom. Use: to sweep the Hakurei Shrine. ...Odd. Yours reads exactly the same. Two brooms, one use. One of them has an owner I can't see.",
+          "text_ja": "名前、竹箒。用途、博麗神社を掃くこと。……妙だな。君のと全く同じだ。箒が二本、用途は一つ。片方の持ち主が見えない。",
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_appraise_blurred",
+          "speaker": "rinnosuke",
+          "text_en": "Name: ...Hm. Use: ...Give me a moment.",
+          "text_ja": "名前……ふむ。用途……少し待ってくれ。",
+          "next": "rin_appraise_blurred_2"
+        },
+        {
+          "id": "rin_appraise_blurred_2",
+          "speaker": "rinnosuke",
+          "text_en": "I can't read it. For the first time in my life, I can't read a name. ...Reimu, sit down. Please. I'll make tea.",
+          "text_ja": "読めない。生まれて初めて、名前が読めない。……霊夢、座ってくれ。頼む。お茶を淹れるから。",
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_appraise_none",
+          "speaker": "rinnosuke",
+          "text_en": "Nothing I haven't seen before. Bring me something strange.",
+          "text_ja": "見たことのある物ばかりだね。何か妙な物を持ってきてくれ。",
+          "next": "rin_menu"
+        },
+        {
+          "id": "rin_talk",
+          "speaker": "rinnosuke",
+          "text_en": "Talk? About what?",
+          "text_ja": "話？ 何について？",
+          "choices": [
+            {"text_en": "Got any good swords?", "text_ja": "良い刀、ない？", "next": "rin_talk_sword"},
+            {"text_en": "The hollowing.", "text_ja": "虚ろのこと。", "next": "rin_talk_hollow"},
+            {
+              "text_en": "The shrine's god.",
+              "text_ja": "神社の神様のこと。",
+              "next": "rin_talk_god",
+              "conditions": ["flag:defeated_kanako_yasaka"]
+            },
+            {"text_en": "Back", "text_ja": "戻る", "next": "rin_menu"}
+          ]
+        },
+        {
+          "id": "rin_talk_sword",
+          "speaker": "rinnosuke",
+          "text_en": "I have one extremely good sword and it is not for sale. Don't ask its name. I'm not telling that either.",
+          "text_ja": "とびきり良い刀が一振りあるが、売り物じゃない。名前も訊かないでくれ。それも教えない。",
+          "next": "rin_talk"
+        },
+        {
+          "id": "rin_talk_hollow",
+          "speaker": "rinnosuke",
+          "text_en": "A tool used for a hundred years becomes a tsukumogami. What happens to a tool that is used for a hundred years and then forgotten? ...I believe you're about to find out. Several times over.",
+          "text_ja": "百年使われた道具は付喪神になる。では、百年使われた後に忘れられた道具はどうなる？ ……君はそれを知ることになりそうだ。何度もね。",
+          "next": "rin_talk"
+        },
+        {
+          "id": "rin_talk_god",
+          "speaker": "rinnosuke",
+          "text_en": "The Hakurei Shrine's enshrined deity. I've looked. Every record gives it no name. I always assumed it was carelessness. Now I wonder if it's the other thing. If a name was taken, and nothing was put in its place, because nothing was meant to be.",
+          "text_ja": "博麗神社の祭神か。調べたことがある。どの記録にも名が無い。ずっと杜撰なだけだと思っていた。今は別の理由かと思う。名が取られて、その後に何も置かれなかった。置かれるべきではなかったから。",
+          "next": "rin_talk"
+        },
+        {
+          "id": "rin_bye",
+          "speaker": "rinnosuke",
+          "text_en": "Come back. Preferably with money. Or at all.",
+          "text_ja": "また来てくれ。できればお金を持って。いや、来てくれるだけでいい。",
+          "next": null
+        }
+      ],
+      "first_meeting_flag": "met_rinnosuke"
+    },
+    {
+      "id": "boss_cirno",
+      "npc": "cirno",
+      "entry": "cirno_entry",
+      "nodes": [
+        {
+          "id": "cirno_entry",
+          "branches": [
+            {"condition": "flag:defeated_cirno", "next": "cirno_revisit"},
+            {"condition": "", "next": "cirno_pre"}
+          ]
+        },
+        {
+          "id": "cirno_pre",
+          "speaker": "cirno",
+          "text_en": "Hey! Hey, you! Red-white! Stop right there!",
+          "text_ja": "こらー！ そこの紅白！ 止まりなさい！",
+          "next": "cirno_pre_2"
+        },
+        {
+          "id": "cirno_pre_2",
+          "speaker": "reimu",
+          "text_en": "It's freezing. Did you do this?",
+          "text_ja": "寒っ。これ、あんたの仕業？",
+          "next": "cirno_pre_3"
+        },
+        {
+          "id": "cirno_pre_3",
+          "speaker": "cirno",
+          "text_en": "Maybe! Everyone stopped moving, so I made it colder so they'd stay put. That's smart. ...Right?",
+          "text_ja": "かもね！ みんな動かなくなったから、もっと冷やして止めといたの。頭いいでしょ。……でしょ？",
+          "next": "cirno_pre_4"
+        },
+        {
+          "id": "cirno_pre_4",
+          "speaker": "reimu",
+          "text_en": "...Right. Come on, then.",
+          "text_ja": "……そうね。ほら、かかってきなさい。",
+          "actions": ["start_boss:cirno"],
+          "next": null
+        },
+        {
+          "id": "cirno_revisit",
+          "speaker": "cirno",
+          "text_en": "The ice is melting and the others are waking up! Slowly. Really slowly. I'm helping. By sitting on them. ...That helps, right?",
+          "text_ja": "氷が溶けて、みんな起きてきた！ ゆっくり。すっごくゆっくり。あたいも手伝ってるの。上に座って。……手伝いになってるよね？",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_hong_meiling",
+      "npc": "hong_meiling",
+      "entry": "meiling_entry",
+      "nodes": [
+        {
+          "id": "meiling_entry",
+          "branches": [
+            {"condition": "flag:defeated_hong_meiling", "next": "meiling_revisit"},
+            {"condition": "", "next": "meiling_pre"}
+          ]
+        },
+        {
+          "id": "meiling_pre",
+          "speaker": "hong_meiling",
+          "text_en": "Please turn around. I don't want to fight. I just can't let anyone through.",
+          "text_ja": "引き返してください。戦いたくないんです。ただ、誰も通すわけにいかなくて。",
+          "next": "meiling_pre_2"
+        },
+        {
+          "id": "meiling_pre_2",
+          "speaker": "reimu",
+          "text_en": "You're asleep on your feet, Meiling.",
+          "text_ja": "立ったまま寝てるわよ、美鈴。",
+          "next": "meiling_pre_3"
+        },
+        {
+          "id": "meiling_pre_3",
+          "speaker": "hong_meiling",
+          "text_en": "No. I haven't slept in so long. I'm afraid if I close my eyes I won't remember where the gate is.",
+          "text_ja": "いいえ。もうずっと寝てません。目を閉じたら、門がどこにあったか忘れてしまいそうで。",
+          "actions": ["start_boss:hong_meiling"],
+          "next": null
+        },
+        {
+          "id": "meiling_revisit",
+          "speaker": "hong_meiling",
+          "text_en": "Sakuya-san's clocks are ticking again. And I took a nap! A real one! ...Please don't tell her.",
+          "text_ja": "咲夜さんの時計がまた動き出したんです。それに私、お昼寝しちゃいました！ 本当のお昼寝！ ……内緒にしてくださいね。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_sakuya_izayoi",
+      "npc": "sakuya_izayoi",
+      "entry": "sakuya_entry",
+      "nodes": [
+        {
+          "id": "sakuya_entry",
+          "branches": [
+            {"condition": "flag:defeated_sakuya_izayoi", "next": "sakuya_revisit"},
+            {"condition": "", "next": "sakuya_pre"}
+          ]
+        },
+        {
+          "id": "sakuya_pre",
+          "speaker": "sakuya_izayoi",
+          "text_en": "My lady is not receiving guests.",
+          "text_ja": "お嬢様はお客様にお会いになりません。",
+          "next": "sakuya_pre_2"
+        },
+        {
+          "id": "sakuya_pre_2",
+          "speaker": "reimu",
+          "text_en": "Your tea's been steaming since I got here.",
+          "text_ja": "そのお茶、私が来てからずっと湯気立ってるわよ。",
+          "next": "sakuya_pre_3"
+        },
+        {
+          "id": "sakuya_pre_3",
+          "speaker": "sakuya_izayoi",
+          "text_en": "Yes. It will keep steaming. It will never finish. That is the point.",
+          "text_ja": "ええ。湯気は立ち続けます。冷めきることはない。それが目的ですもの。",
+          "actions": ["start_boss:sakuya_izayoi"],
+          "next": null
+        },
+        {
+          "id": "sakuya_revisit",
+          "speaker": "sakuya_izayoi",
+          "text_en": "The tea went cold. I made fresh. It is the first thing in weeks that has felt like work. ...Thank you. Do not make me say it twice.",
+          "text_ja": "紅茶が冷めました。淹れ直しました。何週間ぶりかに、仕事をした気がします。……ありがとう。二度は言いませんわ。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_remilia_scarlet",
+      "npc": "remilia_scarlet",
+      "entry": "remilia_entry",
+      "nodes": [
+        {
+          "id": "remilia_entry",
+          "branches": [
+            {"condition": "flag:defeated_remilia_scarlet", "next": "remilia_revisit"},
+            {"condition": "", "next": "remilia_pre"}
+          ]
+        },
+        {
+          "id": "remilia_pre",
+          "speaker": "remilia_scarlet",
+          "text_en": "I have been expecting you for some time. Longer than you have been alive, if we are being precise.",
+          "text_ja": "ずっと待っていたわ。正確に言えば、貴女が生まれるより前から。",
+          "next": "remilia_pre_2"
+        },
+        {
+          "id": "remilia_pre_2",
+          "speaker": "reimu",
+          "text_en": "Spare me the fate talk.",
+          "text_ja": "運命の話はいいから。",
+          "next": "remilia_pre_3"
+        },
+        {
+          "id": "remilia_pre_3",
+          "speaker": "remilia_scarlet",
+          "text_en": "No. Tonight I think I will spare you nothing.",
+          "text_ja": "いいえ。今夜は、何一つ容赦しないつもりよ。",
+          "actions": ["start_boss:remilia_scarlet"],
+          "next": null
+        },
+        {
+          "id": "remilia_revisit",
+          "speaker": "remilia_scarlet",
+          "text_en": "The thread is still there. It goes down, under your shrine, and it has been cut and tied many times. Some of the knots are older than I am. ...I tell you this because I am bored, not because I care.",
+          "text_ja": "糸はまだあるわ。貴女の神社の下へ続いて、何度も切られ、結ばれてきた。私より古い結び目もある。……退屈だから教えるだけよ。心配しているわけじゃないわ。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_alice_margatroid",
+      "npc": "alice_margatroid",
+      "entry": "alice_entry",
+      "nodes": [
+        {
+          "id": "alice_entry",
+          "branches": [
+            {"condition": "flag:defeated_alice_margatroid", "next": "alice_revisit"},
+            {"condition": "", "next": "alice_pre"}
+          ]
+        },
+        {
+          "id": "alice_pre",
+          "speaker": "alice_margatroid",
+          "text_en": "Don't come any closer. They don't listen to me any more.",
+          "text_ja": "近寄らないで。もう、私の言うことを聞かないの。",
+          "next": "alice_pre_2"
+        },
+        {
+          "id": "alice_pre_2",
+          "speaker": "reimu",
+          "text_en": "Then I'll make them listen.",
+          "text_ja": "なら、聞かせてあげる。",
+          "next": "alice_pre_3"
+        },
+        {
+          "id": "alice_pre_3",
+          "speaker": "alice_margatroid",
+          "text_en": "You'll try. Mind the one on the left. She was always my favourite.",
+          "text_ja": "やってみなさい。左の子に気を付けて。一番のお気に入りだったの。",
+          "actions": ["start_boss:alice_margatroid"],
+          "next": null
+        },
+        {
+          "id": "alice_revisit",
+          "speaker": "alice_margatroid",
+          "text_en": "They're still. Properly still. I put them to bed. Is it childish to say goodnight to dolls? Don't answer that.",
+          "text_ja": "止まったわ。ちゃんと。寝かしつけたの。人形におやすみを言うのは子供っぽいかしら。答えなくていいわ。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_fujiwara_no_mokou",
+      "npc": "fujiwara_no_mokou",
+      "entry": "mokou_entry",
+      "nodes": [
+        {
+          "id": "mokou_entry",
+          "branches": [
+            {"condition": "flag:defeated_fujiwara_no_mokou", "next": "mokou_revisit"},
+            {"condition": "", "next": "mokou_pre"}
+          ]
+        },
+        {
+          "id": "mokou_pre",
+          "speaker": "fujiwara_no_mokou",
+          "text_en": "You lost? Everyone's lost in here. Even the rabbits.",
+          "text_ja": "迷子か？ ここじゃ皆迷子さ。兎でさえ。",
+          "next": "mokou_pre_2"
+        },
+        {
+          "id": "mokou_pre_2",
+          "speaker": "reimu",
+          "text_en": "I'm looking for the doctor.",
+          "text_ja": "医者を探してるの。",
+          "next": "mokou_pre_3"
+        },
+        {
+          "id": "mokou_pre_3",
+          "speaker": "fujiwara_no_mokou",
+          "text_en": "Get through me first. I don't care why. I just want to feel something burn.",
+          "text_ja": "まず私を通りな。理由はどうでもいい。何かが燃えるのを感じたいだけさ。",
+          "actions": ["start_boss:fujiwara_no_mokou"],
+          "next": null
+        },
+        {
+          "id": "mokou_revisit",
+          "speaker": "fujiwara_no_mokou",
+          "text_en": "Still here. Always am. ...Hey. If you ever forget who you are, come find me. I'll remind you by punching you. Works on me.",
+          "text_ja": "まだいるよ。いつだってな。……なあ。自分が誰か忘れたら、私を探しに来な。殴って思い出させてやる。私にはそれが効く。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_eirin_yagokoro",
+      "npc": "eirin_yagokoro",
+      "entry": "eirin_entry",
+      "nodes": [
+        {
+          "id": "eirin_entry",
+          "branches": [
+            {"condition": "flag:defeated_eirin_yagokoro", "next": "eirin_revisit"},
+            {"condition": "", "next": "eirin_pre"}
+          ]
+        },
+        {
+          "id": "eirin_pre",
+          "speaker": "eirin_yagokoro",
+          "text_en": "Sit, please. I'll take your pulse. ...No? Then we will do this the other way.",
+          "text_ja": "お座りなさい。脈を診ます。……嫌？ では、もう一つのやり方で。",
+          "next": "eirin_pre_2"
+        },
+        {
+          "id": "eirin_pre_2",
+          "speaker": "reimu",
+          "text_en": "What's wrong with everyone?",
+          "text_ja": "皆、どうしちゃったの？",
+          "next": "eirin_pre_3"
+        },
+        {
+          "id": "eirin_pre_3",
+          "speaker": "eirin_yagokoro",
+          "text_en": "I will tell you after the examination. Assuming you pass.",
+          "text_ja": "診察の後でお話しします。合格すれば、ですが。",
+          "actions": ["start_boss:eirin_yagokoro"],
+          "next": null
+        },
+        {
+          "id": "eirin_revisit",
+          "speaker": "eirin_yagokoro",
+          "text_en": "It is not a sickness, and I am not the right physician. Ask the one who keeps the ledger. You have met her, at Muenzuka. ...Take these. They will not cure you. They help you dream, and that is not nothing.",
+          "text_ja": "病ではありませんし、私は相応しい医者でもない。帳簿を持つ者に訊きなさい。無縁塚で会ったでしょう。……これを。治りはしません。夢を見る助けになる。それは、無ではない。",
+          "actions": ["give_item:kochou_mugan"],
+          "once": true,
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_aya_shameimaru",
+      "npc": "aya_shameimaru",
+      "entry": "aya_entry",
+      "nodes": [
+        {
+          "id": "aya_entry",
+          "branches": [
+            {"condition": "flag:defeated_aya_shameimaru", "next": "aya_revisit"},
+            {"condition": "", "next": "aya_pre"}
+          ]
+        },
+        {
+          "id": "aya_pre",
+          "speaker": "aya_shameimaru",
+          "text_en": "Ayaya! A scoop! Hold still for a photo!",
+          "text_ja": "あやや！ スクープです！ 写真撮りますから動かないで！",
+          "next": "aya_pre_2"
+        },
+        {
+          "id": "aya_pre_2",
+          "speaker": "reimu",
+          "text_en": "There's no film in that.",
+          "text_ja": "それ、フィルム入ってないわよ。",
+          "next": "aya_pre_3"
+        },
+        {
+          "id": "aya_pre_3",
+          "speaker": "aya_shameimaru",
+          "text_en": "I don't need film. Nobody develops them anyway. Hold still!",
+          "text_ja": "フィルムなんて要りません。どうせ誰も現像しないんですから。動かないで！",
+          "actions": ["start_boss:aya_shameimaru"],
+          "next": null
+        },
+        {
+          "id": "aya_revisit",
+          "speaker": "aya_shameimaru",
+          "text_en": "I printed an extra edition. Your name's on the front, in big letters. REIMU HAKUREI. I pasted it on every tree in the village. ...It's peeling already. I'll print more.",
+          "text_ja": "号外を刷りました。一面にあなたの名前、大きな字で。博麗霊夢。里中の木に貼ってきました。……もう剥がれかけてます。また刷りますね。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_kanako_yasaka",
+      "npc": "kanako_yasaka",
+      "entry": "kanako_entry",
+      "nodes": [
+        {
+          "id": "kanako_entry",
+          "branches": [
+            {"condition": "flag:defeated_kanako_yasaka", "next": "kanako_revisit"},
+            {"condition": "", "next": "kanako_pre"}
+          ]
+        },
+        {
+          "id": "kanako_pre",
+          "speaker": "kanako_yasaka",
+          "text_en": "Hakurei. You climbed my mountain without an offering.",
+          "text_ja": "博麗。供え物も持たずに我が山を登ってきたか。",
+          "next": "kanako_pre_2"
+        },
+        {
+          "id": "kanako_pre_2",
+          "speaker": "reimu",
+          "text_en": "I don't really do offerings.",
+          "text_ja": "お供えとか、あんまりしないのよね。",
+          "next": "kanako_pre_3"
+        },
+        {
+          "id": "kanako_pre_3",
+          "speaker": "kanako_yasaka",
+          "text_en": "No. You never did. And yet your shrine still stands. I have wondered how, for a long time.",
+          "text_ja": "そうだな。お前は一度もしなかった。それでもお前の神社は建っている。どうやって、とずっと考えていた。",
+          "actions": ["start_boss:kanako_yasaka"],
+          "next": null
+        },
+        {
+          "id": "kanako_revisit",
+          "speaker": "kanako_yasaka",
+          "text_en": "Sanae is in the village, preaching to empty streets. Suwako sleeps in the lake and will not wake. I will stay, and keep the lamps lit, and be proud. That is what a god is for.",
+          "text_ja": "早苗は里で、誰もいない通りに向かって説いている。諏訪子は湖で眠ったまま起きない。私はここに残り、灯を守り、誇り高くあろう。神とはそういうものだ。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_youmu_konpaku",
+      "npc": "youmu_konpaku",
+      "entry": "youmu_entry",
+      "nodes": [
+        {
+          "id": "youmu_entry",
+          "branches": [
+            {"condition": "flag:defeated_youmu_konpaku", "next": "youmu_revisit"},
+            {"condition": "", "next": "youmu_pre"}
+          ]
+        },
+        {
+          "id": "youmu_pre",
+          "speaker": "youmu_konpaku",
+          "text_en": "Halt. This is Hakugyokurou. The living may not pass.",
+          "text_ja": "止まりなさい。ここは白玉楼。生者は通れません。",
+          "next": "youmu_pre_2"
+        },
+        {
+          "id": "youmu_pre_2",
+          "speaker": "reimu",
+          "text_en": "I'm not here for your mistress.",
+          "text_ja": "あんたの主人に用があるわけじゃないわ。",
+          "next": "youmu_pre_3"
+        },
+        {
+          "id": "youmu_pre_3",
+          "speaker": "youmu_konpaku",
+          "text_en": "It doesn't matter. I need something to cut. I'm sorry.",
+          "text_ja": "関係ありません。何か斬るものが要るんです。すみません。",
+          "actions": ["start_boss:youmu_konpaku"],
+          "next": null
+        },
+        {
+          "id": "youmu_revisit",
+          "speaker": "youmu_konpaku",
+          "text_en": "I raked the garden. All the waves. My hands have stopped shaking. Lady Yuyuko ate three bowls of rice. That is a very good sign.",
+          "text_ja": "庭を掃き清めました。波紋を全部。手の震えも止まりました。幽々子様はご飯を三杯召し上がりました。とても良い兆しです。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_yuyuko_saigyouji",
+      "npc": "yuyuko_saigyouji",
+      "entry": "yuyuko_entry",
+      "nodes": [
+        {
+          "id": "yuyuko_entry",
+          "branches": [
+            {"condition": "flag:defeated_yuyuko_saigyouji", "next": "yuyuko_revisit"},
+            {"condition": "", "next": "yuyuko_pre"}
+          ]
+        },
+        {
+          "id": "yuyuko_pre",
+          "speaker": "yuyuko_saigyouji",
+          "text_en": "Oh, a visitor. How nice. Would you like to sit under the tree with me? I've been wondering about someone.",
+          "text_ja": "あら、お客様。嬉しいわ。一緒に木の下に座らない？ ある人のことを考えていたの。",
+          "next": "yuyuko_pre_2"
+        },
+        {
+          "id": "yuyuko_pre_2",
+          "speaker": "reimu",
+          "text_en": "Who?",
+          "text_ja": "誰のこと？",
+          "next": "yuyuko_pre_3"
+        },
+        {
+          "id": "yuyuko_pre_3",
+          "speaker": "yuyuko_saigyouji",
+          "text_en": "The girl under the roots. I've never wondered before. Isn't it fun? Isn't it dreadful? Let's play while I think.",
+          "text_ja": "根の下の女の子。今まで考えたこともなかった。楽しいわね。恐ろしいわね。考えている間、遊びましょう。",
+          "actions": ["start_boss:yuyuko_saigyouji"],
+          "next": null
+        },
+        {
+          "id": "yuyuko_revisit",
+          "speaker": "yuyuko_saigyouji",
+          "text_en": "I've decided not to find out who she was. Some seals are kinder left shut. ...Yours is not one of them, I think. Yukari would disagree. She always does.",
+          "text_ja": "誰だったのか、知らないでおくことにしたわ。閉じたままの方が優しい封印もあるもの。……貴女のは、そうじゃない気がする。紫は反対するでしょうけど。いつもそうだから。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_utsuho_reiuji",
+      "npc": "utsuho_reiuji",
+      "entry": "utsuho_entry",
+      "nodes": [
+        {
+          "id": "utsuho_entry",
+          "branches": [
+            {"condition": "flag:defeated_utsuho_reiuji", "next": "utsuho_revisit"},
+            {"condition": "", "next": "utsuho_pre"}
+          ]
+        },
+        {
+          "id": "utsuho_pre",
+          "speaker": "utsuho_reiuji",
+          "text_en": "Unyu! Intruder! Surface person! Are you here to believe in the sun?",
+          "text_ja": "うにゅ！ 侵入者！ 地上の人！ 太陽を信じに来たの？",
+          "next": "utsuho_pre_2"
+        },
+        {
+          "id": "utsuho_pre_2",
+          "speaker": "reimu",
+          "text_en": "No. I'm here to turn it down.",
+          "text_ja": "違う。火力を下げに来たの。",
+          "next": "utsuho_pre_3"
+        },
+        {
+          "id": "utsuho_pre_3",
+          "speaker": "utsuho_reiuji",
+          "text_en": "Then you're an enemy of the sun! And of Lady Kanako! And of something else, I forget! Fusion time!",
+          "text_ja": "じゃあ太陽の敵だ！ 神奈子様の敵だ！ あと何かの敵！ 忘れた！ 核融合だー！",
+          "actions": ["start_boss:utsuho_reiuji"],
+          "next": null
+        },
+        {
+          "id": "utsuho_revisit",
+          "speaker": "utsuho_reiuji",
+          "text_en": "It's smaller now. The sun. Lady Satori says that's good. I thought smaller meant worse. She says smaller means steady. ...I'm trying to remember that.",
+          "text_ja": "太陽、小さくなったよ。さとり様はそれでいいって。小さいのは悪いことだと思ってた。さとり様は、小さいのは安定してるってことだって。……覚えておこうとしてるの。",
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "boss_yukari_yakumo",
+      "npc": "yukari_yakumo",
+      "entry": "yukari_entry",
+      "nodes": [
+        {
+          "id": "yukari_entry",
+          "branches": [
+            {"condition": "flag:defeated_yukari_yakumo", "next": "yukari_revisit"},
+            {"condition": "", "next": "yukari_pre"}
+          ]
+        },
+        {
+          "id": "yukari_pre",
+          "speaker": "yukari_yakumo",
+          "text_en": "Reimu.",
+          "text_ja": "霊夢。",
+          "next": "yukari_pre_2"
+        },
+        {
+          "id": "yukari_pre_2",
+          "speaker": "reimu",
+          "text_en": "You knew. The whole time, you knew.",
+          "text_ja": "知ってたのね。ずっと。",
+          "next": "yukari_pre_3"
+        },
+        {
+          "id": "yukari_pre_3",
+          "speaker": "yukari_yakumo",
+          "text_en": "For a very long time. Longer than the shrine has had your name on it. Ask me anything you like. I will answer afterward, if you are still standing.",
+          "text_ja": "ずっと昔から。神社に貴女の名が刻まれるより前から。何でも訊きなさい。後で答えるわ。まだ立っていられたら。",
+          "actions": ["start_boss:yukari_yakumo"],
+          "next": null
+        },
+        {
+          "id": "yukari_revisit",
+          "speaker": "yukari_yakumo",
+          "text_en": "Go down. She is waiting. She has been waiting since before you were born.",
+          "text_ja": "降りなさい。あの子が待っている。貴女が生まれる前から、ずっと。",
+          "next": "yukari_revisit_2"
+        },
+        {
+          "id": "yukari_revisit_2",
+          "speaker": "yukari_yakumo",
+          "text_en": "And Reimu. Whatever you choose, I will remember it. That much, at least, I can still do.",
+          "text_ja": "それから霊夢。何を選んでも、私は覚えておくわ。それくらいは、まだできるから。",
+          "next": null
+        }
+      ]
+    }
+  ],
+  "npc_models": {
+    "wayside_god": "characters/wayside_god/wayside_god",
+    "former_maiden": "characters/former_maiden/former_maiden",
+    "collector": "characters/collector/collector",
+    "marisa": "characters/marisa/marisa",
+    "rinnosuke": "characters/rinnosuke/rinnosuke"
+  }
+}

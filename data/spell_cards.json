@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "slots": { "base": 1, "max": 3, "unlock_flags": ["defeated_remilia_scarlet", "defeated_kanako_yasaka"] },
+  "spell_cards": [
+    {
+      "id": "sc_fantasy_seal",
+      "name_ja": "霊符「夢想封印」",
+      "name_en": "Spirit Sign \"Fantasy Seal\"",
+      "source": { "kind": "reimu", "unlock": "start" },
+      "spirit_cost": 100,
+      "effect": { "type": "homing_orbs", "count": 6, "damage_each": 30, "clears_bullets": true, "invulnerable_s": 2.0 },
+      "description": "Clears enemy bullets and releases six homing orbs of light. Reimu is invulnerable for 2 s.",
+      "lore_en": "The Hakurei shrine maiden's signature. Every maiden has cast it, each a little differently. Reimu's is gentler than it needs to be. The orbs chase, but they are round, and they are bright, and they do not quite want to hurt anyone."
+    },
+    {
+      "id": "sc_fantasy_orb",
+      "name_ja": "霊符「夢想妙珠」",
+      "name_en": "Spirit Sign \"Fantasy Orb\"",
+      "source": { "kind": "reimu", "unlock": "flag:defeated_cirno" },
+      "spirit_cost": 60,
+      "effect": { "type": "homing_orbs", "count": 3, "damage_each": 38, "clears_bullets": false, "invulnerable_s": 0.0 },
+      "description": "Three larger homing orbs. Cheaper than Fantasy Seal; does not clear bullets.",
+      "lore_en": "A lesser Fantasy Seal, for when a greater one would be a waste. Reimu learned it because it was less effort. That is the most Reimu reason there is."
+    },
+    {
+      "id": "sc_evil_sealing_circle",
+      "name_ja": "夢符「封魔陣」",
+      "name_en": "Dream Sign \"Evil-Sealing Circle\"",
+      "source": { "kind": "reimu", "unlock": "flag:defeated_remilia_scarlet" },
+      "spirit_cost": 80,
+      "effect": { "type": "ground_seal", "radius_m": 5.0, "damage_per_s": 25, "duration_s": 3.0, "slows_enemies": 0.5 },
+      "description": "A sealing circle on the ground around Reimu. Enemies inside take damage and are slowed.",
+      "lore_en": "A circle drawn in light that the wicked cannot cross. Found written in the margin of an old shrine manual, in a hand that is not Reimu's. The circle is drawn slightly tighter than Reimu would draw it."
+    },
+    {
+      "id": "sc_duplex_barrier",
+      "name_ja": "夢符「二重結界」",
+      "name_en": "Dream Sign \"Duplex Barrier\"",
+      "source": { "kind": "reimu", "unlock": "flag:defeated_former_maiden_road" },
+      "spirit_cost": 120,
+      "effect": { "type": "barrier", "radius_m": 3.5, "duration_s": 4.0, "reflects_bullets": true, "damage_on_expand": 60 },
+      "description": "Two nested barriers that reflect bullets for 4 s, then burst outward.",
+      "lore_en": "Two boundaries, one inside the other. What passes the outer is caught by the inner. Reimu came to it after fighting someone who fought exactly like her, and found a gap in herself she had not known was there."
+    },
+    {
+      "id": "sc_fantasy_nature",
+      "name_ja": "「夢想天生」",
+      "name_en": "\"Fantasy Nature\"",
+      "source": { "kind": "reimu", "unlock": "flag:reimu_name_fade_2" },
+      "spirit_cost": 200,
+      "effect": { "type": "float_free", "duration_s": 6.0, "untargetable": true, "orbs_per_s": 4, "damage_each": 22 },
+      "description": "Reimu floats free of all things for 6 s: untouchable, while orbs of light seek every enemy around her.",
+      "lore_en": "Reimu's ultimate technique: to float away from everything, so that nothing can touch her. She has always been able to do it. It came easily. It has never come so easily as now, as her own name loosens its grip on her. It is the most beautiful thing she can do, and she has begun to be afraid of it."
+    },
+    {
+      "id": "sc_perfect_freeze",
+      "name_ja": "凍符「パーフェクトフリーズ」",
+      "name_en": "Freeze Sign \"Perfect Freeze\"",
+      "source": { "kind": "boss", "boss": "cirno" },
+      "spirit_cost": 90,
+      "effect": { "type": "freeze_field", "radius_m": 10.0, "freeze_s": 2.5, "bullet_count": 36, "damage_each": 10, "frost_buildup": 40 },
+      "description": "Bursts of coloured bullets freeze in place, including every enemy bullet nearby, then drift loose.",
+      "lore_en": "Cirno's proudest card, taught to Reimu with a great deal of shouting and no explanation. It freezes everything, even other people's bullets. Especially those. Cirno says it's because she's the strongest. It's because she's never once been afraid of anything moving too fast."
+    },
+    {
+      "id": "sc_colorful_light_dance",
+      "name_ja": "彩符「彩光乱舞」",
+      "name_en": "Colorful Sign \"Colorful Light Chaotic Dance\"",
+      "source": { "kind": "boss", "boss": "hong_meiling" },
+      "spirit_cost": 70,
+      "effect": { "type": "melee_empower", "duration_s": 8.0, "stamina_cost_multiplier": 0.5, "hit_burst_bullets": 6, "damage_each": 8 },
+      "description": "For 8 s, melee costs half stamina and every hit sheds a burst of rainbow bullets.",
+      "lore_en": "Meiling's qi, lent to the shrine maiden. The colours come back when she uses it. Meiling says that is just what qi does. It is not; it is just what she does."
+    },
+    {
+      "id": "sc_private_square",
+      "name_ja": "時符「プライベートスクウェア」",
+      "name_en": "Time Sign \"Private Square\"",
+      "source": { "kind": "boss", "boss": "sakuya_izayoi" },
+      "spirit_cost": 110,
+      "effect": { "type": "slow_time", "radius_m": 8.0, "time_scale": 0.35, "duration_s": 4.0 },
+      "description": "Time slows to a third for everything within 8 m except Reimu.",
+      "lore_en": "A small square of time that belongs only to the one who made it. Sakuya used it to finish the chores before her lady woke. Reimu uses it to breathe."
+    },
+    {
+      "id": "sc_spear_the_gungnir",
+      "name_ja": "神槍「スピア・ザ・グングニル」",
+      "name_en": "Divine Spear \"Spear the Gungnir\"",
+      "source": { "kind": "boss", "boss": "remilia_scarlet" },
+      "spirit_cost": 130,
+      "effect": { "type": "piercing_projectile", "windup_s": 0.8, "damage": 220, "pierces": true, "poise_damage": 120 },
+      "description": "Hurl a spear of scarlet light that pierces everything in a line. Enormous poise damage.",
+      "lore_en": "A spear that always strikes the target its thrower has chosen, because the thrower chose its fate. Remilia let Reimu have it with a shrug. 'You will need to pierce something,' she said, 'and you will not like what.'"
+    },
+    {
+      "id": "sc_shanghai_doll",
+      "name_ja": "咒符「魔彩光の上海人形」",
+      "name_en": "Curse Sign \"Shanghai Doll of Magical Light\"",
+      "source": { "kind": "boss", "boss": "alice_margatroid" },
+      "spirit_cost": 80,
+      "effect": { "type": "summon_turret", "duration_s": 10.0, "laser_damage_per_s": 30, "follows_lock_on": true },
+      "description": "A doll of light floats at Reimu's shoulder for 10 s, sweeping lasers at the locked-on target.",
+      "lore_en": "Alice's favourite doll, remade in light and lent, not given. Its strings are tied to Reimu's wrist. They are very fine, and very strong, and Alice can feel through them, faintly, that Reimu is still there."
+    },
+    {
+      "id": "sc_phoenix_tail",
+      "name_ja": "不滅「フェニックスの尾」",
+      "name_en": "Everlasting \"Phoenix's Tail\"",
+      "source": { "kind": "boss", "boss": "fujiwara_no_mokou" },
+      "spirit_cost": 150,
+      "effect": { "type": "auto_revive", "duration_s": 30.0, "revive_hp_pct": 40, "burst_damage": 80, "burn_buildup": 60 },
+      "description": "For 30 s, if Reimu would die she instead rises in fire with 40% HP, burning everything nearby.",
+      "lore_en": "A feather from a bird that cannot die. Mokou tossed it over her shoulder. 'Dying's not so bad,' she said. 'It's the coming back that gets you.'"
+    },
+    {
+      "id": "sc_galaxy_in_a_pot",
+      "name_ja": "薬符「壺中の大銀河」",
+      "name_en": "Medicine Sign \"Galaxy in a Pot\"",
+      "source": { "kind": "boss", "boss": "eirin_yagokoro" },
+      "spirit_cost": 100,
+      "effect": { "type": "heal_field", "radius_m": 4.0, "heal_per_s": 8, "duration_s": 6.0, "cures": ["dread", "burn", "frost"] },
+      "description": "A field of starlight that heals and cures all status effects for 6 s.",
+      "lore_en": "A universe kept in a medicine jar. Eirin's diagnosis is written on the lid in a tidy hand: 'Not a cure. Rest.'"
+    },
+    {
+      "id": "sc_evil_sealing_chains",
+      "name_ja": "鎖符「封魔の鎖」",
+      "name_en": "Chain Sign \"Evil-Sealing Chains\"",
+      "source": { "kind": "boss", "boss": "former_maiden_road" },
+      "spirit_cost": 90,
+      "effect": { "type": "bind", "chains": 4, "bind_s": 3.0, "damage_each": 20, "poise_damage": 60 },
+      "description": "Four ofuda chains lance out and bind the target in place for 3 s.",
+      "lore_en": "The old way: not to drive away, but to bind. Reimu does not remember learning it. Her hands simply know it, the first time she tries, as if they have always known."
+    },
+    {
+      "id": "sc_sarutahiko_guidance",
+      "name_ja": "突風「猿田彦の先導」",
+      "name_en": "Gale \"Sarutahiko's Guidance\"",
+      "source": { "kind": "boss", "boss": "aya_shameimaru" },
+      "spirit_cost": 70,
+      "effect": { "type": "dash_strike", "distance_m": 14.0, "damage": 90, "invulnerable_during": true, "leaves_bullet_trail": true },
+      "description": "A wind-borne dash of 14 m that strikes everything in the path, invulnerable while moving.",
+      "lore_en": "Sarutahiko is a god of roads and guidance, who stood at the crossroads of heaven to lead the way down. The roadside gods are his distant kin. When Reimu uses it, the Wayside God's flame leans, just slightly, in the direction she went."
+    },
+    {
+      "id": "sc_meteoric_onbashira",
+      "name_ja": "御柱「メテオリックオンバシラ」",
+      "name_en": "Onbashira \"Meteoric Onbashira\"",
+      "source": { "kind": "boss", "boss": "kanako_yasaka" },
+      "spirit_cost": 140,
+      "effect": { "type": "falling_pillars", "count": 5, "damage_each": 70, "radius_m": 2.5, "poise_damage": 80 },
+      "description": "Five sacred pillars fall around the target.",
+      "lore_en": "Kanako gave this to Reimu with some reluctance. 'A pillar holds things up,' she said. 'That is all it is for. Remember that. Use it for nothing else.'"
+    },
+    {
+      "id": "sc_present_world_slash",
+      "name_ja": "人符「現世斬」",
+      "name_en": "Human Sign \"Present World Slash\"",
+      "source": { "kind": "boss", "boss": "youmu_konpaku" },
+      "spirit_cost": 80,
+      "effect": { "type": "dash_cut", "distance_m": 10.0, "damage": 140, "delayed_crescent_bullets": 12 },
+      "description": "A single cut across 10 m. A crescent of blade-light follows a moment later.",
+      "lore_en": "A cut that separates the present from everything else. Youmu said Reimu's form was terrible. She also said Reimu was the first person who ever made her feel like a teacher, and then went very red and walked away."
+    },
+    {
+      "id": "sc_ghost_butterfly",
+      "name_ja": "華霊「ゴーストバタフライ」",
+      "name_en": "Flower Spirit \"Ghost Butterfly\"",
+      "source": { "kind": "boss", "boss": "yuyuko_saigyouji" },
+      "spirit_cost": 110,
+      "effect": { "type": "drain_field", "radius_m": 7.0, "duration_s": 5.0, "damage_per_s": 30, "heal_ratio": 0.3, "dread_buildup_enemies": 50 },
+      "description": "Butterflies fill the air for 5 s, draining enemies and returning part of it as HP.",
+      "lore_en": "Butterflies of death that do not hurt the one who calls them. Yuyuko let them go reluctantly. She said she had been keeping them to remind herself of something, and could no longer remember what."
+    },
+    {
+      "id": "sc_inverted_orbs",
+      "name_ja": "陰陽「逆さ陰陽玉」",
+      "name_en": "Yin-Yang \"Inverted Yin-Yang Orbs\"",
+      "source": { "kind": "boss", "boss": "former_maiden_saigyou" },
+      "spirit_cost": 100,
+      "effect": { "type": "orbiting_orbs", "count": 2, "duration_s": 12.0, "damage_per_hit": 24, "absorbs_bullets": true, "spirit_per_absorb": 2 },
+      "description": "Two inverted orbs circle Reimu for 12 s, absorbing enemy bullets and returning Spirit.",
+      "lore_en": "The orbs keep balance, as all yin-yang orbs do. They have simply forgotten which side they were on. In Reimu's hands, they seem to be trying to decide."
+    },
+    {
+      "id": "sc_nuclear_fusion",
+      "name_ja": "核熱「ニュークリアフュージョン」",
+      "name_en": "Atomic Fire \"Nuclear Fusion\"",
+      "source": { "kind": "boss", "boss": "utsuho_reiuji" },
+      "spirit_cost": 160,
+      "effect": { "type": "expanding_orbs", "count": 4, "damage_each": 90, "burn_buildup": 80, "self_burn_buildup": 20 },
+      "description": "Four huge slow orbs of fusion fire roll outward. Too close, and Reimu burns too.",
+      "lore_en": "The power of a small sun. Utsuho gave it away cheerfully, as she does everything. She does not understand what it is. Neither, entirely, does Reimu. Gods lend power more easily than they lend understanding."
+    },
+    {
+      "id": "sc_quadruple_barrier",
+      "name_ja": "境符「四重結界」",
+      "name_en": "Boundary Sign \"Quadruple Barrier\"",
+      "source": { "kind": "boss", "boss": "yukari_yakumo" },
+      "spirit_cost": 150,
+      "effect": { "type": "nested_barriers", "count": 4, "duration_s": 6.0, "redirects_enemy_bullets": true, "damage_on_collapse": 120 },
+      "description": "Four nested barriers turn enemy bullets back on their source, then collapse inward.",
+      "lore_en": "Yukari's boundary folded four times, the way she folded every secret she ever kept. She handed it over without a joke, which frightened Reimu more than anything else she has seen."
+    },
+    {
+      "id": "sc_elder_fantasy_seal",
+      "name_ja": "古霊「先代夢想封印」",
+      "name_en": "Elder Spirit \"Fantasy Seal of the Former Age\"",
+      "source": { "kind": "boss", "boss": "former_maiden_pillar", "condition": "flag:returned_maiden_name" },
+      "spirit_cost": 100,
+      "effect": { "type": "homing_orbs", "count": 4, "damage_each": 70, "clears_bullets": true, "invulnerable_s": 2.5 },
+      "description": "An older Fantasy Seal: fewer orbs, heavier, merciless. Only granted if her name was returned. Carries into New Game+.",
+      "lore_en": "The way the Fantasy Seal was cast before Reimu, before the generation before her, before anyone living remembers. Harsher. Heavier. It was given freely, by someone who had her name back, and who said only: 'You'll cast it gentler than I did. Good.'"
+    }
+  ]
+}

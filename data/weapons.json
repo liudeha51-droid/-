@@ -1,0 +1,450 @@
+{
+  "version": 1,
+  "scaling_grades": { "S": 1.4, "A": 1.1, "B": 0.8, "C": 0.55, "D": 0.3, "E": 0.15, "-": 0.0 },
+  "damage_formula": "attack_damage = base_damage[upgrade] * motion_value * (1 + grade(power) * progression.stat_tables.power_bonus[power_rank-1] + grade(spirit) * progression.stat_tables.spirit_bonus[spirit_rank-1])",
+  "weapon_types": [
+    {
+      "id": "gohei",
+      "names": { "en": "Gohei", "ja": "御幣" },
+      "description": "A purification wand. Balanced reach and speed; the prototype's three-hit combo. Hits build Spirit quickly.",
+      "base_stamina_per_light": 16,
+      "spirit_per_hit": 6
+    },
+    {
+      "id": "sword",
+      "names": { "en": "Sword", "ja": "刀" },
+      "description": "Slower, heavier and longer. More damage and poise damage per hit; builds Spirit more slowly.",
+      "base_stamina_per_light": 20,
+      "spirit_per_hit": 4
+    },
+    {
+      "id": "amulet",
+      "names": { "en": "Amulet", "ja": "御札" },
+      "description": "Talisman sets thrown from the hand in place of melee. Weak up close, strong at range, and scale with Spirit.",
+      "base_stamina_per_light": 12,
+      "spirit_per_hit": 3
+    }
+  ],
+  "upgrade_paths": [
+    {
+      "id": "standard_gohei",
+      "max_level": 10,
+      "damage_growth_per_level": 0.08,
+      "levels": [
+        { "to": 1, "materials": [{ "item": "washi_scrap", "count": 1 }], "faith": 300 },
+        { "to": 2, "materials": [{ "item": "washi_scrap", "count": 2 }], "faith": 500 },
+        { "to": 3, "materials": [{ "item": "washi_scrap", "count": 3 }], "faith": 800 },
+        { "to": 4, "materials": [{ "item": "blessed_shide", "count": 1 }], "faith": 1200 },
+        { "to": 5, "materials": [{ "item": "blessed_shide", "count": 2 }], "faith": 1700 },
+        { "to": 6, "materials": [{ "item": "blessed_shide", "count": 3 }], "faith": 2300 },
+        { "to": 7, "materials": [{ "item": "sacred_sakaki", "count": 1 }], "faith": 3000 },
+        { "to": 8, "materials": [{ "item": "sacred_sakaki", "count": 2 }], "faith": 3800 },
+        { "to": 9, "materials": [{ "item": "sacred_sakaki", "count": 3 }], "faith": 4700 },
+        { "to": 10, "materials": [{ "item": "remembered_prayer", "count": 1 }], "faith": 6000 }
+      ]
+    },
+    {
+      "id": "standard_sword",
+      "max_level": 10,
+      "damage_growth_per_level": 0.085,
+      "levels": [
+        { "to": 1, "materials": [{ "item": "iron_sand", "count": 1 }], "faith": 300 },
+        { "to": 2, "materials": [{ "item": "iron_sand", "count": 2 }], "faith": 500 },
+        { "to": 3, "materials": [{ "item": "iron_sand", "count": 3 }], "faith": 800 },
+        { "to": 4, "materials": [{ "item": "tamahagane_shard", "count": 1 }], "faith": 1200 },
+        { "to": 5, "materials": [{ "item": "tamahagane_shard", "count": 2 }], "faith": 1700 },
+        { "to": 6, "materials": [{ "item": "tamahagane_shard", "count": 3 }], "faith": 2300 },
+        { "to": 7, "materials": [{ "item": "star_iron", "count": 1 }], "faith": 3000 },
+        { "to": 8, "materials": [{ "item": "star_iron", "count": 2 }], "faith": 3800 },
+        { "to": 9, "materials": [{ "item": "star_iron", "count": 3 }], "faith": 4700 },
+        { "to": 10, "materials": [{ "item": "remembered_prayer", "count": 1 }], "faith": 6000 }
+      ]
+    },
+    {
+      "id": "standard_amulet",
+      "max_level": 10,
+      "damage_growth_per_level": 0.075,
+      "levels": [
+        { "to": 1, "materials": [{ "item": "cinnabar_dust", "count": 1 }], "faith": 300 },
+        { "to": 2, "materials": [{ "item": "cinnabar_dust", "count": 2 }], "faith": 500 },
+        { "to": 3, "materials": [{ "item": "cinnabar_dust", "count": 3 }], "faith": 800 },
+        { "to": 4, "materials": [{ "item": "vermilion_ink", "count": 1 }], "faith": 1200 },
+        { "to": 5, "materials": [{ "item": "vermilion_ink", "count": 2 }], "faith": 1700 },
+        { "to": 6, "materials": [{ "item": "vermilion_ink", "count": 3 }], "faith": 2300 },
+        { "to": 7, "materials": [{ "item": "torii_vermilion", "count": 1 }], "faith": 3000 },
+        { "to": 8, "materials": [{ "item": "torii_vermilion", "count": 2 }], "faith": 3800 },
+        { "to": 9, "materials": [{ "item": "torii_vermilion", "count": 3 }], "faith": 4700 },
+        { "to": 10, "materials": [{ "item": "remembered_prayer", "count": 1 }], "faith": 6000 }
+      ]
+    },
+    {
+      "id": "unique",
+      "max_level": 5,
+      "damage_growth_per_level": 0.14,
+      "levels": [
+        { "to": 1, "materials": [{ "item": "blessed_shide", "count": 1 }, { "item": "tamahagane_shard", "count": 1 }, { "item": "vermilion_ink", "count": 1 }], "faith": 2000 },
+        { "to": 2, "materials": [{ "item": "blessed_shide", "count": 2 }, { "item": "tamahagane_shard", "count": 2 }, { "item": "vermilion_ink", "count": 2 }], "faith": 3500 },
+        { "to": 3, "materials": [{ "item": "sacred_sakaki", "count": 1 }, { "item": "star_iron", "count": 1 }, { "item": "torii_vermilion", "count": 1 }], "faith": 5000 },
+        { "to": 4, "materials": [{ "item": "sacred_sakaki", "count": 2 }, { "item": "star_iron", "count": 2 }, { "item": "torii_vermilion", "count": 2 }], "faith": 7000 },
+        { "to": 5, "materials": [{ "item": "remembered_prayer", "count": 1 }], "faith": 10000 }
+      ]
+    }
+  ],
+  "weapons": [
+    {
+      "id": "gohei_hakurei",
+      "type": "gohei",
+      "names": { "en": "Hakurei Gohei", "ja": "博麗の御幣" },
+      "source": { "kind": "starting" },
+      "base_damage": 14,
+      "poise_damage": 10,
+      "reach_m": 2.6,
+      "scaling": { "power": "C", "spirit": "D" },
+      "upgrade_path": "standard_gohei",
+      "moveset": {
+        "light": [
+          { "name": "Purifying Sweep", "motion_value": 1.0, "hit_at_s": 0.17, "duration_s": 0.5 },
+          { "name": "Return Sweep", "motion_value": 1.0, "hit_at_s": 0.17, "duration_s": 0.5 },
+          { "name": "Overhead Rite", "motion_value": 1.857, "hit_at_s": 0.3, "duration_s": 0.72 }
+        ],
+        "heavy": { "name": "Driving Thrust", "motion_value": 2.2, "stamina": 28 },
+        "running": { "name": "Shide Lash", "motion_value": 1.3 },
+        "rolling": { "name": "Rising Sweep", "motion_value": 1.1 },
+        "art": { "name": "Ofuda Volley", "spirit_cost": 10, "description": "Three homing amulets from the yin-yang orb." }
+      },
+      "lore_en": "A plain wooden gohei with paper shide, retied so many times the knots have knots. Reimu has never had a better one because she has never wanted one. It works. The shrine's other gohei were lost long ago, or so she assumed, if she ever thought about it at all."
+    },
+    {
+      "id": "gohei_cedar_wayside",
+      "type": "gohei",
+      "names": { "en": "Wayside Cedar Gohei", "ja": "辻杉の御幣" },
+      "source": { "kind": "npc_gift", "npc": "wayside_god", "condition": "stat:faith_offered_total>=5000" },
+      "base_damage": 13,
+      "poise_damage": 9,
+      "reach_m": 2.7,
+      "scaling": { "power": "D", "spirit": "B" },
+      "upgrade_path": "standard_gohei",
+      "passive": "Praying at a shrine restores 20 Spirit. Grazes build 25% more Spirit.",
+      "moveset": {
+        "light": [
+          { "name": "Crossroads Cut", "motion_value": 1.0 },
+          { "name": "Crossroads Return", "motion_value": 1.0 },
+          { "name": "Boundary Rite", "motion_value": 1.9 }
+        ],
+        "heavy": { "name": "Staking the Road", "motion_value": 2.1, "stamina": 26 },
+        "running": { "name": "Traveller's Lash", "motion_value": 1.3 },
+        "rolling": { "name": "Parting Sweep", "motion_value": 1.1 },
+        "art": { "name": "Road Blessing", "spirit_cost": 25, "description": "Plants the gohei; for 6 s a small ward heals 3 HP/s to anyone standing at it." }
+      },
+      "lore_en": "A gohei cut from a cedar that grew at a crossroads, given by the Wayside God in exchange for nothing but what Reimu gave it. 'You gave me some back,' it said. 'No one has done that in a very long time. Not since her.'"
+    },
+    {
+      "id": "gohei_onbashira",
+      "type": "gohei",
+      "names": { "en": "Onbashira Gohei", "ja": "御柱の御幣" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_kanako" },
+      "base_damage": 19,
+      "poise_damage": 18,
+      "reach_m": 2.9,
+      "scaling": { "power": "B", "spirit": "D" },
+      "upgrade_path": "unique",
+      "moveset": {
+        "light": [
+          { "name": "Pillar Strike", "motion_value": 1.0 },
+          { "name": "Pillar Return", "motion_value": 1.1 },
+          { "name": "Raising the Pillar", "motion_value": 2.0 }
+        ],
+        "heavy": { "name": "Earthshaker", "motion_value": 2.6, "stamina": 34 },
+        "running": { "name": "Charging Pillar", "motion_value": 1.5 },
+        "rolling": { "name": "Low Pillar", "motion_value": 1.2 },
+        "art": { "name": "Divine Festival", "spirit_cost": 30, "description": "Slams the ground; three small pillars erupt in a line." }
+      },
+      "lore_en": "A gohei whose haft is a splinter of a sacred pillar. Heavy for a gohei, light for a pillar. Rinnosuke would not say how he shaped it. He said pillars were not meant to be shaped, only raised, and that he had apologised to it first."
+    },
+    {
+      "id": "gohei_sumizome",
+      "type": "gohei",
+      "names": { "en": "Sumizome Gohei", "ja": "墨染の御幣" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_yuyuko" },
+      "base_damage": 16,
+      "poise_damage": 10,
+      "reach_m": 2.6,
+      "scaling": { "power": "D", "spirit": "A" },
+      "upgrade_path": "unique",
+      "passive": "Hits build Dread on enemies.",
+      "moveset": {
+        "light": [
+          { "name": "Falling Petal", "motion_value": 1.0 },
+          { "name": "Drifting Petal", "motion_value": 1.0 },
+          { "name": "Petal Storm", "motion_value": 1.8 }
+        ],
+        "heavy": { "name": "Ink Blossom", "motion_value": 2.1, "stamina": 26 },
+        "running": { "name": "Butterfly Pass", "motion_value": 1.3 },
+        "rolling": { "name": "Petal Turn", "motion_value": 1.1 },
+        "art": { "name": "Butterfly Rite", "spirit_cost": 20, "description": "Releases five butterflies that seek enemies and build Dread." }
+      },
+      "lore_en": "The shide on this gohei are ink-grey petals that never fall. It does not purify so much as calm: things struck by it grow still and quiet, as though remembering they are dead. Yuyuko would find it funny. Reimu finds it lonely."
+    },
+    {
+      "id": "gohei_register_bound",
+      "type": "gohei",
+      "names": { "en": "Register-Bound Gohei", "ja": "帳巻きの御幣" },
+      "source": { "kind": "pickup", "area": "hakurei_shrine", "condition": "flag:defeated_former_maiden_road" },
+      "base_damage": 20,
+      "poise_damage": 14,
+      "reach_m": 2.6,
+      "scaling": { "power": "B", "spirit": "B" },
+      "upgrade_path": "unique",
+      "passive": "Deals 25% more damage to Struck Names and Faded Attendants. Reimu's name fades 1% faster while it is equipped.",
+      "moveset": {
+        "light": [
+          { "name": "Old Sweep", "motion_value": 1.05 },
+          { "name": "Old Return", "motion_value": 1.05 },
+          { "name": "Red Line", "motion_value": 1.9 }
+        ],
+        "heavy": { "name": "Strike Through", "motion_value": 2.4, "stamina": 30 },
+        "running": { "name": "Duty's Lash", "motion_value": 1.4 },
+        "rolling": { "name": "Mirror Sweep", "motion_value": 1.2 },
+        "art": { "name": "Chain Rite", "spirit_cost": 20, "description": "An ofuda chain that binds a single enemy for 1.5 s." }
+      },
+      "lore_en": "The Former Shrine Maiden's gohei, found where she vanished. Its paper streamers are pages from the shrine's register, and every name on them has been struck out in red. It fits Reimu's hand exactly. That is the worst thing about it."
+    },
+    {
+      "id": "sword_shrine_tachi",
+      "type": "sword",
+      "names": { "en": "Shrine Guardian Tachi", "ja": "社守の太刀" },
+      "source": { "kind": "pickup", "area": "scarlet_devil_mansion" },
+      "base_damage": 20,
+      "poise_damage": 18,
+      "reach_m": 3.0,
+      "scaling": { "power": "B", "spirit": "E" },
+      "upgrade_path": "standard_sword",
+      "moveset": {
+        "light": [
+          { "name": "Diagonal Cut", "motion_value": 1.0, "hit_at_s": 0.22, "duration_s": 0.62 },
+          { "name": "Rising Cut", "motion_value": 1.0, "hit_at_s": 0.22, "duration_s": 0.62 },
+          { "name": "Overhead Cut", "motion_value": 1.6, "hit_at_s": 0.34, "duration_s": 0.85 }
+        ],
+        "heavy": { "name": "Stepping Thrust", "motion_value": 2.3, "stamina": 32 },
+        "running": { "name": "Running Draw", "motion_value": 1.4 },
+        "rolling": { "name": "Low Cut", "motion_value": 1.1 },
+        "art": { "name": "Purifying Edge", "spirit_cost": 15, "description": "For 10 s, cuts deal spirit damage instead of slash." }
+      },
+      "lore_en": "A long sword of the kind once hung in shrines as an offering, found among the Scarlet Devil Mansion's trophies with a card reading 'Hakurei, date unknown.' The vampire collected it for its history. The history was that a shrine maiden once used it. No one remembers which."
+    },
+    {
+      "id": "sword_unmelting_icicle",
+      "type": "sword",
+      "names": { "en": "Unmelting Icicle", "ja": "溶けない氷柱" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_cirno" },
+      "base_damage": 17,
+      "poise_damage": 14,
+      "reach_m": 2.9,
+      "scaling": { "power": "C", "spirit": "C" },
+      "upgrade_path": "unique",
+      "passive": "Hits build Frost.",
+      "moveset": {
+        "light": [
+          { "name": "Ice Swing", "motion_value": 1.0 },
+          { "name": "Ice Swing Again", "motion_value": 1.0 },
+          { "name": "Strongest Swing", "motion_value": 1.7 }
+        ],
+        "heavy": { "name": "Frost Lunge", "motion_value": 2.2, "stamina": 30 },
+        "running": { "name": "Charging Dash", "motion_value": 1.5 },
+        "rolling": { "name": "Skate Cut", "motion_value": 1.1 },
+        "art": { "name": "Icicle Fall", "spirit_cost": 25, "description": "Icicles drop around the locked-on target." }
+      },
+      "lore_en": "A sword of ice that does not melt, because it was made by the strongest. Cirno says so, and Rinnosuke did not argue. It is very cold to hold. It is warmer than it looks."
+    },
+    {
+      "id": "sword_tengu_tachi",
+      "type": "sword",
+      "names": { "en": "White Wolf's Broadsword", "ja": "白狼の大太刀" },
+      "source": { "kind": "pickup", "area": "youkai_mountain" },
+      "base_damage": 24,
+      "poise_damage": 26,
+      "reach_m": 3.1,
+      "scaling": { "power": "A", "spirit": "-" },
+      "upgrade_path": "standard_sword",
+      "moveset": {
+        "light": [
+          { "name": "Sentry's Cut", "motion_value": 1.0, "hit_at_s": 0.28, "duration_s": 0.75 },
+          { "name": "Sentry's Return", "motion_value": 1.0, "hit_at_s": 0.28, "duration_s": 0.75 },
+          { "name": "Great Cleave", "motion_value": 1.8, "hit_at_s": 0.42, "duration_s": 1.0 }
+        ],
+        "heavy": { "name": "Mountain Splitter", "motion_value": 2.6, "stamina": 38 },
+        "running": { "name": "Wolf's Leap", "motion_value": 1.6 },
+        "rolling": { "name": "Low Sweep", "motion_value": 1.2 },
+        "art": { "name": "Hold the Line", "spirit_cost": 15, "description": "Raises the blade in guard; frontal bullets are blocked for 2 s." }
+      },
+      "lore_en": "A broad blade carried by the white wolf tengu who watch the mountain. This one was left leaning against a watchpost, with the owner's shield beside it, as if the sentry had only stepped away. The sentry did not come back. The watch is still being kept, by others, who have forgotten there was ever anyone to relieve them."
+    },
+    {
+      "id": "sword_phoenix_ember",
+      "type": "sword",
+      "names": { "en": "Phoenix Ember Blade", "ja": "鳳凰の燠刀" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_mokou" },
+      "base_damage": 22,
+      "poise_damage": 16,
+      "reach_m": 2.9,
+      "scaling": { "power": "B", "spirit": "C" },
+      "upgrade_path": "unique",
+      "passive": "Hits build Burn. At below 25% HP, damage rises by 20%.",
+      "moveset": {
+        "light": [
+          { "name": "Burning Cut", "motion_value": 1.0 },
+          { "name": "Flaring Cut", "motion_value": 1.05 },
+          { "name": "Phoenix Rise", "motion_value": 1.8 }
+        ],
+        "heavy": { "name": "Ash Cleave", "motion_value": 2.4, "stamina": 32 },
+        "running": { "name": "Reckless Charge", "motion_value": 1.6 },
+        "rolling": { "name": "Ember Turn", "motion_value": 1.1 },
+        "art": { "name": "Resurrection Flame", "spirit_cost": 35, "description": "Burns 10% of Reimu's HP to wreathe the blade in fire for 12 s." }
+      },
+      "lore_en": "A blade forged in ash that will not stop being warm. Rinnosuke burned his fingers on it four times and said it was worth it. Mokou would say that is the only way to hold anything that lasts."
+    },
+    {
+      "id": "sword_pruning_blade",
+      "type": "sword",
+      "names": { "en": "Gardener's Pruning Blade", "ja": "庭師の剪定刀" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_youmu" },
+      "base_damage": 21,
+      "poise_damage": 15,
+      "reach_m": 2.8,
+      "scaling": { "power": "A", "spirit": "D" },
+      "upgrade_path": "unique",
+      "passive": "The first hit on a staggered enemy deals double damage.",
+      "moveset": {
+        "light": [
+          { "name": "Pruning Cut", "motion_value": 1.0, "hit_at_s": 0.15, "duration_s": 0.48 },
+          { "name": "Shaping Cut", "motion_value": 1.0, "hit_at_s": 0.15, "duration_s": 0.48 },
+          { "name": "Clearing Cut", "motion_value": 1.5, "hit_at_s": 0.26, "duration_s": 0.7 }
+        ],
+        "heavy": { "name": "Draw Cut", "motion_value": 2.5, "stamina": 30 },
+        "running": { "name": "Passing Cut", "motion_value": 1.4 },
+        "rolling": { "name": "Root Cut", "motion_value": 1.1 },
+        "art": { "name": "Present World Slash", "spirit_cost": 30, "description": "A short dash-cut that passes through the target." }
+      },
+      "lore_en": "Not Youmu's sword. She would never part with those. A short blade she uses for pruning the garden, sharpened on a stone stained pink by falling blossom. Youmu insisted it was the same thing. 'A gardener cuts to help things grow,' she said. 'I forgot that.'"
+    },
+    {
+      "id": "amulet_hakurei_ofuda",
+      "type": "amulet",
+      "names": { "en": "Hakurei Ofuda", "ja": "博麗の御札" },
+      "source": { "kind": "pickup", "area": "hakurei_shrine" },
+      "base_damage": 10,
+      "poise_damage": 6,
+      "reach_m": 18.0,
+      "scaling": { "power": "E", "spirit": "B" },
+      "upgrade_path": "standard_amulet",
+      "moveset": {
+        "light": [
+          { "name": "Single Ofuda", "motion_value": 1.0 },
+          { "name": "Paired Ofuda", "motion_value": 0.6 },
+          { "name": "Fan of Five", "motion_value": 0.45 }
+        ],
+        "heavy": { "name": "Seal Toss", "motion_value": 2.0, "stamina": 22 },
+        "running": { "name": "Scattering Throw", "motion_value": 0.7 },
+        "rolling": { "name": "Backward Throw", "motion_value": 0.8 },
+        "art": { "name": "Homing Amulets", "spirit_cost": 10, "description": "Three homing amulets from the yin-yang orb." }
+      },
+      "lore_en": "A stack of the shrine's own talismans, written in Reimu's brush. The characters are sloppy. They work perfectly. The spirits have never minded her handwriting; they only ever minded whether she meant it."
+    },
+    {
+      "id": "amulet_silver_watch",
+      "type": "amulet",
+      "names": { "en": "Silver Watch Charm", "ja": "銀時計の護符" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_sakuya" },
+      "base_damage": 12,
+      "poise_damage": 5,
+      "reach_m": 16.0,
+      "scaling": { "power": "D", "spirit": "B" },
+      "upgrade_path": "unique",
+      "passive": "Thrown amulets travel 40% faster. Perfect dodges slow time for 0.5 s.",
+      "moveset": {
+        "light": [
+          { "name": "Knife-Line Ofuda", "motion_value": 0.5 },
+          { "name": "Knife-Line Ofuda", "motion_value": 0.5 },
+          { "name": "Ricochet", "motion_value": 1.2 }
+        ],
+        "heavy": { "name": "Stopped Moment", "motion_value": 1.8, "stamina": 24 },
+        "running": { "name": "Blink Throw", "motion_value": 0.8 },
+        "rolling": { "name": "Misdirection", "motion_value": 0.9 },
+        "art": { "name": "A Moment", "spirit_cost": 30, "description": "Freezes all of Reimu's thrown ofuda in the air for 1 s, then releases them together." }
+      },
+      "lore_en": "The stopped pocket watch, mounted as a charm. It still does not tick. When Reimu dodges at the last instant, the second hand moves, once, and the world holds its breath."
+    },
+    {
+      "id": "amulet_shanghai_thread",
+      "type": "amulet",
+      "names": { "en": "Puppeteer's Thread", "ja": "人形遣いの糸" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_alice" },
+      "base_damage": 11,
+      "poise_damage": 6,
+      "reach_m": 14.0,
+      "scaling": { "power": "-", "spirit": "A" },
+      "upgrade_path": "unique",
+      "passive": "Ofuda can be recalled along their thread, hitting again on the way back.",
+      "moveset": {
+        "light": [
+          { "name": "Tethered Ofuda", "motion_value": 0.8 },
+          { "name": "Tethered Ofuda", "motion_value": 0.8 },
+          { "name": "Pull", "motion_value": 1.4 }
+        ],
+        "heavy": { "name": "Doll's Lance", "motion_value": 2.0, "stamina": 24 },
+        "running": { "name": "Swinging Thread", "motion_value": 0.9 },
+        "rolling": { "name": "Snare", "motion_value": 0.8 },
+        "art": { "name": "Little Legion", "spirit_cost": 25, "description": "Three paper dolls fly out on threads and fire at the target for 5 s." }
+      },
+      "lore_en": "Alice's cut thread, rewoven. Ofuda thrown with it stay attached and come back when called. Nothing Alice makes is ever truly let go of. It is her greatest strength. It may also be a kind of fear."
+    },
+    {
+      "id": "amulet_yatagarasu_eye",
+      "type": "amulet",
+      "names": { "en": "Yatagarasu Eye", "ja": "八咫烏の眼" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_utsuho" },
+      "base_damage": 16,
+      "poise_damage": 10,
+      "reach_m": 20.0,
+      "scaling": { "power": "C", "spirit": "A" },
+      "upgrade_path": "unique",
+      "passive": "Ofuda burn. Each consecutive throw without a dodge raises heat; at full heat Reimu takes 5 burn damage per throw.",
+      "moveset": {
+        "light": [
+          { "name": "Solar Ofuda", "motion_value": 1.0 },
+          { "name": "Solar Ofuda", "motion_value": 1.0 },
+          { "name": "Flare", "motion_value": 1.6 }
+        ],
+        "heavy": { "name": "Fusion Seal", "motion_value": 2.4, "stamina": 28 },
+        "running": { "name": "Scorch Line", "motion_value": 1.0 },
+        "rolling": { "name": "Heat Shed", "motion_value": 0.9 },
+        "art": { "name": "Small Sun", "spirit_cost": 40, "description": "A slow orb of solar fire that pulls enemy bullets into itself and bursts." }
+      },
+      "lore_en": "The red eye of a god lent to a raven, set in a charm. It looks at whatever Reimu looks at, and burns it. It is hard to put down. That is the danger of borrowed power: it is always hard to put down."
+    },
+    {
+      "id": "amulet_boundary_ribbon",
+      "type": "amulet",
+      "names": { "en": "Boundary Ribbon", "ja": "境界のリボン" },
+      "source": { "kind": "forge", "npc": "rinnosuke", "memento": "memento_yukari" },
+      "base_damage": 15,
+      "poise_damage": 8,
+      "reach_m": 22.0,
+      "scaling": { "power": "C", "spirit": "S" },
+      "upgrade_path": "unique",
+      "passive": "Every third throw passes through a small gap and strikes from behind the target.",
+      "moveset": {
+        "light": [
+          { "name": "Folded Ofuda", "motion_value": 1.0 },
+          { "name": "Folded Ofuda", "motion_value": 1.0 },
+          { "name": "Gap Toss", "motion_value": 1.6 }
+        ],
+        "heavy": { "name": "Boundary Line", "motion_value": 2.2, "stamina": 26 },
+        "running": { "name": "Parasol Throw", "motion_value": 1.1 },
+        "rolling": { "name": "Slip", "motion_value": 0.9 },
+        "art": { "name": "Gap", "spirit_cost": 35, "description": "Opens a gap under Reimu and another behind the target; she steps through." }
+      },
+      "lore_en": "A ribbon tied in a bow with no front and no back, as every boundary Yukari ties. It connects two places that were never next to each other. Yukari said it would remind Reimu that every wall has another side. She did not say whether that was a comfort."
+    }
+  ]
+}

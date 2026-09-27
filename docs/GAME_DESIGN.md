@@ -242,6 +242,26 @@ system with Steam Cloud, achievements, a 60 fps target on Steam Deck, store asse
    player spell cards).
 5. **M4:** Steam page, achievements, Steam Deck verification.
 
+### Status (2026-09-27): content build
+
+- **Core gameplay code is private.** It is kept outside this repository (decision
+  2026-09-27). The repo holds content: models, kits, Blender tools, `data/` and docs.
+- **Content database:** `data/` defines every area, Faithless, boss, spell card, item,
+  weapon, level curve, dialogue tree, codex entry and ending (see `data/README.md`).
+- **In-house models so far:**
+  - Reimu, Cirno, Hong Meiling, Sakuya Izayoi and Remilia Scarlet.
+  - The Former Shrine Maiden and the Wayside God.
+  - The hollow fairy and the masked tengu scout.
+- **Environment kits:** Misty Lake and the Scarlet Devil Mansion. Other areas are
+  playable with stylised stand-in dressing until their kits exist.
+- **Playable:**
+  - All nine areas, with every shrine, Faithless group, item pickup and all 16 bosses
+    placed from `data/`.
+  - Faith from kills, levelling at shrines, Faith dropped on death, and saving.
+  - Travel from area to area in play order.
+- **Still to build:** models for the remaining 9 canon bosses and 23 Faithless kinds,
+  kits for the seven other areas, dialogue and codex screens, menus, final music.
+
 ## 13. Open decisions
 
 - Music direction (deferred).

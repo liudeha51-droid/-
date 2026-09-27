@@ -851,7 +851,7 @@ def build_tengu():
     SWEEP = {"chest": (18, -25, 0), "spine": (12, -8, 0), "head": (-22, 10, 0),
              "upper_arm.L": (65, 0, -5), "forearm.L": (5, 0, 0), "hand.L": (30, 0, 0),
              "upper_arm.R": (0, 0, -35), "thigh.R": (30, 0, -3), "shin.R": (-30, 0, 0), "thigh.L": (-10, 0, 3),
-             "wing.L": (12, 0, 22), "wing_tip.L": (0, 0, 10), "hips@loc": (0, -0.04, 0.08)}
+             "wing.L": (-12, 0, 18), "wing_tip.L": (0, 0, 5), "hips@loc": (0, -0.04, 0.08)}
     action("gust", 20, {0: with_rest(), 6: with_rest(RAISE), 10: with_rest(SWEEP),
                         14: with_rest({**SWEEP, "upper_arm.L": (50, 0, -10)}), 20: with_rest()})
 

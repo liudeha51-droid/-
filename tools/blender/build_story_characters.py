@@ -168,9 +168,9 @@ def build_former_maiden():
     C.reset_scene()
     M = {
         "skin": C.material("PorcelainSkin", (0.86, 0.8, 0.77), 0.55),
-        "kosode": C.material("FadedWhite", (0.74, 0.73, 0.7), 0.8),
-        "hakama": C.material("FadedRed", (0.46, 0.2, 0.22), 0.75),
-        "hakama_dark": C.material("FadedRedDark", (0.3, 0.12, 0.14), 0.8),
+        "kosode": C.material("FadedWhite", (0.6, 0.6, 0.58), 0.8),
+        "hakama": C.material("FadedRed", (0.3, 0.14, 0.15), 0.8),
+        "hakama_dark": C.material("FadedRedDark", (0.18, 0.06, 0.07), 0.8),
         "cord": C.material("FrayedCord", (0.55, 0.1, 0.1), 0.6),
         "hair": C.material("DullHair", (0.06, 0.055, 0.06), 0.55),
         "trim": C.material("GhostTrim", (0.78, 0.86, 0.95), 0.5, emission=0.7),
@@ -571,15 +571,15 @@ def build_former_maiden():
 def build_wayside_god():
     C.reset_scene()
     M = {
-        "stone": C.material("WeatheredStone", (0.28, 0.28, 0.26), 0.95),
-        "worn": C.material("WornStone", (0.38, 0.37, 0.35), 0.95),
-        "slab": C.material("SlabStone", (0.2, 0.2, 0.19), 0.95),
-        "carve": C.material("Carving", (0.14, 0.13, 0.12), 0.9),
-        "moss": C.material("Moss", (0.2, 0.3, 0.1), 0.95),
-        "moss_dark": C.material("MossDark", (0.12, 0.2, 0.07), 0.95),
-        "bib": C.material("FadedBib", (0.42, 0.11, 0.1), 0.85),
-        "straw": C.material("Straw", (0.62, 0.5, 0.3), 0.9),
-        "straw_dark": C.material("StrawDark", (0.4, 0.3, 0.17), 0.9),
+        "stone": C.material("WeatheredStone", (0.13, 0.13, 0.12), 0.95),
+        "worn": C.material("WornStone", (0.2, 0.2, 0.19), 0.95),
+        "slab": C.material("SlabStone", (0.08, 0.08, 0.075), 0.95),
+        "carve": C.material("Carving", (0.03, 0.03, 0.03), 0.9),
+        "moss": C.material("Moss", (0.1, 0.17, 0.04), 0.95),
+        "moss_dark": C.material("MossDark", (0.05, 0.1, 0.03), 0.95),
+        "bib": C.material("FadedBib", (0.3, 0.05, 0.045), 0.85),
+        "straw": C.material("Straw", (0.42, 0.3, 0.15), 0.9),
+        "straw_dark": C.material("StrawDark", (0.2, 0.13, 0.06), 0.9),
         "glow": C.material("LanternMoss", (0.95, 0.6, 0.25), 0.6, emission=0.8),
         "flame": C.material("SpiritFlame", (1.0, 0.55, 0.2), 0.3, emission=4.0),
     }
@@ -608,7 +608,7 @@ def build_wayside_god():
         v.co.x *= k
         v.co.y *= k
     body.data.update()
-    roughen(body, 0.01, 9.0, seed=1.0)
+    roughen(body, 0.014, 9.0, seed=1.0)
     C.weight_by_bones(body, arm, ["hips", "spine"], power=3.0)
     parts.append(body)
 

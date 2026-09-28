@@ -1,0 +1,480 @@
+{
+  "version": 1,
+  "categories": [
+    "world",
+    "hidden",
+    "character",
+    "faithless",
+    "area",
+    "ending"
+  ],
+  "entries": [
+    {
+      "id": "lore_gensokyo",
+      "category": "world",
+      "title_en": "Gensokyo",
+      "title_ja": "幻想郷",
+      "unlock": "",
+      "text_en": "A land of youkai, gods and humans, sealed away from the outside world. Things the outside forgets drift here and are given a second life. Youkai exist because humans fear them; gods exist because they are worshipped; fairies are nature itself, laughing. It is a paradise held together by being believed in.",
+      "text_ja": "妖怪、神、人間の住まう地。外の世界から隔てられ、外で忘れられたものが流れ着き、二度目の生を得る。人が畏れるから妖怪は在り、祀られるから神は在る。信じられることで保たれる楽園。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "hakurei_shrine"
+        }
+      ]
+    },
+    {
+      "id": "lore_great_barrier",
+      "category": "world",
+      "title_en": "The Great Hakurei Barrier",
+      "title_ja": "博麗大結界",
+      "unlock": "",
+      "text_en": "A boundary of common sense, raised by the sage Yukari Yakumo and the first Hakurei. It divides Gensokyo from a world that no longer believes in it. The Hakurei shrine maiden maintains it. Everyone knows this. No one asks how.",
+      "text_ja": "賢者八雲紫と初代の博麗が張った、常識の境界。信じることをやめた世界から幻想郷を隔てる。博麗の巫女が守る。誰もが知り、誰もその方法を訊かない。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "great_barrier"
+        },
+        {
+          "kind": "boss",
+          "id": "yukari_yakumo"
+        }
+      ]
+    },
+    {
+      "id": "lore_faith",
+      "category": "world",
+      "title_en": "Faith",
+      "title_ja": "信仰",
+      "unlock": "",
+      "text_en": "Belief is not an abstraction in Gensokyo; it is what things are made of. When the Faithless fall, the belief still left in them spills out as Faith, unowned. Reimu can take it into herself and grow stronger. She can also give it back. The game never says which is right. The Wayside God only notices.",
+      "text_ja": "幻想郷において信心は抽象ではない。ものを形作る素材そのものだ。信無き者が倒れると、残っていた信心が持ち主のない信仰として零れ出る。霊夢はそれを取り込み強くなれる。返すこともできる。",
+      "related": [
+        {
+          "kind": "item",
+          "id": "saisen_coin_small"
+        }
+      ]
+    },
+    {
+      "id": "lore_hollowing",
+      "category": "world",
+      "title_en": "Hollowing",
+      "title_ja": "虚ろ",
+      "unlock": "flag:defeated_cirno",
+      "text_en": "What the outside forgets comes to Gensokyo. What Gensokyo itself forgets has nowhere left to go. It does not vanish. It hollows: keeping its strength and shape, losing its dreams, its name, its self. Colour goes first, from the edges in. Remembering someone restores them. That is not a metaphor.",
+      "text_ja": "外で忘れられたものは幻想郷へ来る。幻想郷で忘れられたものには、もう行き場がない。消えはしない。虚ろになるのだ。力と形は残り、夢と名と自己を失う。まず色が、縁から褪せる。思い出せば戻る。比喩ではない。",
+      "related": [
+        {
+          "kind": "boss",
+          "id": "cirno"
+        }
+      ]
+    },
+    {
+      "id": "lore_hakurei_cost",
+      "category": "hidden",
+      "title_en": "What the Shrine Costs",
+      "title_ja": "神社の代価",
+      "unlock": "flag:yukari_confessed",
+      "text_en": "When faith inside Gensokyo runs low, the Barrier weakens from within. The shrine has always had a last answer, known only to the shrine maiden and to Yukari. The maiden gives her name to the Barrier. It is struck from the register. Everyone forgets she existed, and the forgetting itself becomes the mortar that seals the cracks. The title continues. 'The Hakurei shrine maiden' is always there. No one notices that a person is missing, because the role never is.",
+      "text_ja": "幻想郷の信仰が尽きると、結界は内から弱る。神社には最後の答えがあった。知るのは巫女と紫だけ。巫女が名を結界に差し出す。名は帳から消され、誰もが彼女を忘れ、その忘却こそが綻びを塞ぐ漆喰となる。肩書は続く。「博麗の巫女」は常にいる。人が一人欠けたことに誰も気付かない。役目は欠けないのだから。",
+      "related": [
+        {
+          "kind": "item",
+          "id": "struck_register_page"
+        },
+        {
+          "kind": "boss",
+          "id": "former_maiden_pillar"
+        },
+        {
+          "kind": "boss",
+          "id": "yukari_yakumo"
+        }
+      ]
+    },
+    {
+      "id": "lore_unnamed_god",
+      "category": "hidden",
+      "title_en": "The Shrine's Nameless God",
+      "title_ja": "名の無い祭神",
+      "unlock": "flag:defeated_kanako_yasaka",
+      "text_en": "No record names the deity enshrined at the Hakurei Shrine. Reimu has never known, and never cared. Kanako, a god made of faith, finds this more frightening than anything on her mountain. A shrine that runs on forgetting would, of course, have a god with no name.",
+      "text_ja": "博麗神社の祭神の名は、どの記録にもない。霊夢は知らず、気にもしなかった。信仰そのものである神奈子には、それが山の何よりも恐ろしい。忘却で回る神社なら、名の無い神を祀っているのも当然だ。",
+      "related": [
+        {
+          "kind": "boss",
+          "id": "kanako_yasaka"
+        }
+      ]
+    },
+    {
+      "id": "lore_saigyou_seal",
+      "category": "hidden",
+      "title_en": "The Other Sleeper",
+      "title_ja": "もう一人の眠る者",
+      "unlock": "flag:defeated_former_maiden_saigyou",
+      "text_en": "Beneath the Saigyou Ayakashi lies a body that seals the tree so it will never bloom again. It is Yuyuko's own, though she does not know it. In all of Gensokyo there is exactly one other being who did what the Hakurei maidens do: gave herself to hold something shut, and was forgotten, even by herself. The Former Shrine Maiden went to kneel among its roots. She wanted to ask whether it was heavy.",
+      "text_ja": "西行妖の下には、木が二度と咲かぬよう封じる亡骸が眠る。幽々子自身のものだが、本人は知らない。幻想郷で、博麗の巫女と同じことをした者はもう一人だけ。自らを差し出して何かを閉ざし、自分自身にさえ忘れられた者。先代の巫女はその根元に跪いた。重いのかと、訊きたかったのだ。",
+      "related": [
+        {
+          "kind": "boss",
+          "id": "yuyuko_saigyouji"
+        },
+        {
+          "kind": "boss",
+          "id": "former_maiden_saigyou"
+        }
+      ]
+    },
+    {
+      "id": "lore_first_register",
+      "category": "hidden",
+      "title_en": "The First Register",
+      "title_ja": "最初の参拝帳",
+      "unlock": "trade:collector_memento_aya",
+      "text_en": "The Hakurei worshipper register was begun on the day the Barrier was raised. Its first page is not a list of worshippers. It is a list of shrine maidens. Most lines on it are struck through in red. The Collector tore that page out of herself long ago and will not show it to anyone. She says it is the only page she is ashamed to hold.",
+      "text_ja": "博麗の参拝帳は結界が張られた日に始まった。最初の頁は参拝者の名簿ではない。巫女の名簿だ。その大半に朱線が引かれている。名集めはとうにその頁を自ら引き裂き、誰にも見せない。持っていて恥ずかしい唯一の頁だと言う。",
+      "related": [
+        {
+          "kind": "item",
+          "id": "hakurei_register"
+        }
+      ]
+    },
+    {
+      "id": "lore_reimu",
+      "category": "character",
+      "title_en": "Reimu Hakurei",
+      "title_ja": "博麗霊夢",
+      "unlock": "flag:reimu_name_fade_1",
+      "text_en": "The shrine maiden of the Hakurei Shrine: casual, lazy, fearsome, and fond of youkai she is supposed to be exterminating. She negotiates, drinks, and does her duty when she feels like it. The question this story asks is whether that is a failure of duty, or the only version of the shrine that does not end in a sacrifice. Lately people call her 'the shrine maiden' more than they call her Reimu. She has started to notice.",
+      "text_ja": "博麗神社の巫女。気まぐれで怠け者で恐ろしく、退治すべき妖怪と仲が良い。交渉し、酒を飲み、気が向いた時に務めを果たす。それは務めの放棄なのか、それとも犠牲で終わらない唯一の神社の在り方なのか。最近、人は彼女を霊夢より「巫女」と呼ぶ。本人も気付き始めた。",
+      "related": [
+        {
+          "kind": "item",
+          "id": "blurred_register_page"
+        },
+        {
+          "kind": "spell_card",
+          "id": "sc_fantasy_nature"
+        }
+      ]
+    },
+    {
+      "id": "lore_former_maiden",
+      "category": "character",
+      "title_en": "The Former Shrine Maiden",
+      "title_ja": "先代の巫女",
+      "unlock": "flag:saw_maiden_glimpse",
+      "text_en": "A Hakurei shrine maiden of several generations past, far more devout than Reimu. She prayed at every roadside stone, knew every small god by name, and believed duty was a form of love. In an earlier age of fading faith she took the last answer, and gave her name, and became the pillar beneath the shrine. Without her name only the duty is left, and it has woken, and it does not understand why the new maiden has not paid. She is not cruel. She straightens toppled statues. She hums a village song. She flinches when someone says 'name'.",
+      "text_ja": "数代前の博麗の巫女。霊夢よりずっと敬虔だった。すべての道端の石に祈り、小さな神々を皆名で知り、務めは愛の一つの形だと信じていた。かつて信仰の褪せた時代に最後の答えを選び、名を差し出し、神社の下の人柱となった。名を失い、務めだけが残って目覚めた。なぜ新しい巫女がまだ払っていないのか、分からない。残酷ではない。倒れた石像を起こし、里唄を口ずさみ、「名」という言葉に身を竦める。",
+      "related": [
+        {
+          "kind": "boss",
+          "id": "former_maiden_road"
+        },
+        {
+          "kind": "boss",
+          "id": "former_maiden_saigyou"
+        },
+        {
+          "kind": "boss",
+          "id": "former_maiden_pillar"
+        },
+        {
+          "kind": "item",
+          "id": "relic_black_ribbon"
+        }
+      ]
+    },
+    {
+      "id": "lore_wayside_god",
+      "category": "character",
+      "title_en": "The Wayside God",
+      "title_ja": "道祖神",
+      "unlock": "flag:met_wayside_god",
+      "text_en": "A dōsojin: a roadside boundary god, carved as two figures in one stone. One figure has worn smooth and been forgotten. The surviving half tends the shrine flames and turns Faith into strength. It is a reminder that the Great Barrier is only the largest of Gensokyo's boundaries; thousands of small gods of roads and crossroads once held the world together too, and they are the first to go when faith fades. It is fading as you play.",
+      "text_ja": "道祖神。一つの石に二柱が刻まれた、道端の境の神。片方は摩り減り、忘れられた。残った半身が祠の火を守り、信仰を力に変える。大結界は幻想郷の境の中で最も大きいものにすぎない。道や辻の小さな神々もまた世界を支えていた。信仰が褪せれば、真っ先に消えるのは彼らだ。",
+      "related": [
+        {
+          "kind": "item",
+          "id": "name_fragment_wayside_other_half"
+        },
+        {
+          "kind": "weapon",
+          "id": "gohei_cedar_wayside"
+        }
+      ]
+    },
+    {
+      "id": "lore_collector",
+      "category": "character",
+      "title_en": "The Collector of Names",
+      "title_ja": "名集め",
+      "unlock": "flag:met_collector",
+      "text_en": "A tsukumogami: the awakened spirit of the Hakurei Shrine's worshipper register, which recorded everyone who ever prayed there. Its pages tore loose as people forgot, and it woke at Muenzuka among the unclaimed things. She wears a coat of stitched pages with ink running down it; her face is a blank page that shows whichever name she is holding. She trades names and memories, scrupulously fairly. She is the only one in Gensokyo who remembers everyone, which makes her the loneliest.",
+      "text_ja": "博麗神社の参拝帳の付喪神。そこで祈ったすべての者を記してきた。人が忘れるにつれ頁は千切れ、無縁塚の引き取り手なき物たちの中で目覚めた。墨の流れる縫い合わせた頁の外套。顔は、今持っている名を映す白紙。名と記憶を、どこまでも公正に商う。皆を覚えている唯一の者。だから、最も孤独な者。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "forest_of_magic"
+        },
+        {
+          "kind": "item",
+          "id": "struck_register_page"
+        }
+      ]
+    },
+    {
+      "id": "lore_faithless",
+      "category": "faithless",
+      "title_en": "The Faithless",
+      "title_ja": "信無き者",
+      "unlock": "",
+      "text_en": "Youkai and fairies who have been forgotten. They keep their strength and forms and lose their dreams, their names and their selves. They are not evil. They are what is left when no one is looking. The Faith they drop is the last belief that was in them. Some, near the Old Hakurei Road, were once a shrine maiden's attendants, and still bow when she passes.",
+      "text_ja": "忘れられた妖怪と妖精。力と形はそのままに、夢と名と自己を失った。悪ではない。誰にも見られなくなった後に残るもの。落とす信仰は、彼らの中に残っていた最後の信心。旧参道のあたりには、かつて一人の巫女の随身だった者たちがいて、今も彼女が通れば頭を垂れる。",
+      "related": [
+        {
+          "kind": "enemy",
+          "id": "hollow_fairy"
+        },
+        {
+          "kind": "enemy",
+          "id": "masked_tengu_scout"
+        },
+        {
+          "kind": "enemy",
+          "id": "faded_attendant"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_hakurei_shrine",
+      "category": "area",
+      "title_en": "Hakurei Shrine",
+      "title_ja": "博麗神社",
+      "unlock": "",
+      "text_en": "Built on the Barrier itself, at the eastern edge. The old approach from the village fell out of use generations ago; a newer road was cut, and the old one was left to the moss and the roadside stones. The shrine has always been poor. Its storehouse holds two brooms.",
+      "text_ja": "東の端、結界そのものの上に建つ。里からの旧い参道は数代前に使われなくなり、新しい道が拓かれ、古い道は苔と道端の石に委ねられた。物置には箒が二本ある。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "hakurei_shrine"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_misty_lake",
+      "category": "area",
+      "title_en": "Misty Lake",
+      "title_ja": "霧の湖",
+      "unlock": "",
+      "text_en": "A lake below the Scarlet Devil Mansion, famous for fairies and for mist at dusk. It froze because its fairies stopped moving. The ice-fairy made it colder to keep them from slipping further.",
+      "text_ja": "紅魔館の下の湖。妖精と夕暮れの霧で知られる。妖精たちが動かなくなって凍った。氷の妖精は、彼らがそれ以上遠くへ行かぬよう、さらに冷やした。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "misty_lake"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_scarlet_devil_mansion",
+      "category": "area",
+      "title_en": "Scarlet Devil Mansion",
+      "title_ja": "紅魔館",
+      "unlock": "flag:defeated_cirno",
+      "text_en": "The home of the vampire Remilia Scarlet and her household. A house of fear, and fear is a kind of belief. Its maid stopped time to keep its colour from draining further.",
+      "text_ja": "吸血鬼レミリア・スカーレットとその一家の館。畏れの館であり、畏れもまた信仰。メイドは時を止め、紅が褪せるのを食い止めた。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "scarlet_devil_mansion"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_forest_of_magic",
+      "category": "area",
+      "title_en": "Forest of Magic and Muenzuka",
+      "title_ja": "魔法の森と無縁塚",
+      "unlock": "flag:defeated_remilia_scarlet",
+      "text_en": "A humid forest whose mushrooms grant dreams, home to magicians and a puppeteer. At its edge, Kourindou. Beyond it, Muenzuka, the Grave of the Unconnected, where things no one came back for wash up, and where something that remembers everything has woken.",
+      "text_ja": "夢を見せる茸の森。魔法使いと人形遣いが住む。縁には香霖堂。その先に無縁塚。誰も取りに戻らなかった物が流れ着き、すべてを覚えている何かが目覚めた場所。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "forest_of_magic"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_bamboo_forest",
+      "category": "area",
+      "title_en": "Bamboo Forest of the Lost",
+      "title_ja": "迷いの竹林",
+      "unlock": "flag:defeated_alice_margatroid",
+      "text_en": "A maze of bamboo that hides Eientei, where exiles from the moon live, and an immortal who fights to feel alive. Now even those who knew its paths are lost.",
+      "text_ja": "月からの流刑者が住む永遠亭と、生きている実感のために戦う不死者を隠す竹の迷路。今は道を知る者さえ迷う。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "bamboo_forest"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_youkai_mountain",
+      "category": "area",
+      "title_en": "Youkai Mountain",
+      "title_ja": "妖怪の山",
+      "unlock": "flag:defeated_former_maiden_road",
+      "text_en": "A society of tengu and kappa, and at its summit a shrine brought from the outside world by goddesses seeking faith. The whole mountain ran on being noticed.",
+      "text_ja": "天狗と河童の社会。頂には、信仰を求めて外の世界から神社ごと来た神々。山全体が、注目されることで回っていた。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "youkai_mountain"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_netherworld",
+      "category": "area",
+      "title_en": "Netherworld / Hakugyokurou",
+      "title_ja": "冥界・白玉楼",
+      "unlock": "flag:defeated_kanako_yasaka",
+      "text_en": "Where the dead wait for rebirth. At its heart, the mansion of the ghost princess and the great cherry that must never bloom. The one place where forgetting was always normal, and it is hollowing too.",
+      "text_ja": "死者が転生を待つ場所。その中心に亡霊の姫の屋敷と、決して咲いてはならぬ大桜。忘却が常だった唯一の場所。そこさえ、虚ろになり始めた。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "netherworld"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_former_hell",
+      "category": "area",
+      "title_en": "Former Hell",
+      "title_ja": "旧地獄",
+      "unlock": "flag:defeated_former_maiden_saigyou",
+      "text_en": "An abandoned hell, sealed by agreement and settled by oni who tired of human lies. The one place in Gensokyo that was forgotten on purpose. At its bottom, a borrowed sun burns for no one.",
+      "text_ja": "捨てられ、取り決めで封じられ、人の嘘に倦んだ鬼たちが住み着いた地獄。幻想郷で唯一、意図して忘れられた場所。その底で、借り物の太陽が誰のためでもなく燃える。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "former_hell"
+        }
+      ]
+    },
+    {
+      "id": "lore_area_great_barrier",
+      "category": "area",
+      "title_en": "The Great Barrier",
+      "title_ja": "博麗大結界",
+      "unlock": "flag:defeated_utsuho_reiuji",
+      "text_en": "From inside, at its edge, the Barrier is a thin white surface cracked like porcelain and mended with something dark that looks, if you stare, like handwriting. Below the shrine, a shaft goes down into a stone.",
+      "text_ja": "内側の縁から見る結界は、磁器のようにひび割れた薄く白い面。黒い何かで継がれ、見つめれば筆跡のよう。神社の下には、石へと続く縦穴がある。",
+      "related": [
+        {
+          "kind": "area",
+          "id": "great_barrier"
+        }
+      ]
+    },
+    {
+      "id": "lore_ending_pillar",
+      "category": "ending",
+      "title_en": "Ending: The Pillar",
+      "title_ja": "結末：人柱",
+      "unlock": "flag:chose_seal_old_way",
+      "trigger_flags": [
+        "defeated_former_maiden_pillar",
+        "chose_seal_old_way"
+      ],
+      "text_en": "The default. Reimu seals the Barrier the old way and gives her name. A new maiden sweeps the shrine, and nobody remembers why there is a second broom.",
+      "text_ja": "既定の結末。霊夢は古いやり方で結界を封じ、名を差し出す。新しい巫女が神社を掃き、なぜ箒が二本あるのか、誰も覚えていない。",
+      "related": [
+        {
+          "kind": "ending",
+          "id": "ending_pillar"
+        }
+      ]
+    },
+    {
+      "id": "lore_ending_broken_seal",
+      "category": "ending",
+      "title_en": "Ending: The Broken Seal",
+      "title_ja": "結末：破られた封",
+      "unlock": "flag:chose_destroy_pillar",
+      "trigger_flags": [
+        "defeated_former_maiden_pillar",
+        "chose_destroy_pillar"
+      ],
+      "text_en": "Reimu refuses and destroys the pillar. The Barrier fails slowly, and Gensokyo must be held up by everyone believing on purpose. Bittersweet, and open.",
+      "text_ja": "霊夢は拒み、柱を壊す。結界はゆっくりと綻び、幻想郷は皆が意志をもって信じることで支えられねばならない。ほろ苦く、開かれた結末。",
+      "related": [
+        {
+          "kind": "ending",
+          "id": "ending_broken_seal"
+        }
+      ]
+    },
+    {
+      "id": "lore_ending_returned_name",
+      "category": "ending",
+      "title_en": "Ending: The Returned Name",
+      "title_ja": "結末：還る名",
+      "unlock": "flag:chose_many_beliefs",
+      "trigger_flags": [
+        "defeated_former_maiden_pillar",
+        "returned_maiden_name",
+        "wayside_god_endured",
+        "faith_shared",
+        "chose_many_beliefs"
+      ],
+      "text_en": "The true ending. Reimu restores her predecessor's name, has kept the Wayside God alive, and has not spent all her Faith on herself. The forgotten are remembered; the Barrier is rebuilt from many small beliefs instead of one sacrifice. The predecessor is released as herself, and Reimu keeps her name.",
+      "text_ja": "真の結末。霊夢は先代の名を還し、道祖神を繋ぎ止め、信仰をすべて自分のためには使わなかった。忘れられた者は思い出され、結界は一つの犠牲ではなく多くの小さな信心で建て直される。先代は彼女自身として解き放たれ、霊夢は名を失わない。",
+      "related": [
+        {
+          "kind": "ending",
+          "id": "ending_returned_name"
+        }
+      ]
+    },
+    {
+      "id": "lore_utsushimi",
+      "category": "character",
+      "title_en": "Utsushimi, the Mirror of the Empty Sanctum",
+      "title_ja": "写身・空の御神体",
+      "unlock": "flag:saw_reflections",
+      "text_en": "The Hakurei Shrine's goshintai: a bronze mirror in which the god was said to dwell. No one remembers which god. For generations each shrine maiden prayed before it, and each saw herself. When a maiden gave her name to the Barrier and was forgotten, her reflection had nowhere to go, so it stayed in the glass. A hundred years of reflections became a mind. She is not the god. She is what was left in the god's house when the god was forgotten: a surface that remembers every face it was shown and cannot give any of them back. Among the faces in the glass, one wears a black ribbon.",
+      "text_ja": "博麗神社の御神体。神が宿るとされた青銅の鏡。どの神だったか、もう誰も覚えていない。代々の巫女はその前で祈り、そこに自分を見た。巫女が名を結界に捧げて忘れられたとき、その写し身には行き場がなく、硝子に残った。百年分の写し身が、ひとつの心になった。彼女は神ではない。神が忘れられた後、神の家に残されたもの。見せられた顔をすべて覚え、ひとつも返せない鏡面。 硝子の中の顔のひとつは、黒いリボンをしている。",
+      "related": [
+        {
+          "kind": "boss",
+          "id": "utsushimi"
+        },
+        {
+          "kind": "boss",
+          "id": "former_maiden_road"
+        }
+      ]
+    },
+    {
+      "id": "lore_omikuji",
+      "category": "world",
+      "title_en": "Omikuji",
+      "title_ja": "おみくじ",
+      "unlock": "",
+      "text_en": "Fortune slips still turn up in boxes along the roads, though no one writes new ones. Draw one and it may bless the rest of your journey, or curse it. Either way it lasts only until you fall: fortunes are for the living, and the dead start over.",
+      "text_ja": "誰も新しく書かないのに、道端の箱にはまだおみくじが入っている。引けば旅路を祝福するかもしれないし、呪うかもしれない。どちらにせよ、倒れるまでの話。運勢は生きている者のもの。死者はまた一から。",
+      "related": []
+    }
+  ]
+}

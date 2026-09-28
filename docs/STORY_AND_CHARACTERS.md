@@ -1,7 +1,8 @@
 # Story and original characters
 
 > Companion to [GAME_DESIGN.md](GAME_DESIGN.md). Spoilers for the whole game.
-> The four original characters (OCs) below are kept as agreed on 2026-09-27. Each one
+> The four original characters (OCs) below are kept as agreed on 2026-09-27; a fifth,
+> Utsushimi, was added the same day as the bullet-reflecting OC. Each one
 > exists to reveal something hidden about Gensokyo's fading faith, its forgotten gods,
 > lost names, and the Hakurei Shrine system. None of them should read as an unrelated
 > OC.
@@ -181,6 +182,44 @@ cards and equipment. She is neither good nor evil, and scrupulously fair.
 - She is the only character who remembers everyone, which makes her the loneliest
   character in Gensokyo.
 
+## 5. Utsushimi, the Mirror of the Empty Sanctum (写身・空の御神体)
+
+**What she reveals:** every Hakurei maiden before Reimu is still in the shrine. Not as
+ghosts: as reflections in the mirror each of them prayed to.
+
+**Who she is.** The Hakurei Shrine's goshintai (御神体), the bronze mirror a god was said
+to dwell in. No one remembers which god. Every maiden prayed before it and saw herself.
+When a maiden gave her name to the Barrier and was forgotten, her reflection had nowhere
+to go, so it stayed in the glass. A hundred years of reflections woke as a tsukumogami.
+She is what was left in the god's house after the god was forgotten.
+
+**Look.** A faceless shrine attendant who hovers just off the ground, in a white
+chihaya over pale violet hakama (the red washed out of them), with long white hair and a
+round bronze mirror where a face should be. Mirror shards circle her hands. A second mirror floats
+behind her head like a halo, ringed with bronze spikes like a sun. In her second phase the
+face-mirror cracks, and the faces behind it are all in red and white.
+
+![Utsushimi](screenshots/utsushimi.png)
+
+**Role.** An optional boss in the Hakurei storehouse (`hakurei_storehouse`). She is the
+game's answer to "bullets come back". Every third decision she raises her mirror: any
+ofuda or spell orb that reaches her face flies back at Reimu, and at the end of the
+stance she releases everything she caught as a ring. The counterplay is Soulslike: walk
+in and strike her, or circle to her side, and the stance breaks into a stagger.
+
+**Reward.** Her spell card, Mirror Sign "Returned Offering" (鏡符「還る奉納」), gives
+Reimu a 3-second mirror ward on its own key (C / Back): light bullets that touch her fly
+back at whoever fired them. Her memento forges the Sanctum Mirror Charm.
+
+**Connection to the story.**
+- Among the faces in the glass, one wears a black ribbon: the Former Shrine Maiden. After
+  the fight, Utsushimi relays that the predecessor asks after Reimu.
+- She is kind in the way a mirror is kind: she only gives back what she is given. Her
+  line about the only prayer she knows ("when they throw things at you, give them
+  back") is the thematic key to the reflect mechanic.
+- She never claims to be the god. That the shrine's god is gone, and only its vessel
+  remains, is the quiet half of the hidden premise.
+
 ## How the vertical slice sets this up
 
 The Misty Lake slice should plant each thread without explaining it:
@@ -191,6 +230,7 @@ The Misty Lake slice should plant each thread without explaining it:
 | Wayside God | A small weathered stone with a flame sits beside the checkpoint shrine. |
 | Faithless | Cirno is a boss partway through hollowing: pale, cracked, colour returning on defeat. (Planned, with the real Cirno model.) |
 | Collector of Names | Nothing yet. She is first met at Muenzuka. |
+| Utsushimi | Mirrored elite Faithless carry shards of "a shrine mirror"; the storehouse stand is empty. |
 
 ## Guardrails
 

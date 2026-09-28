@@ -15,6 +15,7 @@ disagree, the docs win and the data should be fixed.
 | `weapons.json` | Weapon types, upgrade paths and weapons |
 | `spell_cards.json` | Player-equippable spell cards |
 | `progression.json` | Faith levelling: formula, level table 1–60, stat curves, offering rules |
+| `blessings.json` | Roguelike layer: omikuji fortunes, elite affixes, blessings and curses (lost on each fall) |
 | `dialogue.json` | Speakers and dialogue trees |
 | `lore.json` | Codex entries |
 | `endings.json` | The state catalogue (stats, flags, derived flags) and the three endings |
@@ -147,6 +148,7 @@ Actions on a dialogue node run when the node is shown. Form: `name` or `name:arg
 | `dialogue_tree` | the approach and revisit conversation |
 | `sets_flags[]` | always includes `defeated_<id>` |
 | `on_defeat`, `leads_to` | story hooks |
+| `reflect_stance?` | `true`: the boss periodically raises a mirror that turns Reimu's shots back, then releases what it caught as a ring (Utsushimi) |
 | `lore_en`, `lore_ja` | |
 
 Cirno's data mirrors the prototype exactly: 700 HP, poise 70, phase 2 at 50%, action ids
@@ -204,6 +206,23 @@ multiplier. `gohei_hakurei` matches the prototype: 14 damage, a 3-hit combo at
 `source` is `{kind: "reimu", unlock}` (her own cards; `unlock` is `start` or a condition) or
 `{kind: "boss", boss, condition?}`. Every boss's `earned_spell_card` points back here.
 `sc_fantasy_seal` costs 100 Spirit, as in the prototype.
+
+## blessings.json
+
+The roguelike layer. A run lasts from one fall to the next, and every blessing is lost
+on a fall.
+
+| Field | Notes |
+|---|---|
+| `fortunes[]` | omikuji results `{id, ja, en, weight, result, luck, text_en}`. `result` is `choose_3`, `random_1` or `curse`; `luck` (0..1) tilts the draw toward rare blessings |
+| `elite_affixes[]` | `{id, ja, en, text_en, hp_mult, poise_mult?, speed_mult?}`: swift, armored, mirrored, splitting, zealous |
+| `blessings[]` | `{id, rarity, unique?, names, effects[{effect, value}], text_en, lore_en}`. `rarity` is `common`, `rare`, `legendary` or `curse` (curses only come from 凶). Values of the same effect add up |
+
+Effect keys: `max_hp`, `max_stamina`, `max_spirit`, `extra_gourd`, `damage_mult`,
+`ofuda_pierce`, `ofuda_count`, `ofuda_cost`, `homing_ofuda`, `swing_reach`,
+`cancel_spirit`, `cancel_heal`, `graze_spirit`, `graze_heal`, `dodge_ward`,
+`reflect_power`, `spell_cost`, `faith_gain`, `second_wind`, `enemy_damage`,
+`elite_chance`.
 
 ## progression.json
 

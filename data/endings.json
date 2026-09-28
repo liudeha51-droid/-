@@ -3,77 +3,193 @@
   "stats": [
     {
       "id": "wayside_fade",
-      "range": [0, 5],
+      "range": [
+        0,
+        5
+      ],
       "start": 0,
       "description": "How far the Wayside God has faded. 0 = whole, 5 = silent. Drives dialogue stage and the true ending."
     },
     {
       "id": "faith_offered_total",
-      "range": [0, null],
+      "range": [
+        0,
+        null
+      ],
       "start": 0,
       "description": "Total Faith offered to the Wayside God. Returning a name fragment to its place adds 1500."
     },
     {
       "id": "faith_spent_on_levels",
-      "range": [0, null],
+      "range": [
+        0,
+        null
+      ],
       "start": 0,
       "description": "Total Faith spent on levelling."
     },
     {
       "id": "faith_offered_ratio",
-      "range": [0, 1],
+      "range": [
+        0,
+        1
+      ],
       "start": 0,
       "description": "faith_offered_total / (faith_offered_total + faith_spent_on_levels). Derived."
     },
     {
       "id": "reimu_name_fade",
-      "range": [0, 3],
+      "range": [
+        0,
+        3
+      ],
       "start": 0,
       "description": "How far Reimu's own name has faded: HUD, save slot, how NPCs address her. Mirrors the reimu_name_fade_N flags; tearing her own page adds 1."
     },
     {
       "id": "spirit_max",
-      "range": [50, null],
+      "range": [
+        50,
+        null
+      ],
       "start": 100,
       "description": "Maximum Spirit. Normally from progression; a permanent modifier can lower it."
     },
     {
       "id": "fragments_returned",
-      "range": [0, 11],
+      "range": [
+        0,
+        11
+      ],
       "start": 0,
       "description": "Name fragments returned to their owners instead of traded."
     }
   ],
   "stat_rules": [
-    {"stat": "wayside_fade", "change": 1, "when": "flag:defeated_remilia_scarlet"},
-    {"stat": "wayside_fade", "change": 1, "when": "flag:defeated_eirin_yagokoro"},
-    {"stat": "wayside_fade", "change": 1, "when": "flag:defeated_kanako_yasaka"},
-    {"stat": "wayside_fade", "change": 1, "when": "flag:defeated_yuyuko_saigyouji"},
-    {"stat": "wayside_fade", "change": 1, "when": "flag:defeated_utsuho_reiuji"},
-    {"stat": "wayside_fade", "change": -1, "when": "stat:faith_offered_total>=2000"},
-    {"stat": "wayside_fade", "change": -1, "when": "stat:faith_offered_total>=6000"},
-    {"stat": "wayside_fade", "change": -1, "when": "stat:faith_offered_total>=12000"},
-    {"stat": "wayside_fade", "change": -1, "when": "stat:faith_offered_total>=20000"},
-    {"stat": "wayside_fade", "change": -1, "when": "stat:faith_offered_total>=30000"},
-    {"stat": "wayside_fade", "change": -2, "when": "flag:wayside_other_half_returned"},
-    {"stat": "reimu_name_fade", "change": 1, "when": "flag:reimu_name_fade_1"},
-    {"stat": "reimu_name_fade", "change": 1, "when": "flag:reimu_name_fade_2"},
-    {"stat": "reimu_name_fade", "change": 1, "when": "flag:reimu_name_fade_3"}
+    {
+      "stat": "wayside_fade",
+      "change": 1,
+      "when": "flag:defeated_remilia_scarlet"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": 1,
+      "when": "flag:defeated_eirin_yagokoro"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": 1,
+      "when": "flag:defeated_kanako_yasaka"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": 1,
+      "when": "flag:defeated_yuyuko_saigyouji"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": 1,
+      "when": "flag:defeated_utsuho_reiuji"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": -1,
+      "when": "stat:faith_offered_total>=2000"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": -1,
+      "when": "stat:faith_offered_total>=6000"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": -1,
+      "when": "stat:faith_offered_total>=12000"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": -1,
+      "when": "stat:faith_offered_total>=20000"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": -1,
+      "when": "stat:faith_offered_total>=30000"
+    },
+    {
+      "stat": "wayside_fade",
+      "change": -2,
+      "when": "flag:wayside_other_half_returned"
+    },
+    {
+      "stat": "reimu_name_fade",
+      "change": 1,
+      "when": "flag:reimu_name_fade_1"
+    },
+    {
+      "stat": "reimu_name_fade",
+      "change": 1,
+      "when": "flag:reimu_name_fade_2"
+    },
+    {
+      "stat": "reimu_name_fade",
+      "change": 1,
+      "when": "flag:reimu_name_fade_3"
+    }
   ],
   "flags": [
-    {"id": "met_wayside_god", "description": "First prayer at a shrine."},
-    {"id": "met_collector", "description": "Met the Collector of Names at Muenzuka."},
-    {"id": "met_marisa", "description": "Met Marisa at her house."},
-    {"id": "met_rinnosuke", "description": "Met Rinnosuke at Kourindou."},
-    {"id": "marisa_ally_available", "description": "Marisa can be summoned."},
-    {"id": "marisa_remembered", "description": "Marisa wrote Reimu's name on her hat."},
-    {"id": "saw_maiden_glimpse", "description": "Saw the figure at the far torii after Cirno."},
-    {"id": "old_road_open", "description": "The Old Hakurei Road's fog lifts."},
-    {"id": "maiden_said_your_turn", "description": "\"It will be your turn soon.\""},
-    {"id": "heard_maiden_song", "description": "Heard the rice-planting song on the Moriya stair."},
-    {"id": "collector_offered_page", "description": "The Collector revealed she holds the struck-out page."},
-    {"id": "obtained_struck_page", "description": "Paid for the struck-out page."},
-    {"id": "read_struck_page", "description": "Read the predecessor's name. The name is still not displayed."},
+    {
+      "id": "met_wayside_god",
+      "description": "First prayer at a shrine."
+    },
+    {
+      "id": "met_collector",
+      "description": "Met the Collector of Names at Muenzuka."
+    },
+    {
+      "id": "met_marisa",
+      "description": "Met Marisa at her house."
+    },
+    {
+      "id": "met_rinnosuke",
+      "description": "Met Rinnosuke at Kourindou."
+    },
+    {
+      "id": "marisa_ally_available",
+      "description": "Marisa can be summoned."
+    },
+    {
+      "id": "marisa_remembered",
+      "description": "Marisa wrote Reimu's name on her hat."
+    },
+    {
+      "id": "saw_maiden_glimpse",
+      "description": "Saw the figure at the far torii after Cirno."
+    },
+    {
+      "id": "old_road_open",
+      "description": "The Old Hakurei Road's fog lifts."
+    },
+    {
+      "id": "maiden_said_your_turn",
+      "description": "\"It will be your turn soon.\""
+    },
+    {
+      "id": "heard_maiden_song",
+      "description": "Heard the rice-planting song on the Moriya stair."
+    },
+    {
+      "id": "collector_offered_page",
+      "description": "The Collector revealed she holds the struck-out page."
+    },
+    {
+      "id": "obtained_struck_page",
+      "description": "Paid for the struck-out page."
+    },
+    {
+      "id": "read_struck_page",
+      "description": "Read the predecessor's name. The name is still not displayed."
+    },
     {
       "id": "returned_maiden_name",
       "description": "Spoke her name inside the pillar. Unlocks phase 3 and name display."
@@ -82,25 +198,62 @@
       "id": "gave_other_half_to_collector",
       "description": "Paid for the page with the Wayside God's other half."
     },
-    {"id": "tore_own_page", "description": "Paid for the page with a line of Reimu's own page."},
-    {"id": "wayside_other_half_returned", "description": "Returned the other half's name to the Wayside God."},
-    {"id": "collector_showed_reimu_page", "description": "The Collector showed Reimu her own blurring page."},
-    {"id": "eirin_named_the_debt", "description": "Eirin said it is a debt, not a disease."},
-    {"id": "yukari_confessed", "description": "Yukari admitted the secret."},
+    {
+      "id": "tore_own_page",
+      "description": "Paid for the page with a line of Reimu's own page."
+    },
+    {
+      "id": "wayside_other_half_returned",
+      "description": "Returned the other half's name to the Wayside God."
+    },
+    {
+      "id": "collector_showed_reimu_page",
+      "description": "The Collector showed Reimu her own blurring page."
+    },
+    {
+      "id": "eirin_named_the_debt",
+      "description": "Eirin said it is a debt, not a disease."
+    },
+    {
+      "id": "yukari_confessed",
+      "description": "Yukari admitted the secret."
+    },
     {
       "id": "reimu_name_fade_1",
       "description": "Name fade stage 1: NPCs begin to call her 'the shrine maiden'."
     },
-    {"id": "reimu_name_fade_2", "description": "Name fade stage 2: register entry blurs; HUD name smudges."},
+    {
+      "id": "reimu_name_fade_2",
+      "description": "Name fade stage 2: register entry blurs; HUD name smudges."
+    },
     {
       "id": "reimu_name_fade_3",
       "description": "Name fade stage 3: save slot name illegible. Set on entering the pillar."
     },
-    {"id": "chose_seal_old_way", "description": "Ending choice: take her place."},
-    {"id": "chose_destroy_pillar", "description": "Ending choice: break the pillar."},
-    {"id": "chose_many_beliefs", "description": "Ending choice: hold it up together."},
-    {"id": "wayside_god_endured", "description": "Derived: the Wayside God is still speaking at the end."},
-    {"id": "faith_shared", "description": "Derived: Reimu did not spend all her Faith on herself."}
+    {
+      "id": "chose_seal_old_way",
+      "description": "Ending choice: take her place."
+    },
+    {
+      "id": "chose_destroy_pillar",
+      "description": "Ending choice: break the pillar."
+    },
+    {
+      "id": "chose_many_beliefs",
+      "description": "Ending choice: hold it up together."
+    },
+    {
+      "id": "wayside_god_endured",
+      "description": "Derived: the Wayside God is still speaking at the end."
+    },
+    {
+      "id": "faith_shared",
+      "description": "Derived: Reimu did not spend all her Faith on herself."
+    },
+    {
+      "id": "saw_reflections",
+      "description": "Defeated Utsushimi and saw the past maidens in the storehouse mirror."
+    }
   ],
   "flag_patterns": [
     {
@@ -129,12 +282,20 @@
   "endings": [
     {
       "id": "ending_pillar",
-      "names": {"en": "The Pillar", "ja": "人柱"},
+      "names": {
+        "en": "The Pillar",
+        "ja": "人柱"
+      },
       "kind": "default",
       "priority": 1,
-      "requires_flags": ["defeated_former_maiden_pillar", "chose_seal_old_way"],
+      "requires_flags": [
+        "defeated_former_maiden_pillar",
+        "chose_seal_old_way"
+      ],
       "forbids_flags": [],
-      "consumes_items": ["relic_second_broom"],
+      "consumes_items": [
+        "relic_second_broom"
+      ],
       "text_en": [
         "Reimu kneels in the hollow of the stone. It is exactly her size.",
         "She gives her name to the Barrier. It does not hurt. The cracks close over like ice over dark water, and far above, the shrine goes on.",
@@ -164,14 +325,22 @@
         }
       ],
       "final_shot": "A shrine maiden sweeping the Hakurei steps at dawn. The camera drifts to the storehouse door: two brooms.",
-      "unlocks": {"new_game_plus": true}
+      "unlocks": {
+        "new_game_plus": true
+      }
     },
     {
       "id": "ending_broken_seal",
-      "names": {"en": "The Broken Seal", "ja": "破られた封"},
+      "names": {
+        "en": "The Broken Seal",
+        "ja": "破られた封"
+      },
       "kind": "alternate",
       "priority": 2,
-      "requires_flags": ["defeated_former_maiden_pillar", "chose_destroy_pillar"],
+      "requires_flags": [
+        "defeated_former_maiden_pillar",
+        "chose_destroy_pillar"
+      ],
       "forbids_flags": [],
       "consumes_items": [],
       "text_en": [
@@ -202,11 +371,16 @@
         }
       ],
       "final_shot": "The Barrier seen from the shrine steps at dusk: hairline cracks glowing faintly, and below, lanterns being lit one by one along the village road.",
-      "unlocks": {"new_game_plus": true}
+      "unlocks": {
+        "new_game_plus": true
+      }
     },
     {
       "id": "ending_returned_name",
-      "names": {"en": "The Returned Name", "ja": "還る名"},
+      "names": {
+        "en": "The Returned Name",
+        "ja": "還る名"
+      },
       "kind": "true",
       "priority": 3,
       "requires_flags": [
@@ -234,7 +408,10 @@
       ],
       "variants": [],
       "final_shot": "Two shrine maidens on the Hakurei steps at dawn, one sweeping, one scolding. Beside the steps, a roadside stone with two faces, both clear, and a flame burning in the niche.",
-      "unlocks": {"new_game_plus": true, "carry_over_spell_card": "sc_elder_fantasy_seal"}
+      "unlocks": {
+        "new_game_plus": true,
+        "carry_over_spell_card": "sc_elder_fantasy_seal"
+      }
     }
   ]
 }

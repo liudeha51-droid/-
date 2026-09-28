@@ -4,7 +4,12 @@
     {
       "id": "cirno",
       "kind": "main",
-      "names": {"en": "Cirno", "ja": "チルノ", "title_en": "the Ice Fairy, Half-Frozen", "title_ja": "半ば凍てた氷の妖精"},
+      "names": {
+        "en": "Cirno",
+        "ja": "チルノ",
+        "title_en": "the Ice Fairy, Half-Frozen",
+        "title_ja": "半ば凍てた氷の妖精"
+      },
       "area": "misty_lake",
       "sub_zone": "frozen_lake",
       "model": "characters/cirno/cirno",
@@ -12,7 +17,10 @@
       "required": true,
       "marisa_summonable": false,
       "hp_total": 700,
-      "hp_per_phase": [350, 350],
+      "hp_per_phase": [
+        350,
+        350
+      ],
       "poise": 70,
       "stagger_s": 1.3,
       "phases": [
@@ -182,9 +190,14 @@
       ],
       "earned_spell_card": "sc_perfect_freeze",
       "faith_reward": 1500,
-      "drops": ["memento_cirno", "oni_sake_lees"],
+      "drops": [
+        "memento_cirno",
+        "oni_sake_lees"
+      ],
       "dialogue_tree": "boss_cirno",
-      "sets_flags": ["defeated_cirno"],
+      "sets_flags": [
+        "defeated_cirno"
+      ],
       "lore_en": "Cirno did not cause the lake to freeze. She noticed it happening, the way the other fairies grew slow and quiet and grey, and she did what any strongest fairy would: she made it colder, so that at least it would hold still and not get worse. It is the cleverest thing she has ever done, and she does not know it.",
       "lore_ja": "湖を凍らせたのはチルノではない。仲間の妖精が遅く、静かに、灰色になっていくのに気付き、最強の妖精らしいことをした。もっと冷やして、せめて止めておこうとしたのだ。",
       "model_status": "built"
@@ -205,7 +218,10 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 1100,
-      "hp_per_phase": [600, 500],
+      "hp_per_phase": [
+        600,
+        500
+      ],
       "poise": 110,
       "stagger_s": 1.2,
       "phases": [
@@ -351,9 +367,14 @@
       ],
       "earned_spell_card": "sc_colorful_light_dance",
       "faith_reward": 2500,
-      "drops": ["memento_meiling", "iron_sand"],
+      "drops": [
+        "memento_meiling",
+        "iron_sand"
+      ],
       "dialogue_tree": "boss_hong_meiling",
-      "sets_flags": ["defeated_hong_meiling"],
+      "sets_flags": [
+        "defeated_hong_meiling"
+      ],
       "lore_en": "Meiling has always been mocked for sleeping at her post, and has always taken it with a smile. The mansion needed a gatekeeper less than it needed someone who would stay. She stayed. When the hollowing came she stopped sleeping altogether, and that is how the others knew something was very wrong.",
       "lore_ja": "居眠りを笑われても、美鈴はいつも笑って受け流した。館に要ったのは門番というより、そこに居てくれる者だった。虚ろが来て、彼女は眠らなくなった。",
       "model_status": "built"
@@ -374,7 +395,10 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 1300,
-      "hp_per_phase": [700, 600],
+      "hp_per_phase": [
+        700,
+        600
+      ],
       "poise": 90,
       "stagger_s": 1.0,
       "phases": [
@@ -526,9 +550,14 @@
       ],
       "earned_spell_card": "sc_private_square",
       "faith_reward": 3500,
-      "drops": ["memento_sakuya", "cinnabar_dust"],
+      "drops": [
+        "memento_sakuya",
+        "cinnabar_dust"
+      ],
       "dialogue_tree": "boss_sakuya_izayoi",
-      "sets_flags": ["defeated_sakuya_izayoi"],
+      "sets_flags": [
+        "defeated_sakuya_izayoi"
+      ],
       "lore_en": "Sakuya can stop time for everyone but herself. When she felt the mansion begin to be forgotten she did the only thing she could: she stopped the moment, to keep her lady exactly as she was. The mansion held still. So did she. A human who stops the clock does not age, and does not live either.",
       "lore_ja": "咲夜は自分以外のすべての時を止められる。館が忘れられ始めた時、彼女はその瞬間を止め、主を今のままに留めた。時を止めた人間は老いない。そして、生きもしない。",
       "model_status": "built"
@@ -549,7 +578,11 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 1800,
-      "hp_per_phase": [700, 600, 500],
+      "hp_per_phase": [
+        700,
+        600,
+        500
+      ],
       "poise": 140,
       "stagger_s": 1.1,
       "phases": [
@@ -726,9 +759,14 @@
       ],
       "earned_spell_card": "sc_spear_the_gungnir",
       "faith_reward": 6000,
-      "drops": ["memento_remilia", "saisen_coin_old"],
+      "drops": [
+        "memento_remilia",
+        "saisen_coin_old"
+      ],
       "dialogue_tree": "boss_remilia_scarlet",
-      "sets_flags": ["defeated_remilia_scarlet"],
+      "sets_flags": [
+        "defeated_remilia_scarlet"
+      ],
       "lore_en": "Remilia claims to manipulate fate, and whether she truly can no one is sure, least of all her. What is certain is that she sees it. She has seen a thread running from the Hakurei Shrine down into the dark for as long as she has lived in Gensokyo, and every few generations it has been cut and tied again. She thought it vulgar to mention.",
       "lore_ja": "レミリアは運命を操ると言う。真偽は誰にも分からない。確かなのは、見えていることだ。博麗神社から闇へと下る一本の糸。数代ごとに切られ、また結ばれる糸。口にするのは品がないと思っていた。",
       "model_status": "built"
@@ -749,7 +787,10 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 1600,
-      "hp_per_phase": [900, 700],
+      "hp_per_phase": [
+        900,
+        700
+      ],
       "poise": 100,
       "stagger_s": 1.2,
       "phases": [
@@ -906,9 +947,14 @@
       ],
       "earned_spell_card": "sc_shanghai_doll",
       "faith_reward": 5500,
-      "drops": ["memento_alice", "name_fragment_doll"],
+      "drops": [
+        "memento_alice",
+        "name_fragment_doll"
+      ],
       "dialogue_tree": "boss_alice_margatroid",
-      "sets_flags": ["defeated_alice_margatroid"],
+      "sets_flags": [
+        "defeated_alice_margatroid"
+      ],
       "lore_en": "Alice's life's work is a doll that thinks for itself. Every doll she has made is a step toward it, and every one is still a puppet, moved by her care. The hollowing gave her dolls a kind of freedom, which is to say it took her out of them. She has learned what she half-knew already: the care was the life.",
       "lore_ja": "アリスの生涯の研究は、自ら考える人形。虚ろは人形たちにある種の自由を与えた。つまり、彼女を人形から奪ったのだ。命とは、手をかけることだった。",
       "model_status": "planned"
@@ -916,7 +962,12 @@
     {
       "id": "fujiwara_no_mokou",
       "kind": "main",
-      "names": {"en": "Fujiwara no Mokou", "ja": "藤原 妹紅", "title_en": "The Unforgettable Flame", "title_ja": "忘れ得ぬ焔"},
+      "names": {
+        "en": "Fujiwara no Mokou",
+        "ja": "藤原 妹紅",
+        "title_en": "The Unforgettable Flame",
+        "title_ja": "忘れ得ぬ焔"
+      },
       "area": "bamboo_forest",
       "sub_zone": "bamboo_ashen_clearing",
       "model": "characters/mokou/mokou",
@@ -924,10 +975,18 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 2700,
-      "hp_per_phase": [900, 900, 900],
+      "hp_per_phase": [
+        900,
+        900,
+        900
+      ],
       "poise": 120,
       "stagger_s": 1.0,
-      "revives": {"count": 2, "revive_action": "resurrection", "full_hp_each_life": true},
+      "revives": {
+        "count": 2,
+        "revive_action": "resurrection",
+        "full_hp_each_life": true
+      },
       "phases": [
         {
           "phase": 1,
@@ -1122,9 +1181,14 @@
       ],
       "earned_spell_card": "sc_phoenix_tail",
       "faith_reward": 7000,
-      "drops": ["memento_mokou", "tamahagane_shard"],
+      "drops": [
+        "memento_mokou",
+        "tamahagane_shard"
+      ],
       "dialogue_tree": "boss_fujiwara_no_mokou",
-      "sets_flags": ["defeated_fujiwara_no_mokou"],
+      "sets_flags": [
+        "defeated_fujiwara_no_mokou"
+      ],
       "lore_en": "Mokou drank the Hourai Elixir and cannot die. She has outlived everyone who knew her name more times than she can count, and she has learned that the forgetting does not kill her either. It only makes her lonely, and then angry, and then bored. Of all the hollowed, she hollows the slowest. She is not sure whether that is a gift.",
       "lore_ja": "蓬莱の薬を飲んだ妹紅は死ねない。自分の名を知る者すべてに、数え切れぬほど先立たれた。忘却も彼女を殺しはしない。虚ろの中で、最も遅く虚ろになる者。それが恵みかどうか、彼女には分からない。",
       "model_status": "planned"
@@ -1132,7 +1196,12 @@
     {
       "id": "eirin_yagokoro",
       "kind": "main",
-      "names": {"en": "Eirin Yagokoro", "ja": "八意 永琳", "title_en": "The Physician Who Knows", "title_ja": "知る医師"},
+      "names": {
+        "en": "Eirin Yagokoro",
+        "ja": "八意 永琳",
+        "title_en": "The Physician Who Knows",
+        "title_ja": "知る医師"
+      },
       "area": "bamboo_forest",
       "sub_zone": "eientei_moon_hall",
       "model": "characters/eirin/eirin",
@@ -1140,7 +1209,11 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 2200,
-      "hp_per_phase": [800, 800, 600],
+      "hp_per_phase": [
+        800,
+        800,
+        600
+      ],
       "poise": 130,
       "stagger_s": 1.0,
       "phases": [
@@ -1287,9 +1360,15 @@
       ],
       "earned_spell_card": "sc_galaxy_in_a_pot",
       "faith_reward": 8000,
-      "drops": ["memento_eirin", "kochou_mugan"],
+      "drops": [
+        "memento_eirin",
+        "kochou_mugan"
+      ],
       "dialogue_tree": "boss_eirin_yagokoro",
-      "sets_flags": ["defeated_eirin_yagokoro", "eirin_named_the_debt"],
+      "sets_flags": [
+        "defeated_eirin_yagokoro",
+        "eirin_named_the_debt"
+      ],
       "lore_en": "Eirin is older than Gensokyo and cleverer than anyone in it, and she understood what was happening before the first fairy went grey. She also understood that telling would change nothing but who was frightened. She fights Reimu the way a physician examines a patient: carefully, and with the answer already known.",
       "lore_ja": "永琳は幻想郷より古く、誰よりも賢い。最初の妖精が灰色になる前に、何が起きているかを理解していた。告げても、怯える者が変わるだけだということも。",
       "model_status": "planned"
@@ -1311,10 +1390,19 @@
       "required": true,
       "marisa_summonable": false,
       "hp_total": 1900,
-      "hp_per_phase": [1100, 800],
+      "hp_per_phase": [
+        1100,
+        800
+      ],
       "poise": 100,
       "stagger_s": 0.9,
-      "mirror_rules": {"uses_player_stamina": true, "stamina_max": 100, "grazes": true, "dodge_iframes_s": 0.33, "heals": 2},
+      "mirror_rules": {
+        "uses_player_stamina": true,
+        "stamina_max": 100,
+        "grazes": true,
+        "dodge_iframes_s": 0.33,
+        "heals": 2
+      },
       "phases": [
         {
           "phase": 1,
@@ -1425,18 +1513,202 @@
         }
       ],
       "defeat_lines": [
-        {"speaker": "former_maiden", "text_en": "...", "text_ja": "……"},
-        {"speaker": "former_maiden", "text_en": "It will be your turn soon.", "text_ja": "もうすぐ、あなたの番。"}
+        {
+          "speaker": "former_maiden",
+          "text_en": "...",
+          "text_ja": "……"
+        },
+        {
+          "speaker": "former_maiden",
+          "text_en": "It will be your turn soon.",
+          "text_ja": "もうすぐ、あなたの番。"
+        }
       ],
       "earned_spell_card": "sc_evil_sealing_chains",
       "faith_reward": 6000,
-      "drops": ["relic_black_ribbon", "relic_worn_sandals", "name_fragment_wayside_other_half"],
+      "drops": [
+        "relic_black_ribbon",
+        "relic_worn_sandals",
+        "name_fragment_wayside_other_half"
+      ],
       "dialogue_tree": "former_maiden",
-      "sets_flags": ["defeated_former_maiden_road", "maiden_said_your_turn"],
+      "sets_flags": [
+        "defeated_former_maiden_road",
+        "maiden_said_your_turn"
+      ],
       "on_defeat": "vanishes_into_barrier",
       "lore_en": "The first time Reimu fights her predecessor, neither of them knows who the other is. The Former Shrine Maiden sees a shrine maiden neglecting her duty. Reimu sees something wearing her face, badly. Only the Faded Attendants, kneeling along the road, seem to understand what they are watching.",
       "lore_ja": "最初の戦いでは、どちらも相手が誰なのかを知らない。先代は務めを怠る巫女を見る。霊夢は、自分の顔を歪に纏った何かを見る。道に跪く随身たちだけが、何を見ているのか分かっているようだった。",
       "model_status": "built"
+    },
+    {
+      "id": "utsushimi",
+      "kind": "optional",
+      "names": {
+        "en": "Utsushimi",
+        "ja": "写身",
+        "title_en": "the Mirror of the Empty Sanctum",
+        "title_ja": "空の御神体"
+      },
+      "area": "hakurei_shrine",
+      "sub_zone": "hakurei_storehouse",
+      "model": "characters/utsushimi/utsushimi",
+      "music_cue": "mus_boss_utsushimi",
+      "required": false,
+      "marisa_summonable": false,
+      "reflect_stance": true,
+      "hp_total": 1300,
+      "hp_per_phase": [
+        700,
+        600
+      ],
+      "poise": 90,
+      "stagger_s": 1.4,
+      "phases": [
+        {
+          "phase": 1,
+          "starts_at_hp_pct": 100,
+          "description": "She answers what is given. Throw ofuda at her while her mirror is raised and they come back harder. Walk in and strike her, or erase her shards and wait for the stance to drop.",
+          "attacks": [
+            {
+              "id": "sleeve_sweep",
+              "name": "Sleeve of the Sanctum",
+              "type": "melee",
+              "damage": 20,
+              "windup_s": 0.55,
+              "recovery_s": 0.9,
+              "description": "A wide sweep of the chihaya sleeve. The cord at its hem is heavier than it looks."
+            },
+            {
+              "id": "shard_fan",
+              "name": "Shard Fan",
+              "type": "bullet",
+              "damage": 12,
+              "windup_s": 0.6,
+              "recovery_s": 0.8,
+              "description": "Three volleys of mirror shards, aimed. Each is light enough to erase with a swing."
+            },
+            {
+              "id": "reflected_ring",
+              "name": "Rings in the Glass",
+              "type": "pattern",
+              "damage": 11,
+              "windup_s": 0.8,
+              "recovery_s": 1.0,
+              "description": "Concentric rings, each a reflection of the last, offset by half a gap."
+            }
+          ],
+          "spell_cards": [
+            {
+              "id": "facing_mirrors",
+              "name_ja": "鏡符「合わせ鏡の回廊」",
+              "name_en": "Mirror Sign \"Corridor Between Facing Mirrors\"",
+              "variant": "original",
+              "damage": 12,
+              "windup_s": 1.0,
+              "duration_s": 6.0,
+              "recovery_s": 1.4,
+              "description": "Two walls of bullets sweep toward each other in lines, like reflections in facing mirrors. The gap between them is the corridor; walk it."
+            }
+          ]
+        },
+        {
+          "phase": 2,
+          "starts_at_hp_pct": 46,
+          "description": "The face-mirror cracks. Behind it are faces, many of them, all in red and white. She holds the stance longer and returns what she caught.",
+          "attacks": [
+            {
+              "id": "sleeve_sweep",
+              "name": "Sleeve of the Sanctum",
+              "type": "melee",
+              "damage": 22,
+              "windup_s": 0.5,
+              "recovery_s": 0.8,
+              "description": "As before, now twice."
+            },
+            {
+              "id": "returned_offering",
+              "name": "Returned Offering",
+              "type": "pattern",
+              "damage": 13,
+              "windup_s": 0.7,
+              "recovery_s": 1.1,
+              "description": "A bloom of the bullets she caught while reflecting, released at once."
+            },
+            {
+              "id": "shard_fan",
+              "name": "Shard Fan",
+              "type": "bullet",
+              "damage": 13,
+              "windup_s": 0.5,
+              "recovery_s": 0.8,
+              "description": "Faster volleys."
+            }
+          ],
+          "spell_cards": [
+            {
+              "id": "reflections_that_stayed",
+              "name_ja": "写符「残された写し身」",
+              "name_en": "Reflection Sign \"Reflections That Stayed\"",
+              "variant": "original",
+              "damage": 13,
+              "windup_s": 1.2,
+              "duration_s": 7.0,
+              "recovery_s": 1.6,
+              "description": "Rings that stop mid-air and hang like faces in glass, then scatter. Every maiden who ever prayed here is in the pattern."
+            },
+            {
+              "id": "empty_sanctum",
+              "name_ja": "空符「神無き御神体」",
+              "name_en": "Hollow Sign \"Sanctum With No God\"",
+              "variant": "original",
+              "damage": 12,
+              "windup_s": 1.0,
+              "duration_s": 6.0,
+              "recovery_s": 1.5,
+              "description": "A slow spiral from the halo mirror. Nothing is inside it. That is the pattern."
+            }
+          ]
+        }
+      ],
+      "arena": "The Hakurei storehouse, half collapsed. Rain comes through the roof onto a floor of scattered offering boxes and broken ema. At the back, on a stand where a sacred mirror should be, there is only a round mark in the dust.",
+      "intro_lines": [
+        {
+          "speaker": "utsushimi",
+          "text_en": "You pray the way she prayed. And the one before her. I have your face already. I have all of your faces.",
+          "text_ja": "あの子と同じ祈り方。その前の子とも。あなたの顔はもう持っているわ。あなたたちの顔を、全部。"
+        },
+        {
+          "speaker": "utsushimi",
+          "text_en": "A mirror only gives back what it is given. Give me something, shrine maiden.",
+          "text_ja": "鏡は与えられたものしか返せない。何かちょうだい、巫女さん。"
+        }
+      ],
+      "defeat_lines": [
+        {
+          "speaker": "utsushimi",
+          "text_en": "...There. You see them too, now. The ones behind the glass.",
+          "text_ja": "……ほら。あなたにも見えるでしょう。硝子の向こうの人たち。"
+        },
+        {
+          "speaker": "utsushimi",
+          "text_en": "Take this. When they throw things at you, give them back. It is the only prayer I know.",
+          "text_ja": "これを持っていきなさい。何かを投げつけられたら、返してあげて。私が知っている祈りは、それだけ。"
+        }
+      ],
+      "earned_spell_card": "sc_returned_offering",
+      "faith_reward": 4200,
+      "drops": [
+        "memento_utsushimi"
+      ],
+      "dialogue_tree": "boss_utsushimi",
+      "sets_flags": [
+        "defeated_utsushimi",
+        "saw_reflections"
+      ],
+      "model_status": "built",
+      "lore_en": "The Hakurei Shrine's goshintai: a bronze mirror in which the god was said to dwell. No one remembers which god. For generations each shrine maiden prayed before it, and each saw herself. When a maiden gave her name to the Barrier and was forgotten, her reflection had nowhere to go, so it stayed in the glass. A hundred years of reflections became a mind. She is not the god. She is what was left in the god's house when the god was forgotten: a surface that remembers every face it was shown and cannot give any of them back.",
+      "lore_ja": "博麗神社の御神体。神が宿るとされた青銅の鏡。どの神だったか、もう誰も覚えていない。代々の巫女はその前で祈り、そこに自分を見た。巫女が名を結界に捧げて忘れられたとき、その写し身には行き場がなく、硝子に残った。百年分の写し身が、ひとつの心になった。彼女は神ではない。神が忘れられた後、神の家に残されたもの。見せられた顔をすべて覚え、ひとつも返せない鏡面。"
     },
     {
       "id": "aya_shameimaru",
@@ -1454,7 +1726,10 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 2000,
-      "hp_per_phase": [1100, 900],
+      "hp_per_phase": [
+        1100,
+        900
+      ],
       "poise": 80,
       "stagger_s": 0.9,
       "phases": [
@@ -1591,9 +1866,16 @@
       ],
       "earned_spell_card": "sc_sarutahiko_guidance",
       "faith_reward": 9000,
-      "drops": ["memento_aya", "name_fragment_byline", "tengu_leaf_fan"],
+      "drops": [
+        "memento_aya",
+        "name_fragment_byline",
+        "tengu_leaf_fan"
+      ],
       "dialogue_tree": "boss_aya_shameimaru",
-      "sets_flags": ["defeated_aya_shameimaru", "reimu_name_fade_1"],
+      "sets_flags": [
+        "defeated_aya_shameimaru",
+        "reimu_name_fade_1"
+      ],
       "lore_en": "Aya has written about every incident Reimu ever settled, usually wrongly, always loudly. The Bunbunmaru was never much read. That was never the point; the point was that it could be. Aya is the first to forget Reimu's name, and the first to write it down again. She is a better reporter than anyone gives her credit for.",
       "lore_ja": "文は霊夢が解決したすべての異変を、たいてい間違って、いつも騒々しく記事にした。霊夢の名を最初に忘れたのは文で、最初に書き直したのも文だった。",
       "model_status": "planned"
@@ -1601,7 +1883,12 @@
     {
       "id": "kanako_yasaka",
       "kind": "main",
-      "names": {"en": "Kanako Yasaka", "ja": "八坂 神奈子", "title_en": "Goddess of a Faith Run Dry", "title_ja": "涸れた信仰の神"},
+      "names": {
+        "en": "Kanako Yasaka",
+        "ja": "八坂 神奈子",
+        "title_en": "Goddess of a Faith Run Dry",
+        "title_ja": "涸れた信仰の神"
+      },
       "area": "youkai_mountain",
       "sub_zone": "moriya_lake",
       "model": "characters/kanako/kanako",
@@ -1609,7 +1896,11 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 3000,
-      "hp_per_phase": [1100, 1000, 900],
+      "hp_per_phase": [
+        1100,
+        1000,
+        900
+      ],
       "poise": 200,
       "stagger_s": 1.4,
       "phases": [
@@ -1766,9 +2057,15 @@
       ],
       "earned_spell_card": "sc_meteoric_onbashira",
       "faith_reward": 12000,
-      "drops": ["memento_kanako", "sacred_sakaki", "name_fragment_kami"],
+      "drops": [
+        "memento_kanako",
+        "sacred_sakaki",
+        "name_fragment_kami"
+      ],
       "dialogue_tree": "boss_kanako_yasaka",
-      "sets_flags": ["defeated_kanako_yasaka"],
+      "sets_flags": [
+        "defeated_kanako_yasaka"
+      ],
       "lore_en": "Kanako is a god of faith in the most literal sense: she is made of it. She came to Gensokyo to survive, and prospered, and gave some of her power away to make the mountain a sun. Now faith drains here too. Her shrine maiden is down in the village preaching to empty streets, and her fellow goddess sleeps in the lake. Kanako does not hollow quickly. She is too proud. But she understands better than anyone what it will mean when she does.",
       "lore_ja": "神奈子は文字通り、信仰そのものでできた神。生き延びるために幻想郷へ来て、栄え、山に太陽を与えるため力の一部を分け与えた。今、ここでも信仰が涸れていく。",
       "model_status": "planned"
@@ -1789,7 +2086,10 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 2400,
-      "hp_per_phase": [1300, 1100],
+      "hp_per_phase": [
+        1300,
+        1100
+      ],
       "poise": 110,
       "stagger_s": 0.9,
       "phases": [
@@ -1937,9 +2237,14 @@
       ],
       "earned_spell_card": "sc_present_world_slash",
       "faith_reward": 11000,
-      "drops": ["memento_youmu", "star_iron"],
+      "drops": [
+        "memento_youmu",
+        "star_iron"
+      ],
       "dialogue_tree": "boss_youmu_konpaku",
-      "sets_flags": ["defeated_youmu_konpaku"],
+      "sets_flags": [
+        "defeated_youmu_konpaku"
+      ],
       "lore_en": "Youmu is half human and half phantom, gardener and guardian and swordswoman, and she believes the truth of a thing is found by cutting it. It has always been a young person's philosophy. The hollowing is the first thing she cannot cut, and she is learning, far too early and in the worst way, that there are things one can only carry.",
       "lore_ja": "妖夢は半人半霊の庭師にして剣士。物事の真実は斬ることで分かると信じている。虚ろは初めての、斬れぬもの。世には、ただ背負うしかないものがあると、早すぎる形で学んでいる。",
       "model_status": "planned"
@@ -1960,7 +2265,11 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 3200,
-      "hp_per_phase": [1100, 1100, 1000],
+      "hp_per_phase": [
+        1100,
+        1100,
+        1000
+      ],
       "poise": 160,
       "stagger_s": 1.2,
       "phases": [
@@ -2118,9 +2427,15 @@
       ],
       "earned_spell_card": "sc_ghost_butterfly",
       "faith_reward": 15000,
-      "drops": ["memento_yuyuko", "name_fragment_phantom", "sakura_charm"],
+      "drops": [
+        "memento_yuyuko",
+        "name_fragment_phantom",
+        "sakura_charm"
+      ],
       "dialogue_tree": "boss_yuyuko_saigyouji",
-      "sets_flags": ["defeated_yuyuko_saigyouji"],
+      "sets_flags": [
+        "defeated_yuyuko_saigyouji"
+      ],
       "lore_en": "Yuyuko is the princess of the Netherworld, a ghost who has forgotten her life and never minded. What she does not know is that her own body lies beneath the Saigyou Ayakashi, and seals it. She gave herself so that the tree would never bloom again. She is, in the truest sense, the only other person in Gensokyo who has done what the Hakurei maidens do. She is beginning, very faintly, to suspect it.",
       "lore_ja": "幽々子は冥界の姫。生前を忘れ、それを気にしたこともない亡霊。西行妖の下に眠り、それを封じているのが自分の亡骸だとは知らない。博麗の巫女と同じことをした者は、幻想郷で彼女だけだ。",
       "model_status": "planned"
@@ -2129,7 +2444,12 @@
       "id": "former_maiden_saigyou",
       "kind": "former_maiden",
       "encounter": 2,
-      "names": {"en": "The Former Shrine Maiden", "ja": "先代の巫女", "title_en": "The Pillar Walking", "title_ja": "歩む人柱"},
+      "names": {
+        "en": "The Former Shrine Maiden",
+        "ja": "先代の巫女",
+        "title_en": "The Pillar Walking",
+        "title_ja": "歩む人柱"
+      },
       "area": "netherworld",
       "sub_zone": "saigyou_roots",
       "model": "characters/former_maiden/former_maiden",
@@ -2137,10 +2457,19 @@
       "required": true,
       "marisa_summonable": false,
       "hp_total": 2800,
-      "hp_per_phase": [1500, 1300],
+      "hp_per_phase": [
+        1500,
+        1300
+      ],
       "poise": 120,
       "stagger_s": 0.8,
-      "mirror_rules": {"uses_player_stamina": true, "stamina_max": 140, "grazes": true, "dodge_iframes_s": 0.33, "heals": 2},
+      "mirror_rules": {
+        "uses_player_stamina": true,
+        "stamina_max": 140,
+        "grazes": true,
+        "dodge_iframes_s": 0.33,
+        "heals": 2
+      },
       "phases": [
         {
           "phase": 1,
@@ -2267,13 +2596,21 @@
           "text_en": "I knelt here. I wanted to ask her if it was heavy. She could not answer. She does not remember either.",
           "text_ja": "ここに跪いた。重いかと、訊きたかった。答えはなかった。彼女も、覚えていない。"
         },
-        {"speaker": "former_maiden", "text_en": "Neither do I.", "text_ja": "私も。"}
+        {
+          "speaker": "former_maiden",
+          "text_en": "Neither do I.",
+          "text_ja": "私も。"
+        }
       ],
       "earned_spell_card": "sc_inverted_orbs",
       "faith_reward": 14000,
-      "drops": ["relic_inverted_orb"],
+      "drops": [
+        "relic_inverted_orb"
+      ],
       "dialogue_tree": "former_maiden",
-      "sets_flags": ["defeated_former_maiden_saigyou"],
+      "sets_flags": [
+        "defeated_former_maiden_saigyou"
+      ],
       "on_defeat": "vanishes_into_barrier",
       "lore_en": "The second meeting is not a guard stopping a deserter. It is two pillars recognising each other. Something drew the Former Shrine Maiden to the one other sacrifice in Gensokyo, and she knelt among its roots and tried to ask it a question. Reimu interrupts, and for a moment the predecessor seems almost grateful for someone to fight.",
       "lore_ja": "二度目の邂逅は、脱走兵を止める番兵ではない。二本の人柱が互いに気付いたのだ。先代は幻想郷のもう一つの犠牲に引き寄せられ、その根元に跪き、問いかけようとした。",
@@ -2282,7 +2619,12 @@
     {
       "id": "utsuho_reiuji",
       "kind": "main",
-      "names": {"en": "Utsuho Reiuji", "ja": "霊烏路 空", "title_en": "A Sun No One Looks Up To", "title_ja": "誰も仰がぬ太陽"},
+      "names": {
+        "en": "Utsuho Reiuji",
+        "ja": "霊烏路 空",
+        "title_en": "A Sun No One Looks Up To",
+        "title_ja": "誰も仰がぬ太陽"
+      },
       "area": "former_hell",
       "sub_zone": "nuclear_core",
       "model": "characters/utsuho/utsuho",
@@ -2290,7 +2632,11 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 3600,
-      "hp_per_phase": [1300, 1200, 1100],
+      "hp_per_phase": [
+        1300,
+        1200,
+        1100
+      ],
       "poise": 180,
       "stagger_s": 1.3,
       "phases": [
@@ -2437,9 +2783,16 @@
       ],
       "earned_spell_card": "sc_nuclear_fusion",
       "faith_reward": 20000,
-      "drops": ["memento_utsuho", "ibuki_undiluted", "hell_cinder"],
+      "drops": [
+        "memento_utsuho",
+        "ibuki_undiluted",
+        "hell_cinder"
+      ],
       "dialogue_tree": "boss_utsuho_reiuji",
-      "sets_flags": ["defeated_utsuho_reiuji", "reimu_name_fade_2"],
+      "sets_flags": [
+        "defeated_utsuho_reiuji",
+        "reimu_name_fade_2"
+      ],
       "lore_en": "A hell raven given the power of the sun-god Yatagarasu by a goddess who wanted the mountain to prosper. Utsuho was never meant to understand what she held, only to hold it. When the faith that the sun was meant to gather stopped coming, she concluded, reasonably, that she was not burning hard enough. It is a very human mistake. The Hakurei maidens have made it too.",
       "lore_ja": "山の繁栄を願う神によって八咫烏の力を与えられた地獄鴉。空は手にしたものを理解する必要はなかった。ただ持っていればよかった。信仰が来なくなった時、彼女はもっと燃えればいいと考えた。人間らしい過ちだ。博麗の巫女たちも、同じ過ちを犯してきた。",
       "model_status": "planned"
@@ -2447,7 +2800,12 @@
     {
       "id": "yukari_yakumo",
       "kind": "main",
-      "names": {"en": "Yukari Yakumo", "ja": "八雲 紫", "title_en": "Keeper of the Kinder Lie", "title_ja": "優しい嘘の守り手"},
+      "names": {
+        "en": "Yukari Yakumo",
+        "ja": "八雲 紫",
+        "title_en": "Keeper of the Kinder Lie",
+        "title_ja": "優しい嘘の守り手"
+      },
       "area": "great_barrier",
       "sub_zone": "boundary_edge",
       "model": "characters/yukari/yukari",
@@ -2455,7 +2813,11 @@
       "required": true,
       "marisa_summonable": true,
       "hp_total": 4200,
-      "hp_per_phase": [1400, 1400, 1400],
+      "hp_per_phase": [
+        1400,
+        1400,
+        1400
+      ],
       "poise": 170,
       "stagger_s": 1.0,
       "phases": [
@@ -2627,9 +2989,15 @@
       ],
       "earned_spell_card": "sc_quadruple_barrier",
       "faith_reward": 30000,
-      "drops": ["memento_yukari", "remembered_prayer"],
+      "drops": [
+        "memento_yukari",
+        "remembered_prayer"
+      ],
       "dialogue_tree": "boss_yukari_yakumo",
-      "sets_flags": ["defeated_yukari_yakumo", "yukari_confessed"],
+      "sets_flags": [
+        "defeated_yukari_yakumo",
+        "yukari_confessed"
+      ],
       "lore_en": "Yukari made the Barrier with the first Hakurei, and she has kept its one secret for every generation since: that when faith fails, the shrine maiden gives her name, and Gensokyo forgets her, and no one notices because the title goes on. Yukari remembers every one. She kept the secret because she believed it was the kinder lie. She has never been sure. She fights Reimu not to stop her, but to find out, at last, whether a shrine maiden who will not sit down can find the way that she could not.",
       "lore_ja": "紫は初代の博麗と共に結界を張り、以来その秘密を代々守ってきた。信仰が尽きれば巫女は名を差し出し、幻想郷は彼女を忘れ、肩書だけが続く。紫は全員を覚えている。優しい嘘だと信じて、秘密を守った。確信したことは一度もない。",
       "model_status": "planned"
@@ -2651,10 +3019,19 @@
       "required": true,
       "marisa_summonable": false,
       "hp_total": 3800,
-      "hp_per_phase": [2000, 1800],
+      "hp_per_phase": [
+        2000,
+        1800
+      ],
       "poise": 150,
       "stagger_s": 0.8,
-      "mirror_rules": {"uses_player_stamina": true, "stamina_max": 180, "grazes": true, "dodge_iframes_s": 0.33, "heals": 3},
+      "mirror_rules": {
+        "uses_player_stamina": true,
+        "stamina_max": 180,
+        "grazes": true,
+        "dodge_iframes_s": 0.33,
+        "heals": 3
+      },
       "phases": [
         {
           "phase": 1,
@@ -2728,7 +3105,9 @@
           "starts_at_hp_pct": 47,
           "description": "Her last word. If Reimu holds the struck-out page and has read the name, a prompt appears during this phase: Speak her name.",
           "name_prompt": {
-            "requires_flags": ["read_struck_page"],
+            "requires_flags": [
+              "read_struck_page"
+            ],
             "requires_item": "struck_register_page",
             "sets_flag": "returned_maiden_name",
             "opens_phase": 3
@@ -2773,7 +3152,10 @@
           "trigger": "flag:returned_maiden_name",
           "ally_phase": true,
           "opponent": {
-            "names": {"en": "The Collapsing Seal", "ja": "崩れゆく封印"},
+            "names": {
+              "en": "The Collapsing Seal",
+              "ja": "崩れゆく封印"
+            },
             "hp": 3000,
             "poise": 999
           },
@@ -2827,7 +3209,11 @@
       ],
       "arena": "Inside the pillar beneath the Hakurei Shrine, a vertical shaft of pressed paper and ink where every wall is a page of struck-out names. At its centre, a stone. On the stone, a hollow the size of a kneeling girl. The Wayside God's flame can be seen, very faintly, far above.",
       "intro_lines": [
-        {"speaker": "former_maiden", "text_en": "You came.", "text_ja": "来たのね。"},
+        {
+          "speaker": "former_maiden",
+          "text_en": "You came.",
+          "text_ja": "来たのね。"
+        },
         {
           "speaker": "former_maiden",
           "text_en": "Good. It is heavy. I have held it a long time. You will hold it now. That is the duty.",
@@ -2853,7 +3239,9 @@
       "faith_reward": 0,
       "drops": [],
       "dialogue_tree": "former_maiden",
-      "sets_flags": ["defeated_former_maiden_pillar"],
+      "sets_flags": [
+        "defeated_former_maiden_pillar"
+      ],
       "leads_to": "ending_choice",
       "lore_en": "This is where every Hakurei shrine maiden who paid the price has ended up: inside the stone, holding the Barrier shut with the weight of being forgotten. The Former Shrine Maiden was the last. She is not guarding the pillar. She is the pillar, and she has come up out of it to hand it on. She does not want to hurt Reimu. She only wants to put it down.",
       "lore_ja": "代価を払った博麗の巫女は皆ここに辿り着いた。石の中で、忘れられることの重みで結界を閉ざし続ける。先代は最後の一人。柱を守っているのではない。彼女が柱なのだ。霊夢を傷つけたいのではない。ただ、下ろしたいだけ。",
@@ -2869,8 +3257,13 @@
       "sub_zone": "far_torii",
       "trigger": "flag:defeated_cirno",
       "description": "After Cirno's colour returns, a figure in faded red and white stands at the far torii across the ice. A black ribbon. She is looking at the Wayside God's flame, not at Reimu. When Reimu steps toward her, the mist closes and she is gone.",
-      "sets_flags": ["saw_maiden_glimpse"],
-      "dialogue": {"tree": "former_maiden", "node": "fm_glimpse"}
+      "sets_flags": [
+        "saw_maiden_glimpse"
+      ],
+      "dialogue": {
+        "tree": "former_maiden",
+        "node": "fm_glimpse"
+      }
     },
     {
       "id": "maiden_road_straightening_stone",
@@ -2880,8 +3273,13 @@
       "sub_zone": "old_road_lower",
       "trigger": "flag:defeated_eirin_yagokoro",
       "description": "On the Old Hakurei Road, the figure kneels beside a toppled roadside stone and sets it upright, and brushes the moss from its face with her sleeve. Faded Attendants on either side of the road bow as she rises. She walks on toward the branch shrine without looking back.",
-      "sets_flags": ["old_road_open"],
-      "dialogue": {"tree": "former_maiden", "node": "fm_stone"}
+      "sets_flags": [
+        "old_road_open"
+      ],
+      "dialogue": {
+        "tree": "former_maiden",
+        "node": "fm_stone"
+      }
     },
     {
       "id": "maiden_fight_road",
@@ -2893,7 +3291,10 @@
       "trigger": "flag:old_road_open",
       "description": "The first real fight. Afterward: 'It will be your turn soon.' She vanishes into the Barrier.",
       "sets_flags": [],
-      "dialogue": {"tree": "former_maiden", "node": "fm_road_pre"}
+      "dialogue": {
+        "tree": "former_maiden",
+        "node": "fm_road_pre"
+      }
     },
     {
       "id": "maiden_humming_moriya",
@@ -2903,8 +3304,13 @@
       "sub_zone": "moriya_stair",
       "trigger": "flag:defeated_former_maiden_road",
       "description": "Heard, not seen: somewhere on the Moriya stair, someone hums a rice-planting song, out of tune. It stops when Reimu reaches the landing. On the step, a single sandal-print in the frost.",
-      "sets_flags": ["heard_maiden_song"],
-      "dialogue": {"tree": "former_maiden", "node": "fm_song"}
+      "sets_flags": [
+        "heard_maiden_song"
+      ],
+      "dialogue": {
+        "tree": "former_maiden",
+        "node": "fm_song"
+      }
     },
     {
       "id": "maiden_fight_saigyou",
@@ -2916,7 +3322,10 @@
       "trigger": "flag:defeated_yuyuko_saigyouji",
       "description": "The second fight, beneath the Saigyou Ayakashi.",
       "sets_flags": [],
-      "dialogue": {"tree": "former_maiden", "node": "fm_saigyou_pre"}
+      "dialogue": {
+        "tree": "former_maiden",
+        "node": "fm_saigyou_pre"
+      }
     },
     {
       "id": "maiden_ledger_scene",
@@ -2926,8 +3335,13 @@
       "sub_zone": "muenzuka",
       "trigger": "flag:defeated_former_maiden_saigyou",
       "description": "Not an appearance but its shadow: the Collector of Names brings out the struck-out page. The player learns the name here. The game does not display it unless it is returned.",
-      "sets_flags": ["collector_offered_page"],
-      "dialogue": {"tree": "collector", "node": "col_ledger_scene"}
+      "sets_flags": [
+        "collector_offered_page"
+      ],
+      "dialogue": {
+        "tree": "collector",
+        "node": "col_ledger_scene"
+      }
     },
     {
       "id": "maiden_fight_pillar",
@@ -2939,7 +3353,10 @@
       "trigger": "flag:defeated_yukari_yakumo",
       "description": "The last duel, inside the pillar.",
       "sets_flags": [],
-      "dialogue": {"tree": "former_maiden", "node": "fm_pillar_pre"}
+      "dialogue": {
+        "tree": "former_maiden",
+        "node": "fm_pillar_pre"
+      }
     }
   ],
   "former_maiden_name": {

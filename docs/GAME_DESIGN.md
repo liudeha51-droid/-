@@ -107,8 +107,9 @@ Proposals that follow the rule:
 | **The Wayside God** (道祖神) | Small roadside gods are part of Gensokyo's folk religion. | Tends the shrine checkpoints and grows fainter as faith fails. The "firekeeper" NPC who levels you up with Faith. |
 | **The Faithless** | This story's premise. | Youkai and fairies who lost faith: the common enemy roster (hollowed fairies, masked tengu scouts, rotting kappa machines). |
 | **The Collector of Names** | Gensokyo is where forgotten things go. | Merchant who trades in names and memories, and speaks for what the world forgot. |
+| **Utsushimi** (写身) | Shrines keep a goshintai mirror; tsukumogami are canon. | The Hakurei Shrine's sacred mirror, woken from a century of maidens' reflections. Optional boss who reflects bullets; her spell card gives Reimu a mirror ward. |
 
-All four are kept (decision 2026-09-27). Their full briefs, the hidden premise behind
+All four are kept (decision 2026-09-27), and Utsushimi was added as a fifth. Their full briefs, the hidden premise behind
 the Hakurei system, Reimu's arc and the draft endings are in
 [STORY_AND_CHARACTERS.md](STORY_AND_CHARACTERS.md). The Former Shrine Maiden is central
 to the main story: she is a tragic predecessor whose fate foreshadows Reimu's, not an
@@ -250,7 +251,7 @@ system with Steam Cloud, achievements, a 60 fps target on Steam Deck, store asse
   weapon, level curve, dialogue tree, codex entry and ending (see `data/README.md`).
 - **In-house models so far:**
   - Reimu, Cirno, Hong Meiling, Sakuya Izayoi and Remilia Scarlet.
-  - The Former Shrine Maiden and the Wayside God.
+  - The Former Shrine Maiden, the Wayside God and Utsushimi.
   - The hollow fairy and the masked tengu scout.
 - **Environment kits:** Misty Lake and the Scarlet Devil Mansion. Other areas are
   playable with stylised stand-in dressing until their kits exist.
@@ -261,6 +262,31 @@ system with Steam Cloud, achievements, a 60 fps target on Steam Deck, store asse
   - Travel from area to area in play order.
 - **Still to build:** models for the remaining 9 canon bosses and 23 Faithless kinds,
   kits for the seven other areas, dialogue and codex screens, menus, final music.
+
+### Status (2026-09-27): danmaku and roguelike layer
+
+- **Bullet slots:** up to 4,096 bullets on screen, pooled and drawn in batches. When
+  every slot is full the oldest bullet is recycled. Each boss still keeps its own
+  readable budget.
+- **Bullets cancel bullets:**
+  - Reimu's ofuda and spell orbs erase light enemy bullets they touch. Each ofuda has a
+    pierce count; spell orbs never run out.
+  - Gohei swings swat bullets in their arc.
+  - Heavy bullets (big orbs) swallow ofuda and cannot be erased.
+  - Every erased bullet returns a little Spirit.
+- **Reflection:**
+  - Utsushimi's stance and mirrored elite Faithless turn Reimu's shots back at her.
+  - Reimu's mirror ward, from the spell card "Returned Offering", the Mirror Step
+    blessing or the Facing Mirrors blessing, turns enemy bullets back at their owner.
+- **Roguelike runs** (`data/blessings.json`):
+  - A run lasts from one fall to the next.
+  - Each run re-rolls which Faithless are elites (swift, hardened, mirrored,
+    scattering, zealous) and where the omikuji stands appear.
+  - Omikuji give a blessing: 大吉/吉 let Reimu choose one of three, 末吉 gives one at
+    random, and 凶 binds a curse (a strong effect with a cost).
+  - Elites and bosses also offer blessings.
+  - Every blessing is lost on a fall. Faith, levels and flags are kept, as in a
+    Soulslike.
 
 ## 13. Open decisions
 

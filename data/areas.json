@@ -5,50 +5,81 @@
       "id": "hakurei_shrine",
       "play_order": 0,
       "kind": "hub",
-      "names": {"en": "Hakurei Shrine", "ja": "博麗神社"},
+      "names": {
+        "en": "Hakurei Shrine",
+        "ja": "博麗神社"
+      },
       "theme": "A poor shrine on the eastern border, cracked and quiet. The hub, and the thing the whole story is about.",
       "time_of_day": "grey dawn that never quite becomes morning",
       "mood": "home, emptied out; warm light only at the shrine flame",
-      "environment_kit": {"id": "hakurei_shrine", "status": "planned", "path": "assets/models/environment/hakurei_shrine/"},
-      "music_cues": {"explore": "mus_hub_hakurei", "boss": "mus_boss_former_maiden_1"},
+      "environment_kit": {
+        "id": "hakurei_shrine",
+        "status": "planned",
+        "path": "assets/models/environment/hakurei_shrine/"
+      },
+      "music_cues": {
+        "explore": "mus_hub_hakurei",
+        "boss": "mus_boss_former_maiden_1"
+      },
       "sub_zones": [
         {
           "id": "hakurei_precinct",
-          "names": {"en": "Shrine Precinct", "ja": "境内"},
+          "names": {
+            "en": "Shrine Precinct",
+            "ja": "境内"
+          },
           "description": "The main hall, the offering box, the veranda where Suika's gourd was left. A crack runs up the stone steps."
         },
         {
           "id": "hakurei_storehouse",
-          "names": {"en": "Storehouse", "ja": "物置"},
-          "description": "Dusty, half-collapsed. Two brooms lean inside the door."
+          "names": {
+            "en": "Storehouse",
+            "ja": "物置"
+          },
+          "description": "Dusty, half-collapsed. Two brooms lean inside the door. At the back, the stand where the shrine's sacred mirror belongs is empty, and something moves in the rain. Utsushimi's arena (optional)."
         },
         {
           "id": "old_road_lower",
-          "names": {"en": "Old Hakurei Road", "ja": "旧博麗参道"},
+          "names": {
+            "en": "Old Hakurei Road",
+            "ja": "旧博麗参道"
+          },
           "description": "The approach the villagers used before the new road. Moss, toppled roadside stones, lantern posts without lanterns. Sealed by fog until the story opens it."
         },
         {
           "id": "old_road_branch_shrine",
-          "names": {"en": "Forgotten Branch Shrine", "ja": "忘れられた分社"},
+          "names": {
+            "en": "Forgotten Branch Shrine",
+            "ja": "忘れられた分社"
+          },
           "description": "A tiny branch shrine at the end of the old road, where Faded Attendants kneel."
         }
       ],
       "shrines": [
         {
           "id": "shrine_hakurei_precinct",
-          "names": {"en": "Hakurei Precinct", "ja": "博麗神社・境内"},
+          "names": {
+            "en": "Hakurei Precinct",
+            "ja": "博麗神社・境内"
+          },
           "sub_zone": "hakurei_precinct",
           "initial": true
         },
         {
           "id": "shrine_old_road_crossroads",
-          "names": {"en": "Old Road Crossroads", "ja": "旧参道の辻"},
+          "names": {
+            "en": "Old Road Crossroads",
+            "ja": "旧参道の辻"
+          },
           "sub_zone": "old_road_lower",
           "initial": false
         },
         {
           "id": "shrine_old_road_branch",
-          "names": {"en": "Before the Branch Shrine", "ja": "分社の前"},
+          "names": {
+            "en": "Before the Branch Shrine",
+            "ja": "分社の前"
+          },
           "sub_zone": "old_road_branch_shrine",
           "initial": false
         }
@@ -58,15 +89,24 @@
           "id": "hub_old_road_lanterns",
           "sub_zone": "old_road_lower",
           "enemies": [
-            {"enemy": "unlit_lantern", "count": 3},
-            {"enemy": "faded_attendant", "count": 1}
+            {
+              "enemy": "unlit_lantern",
+              "count": 3
+            },
+            {
+              "enemy": "faded_attendant",
+              "count": 1
+            }
           ]
         },
         {
           "id": "hub_old_road_kneeling",
           "sub_zone": "old_road_branch_shrine",
           "enemies": [
-            {"enemy": "faded_attendant", "count": 4}
+            {
+              "enemy": "faded_attendant",
+              "count": 4
+            }
           ]
         },
         {
@@ -74,14 +114,24 @@
           "sub_zone": "hakurei_precinct",
           "condition": "flag:reimu_name_fade_2",
           "enemies": [
-            {"enemy": "struck_name", "count": 2}
+            {
+              "enemy": "struck_name",
+              "count": 2
+            }
           ]
         }
       ],
-      "bosses": ["former_maiden_road"],
+      "bosses": [
+        "former_maiden_road",
+        "utsushimi"
+      ],
       "connections": {
         "required": [
-          {"to": "misty_lake", "via": "the lantern path west", "condition": ""},
+          {
+            "to": "misty_lake",
+            "via": "the lantern path west",
+            "condition": ""
+          },
           {
             "to": "forest_of_magic",
             "via": "the road past the Human Village",
@@ -92,7 +142,11 @@
             "via": "the Old Hakurei Road's upper fork",
             "condition": "flag:defeated_former_maiden_road"
           },
-          {"to": "great_barrier", "via": "a gap behind the main hall", "condition": "item:yakumo_invitation"}
+          {
+            "to": "great_barrier",
+            "via": "a gap behind the main hall",
+            "condition": "item:yakumo_invitation"
+          }
         ],
         "optional": [
           {
@@ -114,9 +168,21 @@
           "sub_zone": "hakurei_precinct",
           "note": "On the veranda, beside a note."
         },
-        {"item": "hakurei_register", "count": 1, "sub_zone": "hakurei_precinct"},
-        {"item": "paper_substitute", "count": 2, "sub_zone": "hakurei_precinct"},
-        {"item": "wayside_bell", "count": 1, "sub_zone": "hakurei_precinct"},
+        {
+          "item": "hakurei_register",
+          "count": 1,
+          "sub_zone": "hakurei_precinct"
+        },
+        {
+          "item": "paper_substitute",
+          "count": 2,
+          "sub_zone": "hakurei_precinct"
+        },
+        {
+          "item": "wayside_bell",
+          "count": 1,
+          "sub_zone": "hakurei_precinct"
+        },
         {
           "item": "saisen_coin_small",
           "count": 3,
@@ -129,7 +195,11 @@
           "sub_zone": "hakurei_storehouse",
           "condition": "flag:reimu_name_fade_1"
         },
-        {"item": "washi_scrap", "count": 2, "sub_zone": "hakurei_storehouse"},
+        {
+          "item": "washi_scrap",
+          "count": 2,
+          "sub_zone": "hakurei_storehouse"
+        },
         {
           "item": "relic_list_of_small_gods",
           "count": 1,
@@ -137,8 +207,16 @@
           "condition": "flag:old_road_open",
           "note": "Tucked under the first toppled roadside stone."
         },
-        {"item": "saisen_coin_bundle", "count": 1, "sub_zone": "old_road_lower"},
-        {"item": "blessed_shide", "count": 1, "sub_zone": "old_road_branch_shrine"},
+        {
+          "item": "saisen_coin_bundle",
+          "count": 1,
+          "sub_zone": "old_road_lower"
+        },
+        {
+          "item": "blessed_shide",
+          "count": 1,
+          "sub_zone": "old_road_branch_shrine"
+        },
         {
           "item": "name_fragment_last_worshippers",
           "count": 1,
@@ -155,7 +233,10 @@
         }
       ],
       "weapon_pickups": [
-        {"weapon": "amulet_hakurei_ofuda", "sub_zone": "hakurei_precinct"},
+        {
+          "weapon": "amulet_hakurei_ofuda",
+          "sub_zone": "hakurei_precinct"
+        },
         {
           "weapon": "gohei_register_bound",
           "sub_zone": "old_road_branch_shrine",
@@ -169,50 +250,81 @@
       "id": "misty_lake",
       "play_order": 1,
       "kind": "main",
-      "names": {"en": "Misty Lake", "ja": "霧の湖"},
+      "names": {
+        "en": "Misty Lake",
+        "ja": "霧の湖"
+      },
       "theme": "Tutorial. A frozen lake at dusk, lanterns on a stone causeway, fairies stopped where they played.",
       "time_of_day": "dusk, violet-grey, with a dying red sun",
       "mood": "hushed; the first sign that something is wrong, still beautiful",
-      "environment_kit": {"id": "misty_lake", "status": "built", "path": "assets/models/environment/misty_lake/"},
-      "music_cues": {"explore": "mus_misty_lake_explore", "boss": "mus_boss_cirno"},
+      "environment_kit": {
+        "id": "misty_lake",
+        "status": "built",
+        "path": "assets/models/environment/misty_lake/"
+      },
+      "music_cues": {
+        "explore": "mus_misty_lake_explore",
+        "boss": "mus_boss_cirno"
+      },
       "sub_zones": [
         {
           "id": "lakeside_wayside",
-          "names": {"en": "Lakeside Wayside", "ja": "湖畔の道端"},
+          "names": {
+            "en": "Lakeside Wayside",
+            "ja": "湖畔の道端"
+          },
           "description": "The wayside shrine and the Wayside God's stone. The vertical slice's spawn."
         },
         {
           "id": "lantern_causeway",
-          "names": {"en": "Lantern Causeway", "ja": "灯籠の石畳"},
+          "names": {
+            "en": "Lantern Causeway",
+            "ja": "灯籠の石畳"
+          },
           "description": "A stone causeway across the shallows, with stone lanterns, leading to the great torii."
         },
         {
           "id": "frozen_lake",
-          "names": {"en": "The Frozen Lake", "ja": "凍てた湖"},
+          "names": {
+            "en": "The Frozen Lake",
+            "ja": "凍てた湖"
+          },
           "description": "The lake itself, frozen black and clear. Cirno's arena."
         },
         {
           "id": "far_torii",
-          "names": {"en": "The Far Torii", "ja": "向こう岸の鳥居"},
+          "names": {
+            "en": "The Far Torii",
+            "ja": "向こう岸の鳥居"
+          },
           "description": "A broken torii on the far shore, facing the mansion across the water."
         }
       ],
       "shrines": [
         {
           "id": "shrine_misty_lake_wayside",
-          "names": {"en": "Lakeside Wayside Shrine", "ja": "湖畔の祠"},
+          "names": {
+            "en": "Lakeside Wayside Shrine",
+            "ja": "湖畔の祠"
+          },
           "sub_zone": "lakeside_wayside",
           "initial": true
         },
         {
           "id": "shrine_misty_lake_causeway",
-          "names": {"en": "Great Torii", "ja": "大鳥居"},
+          "names": {
+            "en": "Great Torii",
+            "ja": "大鳥居"
+          },
           "sub_zone": "lantern_causeway",
           "initial": false
         },
         {
           "id": "shrine_misty_lake_far_torii",
-          "names": {"en": "Broken Torii", "ja": "折れた鳥居"},
+          "names": {
+            "en": "Broken Torii",
+            "ja": "折れた鳥居"
+          },
           "sub_zone": "far_torii",
           "initial": false
         }
@@ -222,15 +334,24 @@
           "id": "ml_wayside_stragglers",
           "sub_zone": "lakeside_wayside",
           "enemies": [
-            {"enemy": "hollow_fairy", "count": 2}
+            {
+              "enemy": "hollow_fairy",
+              "count": 2
+            }
           ]
         },
         {
           "id": "ml_causeway",
           "sub_zone": "lantern_causeway",
           "enemies": [
-            {"enemy": "hollow_fairy", "count": 4},
-            {"enemy": "unlit_lantern", "count": 2}
+            {
+              "enemy": "hollow_fairy",
+              "count": 4
+            },
+            {
+              "enemy": "unlit_lantern",
+              "count": 2
+            }
           ]
         },
         {
@@ -238,22 +359,37 @@
           "sub_zone": "frozen_lake",
           "condition": "!flag:defeated_cirno",
           "enemies": [
-            {"enemy": "frostbound_fairy", "count": 3}
+            {
+              "enemy": "frostbound_fairy",
+              "count": 3
+            }
           ]
         },
         {
           "id": "ml_far_shore",
           "sub_zone": "far_torii",
           "enemies": [
-            {"enemy": "frostbound_fairy", "count": 2},
-            {"enemy": "hollow_fairy", "count": 3}
+            {
+              "enemy": "frostbound_fairy",
+              "count": 2
+            },
+            {
+              "enemy": "hollow_fairy",
+              "count": 3
+            }
           ]
         }
       ],
-      "bosses": ["cirno"],
+      "bosses": [
+        "cirno"
+      ],
       "connections": {
         "required": [
-          {"to": "hakurei_shrine", "via": "the lantern path east", "condition": ""},
+          {
+            "to": "hakurei_shrine",
+            "via": "the lantern path east",
+            "condition": ""
+          },
           {
             "to": "scarlet_devil_mansion",
             "via": "across the ice, past the far torii",
@@ -263,18 +399,42 @@
         "optional": []
       },
       "item_pickups": [
-        {"item": "saisen_coin_small", "count": 2, "sub_zone": "lakeside_wayside"},
-        {"item": "spirit_incense", "count": 1, "sub_zone": "lantern_causeway"},
-        {"item": "washi_scrap", "count": 2, "sub_zone": "lantern_causeway"},
-        {"item": "purification_salt", "count": 2, "sub_zone": "lantern_causeway"},
+        {
+          "item": "saisen_coin_small",
+          "count": 2,
+          "sub_zone": "lakeside_wayside"
+        },
+        {
+          "item": "spirit_incense",
+          "count": 1,
+          "sub_zone": "lantern_causeway"
+        },
+        {
+          "item": "washi_scrap",
+          "count": 2,
+          "sub_zone": "lantern_causeway"
+        },
+        {
+          "item": "purification_salt",
+          "count": 2,
+          "sub_zone": "lantern_causeway"
+        },
         {
           "item": "frozen_frog",
           "count": 3,
           "sub_zone": "frozen_lake",
           "note": "In a neat row on the shore, where someone was saving them."
         },
-        {"item": "name_fragment_lake", "count": 1, "sub_zone": "far_torii"},
-        {"item": "wayside_bell", "count": 1, "sub_zone": "far_torii"}
+        {
+          "item": "name_fragment_lake",
+          "count": 1,
+          "sub_zone": "far_torii"
+        },
+        {
+          "item": "wayside_bell",
+          "count": 1,
+          "sub_zone": "far_torii"
+        }
       ],
       "weapon_pickups": [],
       "lore_en": "Misty Lake was always a place of fairies: of noise and pranks and cold, bright games at the water's edge. It went quiet slowly, so slowly no one noticed, and then all at once it froze. The mist that gives the lake its name still rises every dusk, but now it rises off ice, and moves over the frozen fairies like breath over a window.",
@@ -284,61 +444,98 @@
       "id": "scarlet_devil_mansion",
       "play_order": 2,
       "kind": "main",
-      "names": {"en": "Scarlet Devil Mansion", "ja": "紅魔館"},
+      "names": {
+        "en": "Scarlet Devil Mansion",
+        "ja": "紅魔館"
+      },
       "theme": "Gothic interior, clocks, stopped time. A great house whose colour is draining out.",
       "time_of_day": "endless night under a fading red full moon",
       "mood": "elegant and airless; a held breath",
-      "environment_kit": {"id": "scarlet_mansion", "status": "built", "path": "assets/models/environment/scarlet_mansion/"},
-      "music_cues": {"explore": "mus_sdm_explore", "boss": "mus_boss_remilia"},
+      "environment_kit": {
+        "id": "scarlet_mansion",
+        "status": "built",
+        "path": "assets/models/environment/scarlet_mansion/"
+      },
+      "music_cues": {
+        "explore": "mus_sdm_explore",
+        "boss": "mus_boss_remilia"
+      },
       "sub_zones": [
         {
           "id": "sdm_front_gate",
-          "names": {"en": "Front Gate", "ja": "正門"},
+          "names": {
+            "en": "Front Gate",
+            "ja": "正門"
+          },
           "description": "The gatekeeper's courtyard. Meiling's arena."
         },
         {
           "id": "sdm_grand_hall",
-          "names": {"en": "Grand Hall", "ja": "大広間"},
+          "names": {
+            "en": "Grand Hall",
+            "ja": "大広間"
+          },
           "description": "Carpets gone the colour of dried wine, maid fairies dusting the same banisters."
         },
         {
           "id": "sdm_voile_library",
-          "names": {"en": "Voile Library", "ja": "ヴワル魔法図書館"},
+          "names": {
+            "en": "Voile Library",
+            "ja": "ヴワル魔法図書館"
+          },
           "description": "Endless shelves. The librarian's desk is covered in open books and she is nowhere to be seen."
         },
         {
           "id": "sdm_clock_gallery",
-          "names": {"en": "Clock Gallery", "ja": "時計の回廊"},
+          "names": {
+            "en": "Clock Gallery",
+            "ja": "時計の回廊"
+          },
           "description": "Hundreds of stopped clocks. Sakuya's arena."
         },
         {
           "id": "sdm_scarlet_balcony",
-          "names": {"en": "Scarlet Balcony", "ja": "紅の露台"},
+          "names": {
+            "en": "Scarlet Balcony",
+            "ja": "紅の露台"
+          },
           "description": "The highest balcony under the red moon. Remilia's arena."
         }
       ],
       "shrines": [
         {
           "id": "shrine_sdm_outer_gate",
-          "names": {"en": "Outside the Gate", "ja": "門の外"},
+          "names": {
+            "en": "Outside the Gate",
+            "ja": "門の外"
+          },
           "sub_zone": "sdm_front_gate",
           "initial": false
         },
         {
           "id": "shrine_sdm_grand_hall",
-          "names": {"en": "Grand Hall Alcove", "ja": "大広間の片隅"},
+          "names": {
+            "en": "Grand Hall Alcove",
+            "ja": "大広間の片隅"
+          },
           "sub_zone": "sdm_grand_hall",
           "initial": false
         },
         {
           "id": "shrine_sdm_library_stair",
-          "names": {"en": "Library Stair", "ja": "図書館の階段"},
+          "names": {
+            "en": "Library Stair",
+            "ja": "図書館の階段"
+          },
           "sub_zone": "sdm_voile_library",
           "initial": false
         },
         {
           "id": "shrine_sdm_balcony_stair",
-          "names": {"en": "Tower Landing", "ja": "塔の踊り場"},
+          "names": {
+            "en": "Tower Landing",
+            "ja": "塔の踊り場"
+          },
           "sub_zone": "sdm_clock_gallery",
           "initial": false
         }
@@ -348,24 +545,42 @@
           "id": "sdm_hall_staff",
           "sub_zone": "sdm_grand_hall",
           "enemies": [
-            {"enemy": "hollowed_maid_fairy", "count": 4},
-            {"enemy": "hollow_bat_swarm", "count": 2}
+            {
+              "enemy": "hollowed_maid_fairy",
+              "count": 4
+            },
+            {
+              "enemy": "hollow_bat_swarm",
+              "count": 2
+            }
           ]
         },
         {
           "id": "sdm_library_stacks",
           "sub_zone": "sdm_voile_library",
           "enemies": [
-            {"enemy": "unread_grimoire", "count": 5},
-            {"enemy": "hollowed_maid_fairy", "count": 1}
+            {
+              "enemy": "unread_grimoire",
+              "count": 5
+            },
+            {
+              "enemy": "hollowed_maid_fairy",
+              "count": 1
+            }
           ]
         },
         {
           "id": "sdm_gallery_approach",
           "sub_zone": "sdm_clock_gallery",
           "enemies": [
-            {"enemy": "hollowed_maid_fairy", "count": 3},
-            {"enemy": "hollow_fairy", "count": 2}
+            {
+              "enemy": "hollowed_maid_fairy",
+              "count": 3
+            },
+            {
+              "enemy": "hollow_fairy",
+              "count": 2
+            }
           ]
         },
         {
@@ -373,15 +588,30 @@
           "sub_zone": "sdm_scarlet_balcony",
           "condition": "!flag:defeated_remilia_scarlet",
           "enemies": [
-            {"enemy": "hollow_bat_swarm", "count": 3}
+            {
+              "enemy": "hollow_bat_swarm",
+              "count": 3
+            }
           ]
         }
       ],
-      "bosses": ["hong_meiling", "sakuya_izayoi", "remilia_scarlet"],
+      "bosses": [
+        "hong_meiling",
+        "sakuya_izayoi",
+        "remilia_scarlet"
+      ],
       "connections": {
         "required": [
-          {"to": "misty_lake", "via": "the causeway back across the ice", "condition": ""},
-          {"to": "hakurei_shrine", "via": "the lake road home", "condition": "flag:defeated_remilia_scarlet"}
+          {
+            "to": "misty_lake",
+            "via": "the causeway back across the ice",
+            "condition": ""
+          },
+          {
+            "to": "hakurei_shrine",
+            "via": "the lake road home",
+            "condition": "flag:defeated_remilia_scarlet"
+          }
         ],
         "optional": []
       },
@@ -392,13 +622,41 @@
           "sub_zone": "sdm_voile_library",
           "note": "On the librarian's desk, holding a page open."
         },
-        {"item": "name_fragment_maid", "count": 1, "sub_zone": "sdm_grand_hall"},
-        {"item": "saisen_coin_bundle", "count": 1, "sub_zone": "sdm_grand_hall"},
-        {"item": "cinnabar_dust", "count": 2, "sub_zone": "sdm_voile_library"},
-        {"item": "spirit_incense", "count": 2, "sub_zone": "sdm_voile_library"},
-        {"item": "iron_sand", "count": 2, "sub_zone": "sdm_clock_gallery"},
-        {"item": "purification_salt", "count": 2, "sub_zone": "sdm_front_gate"},
-        {"item": "oni_sake_lees", "count": 1, "sub_zone": "sdm_scarlet_balcony"}
+        {
+          "item": "name_fragment_maid",
+          "count": 1,
+          "sub_zone": "sdm_grand_hall"
+        },
+        {
+          "item": "saisen_coin_bundle",
+          "count": 1,
+          "sub_zone": "sdm_grand_hall"
+        },
+        {
+          "item": "cinnabar_dust",
+          "count": 2,
+          "sub_zone": "sdm_voile_library"
+        },
+        {
+          "item": "spirit_incense",
+          "count": 2,
+          "sub_zone": "sdm_voile_library"
+        },
+        {
+          "item": "iron_sand",
+          "count": 2,
+          "sub_zone": "sdm_clock_gallery"
+        },
+        {
+          "item": "purification_salt",
+          "count": 2,
+          "sub_zone": "sdm_front_gate"
+        },
+        {
+          "item": "oni_sake_lees",
+          "count": 1,
+          "sub_zone": "sdm_scarlet_balcony"
+        }
       ],
       "weapon_pickups": [
         {
@@ -414,61 +672,98 @@
       "id": "forest_of_magic",
       "play_order": 3,
       "kind": "main",
-      "names": {"en": "Forest of Magic", "ja": "魔法の森"},
+      "names": {
+        "en": "Forest of Magic",
+        "ja": "魔法の森"
+      },
       "theme": "Fungal swamp. Spores, rot, dolls hanging from branches. At its edge, Kourindou and the path to Muenzuka.",
       "time_of_day": "overcast afternoon that the canopy turns to twilight",
       "mood": "close, humid, uneasy; pockets of strange warmth",
-      "environment_kit": {"id": "forest_of_magic", "status": "planned", "path": "assets/models/environment/forest_of_magic/"},
-      "music_cues": {"explore": "mus_forest_explore", "boss": "mus_boss_alice"},
+      "environment_kit": {
+        "id": "forest_of_magic",
+        "status": "planned",
+        "path": "assets/models/environment/forest_of_magic/"
+      },
+      "music_cues": {
+        "explore": "mus_forest_explore",
+        "boss": "mus_boss_alice"
+      },
       "sub_zones": [
         {
           "id": "kourindou",
-          "names": {"en": "Kourindou", "ja": "香霖堂"},
+          "names": {
+            "en": "Kourindou",
+            "ja": "香霖堂"
+          },
           "description": "Rinnosuke's shop at the forest's edge. Safe. His lamp is one of the few warm lights left."
         },
         {
           "id": "fom_mushroom_mire",
-          "names": {"en": "Mushroom Mire", "ja": "茸の沼地"},
+          "names": {
+            "en": "Mushroom Mire",
+            "ja": "茸の沼地"
+          },
           "description": "Waist-deep bog, giant fungus, spore haze."
         },
         {
           "id": "kirisame_house",
-          "names": {"en": "Kirisame Magic Shop", "ja": "霧雨魔法店"},
+          "names": {
+            "en": "Kirisame Magic Shop",
+            "ja": "霧雨魔法店"
+          },
           "description": "Marisa's cluttered house. The door is open. Marisa is found here."
         },
         {
           "id": "alice_cottage",
-          "names": {"en": "Doll Cottage Clearing", "ja": "人形の家の庭"},
+          "names": {
+            "en": "Doll Cottage Clearing",
+            "ja": "人形の家の庭"
+          },
           "description": "Alice's cottage and the doll-hung clearing around it. Alice's arena."
         },
         {
           "id": "muenzuka",
-          "names": {"en": "Muenzuka", "ja": "無縁塚"},
+          "names": {
+            "en": "Muenzuka",
+            "ja": "無縁塚"
+          },
           "description": "The Grave of the Unconnected, past the forest's far edge: a field where things no one came back for wash up. The Collector of Names is first met here."
         }
       ],
       "shrines": [
         {
           "id": "shrine_fom_kourindou",
-          "names": {"en": "Kourindou Eaves", "ja": "香霖堂の軒先"},
+          "names": {
+            "en": "Kourindou Eaves",
+            "ja": "香霖堂の軒先"
+          },
           "sub_zone": "kourindou",
           "initial": false
         },
         {
           "id": "shrine_fom_mushroom_hollow",
-          "names": {"en": "Mushroom Hollow", "ja": "茸の窪地"},
+          "names": {
+            "en": "Mushroom Hollow",
+            "ja": "茸の窪地"
+          },
           "sub_zone": "fom_mushroom_mire",
           "initial": false
         },
         {
           "id": "shrine_fom_cottage_path",
-          "names": {"en": "Doll-Hung Path", "ja": "人形の吊るされた小径"},
+          "names": {
+            "en": "Doll-Hung Path",
+            "ja": "人形の吊るされた小径"
+          },
           "sub_zone": "alice_cottage",
           "initial": false
         },
         {
           "id": "shrine_fom_muenzuka",
-          "names": {"en": "Muenzuka Cairn", "ja": "無縁塚の石積み"},
+          "names": {
+            "en": "Muenzuka Cairn",
+            "ja": "無縁塚の石積み"
+          },
           "sub_zone": "muenzuka",
           "initial": false
         }
@@ -478,15 +773,24 @@
           "id": "fom_mire",
           "sub_zone": "fom_mushroom_mire",
           "enemies": [
-            {"enemy": "mire_fungus_youkai", "count": 3},
-            {"enemy": "hollow_fairy", "count": 3}
+            {
+              "enemy": "mire_fungus_youkai",
+              "count": 3
+            },
+            {
+              "enemy": "hollow_fairy",
+              "count": 3
+            }
           ]
         },
         {
           "id": "fom_mire_dolls",
           "sub_zone": "fom_mushroom_mire",
           "enemies": [
-            {"enemy": "hollow_doll", "count": 2}
+            {
+              "enemy": "hollow_doll",
+              "count": 2
+            }
           ]
         },
         {
@@ -494,21 +798,33 @@
           "sub_zone": "alice_cottage",
           "condition": "!flag:defeated_alice_margatroid",
           "enemies": [
-            {"enemy": "hollow_doll", "count": 6}
+            {
+              "enemy": "hollow_doll",
+              "count": 6
+            }
           ]
         },
         {
           "id": "fom_muenzuka_heap",
           "sub_zone": "muenzuka",
           "enemies": [
-            {"enemy": "discarded_tsukumogami", "count": 4}
+            {
+              "enemy": "discarded_tsukumogami",
+              "count": 4
+            }
           ]
         }
       ],
-      "bosses": ["alice_margatroid"],
+      "bosses": [
+        "alice_margatroid"
+      ],
       "connections": {
         "required": [
-          {"to": "hakurei_shrine", "via": "the road past the Human Village", "condition": ""},
+          {
+            "to": "hakurei_shrine",
+            "via": "the road past the Human Village",
+            "condition": ""
+          },
           {
             "to": "bamboo_forest",
             "via": "the southern mire path",
@@ -518,12 +834,36 @@
         "optional": []
       },
       "item_pickups": [
-        {"item": "washi_scrap", "count": 3, "sub_zone": "fom_mushroom_mire"},
-        {"item": "blessed_shide", "count": 1, "sub_zone": "fom_mushroom_mire"},
-        {"item": "spirit_incense", "count": 1, "sub_zone": "kirisame_house"},
-        {"item": "saisen_coin_bundle", "count": 1, "sub_zone": "alice_cottage"},
-        {"item": "cinnabar_dust", "count": 2, "sub_zone": "alice_cottage"},
-        {"item": "paper_substitute", "count": 1, "sub_zone": "muenzuka"},
+        {
+          "item": "washi_scrap",
+          "count": 3,
+          "sub_zone": "fom_mushroom_mire"
+        },
+        {
+          "item": "blessed_shide",
+          "count": 1,
+          "sub_zone": "fom_mushroom_mire"
+        },
+        {
+          "item": "spirit_incense",
+          "count": 1,
+          "sub_zone": "kirisame_house"
+        },
+        {
+          "item": "saisen_coin_bundle",
+          "count": 1,
+          "sub_zone": "alice_cottage"
+        },
+        {
+          "item": "cinnabar_dust",
+          "count": 2,
+          "sub_zone": "alice_cottage"
+        },
+        {
+          "item": "paper_substitute",
+          "count": 1,
+          "sub_zone": "muenzuka"
+        },
         {
           "item": "relic_village_song",
           "count": 1,
@@ -540,55 +880,89 @@
       "id": "bamboo_forest",
       "play_order": 4,
       "kind": "main",
-      "names": {"en": "Bamboo Forest of the Lost", "ja": "迷いの竹林"},
+      "names": {
+        "en": "Bamboo Forest of the Lost",
+        "ja": "迷いの竹林"
+      },
       "theme": "Maze and fire. Bamboo that turns you in circles; clearings burned black by an immortal's fights; Eientei hidden at the centre.",
       "time_of_day": "moonlit night, the moon too large",
       "mood": "disorienting, feverish; firelight through bamboo slats",
-      "environment_kit": {"id": "bamboo_forest", "status": "planned", "path": "assets/models/environment/bamboo_forest/"},
-      "music_cues": {"explore": "mus_bamboo_explore", "boss": "mus_boss_eirin"},
+      "environment_kit": {
+        "id": "bamboo_forest",
+        "status": "planned",
+        "path": "assets/models/environment/bamboo_forest/"
+      },
+      "music_cues": {
+        "explore": "mus_bamboo_explore",
+        "boss": "mus_boss_eirin"
+      },
       "sub_zones": [
         {
           "id": "bamboo_edge",
-          "names": {"en": "Bamboo Edge", "ja": "竹林の入口"},
+          "names": {
+            "en": "Bamboo Edge",
+            "ja": "竹林の入口"
+          },
           "description": "Where the mire gives way to bamboo."
         },
         {
           "id": "bamboo_deep_maze",
-          "names": {"en": "The Deep Maze", "ja": "竹林の奥"},
+          "names": {
+            "en": "The Deep Maze",
+            "ja": "竹林の奥"
+          },
           "description": "Paths that loop. The same broken lantern appears three times."
         },
         {
           "id": "bamboo_ashen_clearing",
-          "names": {"en": "Ashen Clearing", "ja": "灰の空き地"},
+          "names": {
+            "en": "Ashen Clearing",
+            "ja": "灰の空き地"
+          },
           "description": "Burned and regrown and burned again. Mokou's arena."
         },
         {
           "id": "eientei_corridors",
-          "names": {"en": "Eientei Corridors", "ja": "永遠亭の廊下"},
+          "names": {
+            "en": "Eientei Corridors",
+            "ja": "永遠亭の廊下"
+          },
           "description": "Corridors that are longer inside than out."
         },
         {
           "id": "eientei_moon_hall",
-          "names": {"en": "Moon Hall", "ja": "月の間"},
+          "names": {
+            "en": "Moon Hall",
+            "ja": "月の間"
+          },
           "description": "Eirin's arena."
         }
       ],
       "shrines": [
         {
           "id": "shrine_bamboo_edge",
-          "names": {"en": "Bamboo Edge", "ja": "竹林の入口"},
+          "names": {
+            "en": "Bamboo Edge",
+            "ja": "竹林の入口"
+          },
           "sub_zone": "bamboo_edge",
           "initial": false
         },
         {
           "id": "shrine_bamboo_ashen_clearing",
-          "names": {"en": "Edge of the Ash", "ja": "灰の縁"},
+          "names": {
+            "en": "Edge of the Ash",
+            "ja": "灰の縁"
+          },
           "sub_zone": "bamboo_ashen_clearing",
           "initial": false
         },
         {
           "id": "shrine_bamboo_eientei_gate",
-          "names": {"en": "Eientei Gate", "ja": "永遠亭の門"},
+          "names": {
+            "en": "Eientei Gate",
+            "ja": "永遠亭の門"
+          },
           "sub_zone": "eientei_corridors",
           "initial": false
         }
@@ -598,50 +972,110 @@
           "id": "bf_edge_rabbits",
           "sub_zone": "bamboo_edge",
           "enemies": [
-            {"enemy": "lost_rabbit", "count": 4}
+            {
+              "enemy": "lost_rabbit",
+              "count": 4
+            }
           ]
         },
         {
           "id": "bf_maze",
           "sub_zone": "bamboo_deep_maze",
           "enemies": [
-            {"enemy": "lost_rabbit", "count": 3},
-            {"enemy": "bamboo_onibi", "count": 3},
-            {"enemy": "moon_rabbit_sentry", "count": 2}
+            {
+              "enemy": "lost_rabbit",
+              "count": 3
+            },
+            {
+              "enemy": "bamboo_onibi",
+              "count": 3
+            },
+            {
+              "enemy": "moon_rabbit_sentry",
+              "count": 2
+            }
           ]
         },
         {
           "id": "bf_ash_fires",
           "sub_zone": "bamboo_ashen_clearing",
           "enemies": [
-            {"enemy": "bamboo_onibi", "count": 4}
+            {
+              "enemy": "bamboo_onibi",
+              "count": 4
+            }
           ]
         },
         {
           "id": "bf_eientei_watch",
           "sub_zone": "eientei_corridors",
           "enemies": [
-            {"enemy": "moon_rabbit_sentry", "count": 3},
-            {"enemy": "lost_rabbit", "count": 2}
+            {
+              "enemy": "moon_rabbit_sentry",
+              "count": 3
+            },
+            {
+              "enemy": "lost_rabbit",
+              "count": 2
+            }
           ]
         }
       ],
-      "bosses": ["fujiwara_no_mokou", "eirin_yagokoro"],
+      "bosses": [
+        "fujiwara_no_mokou",
+        "eirin_yagokoro"
+      ],
       "connections": {
         "required": [
-          {"to": "forest_of_magic", "via": "the southern mire path", "condition": ""},
-          {"to": "hakurei_shrine", "via": "the village path", "condition": "flag:defeated_eirin_yagokoro"}
+          {
+            "to": "forest_of_magic",
+            "via": "the southern mire path",
+            "condition": ""
+          },
+          {
+            "to": "hakurei_shrine",
+            "via": "the village path",
+            "condition": "flag:defeated_eirin_yagokoro"
+          }
         ],
         "optional": []
       },
       "item_pickups": [
-        {"item": "moon_mochi", "count": 3, "sub_zone": "bamboo_deep_maze"},
-        {"item": "warm_wick", "count": 2, "sub_zone": "bamboo_edge"},
-        {"item": "name_fragment_rabbit", "count": 1, "sub_zone": "bamboo_deep_maze"},
-        {"item": "iron_sand", "count": 2, "sub_zone": "bamboo_ashen_clearing"},
-        {"item": "tamahagane_shard", "count": 1, "sub_zone": "eientei_corridors"},
-        {"item": "kochou_mugan", "count": 1, "sub_zone": "eientei_corridors"},
-        {"item": "oni_sake_lees", "count": 1, "sub_zone": "eientei_corridors"}
+        {
+          "item": "moon_mochi",
+          "count": 3,
+          "sub_zone": "bamboo_deep_maze"
+        },
+        {
+          "item": "warm_wick",
+          "count": 2,
+          "sub_zone": "bamboo_edge"
+        },
+        {
+          "item": "name_fragment_rabbit",
+          "count": 1,
+          "sub_zone": "bamboo_deep_maze"
+        },
+        {
+          "item": "iron_sand",
+          "count": 2,
+          "sub_zone": "bamboo_ashen_clearing"
+        },
+        {
+          "item": "tamahagane_shard",
+          "count": 1,
+          "sub_zone": "eientei_corridors"
+        },
+        {
+          "item": "kochou_mugan",
+          "count": 1,
+          "sub_zone": "eientei_corridors"
+        },
+        {
+          "item": "oni_sake_lees",
+          "count": 1,
+          "sub_zone": "eientei_corridors"
+        }
       ],
       "weapon_pickups": [],
       "lore_en": "The Bamboo Forest of the Lost was always a maze to outsiders and a home to those who knew it: earth rabbits, an immortal, a hidden house where the moon's exiles live. Now even those who knew it are lost. The rabbits walk in circles. The fires of the immortal's quarrels burn unattended. The house at the centre keeps its doors open, as if expecting a patient.",
@@ -651,61 +1085,98 @@
       "id": "youkai_mountain",
       "play_order": 5,
       "kind": "main",
-      "names": {"en": "Youkai Mountain", "ja": "妖怪の山"},
+      "names": {
+        "en": "Youkai Mountain",
+        "ja": "妖怪の山"
+      },
       "theme": "Vertical climb, wind. Waterfalls, kappa machinery, tengu cliffs and presses, and the Moriya Shrine at the summit lake.",
       "time_of_day": "late afternoon in autumn, wind-torn light",
       "mood": "exposed, cold, grand; the clearest sky in the game and the emptiest",
-      "environment_kit": {"id": "youkai_mountain", "status": "planned", "path": "assets/models/environment/youkai_mountain/"},
-      "music_cues": {"explore": "mus_mountain_explore", "boss": "mus_boss_kanako"},
+      "environment_kit": {
+        "id": "youkai_mountain",
+        "status": "planned",
+        "path": "assets/models/environment/youkai_mountain/"
+      },
+      "music_cues": {
+        "explore": "mus_mountain_explore",
+        "boss": "mus_boss_kanako"
+      },
       "sub_zones": [
         {
           "id": "mountain_foot",
-          "names": {"en": "Waterfall Foot", "ja": "滝の麓"},
+          "names": {
+            "en": "Waterfall Foot",
+            "ja": "滝の麓"
+          },
           "description": "Where the Old Hakurei Road's upper fork meets the mountain. Tengu watchposts above."
         },
         {
           "id": "genbu_ravine",
-          "names": {"en": "Genbu Ravine", "ja": "玄武の沢"},
+          "names": {
+            "en": "Genbu Ravine",
+            "ja": "玄武の沢"
+          },
           "description": "The kappa's ravine, sluices, and rusting machines still at work."
         },
         {
           "id": "tengu_cliffs",
-          "names": {"en": "Wind-Torn Cliffs", "ja": "風の断崖"},
+          "names": {
+            "en": "Wind-Torn Cliffs",
+            "ja": "風の断崖"
+          },
           "description": "Cliffs above the tengu village where presses stand in the open. Aya's arena."
         },
         {
           "id": "moriya_stair",
-          "names": {"en": "Moriya Stair", "ja": "守矢の石段"},
+          "names": {
+            "en": "Moriya Stair",
+            "ja": "守矢の石段"
+          },
           "description": "The stair to the summit shrine, hung with unanswered ema."
         },
         {
           "id": "moriya_lake",
-          "names": {"en": "Lake of the Moriya", "ja": "守矢の湖"},
+          "names": {
+            "en": "Lake of the Moriya",
+            "ja": "守矢の湖"
+          },
           "description": "The summit lake. Kanako's arena."
         }
       ],
       "shrines": [
         {
           "id": "shrine_mountain_foot",
-          "names": {"en": "Waterfall Foot", "ja": "滝の麓"},
+          "names": {
+            "en": "Waterfall Foot",
+            "ja": "滝の麓"
+          },
           "sub_zone": "mountain_foot",
           "initial": false
         },
         {
           "id": "shrine_genbu_ravine",
-          "names": {"en": "Sluice House", "ja": "水門小屋"},
+          "names": {
+            "en": "Sluice House",
+            "ja": "水門小屋"
+          },
           "sub_zone": "genbu_ravine",
           "initial": false
         },
         {
           "id": "shrine_tengu_watchpost",
-          "names": {"en": "Abandoned Watchpost", "ja": "無人の哨所"},
+          "names": {
+            "en": "Abandoned Watchpost",
+            "ja": "無人の哨所"
+          },
           "sub_zone": "tengu_cliffs",
           "initial": false
         },
         {
           "id": "shrine_moriya_stair",
-          "names": {"en": "Ema Landing", "ja": "絵馬の踊り場"},
+          "names": {
+            "en": "Ema Landing",
+            "ja": "絵馬の踊り場"
+          },
           "sub_zone": "moriya_stair",
           "initial": false
         }
@@ -715,39 +1186,70 @@
           "id": "ym_foot_watch",
           "sub_zone": "mountain_foot",
           "enemies": [
-            {"enemy": "masked_tengu_scout", "count": 2},
-            {"enemy": "hakurou_tengu_guard", "count": 1}
+            {
+              "enemy": "masked_tengu_scout",
+              "count": 2
+            },
+            {
+              "enemy": "hakurou_tengu_guard",
+              "count": 1
+            }
           ]
         },
         {
           "id": "ym_ravine_works",
           "sub_zone": "genbu_ravine",
           "enemies": [
-            {"enemy": "rotting_kappa_walker", "count": 2},
-            {"enemy": "kappa_sluice_turret", "count": 3}
+            {
+              "enemy": "rotting_kappa_walker",
+              "count": 2
+            },
+            {
+              "enemy": "kappa_sluice_turret",
+              "count": 3
+            }
           ]
         },
         {
           "id": "ym_cliffs",
           "sub_zone": "tengu_cliffs",
           "enemies": [
-            {"enemy": "masked_tengu_scout", "count": 4},
-            {"enemy": "hakurou_tengu_guard", "count": 2}
+            {
+              "enemy": "masked_tengu_scout",
+              "count": 4
+            },
+            {
+              "enemy": "hakurou_tengu_guard",
+              "count": 2
+            }
           ]
         },
         {
           "id": "ym_stair_kami",
           "sub_zone": "moriya_stair",
           "enemies": [
-            {"enemy": "forgotten_kami", "count": 2},
-            {"enemy": "masked_tengu_scout", "count": 2}
+            {
+              "enemy": "forgotten_kami",
+              "count": 2
+            },
+            {
+              "enemy": "masked_tengu_scout",
+              "count": 2
+            }
           ]
         }
       ],
-      "bosses": ["aya_shameimaru", "kanako_yasaka"],
+      "bosses": [
+        "aya_shameimaru",
+        "kanako_yasaka"
+      ],
       "connections": {
         "required": [
-          {"to": "hakurei_shrine", "via": "the Old Hakurei Road", "condition": ""},
+          {
+            "to": "hakurei_shrine",
+            "via": "the Old Hakurei Road",
+            "condition": ""
+          },
           {
             "to": "netherworld",
             "via": "up through the clouds above the summit lake",
@@ -768,14 +1270,46 @@
           "sub_zone": "mountain_foot",
           "note": "In a kappa trade-box, under three cucumbers."
         },
-        {"item": "kappa_cucumber", "count": 3, "sub_zone": "mountain_foot"},
-        {"item": "iron_sand", "count": 3, "sub_zone": "genbu_ravine"},
-        {"item": "tamahagane_shard", "count": 2, "sub_zone": "genbu_ravine"},
-        {"item": "moriya_ema", "count": 1, "sub_zone": "tengu_cliffs"},
-        {"item": "tengu_leaf_fan", "count": 2, "sub_zone": "tengu_cliffs"},
-        {"item": "blessed_shide", "count": 2, "sub_zone": "moriya_stair"},
-        {"item": "vermilion_ink", "count": 2, "sub_zone": "moriya_stair"},
-        {"item": "saisen_coin_old", "count": 1, "sub_zone": "moriya_lake"}
+        {
+          "item": "kappa_cucumber",
+          "count": 3,
+          "sub_zone": "mountain_foot"
+        },
+        {
+          "item": "iron_sand",
+          "count": 3,
+          "sub_zone": "genbu_ravine"
+        },
+        {
+          "item": "tamahagane_shard",
+          "count": 2,
+          "sub_zone": "genbu_ravine"
+        },
+        {
+          "item": "moriya_ema",
+          "count": 1,
+          "sub_zone": "tengu_cliffs"
+        },
+        {
+          "item": "tengu_leaf_fan",
+          "count": 2,
+          "sub_zone": "tengu_cliffs"
+        },
+        {
+          "item": "blessed_shide",
+          "count": 2,
+          "sub_zone": "moriya_stair"
+        },
+        {
+          "item": "vermilion_ink",
+          "count": 2,
+          "sub_zone": "moriya_stair"
+        },
+        {
+          "item": "saisen_coin_old",
+          "count": 1,
+          "sub_zone": "moriya_lake"
+        }
       ],
       "weapon_pickups": [
         {
@@ -791,50 +1325,81 @@
       "id": "netherworld",
       "play_order": 6,
       "kind": "main",
-      "names": {"en": "Netherworld / Hakugyokurou", "ja": "冥界・白玉楼"},
+      "names": {
+        "en": "Netherworld / Hakugyokurou",
+        "ja": "冥界・白玉楼"
+      },
       "theme": "Cherry blossoms and ghosts. An endless stair, a vast raked garden, and the great cherry that never blooms.",
       "time_of_day": "perpetual pale spring twilight, petals falling",
       "mood": "serene and sorrowful; the most beautiful place in the game",
-      "environment_kit": {"id": "netherworld", "status": "planned", "path": "assets/models/environment/netherworld/"},
-      "music_cues": {"explore": "mus_netherworld_explore", "boss": "mus_boss_yuyuko"},
+      "environment_kit": {
+        "id": "netherworld",
+        "status": "planned",
+        "path": "assets/models/environment/netherworld/"
+      },
+      "music_cues": {
+        "explore": "mus_netherworld_explore",
+        "boss": "mus_boss_yuyuko"
+      },
       "sub_zones": [
         {
           "id": "netherworld_stair",
-          "names": {"en": "The Long Stair", "ja": "長い石段"},
+          "names": {
+            "en": "The Long Stair",
+            "ja": "長い石段"
+          },
           "description": "The stair to Hakugyokurou. Repeats unless lit by the Phantom Lantern."
         },
         {
           "id": "hakugyokurou_gardens",
-          "names": {"en": "White Gravel Garden", "ja": "白砂の庭"},
+          "names": {
+            "en": "White Gravel Garden",
+            "ja": "白砂の庭"
+          },
           "description": "Gravel raked into waves. Youmu's arena."
         },
         {
           "id": "saigyou_ayakashi",
-          "names": {"en": "Saigyou Ayakashi", "ja": "西行妖"},
+          "names": {
+            "en": "Saigyou Ayakashi",
+            "ja": "西行妖"
+          },
           "description": "The great cherry that never blooms. Yuyuko's arena."
         },
         {
           "id": "saigyou_roots",
-          "names": {"en": "Among the Roots", "ja": "根の間"},
+          "names": {
+            "en": "Among the Roots",
+            "ja": "根の間"
+          },
           "description": "Beneath the great cherry. The Former Shrine Maiden's second arena."
         }
       ],
       "shrines": [
         {
           "id": "shrine_netherworld_stair",
-          "names": {"en": "Stair Landing", "ja": "石段の踊り場"},
+          "names": {
+            "en": "Stair Landing",
+            "ja": "石段の踊り場"
+          },
           "sub_zone": "netherworld_stair",
           "initial": false
         },
         {
           "id": "shrine_hakugyokurou_gate",
-          "names": {"en": "Hakugyokurou Gate", "ja": "白玉楼の門"},
+          "names": {
+            "en": "Hakugyokurou Gate",
+            "ja": "白玉楼の門"
+          },
           "sub_zone": "hakugyokurou_gardens",
           "initial": false
         },
         {
           "id": "shrine_saigyou_ayakashi",
-          "names": {"en": "Under the Branches", "ja": "枝の下"},
+          "names": {
+            "en": "Under the Branches",
+            "ja": "枝の下"
+          },
           "sub_zone": "saigyou_ayakashi",
           "initial": false
         }
@@ -844,16 +1409,28 @@
           "id": "nw_stair",
           "sub_zone": "netherworld_stair",
           "enemies": [
-            {"enemy": "phantom_servant", "count": 2},
-            {"enemy": "vengeful_spirit", "count": 2}
+            {
+              "enemy": "phantom_servant",
+              "count": 2
+            },
+            {
+              "enemy": "vengeful_spirit",
+              "count": 2
+            }
           ]
         },
         {
           "id": "nw_gardens",
           "sub_zone": "hakugyokurou_gardens",
           "enemies": [
-            {"enemy": "phantom_servant", "count": 4},
-            {"enemy": "vengeful_spirit", "count": 2}
+            {
+              "enemy": "phantom_servant",
+              "count": 4
+            },
+            {
+              "enemy": "vengeful_spirit",
+              "count": 2
+            }
           ]
         },
         {
@@ -861,14 +1438,25 @@
           "sub_zone": "saigyou_ayakashi",
           "condition": "flag:defeated_yuyuko_saigyouji",
           "enemies": [
-            {"enemy": "vengeful_spirit", "count": 3}
+            {
+              "enemy": "vengeful_spirit",
+              "count": 3
+            }
           ]
         }
       ],
-      "bosses": ["youmu_konpaku", "yuyuko_saigyouji", "former_maiden_saigyou"],
+      "bosses": [
+        "youmu_konpaku",
+        "yuyuko_saigyouji",
+        "former_maiden_saigyou"
+      ],
       "connections": {
         "required": [
-          {"to": "youkai_mountain", "via": "down through the clouds", "condition": ""}
+          {
+            "to": "youkai_mountain",
+            "via": "down through the clouds",
+            "condition": ""
+          }
         ],
         "optional": []
       },
@@ -879,12 +1467,36 @@
           "sub_zone": "netherworld_stair",
           "note": "Held out by a phantom servant who does not remember holding it."
         },
-        {"item": "sakura_charm", "count": 3, "sub_zone": "hakugyokurou_gardens"},
-        {"item": "sacred_sakaki", "count": 2, "sub_zone": "hakugyokurou_gardens"},
-        {"item": "spirit_incense", "count": 2, "sub_zone": "netherworld_stair"},
-        {"item": "star_iron", "count": 1, "sub_zone": "saigyou_ayakashi"},
-        {"item": "ibuki_undiluted", "count": 1, "sub_zone": "hakugyokurou_gardens"},
-        {"item": "oni_sake_lees", "count": 1, "sub_zone": "saigyou_roots"}
+        {
+          "item": "sakura_charm",
+          "count": 3,
+          "sub_zone": "hakugyokurou_gardens"
+        },
+        {
+          "item": "sacred_sakaki",
+          "count": 2,
+          "sub_zone": "hakugyokurou_gardens"
+        },
+        {
+          "item": "spirit_incense",
+          "count": 2,
+          "sub_zone": "netherworld_stair"
+        },
+        {
+          "item": "star_iron",
+          "count": 1,
+          "sub_zone": "saigyou_ayakashi"
+        },
+        {
+          "item": "ibuki_undiluted",
+          "count": 1,
+          "sub_zone": "hakugyokurou_gardens"
+        },
+        {
+          "item": "oni_sake_lees",
+          "count": 1,
+          "sub_zone": "saigyou_roots"
+        }
       ],
       "weapon_pickups": [],
       "lore_en": "The Netherworld is where the dead wait, peacefully, for rebirth or for judgement. At its heart is Hakugyokurou, a vast mansion and garden kept by a ghost princess and her gardener. The dead here have forgotten their lives, and that has always been a mercy. What frightens Reimu is how little the Netherworld has changed. It is the one place in Gensokyo where forgetting was always normal. It is only now that it has started to hollow too.",
@@ -894,56 +1506,90 @@
       "id": "former_hell",
       "play_order": 7,
       "kind": "main",
-      "names": {"en": "Former Hell", "ja": "旧地獄"},
+      "names": {
+        "en": "Former Hell",
+        "ja": "旧地獄"
+      },
       "theme": "Underground heat. The bridge, the Old Capital of the oni, the Palace of the Earth Spirits, and a sun burning in the dark.",
       "time_of_day": "none; the dark lit from below",
       "mood": "oppressive, lonely, feverish; the warmest place in the game and the least safe",
-      "environment_kit": {"id": "former_hell", "status": "planned", "path": "assets/models/environment/former_hell/"},
-      "music_cues": {"explore": "mus_former_hell_explore", "boss": "mus_boss_utsuho"},
+      "environment_kit": {
+        "id": "former_hell",
+        "status": "planned",
+        "path": "assets/models/environment/former_hell/"
+      },
+      "music_cues": {
+        "explore": "mus_former_hell_explore",
+        "boss": "mus_boss_utsuho"
+      },
       "sub_zones": [
         {
           "id": "underground_bridge",
-          "names": {"en": "Bridge to the Underground", "ja": "地底への橋"},
+          "names": {
+            "en": "Bridge to the Underground",
+            "ja": "地底への橋"
+          },
           "description": "A long bridge over nothing."
         },
         {
           "id": "old_capital",
-          "names": {"en": "Old Capital", "ja": "旧都"},
+          "names": {
+            "en": "Old Capital",
+            "ja": "旧都"
+          },
           "description": "The oni's city. Lanterns, sake houses, and oni waiting at the gate."
         },
         {
           "id": "palace_of_earth_spirits",
-          "names": {"en": "Palace of the Earth Spirits", "ja": "地霊殿"},
+          "names": {
+            "en": "Palace of the Earth Spirits",
+            "ja": "地霊殿"
+          },
           "description": "Stained glass, pets, heat vents."
         },
         {
           "id": "nuclear_core",
-          "names": {"en": "Nuclear Furnace", "ja": "灼熱地獄跡・核融合炉"},
+          "names": {
+            "en": "Nuclear Furnace",
+            "ja": "灼熱地獄跡・核融合炉"
+          },
           "description": "The remains of the Blazing Hell, and the sun at its heart. Utsuho's arena."
         }
       ],
       "shrines": [
         {
           "id": "shrine_former_hell_bridge",
-          "names": {"en": "Bridgehead", "ja": "橋のたもと"},
+          "names": {
+            "en": "Bridgehead",
+            "ja": "橋のたもと"
+          },
           "sub_zone": "underground_bridge",
           "initial": false
         },
         {
           "id": "shrine_old_capital",
-          "names": {"en": "Old Capital Lanterns", "ja": "旧都の灯"},
+          "names": {
+            "en": "Old Capital Lanterns",
+            "ja": "旧都の灯"
+          },
           "sub_zone": "old_capital",
           "initial": false
         },
         {
           "id": "shrine_earth_spirits_palace",
-          "names": {"en": "Palace Courtyard", "ja": "地霊殿の中庭"},
+          "names": {
+            "en": "Palace Courtyard",
+            "ja": "地霊殿の中庭"
+          },
           "sub_zone": "palace_of_earth_spirits",
           "initial": false
         },
         {
           "id": "shrine_nuclear_rim",
-          "names": {"en": "Furnace Rim", "ja": "炉の縁"},
+          "names": {
+            "en": "Furnace Rim",
+            "ja": "炉の縁"
+          },
           "sub_zone": "nuclear_core",
           "initial": false
         }
@@ -953,24 +1599,42 @@
           "id": "fh_bridge",
           "sub_zone": "underground_bridge",
           "enemies": [
-            {"enemy": "vengeful_spirit", "count": 2},
-            {"enemy": "unlit_lantern", "count": 3}
+            {
+              "enemy": "vengeful_spirit",
+              "count": 2
+            },
+            {
+              "enemy": "unlit_lantern",
+              "count": 3
+            }
           ]
         },
         {
           "id": "fh_capital",
           "sub_zone": "old_capital",
           "enemies": [
-            {"enemy": "hollow_oni", "count": 2},
-            {"enemy": "zombie_fairy", "count": 3}
+            {
+              "enemy": "hollow_oni",
+              "count": 2
+            },
+            {
+              "enemy": "zombie_fairy",
+              "count": 3
+            }
           ]
         },
         {
           "id": "fh_palace",
           "sub_zone": "palace_of_earth_spirits",
           "enemies": [
-            {"enemy": "hell_raven", "count": 3},
-            {"enemy": "vengeful_spirit", "count": 2}
+            {
+              "enemy": "hell_raven",
+              "count": 3
+            },
+            {
+              "enemy": "vengeful_spirit",
+              "count": 2
+            }
           ]
         },
         {
@@ -978,31 +1642,67 @@
           "sub_zone": "nuclear_core",
           "condition": "!flag:defeated_utsuho_reiuji",
           "enemies": [
-            {"enemy": "hell_raven", "count": 4},
-            {"enemy": "zombie_fairy", "count": 3}
+            {
+              "enemy": "hell_raven",
+              "count": 4
+            },
+            {
+              "enemy": "zombie_fairy",
+              "count": 3
+            }
           ]
         }
       ],
-      "bosses": ["utsuho_reiuji"],
+      "bosses": [
+        "utsuho_reiuji"
+      ],
       "connections": {
         "required": [
-          {"to": "youkai_mountain", "via": "the geyser cave", "condition": ""}
+          {
+            "to": "youkai_mountain",
+            "via": "the geyser cave",
+            "condition": ""
+          }
         ],
         "optional": []
       },
       "item_pickups": [
-        {"item": "name_fragment_oni", "count": 1, "sub_zone": "old_capital"},
-        {"item": "hell_cinder", "count": 4, "sub_zone": "palace_of_earth_spirits"},
-        {"item": "oni_sake_lees", "count": 2, "sub_zone": "old_capital"},
+        {
+          "item": "name_fragment_oni",
+          "count": 1,
+          "sub_zone": "old_capital"
+        },
+        {
+          "item": "hell_cinder",
+          "count": 4,
+          "sub_zone": "palace_of_earth_spirits"
+        },
+        {
+          "item": "oni_sake_lees",
+          "count": 2,
+          "sub_zone": "old_capital"
+        },
         {
           "item": "ibuki_undiluted",
           "count": 1,
           "sub_zone": "old_capital",
           "note": "In an empty sake house, labelled with a small horned doodle."
         },
-        {"item": "star_iron", "count": 2, "sub_zone": "palace_of_earth_spirits"},
-        {"item": "torii_vermilion", "count": 1, "sub_zone": "nuclear_core"},
-        {"item": "saisen_coin_old", "count": 1, "sub_zone": "underground_bridge"}
+        {
+          "item": "star_iron",
+          "count": 2,
+          "sub_zone": "palace_of_earth_spirits"
+        },
+        {
+          "item": "torii_vermilion",
+          "count": 1,
+          "sub_zone": "nuclear_core"
+        },
+        {
+          "item": "saisen_coin_old",
+          "count": 1,
+          "sub_zone": "underground_bridge"
+        }
       ],
       "weapon_pickups": [],
       "lore_en": "When Hell moved, the old one was abandoned and sealed, and the oni who had tired of the surface went down to live in it. It was a place for the unwanted by agreement: the surface would forget it, and it would keep to itself. Of all Gensokyo, the Former Hell was forgotten on purpose. It is hollowing slowest and hottest, the way a coal goes out.",
@@ -1012,50 +1712,81 @@
       "id": "great_barrier",
       "play_order": 8,
       "kind": "main",
-      "names": {"en": "The Great Barrier", "ja": "博麗大結界"},
+      "names": {
+        "en": "The Great Barrier",
+        "ja": "博麗大結界"
+      },
       "theme": "Final. The edge of the world, Mayohiga, the Boundary's cracked white rim, and the pillar beneath the Hakurei Shrine.",
       "time_of_day": "no time; the light of an overexposed photograph",
       "mood": "vast, quiet, terminal; colour almost entirely gone except Reimu",
-      "environment_kit": {"id": "great_barrier", "status": "planned", "path": "assets/models/environment/great_barrier/"},
-      "music_cues": {"explore": "mus_barrier_explore", "boss": "mus_boss_yukari"},
+      "environment_kit": {
+        "id": "great_barrier",
+        "status": "planned",
+        "path": "assets/models/environment/great_barrier/"
+      },
+      "music_cues": {
+        "explore": "mus_barrier_explore",
+        "boss": "mus_boss_yukari"
+      },
       "sub_zones": [
         {
           "id": "barrier_seam",
-          "names": {"en": "The Seam", "ja": "綻び"},
+          "names": {
+            "en": "The Seam",
+            "ja": "綻び"
+          },
           "description": "A path along the inside of the Barrier where it has cracked; grey seeps in through the cracks."
         },
         {
           "id": "mayohiga",
-          "names": {"en": "Mayohiga", "ja": "マヨヒガ"},
+          "names": {
+            "en": "Mayohiga",
+            "ja": "マヨヒガ"
+          },
           "description": "The village that cannot be found twice. Empty. A table set for three."
         },
         {
           "id": "boundary_edge",
-          "names": {"en": "The Edge of the Barrier", "ja": "結界の縁"},
+          "names": {
+            "en": "The Edge of the Barrier",
+            "ja": "結界の縁"
+          },
           "description": "Where the ground ends in white. Yukari's arena."
         },
         {
           "id": "pillar_beneath",
-          "names": {"en": "The Pillar Beneath the Shrine", "ja": "神社の下の人柱"},
+          "names": {
+            "en": "The Pillar Beneath the Shrine",
+            "ja": "神社の下の人柱"
+          },
           "description": "A shaft of pressed paper and struck names beneath the Hakurei Shrine. The final arena."
         }
       ],
       "shrines": [
         {
           "id": "shrine_barrier_seam",
-          "names": {"en": "The Seam", "ja": "綻び"},
+          "names": {
+            "en": "The Seam",
+            "ja": "綻び"
+          },
           "sub_zone": "barrier_seam",
           "initial": false
         },
         {
           "id": "shrine_mayohiga",
-          "names": {"en": "Mayohiga Doorstep", "ja": "マヨヒガの戸口"},
+          "names": {
+            "en": "Mayohiga Doorstep",
+            "ja": "マヨヒガの戸口"
+          },
           "sub_zone": "mayohiga",
           "initial": false
         },
         {
           "id": "shrine_last_stone",
-          "names": {"en": "The Last Stone", "ja": "最後の石"},
+          "names": {
+            "en": "The Last Stone",
+            "ja": "最後の石"
+          },
           "sub_zone": "pillar_beneath",
           "initial": false
         }
@@ -1065,40 +1796,86 @@
           "id": "gb_seam",
           "sub_zone": "barrier_seam",
           "enemies": [
-            {"enemy": "struck_name", "count": 3},
-            {"enemy": "stray_shikigami", "count": 2},
-            {"enemy": "forgotten_kami", "count": 1}
+            {
+              "enemy": "struck_name",
+              "count": 3
+            },
+            {
+              "enemy": "stray_shikigami",
+              "count": 2
+            },
+            {
+              "enemy": "forgotten_kami",
+              "count": 1
+            }
           ]
         },
         {
           "id": "gb_mayohiga",
           "sub_zone": "mayohiga",
           "enemies": [
-            {"enemy": "stray_shikigami", "count": 4}
+            {
+              "enemy": "stray_shikigami",
+              "count": 4
+            }
           ]
         },
         {
           "id": "gb_pillar_descent",
           "sub_zone": "pillar_beneath",
           "enemies": [
-            {"enemy": "struck_name", "count": 4}
+            {
+              "enemy": "struck_name",
+              "count": 4
+            }
           ]
         }
       ],
-      "bosses": ["yukari_yakumo", "former_maiden_pillar"],
+      "bosses": [
+        "yukari_yakumo",
+        "former_maiden_pillar"
+      ],
       "connections": {
         "required": [
-          {"to": "hakurei_shrine", "via": "the gap behind the main hall", "condition": ""}
+          {
+            "to": "hakurei_shrine",
+            "via": "the gap behind the main hall",
+            "condition": ""
+          }
         ],
         "optional": []
       },
       "item_pickups": [
-        {"item": "name_fragment_shikigami", "count": 1, "sub_zone": "mayohiga"},
-        {"item": "remembered_prayer", "count": 2, "sub_zone": "barrier_seam"},
-        {"item": "torii_vermilion", "count": 2, "sub_zone": "barrier_seam"},
-        {"item": "sacred_sakaki", "count": 1, "sub_zone": "mayohiga"},
-        {"item": "star_iron", "count": 1, "sub_zone": "mayohiga"},
-        {"item": "paper_substitute", "count": 1, "sub_zone": "pillar_beneath"}
+        {
+          "item": "name_fragment_shikigami",
+          "count": 1,
+          "sub_zone": "mayohiga"
+        },
+        {
+          "item": "remembered_prayer",
+          "count": 2,
+          "sub_zone": "barrier_seam"
+        },
+        {
+          "item": "torii_vermilion",
+          "count": 2,
+          "sub_zone": "barrier_seam"
+        },
+        {
+          "item": "sacred_sakaki",
+          "count": 1,
+          "sub_zone": "mayohiga"
+        },
+        {
+          "item": "star_iron",
+          "count": 1,
+          "sub_zone": "mayohiga"
+        },
+        {
+          "item": "paper_substitute",
+          "count": 1,
+          "sub_zone": "pillar_beneath"
+        }
       ],
       "weapon_pickups": [],
       "lore_en": "The Great Hakurei Barrier is a boundary of common sense: it keeps Gensokyo apart from a world that no longer believes in it. Everyone knows the shrine maiden maintains it. No one asks how. Seen from the inside, at its edge, it is not a wall but a surface, white and very thin, and cracked like old porcelain, and mended in places with something dark that looks, if you stare, like handwriting.",

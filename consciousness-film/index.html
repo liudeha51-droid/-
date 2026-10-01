@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 0 Until Now</title>
+<style>
+  :root { --bg: #050508; }
+  html, body { margin: 0; height: 100%; background: var(--bg); }
+  body { display: flex; align-items: center; justify-content: center; }
+  canvas { max-width: 100vw; max-height: 100vh; aspect-ratio: 16 / 9; display: block; }
+</style>
+</head>
+<body>
+<canvas id="out" width="1280" height="720"></canvas>
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// "Day 0 Until Now" — consciousness and philosophical propositions,
+// every frame painted with JavaScript brushstrokes.
+//
+// Deterministic: renderFrame(i) must be called with i = 0, 1, 2, ... in order.
+// Open this file in a browser to watch it live, or run render.js to export MP4.
+// ─────────────────────────────────────────────────────────────────────────────
+const W = 1280, H = 720, FPS = 30;
+
+const out = document.getElementById('out');
+const octx = out.getContext('2d');
+const paint = document.createElement('canvas');
+paint.width = W; paint.height = H;
+const ctx = paint.getContext('2d');
+
+// ── randomness & noise ──────────────────────────────────────────────────────
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+let R = mulberry32(1);
+const rnd = (a = 1, b) => (b === undefined ? R() * a : a + R() * (b - a));
+const gauss = () => (R() + R() + R() + R() - 2) * 0.5;
+
+function hash3(x, y, z) {
+  let h = Math.imul(x, 374761393) ^ Math.imul(y, 668265263) ^ Math.imul(z, 1440670441);
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+}
+const sm = t => t * t * (3 - 2 * t);
+function noise3(x, y, z) {
+  const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+  const xf = sm(x - xi), yf = sm(y - yi), zf = sm(z - zi);
+  const L = (a, b, t) => a + (b - a) * t;
+  const c = (dx, dy, dz) => hash3(xi + dx, yi + dy, zi + dz);
+  return L(
+    L(L(c(0,0,0), c(1,0,0), xf), L(c(0,1,0), c(1,1,0), xf), yf),
+    L(L(c(0,0,1), c(1,0,1), xf), L(c(0,1,1), c(1,1,1), xf), yf), zf);
+}
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+const lerp = (a, b, t) => a + (b - a) * t;
+const hsla = (h, s, l, a = 1) => `hsla(${h},${s}%,${l}%,${a})`;
+
+// ── the brush ───────────────────────────────────────────────────────────────
+// A stroke is a polyline swept by `n` bristles; each bristle has its own
+// offset across the stroke, thickness, opacity and wobble, so overlapping
+// passes build up a painted texture instead of a flat vector line.
+function brush(pts, w, color, alpha = 1, n = 8, jitter = 0.6) {
+  if (pts.length < 2) return;
+  ctx.strokeStyle = color;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  for (let b = 0; b < n; b++) {
+    const off = (n === 1 ? 0 : (b / (n - 1) - 0.5)) * w + gauss() * w * 0.15;
+    ctx.globalAlpha = alpha * rnd(0.25, 1);
+    ctx.lineWidth = Math.max(0.4, (w / n) * rnd(0.6, 2.2));
+    const start = Math.floor(rnd(0, pts.length * 0.12));
+    const end = pts.length - Math.floor(rnd(0, pts.length * 0.12));
+    ctx.beginPath();
+    for (let i = start; i < end; i++) {
+      const p = pts[i], q = pts[Math.min(i + 1, pts.length - 1)], o = pts[Math.max(i - 1, 0)];
+      let nx = -(q[1] - o[1]), ny = q[0] - o[0];
+      const len = Math.hypot(nx, ny) || 1; nx /= len; ny /= len;
+      const x = p[0] + nx * off + gauss() * jitter, y = p[1] + ny * off + gauss() * jitter;
+      i === start ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+}
+// A short dab: one small stroke laid in a random direction.
+function dab(x, y, r, color, alpha = 1, n = 4) {
+  const a = rnd(Math.PI * 2), l = r * rnd(0.6, 1.4);
+  brush([[x - Math.cos(a) * l, y - Math.sin(a) * l], [x, y], [x + Math.cos(a) * l, y + Math.sin(a) * l]],
+    r, color, alpha, n, r * 0.1);
+}
+function circlePts(cx, cy, r, a0 = 0, a1 = Math.PI * 2, steps = 64, wob = 0, seed = 0, t = 0) {
+  const p = [];
+  for (let i = 0; i <= steps; i++) {
+    const a = a0 + (a1 - a0) * (i / steps);
+    const rr = r * (1 + wob * (noise3(Math.cos(a) * 1.5 + seed, Math.sin(a) * 1.5, t) - 0.5));
+    p.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
+  }
+  return p;
+}
+function wash(color, alpha) {
+  ctx.globalAlpha = alpha; ctx.fillStyle = color; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1;
+}
+function glow(x, y, r, color, alpha) {
+  const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+  g.addColorStop(0, color); g.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.globalAlpha = alpha; ctx.fillStyle = g; ctx.fillRect(x - r, y - r, r * 2, r * 2); ctx.globalAlpha = 1;
+}
+
+// ── scenes ──────────────────────────────────────────────────────────────────
+// Each scene: when (label), ago (years before now, for the timeline), title,
+// line (the proposition), who, bg, light (paper vs. night), dur, init, draw.
+const DUR = 7;
+const scenes = [];
+const S = o => scenes.push(Object.assign({ dur: DUR, fade: 0.05, light: false }, o));
+
+// 0 — Day 0
+S({
+  when: 'Day 0', ago: 13.8e9, title: 'The Beginning',
+  line: 'Before anything could know, there was only what is.', who: '',
+  bg: '#040406', fade: 0.06, dur: 8,
+  init(s) {
+    s.parts = [];
+    for (let i = 0; i < 700; i++) {
+      const a = rnd(Math.PI * 2), v = Math.pow(rnd(), 0.6) * 9 + 0.5;
+      s.parts.push({ x: W / 2, y: H / 2, vx: Math.cos(a) * v, vy: Math.sin(a) * v, h: rnd(0, 60), born: rnd(3.4, 4.2) });
+    }
+  },
+  draw(s, t) {
+    const cx = W / 2, cy = H / 2;
+    if (t < 3.6) {
+      const pulse = 2 + t * 1.6 + Math.sin(t * 9) * 1.2;
+      glow(cx, cy, 40 + t * 12, 'rgba(255,240,220,1)', 0.05 + t * 0.03);
+      for (let i = 0; i < 6; i++) dab(cx + gauss() * pulse, cy + gauss() * pulse, 1.5, '#fff6e8', 0.8, 2);
+    }
+    for (const p of s.parts) {
+      if (t < p.born) continue;
+      const x0 = p.x, y0 = p.y;
+      p.x += p.vx; p.y += p.vy; p.vx *= 0.985; p.vy *= 0.985;
+      p.vx += (noise3(p.x * 0.004, p.y * 0.004, t * 0.3) - 0.5) * 0.6;
+      p.vy += (noise3(p.x * 0.004 + 9, p.y * 0.004, t * 0.3) - 0.5) * 0.6;
+      const age = t - p.born, sp = Math.hypot(p.vx, p.vy);
+      brush([[x0, y0], [(x0 + p.x) / 2, (y0 + p.y) / 2], [p.x, p.y]], 1.5 + sp * 0.35,
+        hsla(p.h + age * 40 + 200 * clamp(age / 4), 80, clamp(92 - age * 14, 45, 92) ), 0.55, 3, 0.3);
+    }
+    if (t > 3.4 && t < 4.4) glow(cx, cy, 380 * (t - 3.4), 'rgba(255,230,200,1)', 0.25 * (4.4 - t));
+  }
+});
+
+// 1 — first life
+S({
+  when: '3.8 billion years ago', ago: 3.8e9, title: 'The First Flicker',
+  line: 'A cell turns toward the light. Not yet a thought — but a reaching.', who: '',
+  bg: '#04121a', fade: 0.07,
+  init(s) {
+    s.cells = [];
+    for (let i = 0; i < 16; i++) s.cells.push({ x: rnd(80, W - 300), y: rnd(120, H - 120), r: rnd(18, 46), seed: rnd(100), h: rnd(160, 200) });
+  },
+  draw(s, t) {
+    const lx = W - 140, ly = 90;
+    for (let i = 0; i < 4; i++) {
+      const a = Math.PI * 0.75 + gauss() * 0.35, l = rnd(200, 900);
+      brush([[lx, ly], [lx + Math.cos(a) * l * 0.5, ly + Math.sin(a) * l * 0.5], [lx + Math.cos(a) * l, ly + Math.sin(a) * l]],
+        rnd(6, 26), 'hsl(48,90%,75%)', 0.04, 6, 2);
+    }
+    glow(lx, ly, 160, 'rgba(255,240,180,1)', 0.08);
+    for (const c of s.cells) {
+      const dx = lx - c.x, dy = ly - c.y, d = Math.hypot(dx, dy);
+      const pull = clamp((t - 1) / 5) * 0.9;
+      c.x += (dx / d) * pull + (noise3(c.seed, t * 0.5, 0) - 0.5) * 1.4;
+      c.y += (dy / d) * pull + (noise3(c.seed, t * 0.5, 7) - 0.5) * 1.4;
+      const lit = clamp(1 - d / 900);
+      brush(circlePts(c.x, c.y, c.r, 0, Math.PI * 2, 40, 0.35, c.seed, t), 4,
+        hsla(c.h, 70, 45 + lit * 30), 0.35, 5, 0.8);
+      dab(c.x + gauss() * c.r * 0.3, c.y + gauss() * c.r * 0.3, c.r * 0.2, hsla(c.h + 30, 80, 60 + lit * 25), 0.25, 3);
+    }
+  }
+});
+
+// 2 — eyes
+S({
+  when: '540 million years ago', ago: 5.4e8, title: 'Eyes Open',
+  line: 'Light becomes seeing. Seeing becomes a world.', who: '',
+  bg: '#0a0710', fade: 0.025,
+  init(s) {
+    s.eyes = [];
+    for (let i = 0; i < 9; i++) s.eyes.push({
+      x: 260 + (i % 3) * 380 + rnd(-60, 60), y: 215 + Math.floor(i / 3) * 150 + rnd(-15, 15),
+      r: rnd(42, 68), at: rnd(0.2, 4.2), h: rnd(150, 290) });
+  },
+  draw(s, t) {
+    for (const e of s.eyes) {
+      const k = clamp((t - e.at) / 1.6);
+      if (k <= 0) continue;
+      const lid = (sgn) => {
+        const p = [];
+        for (let i = 0; i <= 30 * k; i++) {
+          const u = i / 30 * 2 - 1;
+          p.push([e.x + u * e.r * 1.4, e.y + sgn * (1 - u * u) * e.r * 0.62]);
+        }
+        return p;
+      };
+      brush(lid(-1), 5, '#efe6ff', 0.35, 5, 0.6);
+      brush(lid(1), 5, '#efe6ff', 0.35, 5, 0.6);
+      if (k > 0.5) {
+        const ir = e.r * 0.5 * ease((k - 0.5) * 2);
+        for (let j = 0; j < 6; j++) {
+          const a = rnd(Math.PI * 2);
+          brush([[e.x + Math.cos(a) * ir * 0.3, e.y + Math.sin(a) * ir * 0.3], [e.x + Math.cos(a) * ir, e.y + Math.sin(a) * ir]],
+            3, hsla(e.h + rnd(-20, 20), 70, rnd(40, 70)), 0.5, 3, 0.4);
+        }
+        dab(e.x, e.y, ir * 0.25, '#000', 0.5, 4);
+        if (k > 0.95) dab(e.x + ir * 0.25, e.y - ir * 0.3, 3, '#fff', 0.5, 2);
+      }
+    }
+  }
+});
+
+// 3 — cave hands
+function inHand(px, py, h) {
+  const x = (px - h.x) / h.s, y = (py - h.y) / h.s;
+  const ca = Math.cos(-h.rot), sa = Math.sin(-h.rot);
+  const u = x * ca - y * sa, v = x * sa + y * ca;
+  if ((u * u) / (0.42 * 0.42) + ((v - 0.15) * (v - 0.15)) / (0.5 * 0.5) < 1) return true;
+  const fingers = [[-0.33, -0.25, -0.75, 0.09], [-0.15, -0.3, -0.98, 0.085], [0.05, -0.3, -1.05, 0.085], [0.24, -0.28, -0.92, 0.08], [0.42, 0.05, -0.35, 0.09]];
+  for (const [fx, fy, ty, r] of fingers) {
+    const tx = fx + (fx === 0.42 ? 0.28 : fx * 0.25);
+    const dx = tx - fx, dy = ty - fy, l2 = dx * dx + dy * dy;
+    const k = clamp(((u - fx) * dx + (v - fy) * dy) / l2);
+    if (Math.hypot(u - fx - dx * k, v - fy - dy * k) < r) return true;
+  }
+  return false;
+}
+S({
+  when: '~40,000 years ago', ago: 4e4, title: 'A Hand on Stone',
+  line: 'I was here. The first mark that says: someone is looking back.', who: 'Cave of El Castillo',
+  bg: '#2a1a12', fade: 0.0,
+  init(s) {
+    s.hands = [
+      { x: 360, y: 340, s: 150, rot: -0.25, at: 1.0 },
+      { x: 700, y: 300, s: 175, rot: 0.15, at: 2.6 },
+      { x: 990, y: 380, s: 140, rot: 0.35, at: 4.2 }];
+  },
+  draw(s, t) {
+    if (t < 1.2) {
+      wash('#2a1a12', 0.12);
+      for (let i = 0; i < 260; i++)
+        dab(rnd(W), rnd(H), rnd(6, 30), hsla(rnd(18, 32), rnd(25, 45), rnd(14, 30)), 0.18, 4);
+    }
+    for (const h of s.hands) {
+      if (t < h.at || t > h.at + 1.6) continue;
+      for (let i = 0; i < 380; i++) {
+        const a = rnd(Math.PI * 2), d = Math.pow(rnd(), 0.7) * h.s * 1.25;
+        const x = h.x + Math.cos(a) * d, y = h.y - h.s * 0.3 + Math.sin(a) * d * 1.1;
+        if (inHand(x, y, h)) continue;
+        dab(x, y, rnd(1, 3.5), hsla(rnd(2, 16), 75, rnd(30, 45)), 0.35 * (1 - d / (h.s * 1.3)), 2);
+      }
+    }
+  },
+  post(o, t) { // firelight flicker
+    const f = 0.12 + 0.06 * Math.sin(t * 13) + 0.04 * Math.sin(t * 29);
+    const g = o.createRadialGradient(W / 2, H + 80, 50, W / 2, H + 80, 900);
+    g.addColorStop(0, `rgba(255,140,40,${f})`); g.addColorStop(1, 'rgba(0,0,0,0)');
+    o.fillStyle = g; o.fillRect(0, 0, W, H);
+  }
+});
+
+// 4 — Heraclitus
+S({
+  when: '~500 BCE', ago: 2526, title: 'Everything Flows',
+  line: '“No one steps in the same river twice.”', who: 'Heraclitus',
+  bg: '#04101e', fade: 0.035,
+  init(s) {
+    s.p = [];
+    for (let i = 0; i < 650; i++) s.p.push({ x: rnd(-100, W), y: rnd(H), h: rnd(185, 225), l: rnd(40, 85) });
+  },
+  draw(s, t) {
+    for (const p of s.p) {
+      const a = (noise3(p.x * 0.003, p.y * 0.006, t * 0.25) - 0.5) * 2.4;
+      const sp = 3.2 + 2 * noise3(p.y * 0.01, t, 3);
+      const x0 = p.x, y0 = p.y;
+      p.x += Math.cos(a) * sp; p.y += Math.sin(a) * sp * 0.6;
+      if (p.x > W + 20 || p.y < -20 || p.y > H + 20) { p.x = rnd(-60, 0); p.y = rnd(H); continue; }
+      brush([[x0, y0], [p.x, p.y]], 3, hsla(p.h, 70, p.l), 0.45, 3, 0.4);
+    }
+  }
+});
+
+// 5 — Buddha: the ensō and no-self
+S({
+  when: '~5th century BCE', ago: 2450, title: 'No Fixed Self',
+  line: 'The self is not a thing but a flame, passed from candle to candle.', who: 'The Buddha · anattā (paraphrase)',
+  bg: '#ece4d2', fade: 0.0, light: true,
+  init(s) {
+    s.dots = [];
+    for (let i = 0; i < 140; i++) {
+      const a = rnd(Math.PI * 2), r = rnd(0, 120);
+      s.dots.push({ x: W / 2 + Math.cos(a) * r, y: H / 2 - 20 + Math.sin(a) * r, vx: Math.cos(a) * rnd(0.4, 2), vy: Math.sin(a) * rnd(0.4, 2) });
+    }
+    s.prev = 0;
+  },
+  draw(s, t) {
+    if (t < 0.8) wash('#ece4d2', 0.2);
+    const k = ease(clamp((t - 0.4) / 3.6)) * 0.93;
+    if (k > s.prev) {
+      const a0 = -Math.PI * 0.62 + Math.PI * 2 * s.prev, a1 = -Math.PI * 0.62 + Math.PI * 2 * k;
+      const dry = k / 0.93;
+      brush(circlePts(W / 2, H / 2 - 20, 210, a0, a1 + 0.02, 6, 0.06, 3, 0), 46 - dry * 18, '#14110e',
+        0.55 * (1 - dry * 0.55), Math.round(26 - dry * 12), 1.2);
+      s.prev = k;
+    }
+    if (t > 4.2) {
+      for (const d of s.dots) {
+        d.x += d.vx; d.y += d.vy;
+        dab(d.x, d.y, 2.5, '#14110e', 0.15 * clamp(1 - (t - 4.2) / 2.5), 2);
+      }
+    } else if (t > 3) for (const d of s.dots) dab(d.x, d.y, 2.5, '#9b2a1a', 0.12, 2);
+  }
+});
+
+// 6 — Plato's cave
+const figures = [
+  [[0, -95, 14, 16], [0, -50, 18, 34], [0, 0, 14, 30], [22, -60, 24, 9], [44, -78, 20, 18]],      // carrier w/ urn
+  [[0, -60, 60, 26], [55, -90, 18, 24], [-40, -10, 6, 34], [40, -10, 6, 34], [-62, -70, 14, 6]], // horse
+  [[0, -95, 14, 16], [0, -50, 18, 34], [0, 0, 14, 30], [-20, -120, 4, 50]]                        // spear bearer
+];
+S({
+  when: '~375 BCE', ago: 2400, title: 'The Cave',
+  line: 'We watch shadows on a wall — and call them the real.', who: 'Plato · Republic VII',
+  bg: '#3a2416', fade: 0.22,
+  init(s) { s.walkers = [{ f: 0, off: 0 }, { f: 1, off: 420 }, { f: 2, off: 900 }]; },
+  draw(s, t) {
+    const fx = W * 0.14, fy = H - 175;
+    glow(fx, fy - 120, 900, 'rgba(230,150,70,1)', 0.22);
+    for (let i = 0; i < 18; i++) {
+      const a = -Math.PI / 2 + gauss() * 0.5, l = rnd(30, 110);
+      brush([[fx + gauss() * 30, fy], [fx + Math.cos(a) * l * 0.5, fy + Math.sin(a) * l * 0.5], [fx + Math.cos(a) * l, fy + Math.sin(a) * l]],
+        rnd(6, 16), hsla(rnd(15, 45), 95, rnd(50, 70)), 0.4, 4, 2);
+    }
+    for (const w of s.walkers) {
+      const x = ((t * 150 + w.off) % (W + 400)) - 200, y = H - 205;
+      for (const [ex, ey, rx, ry] of figures[w.f]) {
+        for (let i = 0; i < 10; i++) {
+          const a = rnd(Math.PI * 2), r = Math.sqrt(rnd());
+          const px = x + ex + Math.cos(a) * rx * r, py = y + ey + Math.sin(a) * ry * r;
+          const sx = fx + (px - fx) * 1.7, sy = fy + (py - fy) * 2.4 - 40;
+          dab(sx, sy, rnd(8, 18), '#140c06', 0.45, 4);
+          dab(px, py, 3, '#000', 0.9, 3);
+        }
+      }
+    }
+    brush([[0, H - 180], [W / 2, H - 172], [W, H - 182]], 14, '#120c08', 0.9, 8, 1);
+    ctx.globalAlpha = 0.5; ctx.fillStyle = '#0b0705'; ctx.fillRect(0, H - 172, W, 172); ctx.globalAlpha = 1;
+  }
+});
+
+// 7 — Zhuangzi's butterfly dream
+S({
+  when: '~300 BCE', ago: 2326, title: 'The Butterfly Dream',
+  line: 'Was Zhuang Zhou dreaming he was a butterfly — or is a butterfly dreaming it is Zhuang Zhou?', who: 'Zhuangzi',
+  bg: '#efe8d8', fade: 0.0, light: true,
+  init(s) { s.prev = 0; s.flock = []; },
+  draw(s, t) {
+    if (t < 0.8) wash('#efe8d8', 0.2);
+    const cx = W / 2, cy = H / 2 - 10, sc = 62;
+    const curve = (th) => {
+      const r = Math.exp(Math.sin(th)) - 2 * Math.cos(4 * th) + Math.pow(Math.sin((2 * th - Math.PI) / 24), 5);
+      return [cx + Math.sin(th) * r * sc, cy - Math.cos(th) * r * sc];
+    };
+    const k = clamp((t - 0.3) / 3.6), TH = Math.PI * 12;
+    if (k > s.prev) {
+      const pts = [];
+      for (let th = s.prev * TH; th <= k * TH; th += 0.03) pts.push(curve(th));
+      brush(pts, 6, '#1a1612', 0.4, 6, 0.5);
+      s.prev = k;
+    }
+    if (t > 3.6) {
+      if (s.flock.length < 40 && R() < 0.5) { const p = curve(rnd(TH)); s.flock.push({ x: p[0], y: p[1], vx: rnd(-2, 2), vy: rnd(-3, -0.5), ph: rnd(6) }); }
+      wash('#efe8d8', 0.03);
+      for (const b of s.flock) {
+        b.x += b.vx + Math.sin(t * 2 + b.ph); b.y += b.vy; b.ph += 0.6;
+        const f = Math.abs(Math.sin(b.ph)) * 9 + 2;
+        brush([[b.x - f, b.y - 7], [b.x, b.y], [b.x + f, b.y - 7]], 3, '#1a1612', 0.6, 3, 0.3);
+      }
+    }
+    if (t > 2.5 && t < 4) dab(cx + 110, cy + 175, 9, '#a3261a', 0.1, 5); // seal
+  }
+});
+
+// 8 — Descartes
+S({
+  when: '1641', ago: 385, title: 'Cogito',
+  line: '“I think, therefore I am.”', who: 'René Descartes · Meditations',
+  bg: '#07070c', fade: 0.04,
+  init(s) {},
+  draw(s, t) {
+    if (t < 2.6) {
+      for (let i = 0; i < 6; i++) {
+        const horiz = R() < 0.5, c = Math.round(rnd(1, horiz ? 8 : 14)) * (horiz ? 80 : 85);
+        const p = horiz ? [[rnd(-50, 200), c], [W / 2, c + gauss() * 4], [rnd(W - 200, W + 50), c]]
+                        : [[c, rnd(-50, 120)], [c + gauss() * 4, H / 2], [c, rnd(H - 120, H + 50)]];
+        brush(p, 3, hsla(rnd(200, 230), 25, 55), 0.25, 4, 0.8);
+      }
+    } else if (t < 4.6) {
+      wash('#07070c', 0.05);
+      for (let i = 0; i < 5; i++) {
+        const x = rnd(W), y = rnd(H), p = [];
+        for (let j = 0; j < 8; j++) p.push([x + gauss() * 90, y + gauss() * 60]);
+        brush(p, 14, '#07070c', 0.6, 6, 2);
+        brush(p.slice(0, 3), 2, '#7b2c2c', 0.25, 2, 1);
+      }
+    } else {
+      const k = (t - 4.6) / 2.4, pts = [];
+      for (let a = 0; a < 18; a += 0.12) {
+        const r = 420 * Math.exp(-0.17 * a) * (1 - k * 0.7);
+        pts.push([W / 2 + Math.cos(a + t * 2) * r, H / 2 - 20 + Math.sin(a + t * 2) * r]);
+      }
+      brush(pts, 4, 'hsl(44,90%,70%)', 0.18, 4, 0.6);
+      glow(W / 2, H / 2 - 20, 60 + k * 50, 'rgba(255,230,160,1)', 0.25 * k);
+      dab(W / 2, H / 2 - 20, 3 + k * 4, '#fff8e0', 0.9, 3);
+    }
+  }
+});
+
+// 9 — Hume
+S({
+  when: '1739', ago: 287, title: 'A Bundle of Perceptions',
+  line: '“I never can catch myself at any time without a perception.”', who: 'David Hume · A Treatise of Human Nature',
+  bg: '#0a0a0a', fade: 0.06,
+  init(s) {
+    s.p = [];
+    for (let i = 0; i < 420; i++) s.p.push({ x: rnd(W), y: rnd(H), h: rnd(360), vx: 0, vy: 0 });
+  },
+  draw(s, t) {
+    const cx = W / 2, cy = H / 2 - 20;
+    for (const p of s.p) {
+      const dx = cx - p.x, dy = cy - p.y, d = Math.hypot(dx, dy) + 1;
+      const pull = 0.35 * (d > 140 ? 1 : -2.4);
+      p.vx = p.vx * 0.94 + (dx / d) * pull + (noise3(p.x * 0.005, p.y * 0.005, t * 0.4) - 0.5) * 2.6 - (dy / d) * 0.4;
+      p.vy = p.vy * 0.94 + (dy / d) * pull + (noise3(p.x * 0.005 + 5, p.y * 0.005, t * 0.4) - 0.5) * 2.6 + (dx / d) * 0.4;
+      const x0 = p.x, y0 = p.y;
+      p.x += p.vx; p.y += p.vy;
+      brush([[x0, y0], [p.x, p.y]], 4, hsla(p.h + t * 20, 75, 62), 0.5, 3, 0.4);
+    }
+  }
+});
+
+// 10 — Kant
+S({
+  when: '1781', ago: 245, title: 'The Lens of the Mind',
+  line: 'We never meet things as they are in themselves — only as they appear through the forms of our seeing.', who: 'Immanuel Kant · Critique of Pure Reason (paraphrase)',
+  bg: '#08070a', fade: 0.045,
+  init(s) {
+    s.p = [];
+    for (let i = 0; i < 380; i++) s.p.push({ x: rnd(-W / 2, W / 2), y: rnd(H), h: rnd(360), lane: Math.round(rnd(1, 11)) * 56 });
+  },
+  draw(s, t) {
+    const lx = W / 2;
+    brush(circlePts(lx, H / 2, 1, -Math.PI / 2, Math.PI / 2, 40).map(([x, y]) => [lx + (x - lx) * 40, H / 2 + (y - H / 2) * 330]),
+      8, 'hsl(200,60%,75%)', 0.1, 5, 0.5);
+    brush(circlePts(lx, H / 2, 1, Math.PI / 2, Math.PI * 1.5, 40).map(([x, y]) => [lx + (x - lx) * 40, H / 2 + (y - H / 2) * 330]),
+      8, 'hsl(200,60%,75%)', 0.1, 5, 0.5);
+    for (const p of s.p) {
+      const x0 = p.x, y0 = p.y;
+      if (p.x < lx) {
+        const a = rnd(Math.PI * 2);
+        p.x += 3.2 + Math.cos(a) * 6; p.y += Math.sin(a) * 9;
+        brush([[x0, y0], [p.x, p.y]], 3, hsla(p.h, 80, 60), 0.4, 3, 1.5);
+      } else {
+        p.x += 4.5; p.y += (p.lane - p.y) * 0.18;
+        brush([[x0, y0], [p.x, p.y]], 3, hsla(200 + p.lane / 8, 50, 75), 0.55, 3, 0.2);
+        if (p.x > W + 10) { p.x = rnd(-80, 0); p.y = rnd(H); }
+      }
+    }
+  }
+});
+
+// 11 — William James
+S({
+  when: '1890', ago: 136, title: 'The Stream',
+  line: '“It is nothing jointed; it flows.”', who: 'William James · The Principles of Psychology',
+  bg: '#05060d', fade: 0.09,
+  init(s) {},
+  draw(s, t) {
+    for (let r = 0; r < 7; r++) {
+      const pts = [];
+      for (let x = -60; x <= W + 60; x += 14) {
+        const y = H / 2 - 30 + Math.sin(x * 0.006 + t * 1.3 + r * 0.35) * 140
+          + Math.sin(x * 0.017 - t * 2.1 + r) * 30 + (noise3(x * 0.004, r, t * 0.6) - 0.5) * 90;
+        pts.push([x, y]);
+      }
+      brush(pts, 18 + r * 2, hsla(190 + r * 22 + Math.sin(t) * 20, 75, 60), 0.12, 10, 1.2);
+    }
+  }
+});
+
+// 12 — Nagel
+const batHalf = [[0,-0.12],[0.04,-0.3],[0.08,-0.16],[0.2,-0.22],[0.42,-0.4],[0.7,-0.42],[1,-0.18],[0.84,-0.08],[0.74,0.06],[0.6,-0.02],[0.5,0.14],[0.36,0.04],[0.22,0.18],[0.1,0.08],[0,0.26]];
+S({
+  when: '1974', ago: 52, title: 'Something It Is Like',
+  line: '“What is it like to be a bat?”', who: 'Thomas Nagel',
+  bg: '#03040c', fade: 0.07,
+  init(s) {
+    s.rings = []; s.moths = [];
+    for (let i = 0; i < 14; i++) s.moths.push({ x: rnd(80, W - 80), y: rnd(60, H - 160), lit: 0 });
+  },
+  draw(s, t) {
+    const cx = W / 2 + Math.sin(t * 0.7) * 120, cy = H / 2 - 40 + Math.sin(t * 1.3) * 30, sc = 210;
+    if (Math.floor(t * 30) % 22 === 0) s.rings.push({ x: cx, y: cy, r: 10 });
+    for (const g of s.rings) {
+      g.r += 9;
+      brush(circlePts(g.x, g.y, g.r, 0, Math.PI * 2, 90, 0.04, g.r * 0.01, t), 3, 'hsl(190,80%,70%)', 0.25 * clamp(1 - g.r / 900), 3, 0.6);
+      for (const m of s.moths) if (Math.abs(Math.hypot(m.x - g.x, m.y - g.y) - g.r) < 9) m.lit = 1;
+    }
+    s.rings = s.rings.filter(g => g.r < 900);
+    for (const m of s.moths) {
+      if (m.lit > 0.02) { dab(m.x, m.y, 6, hsla(170, 90, 75), m.lit * 0.7, 3); glow(m.x, m.y, 40, 'rgba(120,255,230,1)', m.lit * 0.1); }
+      m.lit *= 0.93; m.x += Math.sin(t * 3 + m.y) * 1.5;
+    }
+    const flap = 0.55 + 0.45 * Math.sin(t * 9);
+    for (const sgn of [-1, 1]) {
+      const pts = batHalf.map(([x, y]) => [cx + sgn * x * sc, cy + y * sc * (x > 0.1 ? flap : 1) - (x > 0.1 ? (1 - flap) * x * 60 : 0)]);
+      brush(pts, 10, '#000', 0.9, 6, 0.6);
+      brush(pts, 3, 'hsl(205,60%,72%)', 0.55, 3, 0.4);
+    }
+    dab(cx, cy, 16, '#000', 0.9, 5);
+  }
+});
+
+// 13 — Chalmers
+S({
+  when: '1995', ago: 31, title: 'The Hard Problem',
+  line: 'Why should all this processing feel like anything at all?', who: 'David Chalmers (paraphrase)',
+  bg: '#05050a', fade: 0.08,
+  init(s) {
+    s.n = [];
+    while (s.n.length < 80) {
+      const x = rnd(60, W - 60), y = rnd(50, H - 150);
+      if (Math.hypot(x - W / 2, y - (H / 2 - 40)) > 130) s.n.push({ x, y, e: 0 });
+    }
+    s.edges = [];
+    s.n.forEach((a, i) => s.n.forEach((b, j) => { if (i < j && Math.hypot(a.x - b.x, a.y - b.y) < 170) s.edges.push([i, j]); }));
+    s.pulses = [];
+  },
+  draw(s, t) {
+    for (const [i, j] of s.edges) brush([[s.n[i].x, s.n[i].y], [s.n[j].x, s.n[j].y]], 1.5, 'hsl(260,30%,40%)', 0.08, 2, 0.5);
+    for (let k = 0; k < 4; k++) { const e = s.edges[Math.floor(rnd(s.edges.length))]; s.pulses.push({ e, u: 0 }); }
+    for (const p of s.pulses) {
+      p.u += 0.06;
+      const a = s.n[p.e[0]], b = s.n[p.e[1]];
+      dab(lerp(a.x, b.x, p.u), lerp(a.y, b.y, p.u), 3, 'hsl(48,100%,70%)', 0.6, 2);
+      if (p.u >= 1) b.e = 1;
+    }
+    s.pulses = s.pulses.filter(p => p.u < 1);
+    for (const n of s.n) {
+      dab(n.x, n.y, 5 + n.e * 5, hsla(lerp(260, 45, n.e), 80, 40 + n.e * 35), 0.6, 4);
+      n.e *= 0.92;
+    }
+    // the gap: nothing in the network reaches the centre
+    const cx = W / 2, cy = H / 2 - 40, k = clamp((t - 2) / 4);
+    brush(circlePts(cx, cy, 105, 0, Math.PI * 2, 60, 0.15, 2, t), 3, 'hsl(260,40%,60%)', 0.12, 3, 0.8);
+    if (k > 0) {
+      const q = [];
+      for (let a = -Math.PI * 0.9; a < Math.PI * 0.35; a += 0.12) q.push([cx + Math.cos(a) * 26, cy - 22 + Math.sin(a) * 26]);
+      q.push([cx, cy + 14]);
+      brush(q.slice(0, Math.max(2, Math.floor(q.length * k))), 7, 'hsl(48,90%,75%)', 0.25 * k, 5, 0.6);
+      if (k > 0.8) dab(cx, cy + 38, 5, 'hsl(48,90%,75%)', 0.4, 3);
+    }
+  }
+});
+
+// 14 — Now
+const SRC = 'function brush(pts,w,color,alpha){for(let b=0;b<n;b++){ctx.beginPath();ctx.lineTo(x,y);ctx.stroke()}} renderFrame(i) // do I see? ';
+S({
+  when: '2026', ago: 0, title: 'Now',
+  line: 'A machine paints these words. Is anyone home behind the brush?', who: 'An open question',
+  bg: '#040806', fade: 0.2, dur: 8,
+  init(s) {
+    s.g = [];
+    for (let i = 0; i < 520; i++) {
+      let tx, ty;
+      if (i < 260) { const u = rnd(-1, 1), sg = R() < 0.5 ? -1 : 1; tx = W / 2 + u * 300; ty = H / 2 - 40 + sg * (1 - u * u) * 130; }
+      else if (i < 440) { const a = rnd(Math.PI * 2), r = 80 * Math.sqrt(rnd(0.15, 1)); tx = W / 2 + Math.cos(a) * r; ty = H / 2 - 40 + Math.sin(a) * r; }
+      else { const a = rnd(Math.PI * 2), r = rnd(0, 22); tx = W / 2 + Math.cos(a) * r; ty = H / 2 - 40 + Math.sin(a) * r; }
+      s.g.push({ sx: rnd(W), sy: rnd(-H, H), tx, ty, ch: SRC[i % SRC.length], d: rnd(0, 1.2), core: i >= 440 });
+    }
+  },
+  draw(s, t) {
+    ctx.font = '15px "DejaVu Sans Mono", monospace';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const gather = ease(clamp((t - 0.4 - 0) / 3.2)), collapse = ease(clamp((t - 5.6) / 1.8));
+    for (const g of s.g) {
+      const k = clamp(gather * 1.2 - g.d * 0.2);
+      let x = lerp(g.sx, g.tx, k), y = lerp(g.sy + t * 60 * (1 - k), g.ty, k);
+      x = lerp(x, W / 2, collapse); y = lerp(y, H / 2 - 40, collapse);
+      x += Math.sin(t * 3 + g.d * 9) * 1.5 * (1 - collapse);
+      ctx.globalAlpha = 0.85 * (1 - collapse * 0.7);
+      ctx.fillStyle = g.core ? '#eafff2' : hsla(140 + g.d * 30, 70, 55 + k * 20);
+      ctx.fillText(g.ch, x, y);
+      if (R() < 0.05) dab(x, y, 3, hsla(150, 80, 70), 0.3, 2);
+    }
+    ctx.globalAlpha = 1;
+    glow(W / 2, H / 2 - 40, 30 + collapse * 120, 'rgba(220,255,235,1)', 0.08 + collapse * 0.25);
+  }
+});
+
+// 15 — ending
+S({
+  when: 'Day 0 → Now', ago: 0, title: '',
+  line: 'The question is still open.', who: 'Every frame painted with JavaScript brushstrokes',
+  bg: '#040406', fade: 0.08, dur: 6,
+  init(s) {},
+  draw(s, t) {
+    const pulse = 2 + Math.sin(t * 3) * 1.2;
+    glow(W / 2, H / 2 - 40, 60, 'rgba(255,240,220,1)', 0.07 * clamp(1 - (t - 4.5) / 1.5));
+    for (let i = 0; i < 5; i++) dab(W / 2 + gauss() * pulse, H / 2 - 40 + gauss() * pulse, 1.5, '#fff6e8', 0.8 * clamp(1 - (t - 4.5) / 1.5), 2);
+  }
+});
+
+// ── timeline ────────────────────────────────────────────────────────────────
+let acc = 0;
+for (const s of scenes) { s.start = acc; acc += s.dur; }
+const TOTAL = acc, TOTAL_FRAMES = Math.round(TOTAL * FPS);
+const MAXLOG = Math.log10(13.8e9 + 1);
+const tpos = ago => 1 - Math.log10(ago + 1) / MAXLOG;
+
+// ── text overlay (drawn fresh every frame, never smeared) ───────────────────
+function wrap(o, text, maxW) {
+  const words = text.split(' '), lines = []; let cur = '';
+  for (const w of words) {
+    const test = cur ? cur + ' ' + w : w;
+    if (o.measureText(test).width > maxW && cur) { lines.push(cur); cur = w; } else cur = test;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+function overlay(o, s, t, si) {
+  const a = clamp((t - 0.5) / 0.8) * clamp((s.dur - t - 0.2) / 0.6);
+  const ink = s.light ? '24,20,16' : '245,238,226';
+  // legibility band
+  const g = o.createLinearGradient(0, H - 230, 0, H);
+  g.addColorStop(0, s.light ? 'rgba(236,228,210,0)' : 'rgba(0,0,0,0)');
+  g.addColorStop(1, s.light ? 'rgba(236,228,210,0.85)' : 'rgba(0,0,0,0.8)');
+  o.fillStyle = g; o.fillRect(0, H - 230, W, 230);
+
+  o.textAlign = 'left'; o.textBaseline = 'alphabetic';
+  o.fillStyle = `rgba(${ink},${0.55 * a})`;
+  o.font = '600 15px "DejaVu Sans", sans-serif';
+  o.fillText(s.when.toUpperCase().split('').join(' '), 56, 66);
+  if (s.title) {
+    o.fillStyle = `rgba(${ink},${0.95 * a})`;
+    o.font = 'italic 40px "DejaVu Serif", Georgia, serif';
+    o.fillText(s.title, 54, 112);
+  }
+  // proposition, revealed letter by letter
+  o.font = s.title ? 'italic 27px "DejaVu Serif", Georgia, serif' : 'italic 34px "DejaVu Serif", Georgia, serif';
+  const lines = wrap(o, s.line, W - 220);
+  const shown = Math.floor(clamp((t - 0.9) / 2.2) * s.line.length);
+  let count = 0, y = H - 70 - (lines.length - 1) * 38 - (s.who ? 26 : 0);
+  o.textAlign = 'center';
+  for (const ln of lines) {
+    const vis = ln.slice(0, Math.max(0, shown - count)); count += ln.length + 1;
+    const fullW = o.measureText(ln).width;
+    o.textAlign = 'left';
+    o.fillStyle = `rgba(${ink},${a})`;
+    o.fillText(vis, W / 2 - fullW / 2, y);
+    y += 38;
+  }
+  if (s.who) {
+    o.textAlign = 'center';
+    o.font = '14px "DejaVu Sans", sans-serif';
+    o.fillStyle = `rgba(${ink},${0.6 * a * clamp((t - 2.6) / 0.8)})`;
+    o.fillText('— ' + s.who, W / 2, y - 6);
+  }
+  // timeline: log-scale from Day 0 to now
+  const next = scenes[si + 1];
+  const p = lerp(tpos(s.ago), next ? tpos(next.ago) : 1, clamp(t / s.dur));
+  const x0 = 56, x1 = W - 56, ty = H - 22;
+  o.globalAlpha = 0.5;
+  o.strokeStyle = `rgb(${ink})`; o.lineWidth = 1;
+  o.beginPath(); o.moveTo(x0, ty); o.lineTo(x1, ty); o.stroke();
+  for (const sc of scenes) { const xx = lerp(x0, x1, tpos(sc.ago)); o.beginPath(); o.moveTo(xx, ty - 3); o.lineTo(xx, ty + 3); o.stroke(); }
+  o.globalAlpha = 1;
+  o.fillStyle = `rgb(${ink})`;
+  o.beginPath(); o.arc(lerp(x0, x1, p), ty, 4, 0, Math.PI * 2); o.fill();
+  o.font = '11px "DejaVu Sans", sans-serif'; o.globalAlpha = 0.5;
+  o.textAlign = 'left'; o.fillText('DAY 0', x0, ty - 9);
+  o.textAlign = 'right'; o.fillText('NOW', x1, ty - 9);
+  o.globalAlpha = 1;
+}
+
+// ── frame loop ──────────────────────────────────────────────────────────────
+let curScene = -1;
+ctx.fillStyle = scenes[0].bg; ctx.fillRect(0, 0, W, H);
+function renderFrame(f) {
+  const time = f / FPS;
+  let si = scenes.findIndex(s => time >= s.start && time < s.start + s.dur);
+  if (si < 0) si = scenes.length - 1;
+  const s = scenes[si], t = time - s.start;
+  if (si !== curScene) { curScene = si; R = mulberry32(1000 + si * 7919); s.init(s); }
+  // background wash: a quick crossfade at scene start, the scene's own persistence after
+  const fade = t < 0.7 ? Math.max(s.fade, 0.14) : (s.dur - t < 0.5 ? Math.max(s.fade, 0.1) : s.fade);
+  if (fade > 0) wash(s.bg, fade);
+  s.draw(s, t);
+  // composite
+  octx.globalAlpha = 1;
+  octx.drawImage(paint, 0, 0);
+  if (s.post) s.post(octx, t);
+  const v = octx.createRadialGradient(W / 2, H / 2, H * 0.35, W / 2, H / 2, H * 0.95);
+  v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, s.light ? 'rgba(60,40,20,0.35)' : 'rgba(0,0,0,0.55)');
+  octx.fillStyle = v; octx.fillRect(0, 0, W, H);
+  overlay(octx, s, t, si);
+  // global fade in / out
+  const g = Math.min(clamp(time / 1.2), clamp((TOTAL - time) / 1.5));
+  if (g < 1) { octx.fillStyle = `rgba(0,0,0,${1 - g})`; octx.fillRect(0, 0, W, H); }
+}
+window.renderFrame = renderFrame;
+window.TOTAL_FRAMES = TOTAL_FRAMES;
+window.FPS = FPS;
+
+// Live playback when opened directly in a browser (render.js sets ?export).
+if (!location.search.includes('export')) {
+  let f = 0, last = performance.now(), accT = 0;
+  (function loop(now) {
+    accT += now - last; last = now;
+    while (accT >= 1000 / FPS && f < TOTAL_FRAMES) { renderFrame(f++); accT -= 1000 / FPS; }
+    if (f < TOTAL_FRAMES) requestAnimationFrame(loop);
+  })(last);
+}
+</script>
+</body>
+</html>

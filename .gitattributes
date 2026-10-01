@@ -3,3 +3,6 @@
 *.glb binary
 *.ogg binary
 *.wav binary
+*.mp4 binary
+*.res binary
+*.import text eol=lf

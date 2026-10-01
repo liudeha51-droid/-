@@ -1,0 +1,25 @@
+; Engine configuration file.
+; Input actions are registered at startup by res://systems/game_input.gd;
+; any action defined here takes precedence over those defaults.
+
+config_version=5
+
+[application]
+
+config/name="Touhou: Hollow Faith"
+run/main_scene="res://demo/arena.tscn"
+config/features=PackedStringArray("4.4", "Forward Plus")
+
+[autoload]
+
+GameInput="*res://systems/game_input.gd"
+QTE="*res://systems/qte_director.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[physics]
+
+common/physics_ticks_per_second=60
